@@ -1,0 +1,51 @@
+---
+import {Image} from 'astro:assets'
+import logo from '../content/images/heartFucsia.svg'
+---
+
+<header>
+  <div
+    class="w-full max-w-6.5xl flex flex-col  items-center mx-auto pt-16 pb-4"
+  >
+  <!-- <div class="shrink-0">
+    <Image class="block mx-3" src={logo} alt="book logo" width={44} height={44} />
+  </div> -->
+  <nav
+  class=" z-50 flex items-center justify-center w-full gap-2 py-4 px-4 text-xs bg-neonLime  top-0 left-0 relative rounded-lg "
+  >
+      <a
+        class="flex flex-col py-2 font-semibold text-center basis-1/5 md:basis-auto text-midnightMystery md:py-0 md:inline md:leading-10 lg:px-4"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Home
+      </a>
+      <a
+        class="flex flex-col py-2 text-center basis-1/5 md:basis-auto hover:text-bubblegumBlast md:py-0 md:inline md:leading-10 lg:px-4"
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Blog
+      </a>
+      <a
+        class="flex flex-col py-2 text-center basis-1/5 md:basis-auto hover:text-bubblegumBlast md:py-0 md:inline md:leading-10 lg:px-4"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  a {
+    color: #1E2237;
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1.8;
+  }
+</style>
