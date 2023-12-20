@@ -1,14 +1,18 @@
 ---
-import type {CollectionEntry } from 'astro:content'
+import {getCollection, type CollectionEntry } from 'astro:content'
 
 type Props = {
+	position: number,
 	concorrente: CollectionEntry<'concorrenti'>
 
 }
 /* const tuttiConcorrenti = await getCollection('concorrenti'); */
+const tuttiConcorrenti = await getCollection('concorrenti');
+const {concorrente, position} = Astro.props
+const topThree = tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti).slice(0, 3);
 
-const {concorrente} = Astro.props
-
+// Rearrange the order: [Second Place, First Place, Third Place]
+const reordered = [topThree[1], topThree[0], topThree[2]];
 /* console.log(tuttiConcorrenti); */
 import {Image} from 'astro:assets';
 import proto from "../content/concorrenti/img/proto.jpeg"
@@ -23,7 +27,9 @@ import proto from "../content/concorrenti/img/proto.jpeg"
 
 			<div class="avatar relative -top-4 left-5">
 				<div class="w-8 rounded-full border-2 border-[#FBF0FF] bg-[#fbf0ff]">
-					<p class=" mx-auto flex items-center justify-center text-electricAmethyst font-semibold">8</p>
+					<p class=" mx-auto flex items-center justify-center text-electricAmethyst font-semibold">
+						{position}
+					</p>
 				</div>
 			</div>
 	</div>

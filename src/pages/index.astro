@@ -24,15 +24,12 @@ import {Image} from 'astro:assets';
 			<!-- {tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti)
 				.map((concorrente) => <Leader concorrente={concorrente}/>)
 				.slice(0, 3)} -->
-{reordered.map((concorrente) => <Leader concorrente={concorrente}/>)
-}
+        {reordered.map((concorrente, index ) => <Leader concorrente={concorrente} position={index + 1}/>)
+            }
 		</div>
 		<div class="grid grid-cols-4  gap-x-1">
-			{tuttiConcorrenti.map((concorrente) => <Leader concorrente={concorrente}/>).slice(3,7)}
+			{tuttiConcorrenti.map((concorrente, index) => <Leader concorrente={concorrente} position={index + 1} />).slice(3,7)}
 		</div>
-
-
-		<!-- <ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
 				title="Documentation"
