@@ -4,4 +4,5 @@ username: asier
 alt: asier
 image: './img/oihana.jpg'
 punti: 12
+borderColor: ''
 ---
