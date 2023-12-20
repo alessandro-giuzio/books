@@ -1,5 +1,5 @@
 ---
-import  {CollectionEntry } from 'astro:content'
+import type {CollectionEntry } from 'astro:content'
 
 type Props = {
 	concorrente: CollectionEntry<'concorrenti'>
@@ -17,9 +17,11 @@ import proto from "../content/concorrenti/img/proto.jpeg"
 ---
 <div class="instructions border border-yellow-200">
 
-  <div class="bg-[#1E2237] ">
-		<Image src={concorrente.data.image} alt="proto" class="rounded-full border-[6px] border-[#FBF0FF]" width={124}  format='webp'/>
-			<div class="avatar relative -top-5 left-12">
+  <div class="bg-[#1E2237]">
+
+		<Image src={concorrente.data.image} alt="proto" class="rounded-full border-[6px] border-[#FBF0FF] object-cover aspect-square max-w-[70px]" width={124}  format='webp'/>
+
+			<div class="avatar relative -top-4 left-5">
 				<div class="w-8 rounded-full border-2 border-[#FBF0FF] bg-[#fbf0ff]">
 					<p class=" mx-auto flex items-center justify-center text-electricAmethyst font-semibold">8</p>
 				</div>
@@ -44,7 +46,9 @@ import proto from "../content/concorrenti/img/proto.jpeg"
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* padding: 1.5rem; */
+		 padding: .3rem;
+		 width: 100%;
+		 max-width: fit-content;
 		/* border-radius: 8px; */
 	}
 	.instructions code {

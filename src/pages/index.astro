@@ -5,10 +5,14 @@ import Header from '../components/Header.astro';
 import Leader from '../components/Leader.astro';
 import  {getCollection } from 'astro:content'
 const tuttiConcorrenti = await getCollection('concorrenti');
+// Sort by points in descending order
+const topThree = tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti).slice(0, 3);
+// Rearrange the order: [Second Place, First Place, Third Place]
+const reordered = [topThree[1], topThree[0], topThree[2]];
 
 
 
-console.log(tuttiConcorrenti);
+
 import {Image} from 'astro:assets';
 ---
 
@@ -17,11 +21,13 @@ import {Image} from 'astro:assets';
 	<main>
 		<div class="flex justify-around">
 			<!-- how filter the one with more points? -->
-			{tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti) // Sort by points in descending order
+			<!-- {tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti)
 				.map((concorrente) => <Leader concorrente={concorrente}/>)
-				.slice(0, 3)}
+				.slice(0, 3)} -->
+{reordered.map((concorrente) => <Leader concorrente={concorrente}/>)
+}
 		</div>
-		<div class="flex justify-around gap-x-1">
+		<div class="grid grid-cols-4  gap-x-1">
 			{tuttiConcorrenti.map((concorrente) => <Leader concorrente={concorrente}/>).slice(3,7)}
 		</div>
 
