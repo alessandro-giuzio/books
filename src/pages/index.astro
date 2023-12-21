@@ -16,7 +16,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 	<Header />
 	<main class="relative">
 		<div class="box"></div>
-		<div class="flex border-2 border-black ">
+		<div class="grid grid-cols-3 border-2 border-black ">
         {reordered.map((concorrente, index ) => <Leader concorrente={concorrente} position={index + 1}/>)
             }
 		</div>
