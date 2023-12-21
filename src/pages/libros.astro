@@ -1,3 +1,35 @@
-<h1 class="text-5xl text-red-500 uppercase">
+---
+import LayoutLibros from "../layouts/Layout.astro"
+import Header from "../components/Header.astro";
+import { getCollection } from "astro:content";
+import LibrosLista from "../components/LibrosLista.astro";
+
+const todosLosLibros = await getCollection("libros");
+
+var count = todosLosLibros.length;
+
+// filtrer the libros by concorrente
+const librosAsier = todosLosLibros.filter((libro) => libro.data.concorrente === "asier").map((libro) => libro.data.title);
+console.log(librosAsier);
+
+---
+<LayoutLibros title="Libros">
+  <Header/>
+<h1 class="text-5xl text-red-500 uppercase mb-16">
   libros
 </h1>
+<div class='books'>
+  <LibrosLista libros={todosLosLibros} />
+</div>
+</LayoutLibros>
+
+<style>
+.books {
+    font-size: 0.875rem;
+    margin-bottom: calc(1em + 2 vw);
+    line-height: 16.8px;
+    display: grid;
+    gap: 1.5em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+</style>

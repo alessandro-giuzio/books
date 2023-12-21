@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+type Props = {
+  libro: CollectionEntry<'libros'>;
+};
+
+const { libro } = Astro.props;
+---
+
+<div class='book'>
+  <a href={libro.data.link}>
+    <img
+      loading='lazy'
+      width='180'
+      height='270'
+      src={libro.data.cover}
+      alt={libro.data.alt}
+    /></a
+  >
+  <div class='info'>
+    <h3 class='title'>{libro.data.title}</h3>
+    <!-- <p>{book.data.body}</p> -->
+    <p>{libro.data.author}</p>
+    <!-- <p>{book.data.tag}</p> -->
+    <ul>
+      {libro.data.tag.map(tag => <li>{tag}</li>)}
+    </ul>
+    <!-- <p class='tag'>{book.data.yearRead}</p> -->
+  </div>
+</div>
+
+<style>
+  .book .info {
+    margin-top: 1em;
+  }
+
+  .book p {
+    color: #666;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+
+  ul li {
+    display: block;
+    margin-right: 0.5em;
+    color: #666;
+    font-size: 1;
+  }
+</style>
