@@ -16,11 +16,11 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 	<Header />
 	<main class="relative">
 		<div class="box"></div>
-		<div class="flex justify-around">
+		<div class="flex border-2 border-black ">
         {reordered.map((concorrente, index ) => <Leader concorrente={concorrente} position={index + 1}/>)
             }
 		</div>
-		<div class="flex gap-x-1">
+		<div class="grid grid-cols-4 border-2 border-green-600">
 			{tuttiConcorrenti.map((concorrente, index) => <Leader concorrente={concorrente} position={index + 1} />).slice(3,7)}
 		</div>
 	</main>
