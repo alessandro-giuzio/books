@@ -21,7 +21,7 @@ import { Image } from 'astro:assets';
 <script></script>
 
 <div class='instructions rounded-xl'>
-  <div class='border-2 border-yellow-400'>
+  <div class=''>
     <Image
       src={concorrente.data.image}
       alt='proto'
@@ -41,7 +41,17 @@ import { Image } from 'astro:assets';
         <p
           class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
         >
-          {concorrente.data.punti}
+          {
+            position === 1 ? (
+              <span class='text-4xl'>🥈</span>
+            ) : position === 2 ? (
+              <span class='text-4xl'>🥇</span>
+            ) : position === 3 ? (
+              <span class='text-4xl'>🥉</span>
+            ) : (
+              position
+            )
+          }
         </p>
       </div>
     </div>
@@ -56,7 +66,7 @@ import { Image } from 'astro:assets';
 <style>
   .instructions {
     margin-bottom: 4rem;
-    border: 1px solid rgba (var(--accent-light), 25%);
+    /* border: 1px solid rgba (var(--accent-light), 25%); */
     background: linear-gradient(
       rgba(var(--accent-dark), 66%),
       rgba(var(--accent-dark), 33%)
