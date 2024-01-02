@@ -19,16 +19,16 @@ import { Image } from 'astro:assets';
 ---
 
 <div class='instructions rounded-xl'>
-  <div class='border-2 border-yellow-400'>
+  <div class=''>
     <Image
       src={concorrente.data.image}
       alt='proto'
-      class='rounded-full border-[6px] border-[#FBF0FF] object-cover aspect-square max-w-[120px]'
-      width={124}
+      class='rounded-full object-cover aspect-square max-w-[120px]'
+      width={100}
       format='webp'
     />
 
-    <div class='avatar relative -top-5 left-10'>
+    <!-- <div class='avatar relative -top-5 left-10'>
       <div class='w-10 rounded-full border-2 border-[#FBF0FF] bg-[#fbf0ff]'>
         <p
           class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
@@ -36,12 +36,15 @@ import { Image } from 'astro:assets';
           {concorrente.data.punti}
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
-  <div class='flex gap-1 text-2xl'>
-    <p class='name'>{concorrente.data.nome}</p>
-    <p class='punti'>{concorrente.data.punti}</p>
-    <p class='nickname'>{concorrente.data.username}</p>
+
+  <div class='grid grid-cols-2 gap-x-64 items-center'>
+    <div>
+      <p class='name'>{concorrente.data.nome}</p>
+      <p class='nickname'>{concorrente.data.username}</p>
+    </div>
+    <p class='punti text-white text-2xl'>{concorrente.data.punti}</p>
   </div>
 </div>
 

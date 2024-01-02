@@ -25,7 +25,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
         ))
       }
     </div>
-    <div class='sec border-2 grid grid-rows-4 border-green-600'>
+    <div class='sec'>
       {
         tuttiConcorrenti
           .map((concorrente, index) => (
@@ -38,9 +38,6 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 </Layout>
 
 <style>
-  .sec {
-    background-color: aqua;
-  }
   main {
     margin: auto;
     /* padding: 1rem; */
@@ -62,6 +59,12 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
     background: #c0ff14;
     filter: blur(100px);
     z-index: -1;
+  }
+  .sec {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    padding: 0;
   }
   .astro-a {
     position: absolute;
