@@ -11,7 +11,7 @@ const { concorrente, position } = Astro.props;
 const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
   .slice(0, 3);
-console.log(position);
+
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
 
@@ -20,34 +20,44 @@ import { Image } from 'astro:assets';
 
 <script></script>
 
-<div class='instructions rounded-xl'>
+<div class='instructions rounded-3xl'>
   <div class=''>
     <Image
       src={concorrente.data.image}
       alt='proto'
       class={`rounded-full border-[6px] ${
         position === 1
-          ? 'borderSilver'
+          ? 'border-borderSilver'
           : position === 2
             ? 'border-borderGolden'
             : 'border-borderBronze'
-      } object-cover aspect-square max-w-[120px]`}
+      } object-cover aspect-square max-w-[120px] -translate-y-20`}
       width={124}
       format='webp'
     />
 
-    <div class='avatar relative -top-5 left-10'>
-      <div class='w-10 rounded-full border-2 border-[#FBF0FF] bg-[#fbf0ff]'>
+    <div class='avatar relative -top-[108px] left-10'>
+      <div
+        class={`w-[42px] rounded-lg rotate-45 h-[42px] grid place-content-center mx-auto  ${
+          position === 1
+            ? 'border-borderSilver bg-borderSilver'
+            : position === 2
+              ? 'border-borderGolden bg-borderGolden'
+              : position === 3
+                ? 'border-borderBronze bg-borderBronze'
+                : 'border-[#FBF0FF]'
+        } bg-[#fbf0ff]`}
+      >
         <p
           class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
         >
           {
             position === 1 ? (
-              <span class='text-4xl'>🥈</span>
+              <span class='text-3xl -rotate-45'>🥈</span>
             ) : position === 2 ? (
-              <span class='text-4xl'>🥇</span>
+              <span class='text-3xl -rotate-45'>🥇</span>
             ) : position === 3 ? (
-              <span class='text-4xl'>🥉</span>
+              <span class='text-3xl -rotate-45'>🥉</span>
             ) : (
               position
             )
@@ -56,7 +66,7 @@ import { Image } from 'astro:assets';
       </div>
     </div>
   </div>
-  <div class='flex flex-col gap-1 items-center text-2xl'>
+  <div class='flex flex-col gap-2 items-center text-3xl pb-4'>
     <p class='name'>{concorrente.data.nome}</p>
     <p class='punti'>{concorrente.data.punti}</p>
     <p class='nickname'>{concorrente.data.username}</p>
@@ -66,6 +76,7 @@ import { Image } from 'astro:assets';
 <style>
   .instructions {
     margin-bottom: 4rem;
+    margin-top: 6rem;
     /* border: 1px solid rgba (var(--accent-light), 25%); */
     background: linear-gradient(
       rgba(var(--accent-dark), 66%),
@@ -73,7 +84,7 @@ import { Image } from 'astro:assets';
     );
     margin-inline: auto;
     display: flex;
-    justify-items: center;
+
     align-items: center;
     flex-direction: column;
     width: 100%;
