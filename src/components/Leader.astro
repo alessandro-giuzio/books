@@ -18,12 +18,20 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 import { Image } from 'astro:assets';
 ---
 
+<script></script>
+
 <div class='instructions rounded-xl'>
   <div class='border-2 border-yellow-400'>
     <Image
       src={concorrente.data.image}
       alt='proto'
-      class='rounded-full border-[6px] border-[#FBF0FF] object-cover aspect-square max-w-[120px]'
+      class={`rounded-full border-[6px] ${
+        position === topThree[0]
+          ? 'border-yellow-400'
+          : position === 1
+            ? 'border-gray-300'
+            : 'border-blue-500'
+      } object-cover aspect-square max-w-[120px]`}
       width={124}
       format='webp'
     />

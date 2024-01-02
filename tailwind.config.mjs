@@ -18,6 +18,10 @@ export default {
 				tropicalSky:'#05bcff',
 				bubblegumBlast:'#ff05bc',
 				background: '#1E2237',
+				borderGolden: '#F0A000',
+				borderSilver: '#C0C0C0',
+				borderBronze: '#CD7F32',
+
 			},
 			fontFamily: {
         sans: ['Tourney Variable', ...defaulTheme.fontFamily.sans],
