@@ -25,7 +25,7 @@ import { Image } from 'astro:assets';
     <Image
       src={concorrente.data.image}
       alt='proto'
-      class={`rounded-full border-[6px] ${
+      class={`rounded-full border-[10px] ${
         position === 1
           ? 'border-borderSilver'
           : position === 2
@@ -36,7 +36,7 @@ import { Image } from 'astro:assets';
       format='webp'
     />
 
-    <div class='avatar relative -top-[108px] left-10'>
+    <div class='avatar relative -top-[110px] left-10'>
       <div
         class={`w-[42px] rounded-lg rotate-45 h-[42px] grid place-content-center mx-auto  ${
           position === 1

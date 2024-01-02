@@ -4,7 +4,10 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-
+height:{
+	'base':'116rem',
+	'base2':'120rem',
+},
 			colors:{
 				midnightMystery: '#13004e',
 				royalIndigo: '#48007e',

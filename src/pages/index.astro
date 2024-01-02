@@ -18,12 +18,14 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
   <Header />
   <main class='relative'>
     <div class='box text-red-600'></div>
-    <div class='grid grid-cols-3'>
+    <div class='grid grid-cols-3 h-full'>
       {
         reordered.map((concorrente, index) => (
           <div
             class={`${
-              index === 1 ? 'translate-y-[-30px] transition duration-300' : ''
+              index === 1
+                ? 'translate-y-[-30px] transition duration-900 h-[calc(100%+30px)]'
+                : ''
             }`}
           >
             <Leader concorrente={concorrente} position={index + 1} />
