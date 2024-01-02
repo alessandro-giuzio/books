@@ -11,7 +11,7 @@ const { concorrente, position } = Astro.props;
 const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
   .slice(0, 3);
-
+console.log(position);
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
 
@@ -26,11 +26,11 @@ import { Image } from 'astro:assets';
       src={concorrente.data.image}
       alt='proto'
       class={`rounded-full border-[6px] ${
-        position === topThree[0]
-          ? 'border-yellow-400'
-          : position === 1
-            ? 'border-gray-300'
-            : 'border-blue-500'
+        position === 1
+          ? 'borderSilver'
+          : position === 2
+            ? 'border-borderGolden'
+            : 'border-borderBronze'
       } object-cover aspect-square max-w-[120px]`}
       width={124}
       format='webp'
