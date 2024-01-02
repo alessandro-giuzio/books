@@ -38,7 +38,7 @@ import { Image } from 'astro:assets';
       </div>
     </div>
   </div>
-  <div class='flex flex-col gap-1 items-center text-2xl'>
+  <div class='flex gap-1 text-2xl'>
     <p class='name'>{concorrente.data.nome}</p>
     <p class='punti'>{concorrente.data.punti}</p>
     <p class='nickname'>{concorrente.data.username}</p>
@@ -48,6 +48,7 @@ import { Image } from 'astro:assets';
 <style>
   .instructions {
     margin-bottom: 4rem;
+    margin-top: 2rem;
     border: 1px solid rgba (var(--accent-light), 25%);
     background: linear-gradient(
       rgba(var(--accent-dark), 66%),
@@ -55,11 +56,9 @@ import { Image } from 'astro:assets';
     );
     margin-inline: auto;
     display: flex;
-    justify-items: center;
     align-items: center;
-    flex-direction: column;
+    gap: 2rem;
     width: 100%;
-    max-width: 10rem;
   }
   .instructions code {
     font-size: 0.8em;

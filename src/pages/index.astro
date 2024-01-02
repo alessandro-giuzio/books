@@ -3,82 +3,94 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
 import Leader from '../components/Leader.astro';
-import  {getCollection } from 'astro:content'
+import NotLeader from '../components/NotLeader.astro';
+import { getCollection } from 'astro:content';
 const tuttiConcorrenti = await getCollection('concorrenti');
 // Sort by points in descending order
-const topThree = tuttiConcorrenti.sort((a, b) => (b.data.punti) - a.data.punti).slice(0, 3);
+const topThree = tuttiConcorrenti
+  .sort((a, b) => b.data.punti - a.data.punti)
+  .slice(0, 3);
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
-
 ---
 
-<Layout title="Irakurketa 2024">
-	<Header />
-	<main class="relative">
-		<div class="box"></div>
-		<div class="grid grid-cols-3 border-2 border-black ">
-        {reordered.map((concorrente, index ) => <Leader concorrente={concorrente} position={index + 1}/>)
-            }
-		</div>
-		<div class="grid grid-cols-4 border-2 border-green-600">
-			{tuttiConcorrenti.map((concorrente, index) => <Leader concorrente={concorrente} position={index + 1} />).slice(3,7)}
-		</div>
-	</main>
+<Layout title='Irakurketa 2024'>
+  <Header />
+  <main class='relative'>
+    <div class='box text-red-600'></div>
+    <div class='grid grid-cols-3 border-2 border-black'>
+      {
+        reordered.map((concorrente, index) => (
+          <Leader concorrente={concorrente} position={index + 1} />
+        ))
+      }
+    </div>
+    <div class='sec border-2 grid grid-rows-4 border-green-600'>
+      {
+        tuttiConcorrenti
+          .map((concorrente, index) => (
+            <NotLeader concorrente={concorrente} position={index + 1} />
+          ))
+          .slice(3, 7)
+      }
+    </div>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		/* padding: 1rem; */
-		width: 600px;
-		max-width: calc(100% - 0.5rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
+  .sec {
+    background-color: aqua;
+  }
+  main {
+    margin: auto;
+    /* padding: 1rem; */
+    width: 600px;
+    max-width: calc(100% - 0.5rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
 
-	.box {
-		width: 400px;
+  .box {
+    width: 400px;
     height: 400px;
-		position: absolute;
+    position: absolute;
 
-		border:1px solid red;
+    border: 1px solid red;
 
-		border-radius: 400px;
+    border-radius: 400px;
     background: #c0ff14;
     filter: blur(100px);
-		z-index: -1;
+    z-index: -1;
+  }
+  .astro-a {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 220px;
+    height: auto;
+    z-index: -1;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
 
-
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
 </style>
