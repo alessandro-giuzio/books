@@ -39,28 +39,32 @@ import { Image } from 'astro:assets';
     </div> -->
   </div>
 
-  <div class='grid grid-cols-2 gap-x-64 items-center'>
+  <div class='items-center'>
     <div>
       <p class='name'>{concorrente.data.nome}</p>
       <p class='nickname'>{concorrente.data.username}</p>
     </div>
-    <p class='punti text-white text-2xl'>{concorrente.data.punti}</p>
   </div>
+  <p class='punti text-white text-2xl'>{concorrente.data.punti}</p>
 </div>
 
 <style>
   .instructions {
     margin-bottom: 4rem;
     margin-top: 2rem;
+    padding: 1rem;
     border: 1px solid rgba (var(--accent-light), 25%);
     background: linear-gradient(
       rgba(var(--accent-dark), 66%),
       rgba(var(--accent-dark), 33%)
     );
     margin-inline: auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr 40px;
+    gap: 1rem;
     align-items: center;
-    gap: 2rem;
+
+    /* gap: 2rem; */
     width: 100%;
   }
   .instructions code {
