@@ -42,6 +42,8 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
+    --color-default: #fff;
+    --bg: #fff;
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
     --accent-dark: 49, 10, 101;
@@ -52,6 +54,13 @@ const { title } = Astro.props;
       white 60%
     );
   }
+  [data-theme='dark'] {
+    --bg: #000;
+  }
+  [data-theme='pink'] {
+    --bg: #ffabc8;
+  }
+
   html {
     font-family: system-ui, sans-serif;
     background: #1e2237;
