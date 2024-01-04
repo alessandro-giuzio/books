@@ -17,8 +17,8 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 <Layout title='Irakurketa 2024'>
   <Header />
   <main class='relative'>
-    <div class='box text-red-600'></div>
-    <div class='grid grid-cols-3 h-full'>
+    <!-- <div class='box text-red-600'></div> -->
+    <div class='grid grid-cols-3 h-full gap-x-1'>
       {
         reordered.map((concorrente, index) => (
           <div
@@ -34,7 +34,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
       }
     </div>
     <!-- <div class='box text-red-600'></div> -->
-    <div class='box text-red-600'></div>
+    <!--   <div class='box text-red-600'></div> -->
     <div class='sec'>
       {
         tuttiConcorrenti
@@ -50,9 +50,9 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 <style>
   main {
     margin: auto;
-    /* padding: 1rem; */
+    padding: 1rem;
     /* width: 800px; */
-    /* max-width: calc(100% - 0.5rem); */
+    max-width: calc(100% - 0.5rem);
     color: white;
     font-size: 20px;
     line-height: 1.6;
@@ -60,7 +60,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 
   .box {
     width: 180px;
-    height: 100vh;
+    height: 80vh;
     position: absolute;
 
     border-radius: 400px;

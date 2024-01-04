@@ -15,6 +15,7 @@
     "@fontsource-variable/tourney": "^5.0.19",
     "astro": "^4.0.6",
     "tailwindcss": "^3.3.6",
+    "theme-change": "^2.5.0",
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
