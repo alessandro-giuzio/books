@@ -1,31 +1,29 @@
 ---
-import {Image} from 'astro:assets'
-import logo from '../content/images/heartFucsia.svg'
+import { Image } from 'astro:assets';
+import logo from '../content/images/heartFucsia.svg';
 ---
 
 <header>
-  <div
-    class="w-full max-w-6.5xl flex flex-col  items-center mx-auto pb-16"
-  >
-  <!-- <div class="shrink-0">
+  <div class='w-full max-w-6.5xl flex flex-col items-center mx-auto pb-16'>
+    <!-- <div class="shrink-0">
     <Image class="block mx-3" src={logo} alt="book logo" width={44} height={44} />
   </div> -->
-  <nav
-  class=" z-50 flex items-center justify-center w-full gap-2 py-4 px-4 text-xs bg-neonLime  top-0 left-0 relative rounded-lg "
-  >
+    <nav
+      class='z-50 flex items-center justify-center w-full gap-2 py-4 px-4 text-xs bg-neonLime top-0 left-0 relative rounded-lg'
+    >
       <a
-        class="flex flex-col py-2 font-bold uppercase text-center basis-1/5 md:basis-auto text-midnightMystery md:py-0 md:inline md:leading-10 lg:px-4"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
+        class='flex flex-col py-2 font-bold uppercase text-center basis-1/5 md:basis-auto text-midnightMystery md:py-0 md:inline md:leading-10 lg:px-4'
+        href='#'
+        target='_blank'
+        rel='noopener noreferrer'
       >
         Home
       </a>
       <a
-        class="flex flex-col py-2 text-center basis-1/5 md:basis-auto hover:text-bubblegumBlast font-bold uppercase md:py-0 md:inline md:leading-10 lg:px-4"
-        href="/libros"
-        target="_blank"
-        rel="noopener noreferrer"
+        class='flex flex-col py-2 text-center basis-1/5 md:basis-auto hover:text-bubblegumBlast font-bold uppercase md:py-0 md:inline md:leading-10 lg:px-4'
+        href='/libros'
+        target='_blank'
+        rel='noopener noreferrer'
       >
         Libros
       </a>
@@ -42,8 +40,25 @@ import logo from '../content/images/heartFucsia.svg'
 </header>
 
 <style>
+  nav {
+    background-image: linear-gradient(
+      50deg,
+      hsl(274deg 100% 25%) 0%,
+      hsl(297deg 100% 29%) 13%,
+      hsl(319deg 100% 34%) 24%,
+      hsl(342deg 100% 39%) 34%,
+      hsl(4deg 100% 43%) 43%,
+      hsl(26deg 100% 48%) 52%,
+      hsl(30deg 100% 50%) 60%,
+      hsl(15deg 100% 50%) 68%,
+      hsl(1deg 100% 50%) 76%,
+      hsl(346deg 100% 51%) 84%,
+      hsl(331deg 100% 51%) 91%,
+      hsl(316deg 100% 51%) 100%
+    );
+  }
   a {
-    color: #1E2237;
+    color: #fbf0ff;
     font-size: 1.55rem;
     font-weight: 900;
     line-height: 1.8;
