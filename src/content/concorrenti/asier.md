@@ -3,6 +3,6 @@ nome: Asier
 username: asier
 alt: asier
 image: './img/oihana.jpg'
-punti: 12
+punti: 22
 borderColor: ''
 ---
