@@ -45,7 +45,7 @@ import { Image } from 'astro:assets';
       <p class='nickname text-2xl'>{concorrente.data.username}</p>
     </div>
   </div>
-  <p class='punti text-white text-4xl'>{concorrente.data.punti}</p>
+  <p class='punti text-4xl'>{concorrente.data.punti}</p>
 </div>
 
 <style>
@@ -74,5 +74,9 @@ import { Image } from 'astro:assets';
   }
   .instructions strong {
     color: rgb(var(--accent-light));
+  }
+
+  .punti {
+    color: var(--text);
   }
 </style>

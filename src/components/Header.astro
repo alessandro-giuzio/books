@@ -1,13 +1,5 @@
----
-import { Image } from 'astro:assets';
-import logo from '../content/images/heartFucsia.svg';
----
-
 <header>
   <div class='w-full max-w-6.5xl flex flex-col items-center mx-auto'>
-    <!-- <div class="shrink-0">
-    <Image class="block mx-3" src={logo} alt="book logo" width={44} height={44} />
-  </div> -->
     <nav
       class='flex items-center justify-center w-full gap-2 py-4 px-4 text-xs bg-neonLime rounded-lg'
     >
@@ -27,8 +19,9 @@ import logo from '../content/images/heartFucsia.svg';
       >
         Libros
       </a>
-      <select data-choose-theme>
-        <option value=''>Default</option>
+      <select data-choose-theme class='p-1 rounded-md text-lg'>
+        <option value=''>Theme</option>
+        <option value='default' class=''>Default</option>
         <option value='dark'>Dark</option>
         <option value='pink'>Pink</option>
         <option value='cupcake'>Cupcake</option>
@@ -39,14 +32,6 @@ import logo from '../content/images/heartFucsia.svg';
         <option value='retro'>retro</option>
         <option value='cyberpunk'>cyberpunk</option>
       </select>
-      <!-- <a
-        class="flex flex-col py-2 text-center basis-1/5 md:basis-auto hover:text-bubblegumBlast font-bold uppercase md:py-0 md:inline md:leading-10 lg:px-4"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Contacto
-      </a> -->
     </nav>
   </div>
 </header>
