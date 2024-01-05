@@ -23,7 +23,7 @@ import corona from '../content/images/corona.svg';
 
 <div class='instructions relative rounded-3xl border-2 border-white'>
   {/* Conditional rendering for the corona image */}
-  {
+  <!--  {
     position === 1 && (
       <div class='absolute -top-[158px] -right-[150px]  z-10 flex justify-center items-center'>
         <Image
@@ -35,7 +35,7 @@ import corona from '../content/images/corona.svg';
         />
       </div>
     )
-  }
+  } -->
   <div class=''>
     <Image
       src={concorrente.data.image}
@@ -82,6 +82,19 @@ import corona from '../content/images/corona.svg';
     </div>
   </div>
   <div class='flex flex-col gap-2 items-center text-3xl pb-4'>
+    {
+      position === 2 && (
+        <div class='z-10  flex justify-center items-center'>
+          <Image
+            src={corona}
+            width={74}
+            alt='corona'
+            format='webp'
+            class=' object-cover rounded-3xl transform rotate-[16deg] -translate-y-12'
+          />
+        </div>
+      )
+    }
     <p class='name'>{concorrente.data.nome}</p>
     <p class='punti'>{concorrente.data.punti}</p>
     <p class='nickname'>{concorrente.data.username}</p>
