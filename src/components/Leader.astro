@@ -16,11 +16,26 @@ const topThree = tuttiConcorrenti
 const reordered = [topThree[1], topThree[0], topThree[2]];
 
 import { Image } from 'astro:assets';
+import corona from '../content/images/corona.svg';
 ---
 
 <script></script>
 
-<div class='instructions rounded-3xl border-2 border-white'>
+<div class='instructions relative rounded-3xl border-2 border-white'>
+  {/* Conditional rendering for the corona image */}
+  {
+    position === 1 && (
+      <div class='absolute -top-[158px] -right-[150px]  z-10 flex justify-center items-center'>
+        <Image
+          src={corona}
+          width={74}
+          alt='corona'
+          format='webp'
+          class=' object-cover rounded-3xl transform rotate-[16deg]'
+        />
+      </div>
+    )
+  }
   <div class=''>
     <Image
       src={concorrente.data.image}
