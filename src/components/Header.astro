@@ -1,51 +1,51 @@
 <header>
-  <div class='w-full max-w-6.5xl flex flex-col items-center mx-auto py-2'>
-    <nav
-      class='flex items-center justify-center w-full gap-2 py-4 px-4 text-xs bg-neonLime'
+  <nav
+    class='flex mx-auto items-center border shadow-lg border-white justify-evenly w-full gap-2 py-4 px-4 text-xs rounded-lg'
+  >
+    <a
+      class='py-2 font-bold uppercase'
+      href='#'
+      target='_blank'
+      rel='noopener noreferrer'
     >
-      <a
-        class='py-2 font-bold uppercase'
-        href='#'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        Home
-      </a>
-      <a
-        class='py-2 font-bold uppercase'
-        href='/libros'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        Libros
-      </a>
+      Home
+    </a>
+    <a
+      class='py-2 font-bold uppercase'
+      href='/libros'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      Libros
+    </a>
 
-      <select data-choose-theme class='p-1 rounded-md text-lg'>
-        <option value=''>Theme</option>
-        <option value='default' class=''>Default</option>
-        <option value='alessandro'>Alessandro</option>
-        <option value='pink'>Pink</option>
-        <option value='amaia'>Amaia</option>
-        <option value='asier'>Asier</option>
-        <option value='luca'>Luca</option>
-        <option value='malen'>Malen</option>
-        <option value='oihana'>Oihana</option>
-        <option value='unai'>Unai</option>
-      </select>
-      <span class='relative flex h-3 w-3'>
-        <span
-          class='animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75'
-        ></span>
-        <span class='relative inline-flex rounded-full h-3 w-3 bg-sky-500'
-        ></span>
-      </span>
-    </nav>
-  </div>
+    <select data-choose-theme class='py-1 px-2 rounded-md text-xl'>
+      <option value=''>Theme</option>
+      <option value='default' class=''>Default</option>
+      <option value='alessandro'>Alessandro</option>
+      <option value='pink'>Pink</option>
+      <option value='amaia'>Amaia</option>
+      <option value='asier'>Asier</option>
+      <option value='luca'>Luca</option>
+      <option value='malen'>Malen</option>
+      <option value='oihana'>Oihana</option>
+      <option value='unai'>Unai</option>
+    </select>
+    <span class='relative flex h-3 w-3'>
+      <span
+        class='animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75'
+      ></span>
+      <span class='relative inline-flex rounded-full h-3 w-3 bg-sky-500'></span>
+    </span>
+  </nav>
 </header>
 
 <style>
   nav {
-    background-image: linear-gradient(
+    background: var(--bg-header);
+    border: 2px solid var(--nav-border);
+    box-shadow: 0px 4px 8px var(--nav-border);
+    /*  background-image: linear-gradient(
       50deg,
       hsl(274deg 100% 25%) 0%,
       hsl(297deg 100% 29%) 13%,
@@ -59,12 +59,16 @@
       hsl(346deg 100% 51%) 84%,
       hsl(331deg 100% 51%) 91%,
       hsl(316deg 100% 51%) 100%
-    );
+    ); */
   }
   a {
     color: #fbf0ff;
     font-size: 1.55rem;
     font-weight: 900;
     line-height: 1.8;
+  }
+
+  select {
+    background-color: var(--bg-card);
   }
 </style>

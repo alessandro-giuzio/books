@@ -44,6 +44,9 @@ const { title } = Astro.props;
   :root {
     --color-default: #fff;
     --bg: #1e2237;
+    /* bg header with opacity */
+    --bg-header: #242842;
+    --nav-border: #2a2e4a;
     --text: #fff;
     --rounded-btn: 0.5rem;
     --tw-bg-opacity: 1;
@@ -56,15 +59,25 @@ const { title } = Astro.props;
       rgb(var(--accent-light)) 30%,
       white 60%
     );
+    --bg-card: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
   }
 
   [data-theme='alessandro'] {
-    --bg: #000;
+    --bg: #0c0c0c;
     --text: #f4f;
+    --bg-header: #0c0c0c;
+    --bg-card: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
   }
   [data-theme='pink'] {
     --bg: #ffabc8;
     --text: #000;
+    --bg-card: #1e22;
   }
 
   html {
