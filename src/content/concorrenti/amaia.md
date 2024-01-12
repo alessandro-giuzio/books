@@ -3,6 +3,6 @@ nome: Amaia
 username: amaia
 alt: amaia
 image: './img/oihana.jpg'
-punti: 4
+punti: 35
 borderColor: ''
 ---
