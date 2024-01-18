@@ -5,4 +5,5 @@ alt: asier
 image: './img/oihana.jpg'
 punti: 22
 borderColor: ''
+slug: 'libros-asier'
 ---

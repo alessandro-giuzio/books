@@ -8,4 +8,5 @@ link: 'https://amzn.to/3NtARMJ'
 yearRead: 2022
 tag: ['Sci-Fi']
 concorrente: 'asier'
+slug: 'libros-all-systems-red'
 ---
