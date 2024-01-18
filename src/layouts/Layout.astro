@@ -74,10 +74,65 @@ const { title } = Astro.props;
       rgba(var(--accent-dark), 33%)
     );
   }
-  [data-theme='pink'] {
-    --bg: #ffabc8;
-    --text: #000;
-    --bg-card: #1e22;
+  [data-theme='amaia'] {
+    --bg: #007acc;
+    --text: #fff;
+    --bg-header: #0057a8;
+    --bg-card: linear-gradient(
+      rgba(0, 122, 204, 0.66),
+      rgba(0, 122, 204, 0.33)
+    );
+  }
+  [data-theme='asier'] {
+    --bg: #155d3f;
+    --text: #fff;
+    --bg-header: #0e4326;
+    --bg-card: linear-gradient(rgba(21, 93, 63, 0.66), rgba(21, 93, 63, 0.33));
+  }
+  [data-theme='irene'] {
+    --bg: #ff5733;
+    --text: #fff;
+    --bg-header: #e34a27;
+    --bg-card: linear-gradient(
+      rgba(255, 87, 51, 0.66),
+      rgba(255, 87, 51, 0.33)
+    );
+  }
+  [data-theme='luca'] {
+    --bg: #8a6bbe;
+    --text: #fff;
+    --bg-header: #7452a3;
+    --bg-card: linear-gradient(
+      rgba(138, 107, 190, 0.66),
+      rgba(138, 107, 190, 0.33)
+    );
+  }
+
+  [data-theme='malen'] {
+    --bg: #c49b66;
+    --text: #fff;
+    --bg-header: #a7814f;
+    --bg-card: linear-gradient(
+      rgba(196, 155, 102, 0.66),
+      rgba(196, 155, 102, 0.33)
+    );
+  }
+
+  [data-theme='oihana'] {
+    --bg: #ff0066;
+    --text: #fff;
+    --bg-header: #d9005e;
+    --bg-card: linear-gradient(
+      rgba(255, 0, 102, 0.66),
+      rgba(255, 0, 102, 0.33)
+    );
+  }
+
+  [data-theme='unai'] {
+    --bg: #121212;
+    --text: #fff;
+    --bg-header: #0c0c0c;
+    --bg-card: linear-gradient(rgba(18, 18, 18, 0.66), rgba(18, 18, 18, 0.33));
   }
 
   html {
@@ -86,6 +141,7 @@ const { title } = Astro.props;
     background-size: 224px;
     height: fit-content;
   }
+
   body {
     margin-inline: auto;
     max-width: 800px;
