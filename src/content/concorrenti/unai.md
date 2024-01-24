@@ -3,7 +3,7 @@ nome: Unai
 username: unai
 alt: unai
 image: './img/oihana.jpg'
-punti: 3
+punti: 25
 borderColor: ''
 slug: 'libros-unai'
 ---
