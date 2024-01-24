@@ -5,7 +5,6 @@ import { getCollection } from 'astro:content';
 import LibrosLista from '../components/LibrosLista.astro';
 
 const todosLosLibros = await getCollection('libros');
-console.log(todosLosLibros);
 
 // filtrer the libros by concorrente
 /* const librosAsier = todosLosLibros
@@ -28,6 +27,26 @@ console.log(todosLosLibros);
 </LayoutLibros>
 
 <style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInScaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .books {
     font-size: 0.875rem;
     margin-bottom: calc(1em + 2 vw);
@@ -35,5 +54,6 @@ console.log(todosLosLibros);
     display: grid;
     gap: 1.5em;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    animation: fadeInScaleUp 1s ease-in-out;
   }
 </style>
