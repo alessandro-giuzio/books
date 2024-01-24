@@ -121,14 +121,14 @@ const { title } = Astro.props;
           rgba(196, 155, 102, 0.33)
         );
       }
-
       [data-theme='oihana'] {
-        --bg: #ff0066;
-        --text: #fff;
-        --bg-header: #d9005e;
+        --bg: #186f65; /* A deep teal green for the background */
+        --text: #fce09b; /* A light, creamy yellow for text for contrast */
+        --bg-header: #b5cb99; /* A soft, muted green for the header background */
         --bg-card: linear-gradient(
-          rgba(255, 0, 102, 0.66),
-          rgba(255, 0, 102, 0.33)
+          rgba(178, 83, 62, 0.66),
+          /* Dark terracotta gradient start */ rgba(178, 83, 62, 0.33)
+            /* Dark terracotta gradient end, more transparent */
         );
       }
 
