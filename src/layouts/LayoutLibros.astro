@@ -13,6 +13,23 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang='es'>
   <head>
+    <script is:inline>
+      // ☝️ This script prevent the FART effect.
+      if (localStorage.getItem('theme') === null) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else
+        document.documentElement.setAttribute(
+          'data-theme',
+          localStorage.getItem('theme')
+        );
+      // "theme" LocalStorage value is set by the package to remember user preference.
+      // The value is checked and applyed before rendering anything.
+    </script>
+    <script>
+      import { themeChange } from 'theme-change';
+      themeChange();
+      // 👆 you could import the CDN directly instead of these two lines
+    </script>
     <meta charset='UTF-8' />
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
@@ -26,6 +43,15 @@ const { title } = Astro.props;
     <slot />
     <style is:global>
       :root {
+        --color-default: #fff;
+        --bg: #1e2237;
+        --bg-body: #1e2237;
+        /* bg header with opacity */
+        --bg-header: #242842;
+        --nav-border: #2a2e4a;
+        --text: #fff;
+        --rounded-btn: 0.5rem;
+        --tw-bg-opacity: 1;
         --accent: 136, 58, 234;
         --accent-light: 224, 204, 250;
         --accent-dark: 49, 10, 101;
@@ -35,6 +61,88 @@ const { title } = Astro.props;
           rgb(var(--accent-light)) 30%,
           white 60%
         );
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+      }
+
+      [data-theme='alessandro'] {
+        --bg: #0c0c0c;
+        --text: #f4f;
+        --bg-header: #0c0c0c;
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+      }
+      [data-theme='amaia'] {
+        --bg: #007acc;
+        --text: #fff;
+        --bg-header: #0057a8;
+        --bg-card: linear-gradient(
+          rgba(0, 122, 204, 0.66),
+          rgba(0, 122, 204, 0.33)
+        );
+      }
+      [data-theme='asier'] {
+        --bg: #155d3f;
+        --bg-body: red;
+        --text: #fff;
+        --bg-header: #0e4326;
+        --bg-card: linear-gradient(
+          rgba(21, 93, 63, 0.66),
+          rgba(21, 93, 63, 0.33)
+        );
+      }
+      [data-theme='irene'] {
+        --bg: #ffb3a7; /* Soft pastel coral */
+        --text: #333; /* Dark gray for readability */
+        --bg-header: #ffcab1; /* Lighter pastel coral */
+        --bg-card: linear-gradient(
+          rgba(255, 202, 177, 0.66),
+          rgba(255, 202, 177, 0.33)
+        );
+      }
+
+      [data-theme='luca'] {
+        --bg: #8a6bbe;
+        --text: #fff;
+        --bg-header: #7452a3;
+        --bg-card: linear-gradient(
+          rgba(138, 107, 190, 0.66),
+          rgba(138, 107, 190, 0.33)
+        );
+      }
+
+      [data-theme='malen'] {
+        --bg: #c49b66;
+        --text: #fff;
+        --bg-header: #a7814f;
+        --bg-card: linear-gradient(
+          rgba(196, 155, 102, 0.66),
+          rgba(196, 155, 102, 0.33)
+        );
+      }
+
+      [data-theme='oihana'] {
+        --bg: #ff0066;
+        --text: #fff;
+        --bg-header: #d9005e;
+        --bg-card: linear-gradient(
+          rgba(255, 0, 102, 0.66),
+          rgba(255, 0, 102, 0.33)
+        );
+      }
+
+      [data-theme='unai'] {
+        --bg: #121212;
+        --text: #fff;
+        --bg-header: #0c0c0c;
+        --bg-card: linear-gradient(
+          rgba(18, 18, 18, 0.66),
+          rgba(18, 18, 18, 0.33)
+        );
       }
       html {
         font-family: system-ui, sans-serif;
@@ -42,6 +150,10 @@ const { title } = Astro.props;
         background-size: 224px;
         height: fit-content;
       }
+      body {
+        background-color: var(--bg-body);
+      }
+
       /* body {
 		width: 900px;
 		max-width: calc(100% - 0.5rem);

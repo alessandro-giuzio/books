@@ -8,5 +8,5 @@ link: 'https://amzn.to/4aUekTh'
 yearRead: 2024
 tag: ['Comic', 'Graphic Novel', 'RIP']
 concorrente: 'alessandro'
-slug: 'rip-t1'
+slug: 'copy'
 ---
