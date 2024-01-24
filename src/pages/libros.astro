@@ -1,30 +1,34 @@
 ---
-import LayoutLibros from "../layouts/Layout.astro"
-import Header from "../components/Header.astro";
-import { getCollection } from "astro:content";
-import LibrosLista from "../components/LibrosLista.astro";
+import LayoutLibros from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { getCollection } from 'astro:content';
+import LibrosLista from '../components/LibrosLista.astro';
 
-const todosLosLibros = await getCollection("libros");
-
-var count = todosLosLibros.length;
+const todosLosLibros = await getCollection('libros');
+console.log(todosLosLibros);
 
 // filtrer the libros by concorrente
-const librosAsier = todosLosLibros.filter((libro) => libro.data.concorrente === "asier").map((libro) => libro.data.title);
-console.log(librosAsier);
-
+/* const librosAsier = todosLosLibros
+  .filter(libro => libro.data.concorrente === 'asier')
+  .map(libro => libro.data.title); */
 ---
-<LayoutLibros title="Libros">
-  <Header/>
-<h1 class="text-5xl text-red-500 uppercase mb-16">
-  libros
-</h1>
-<div class='books'>
-  <LibrosLista libros={todosLosLibros} />
-</div>
+
+<LayoutLibros title='Libros'>
+  <Header />
+  <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
+    <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>libros</h1>
+    <p class='text-red-500 text-2xl mb-24 max-sm:mb-14'>
+      some Lorem, ipsum dolor.
+    </p>
+
+    <div class='books'>
+      <LibrosLista libros={todosLosLibros} />
+    </div>
+  </main>
 </LayoutLibros>
 
 <style>
-.books {
+  .books {
     font-size: 0.875rem;
     margin-bottom: calc(1em + 2 vw);
     line-height: 16.8px;

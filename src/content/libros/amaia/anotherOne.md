@@ -7,6 +7,6 @@ alt: 'All Systems Red'
 link: 'https://amzn.to/3NtARMJ'
 yearRead: 2022
 tag: ['Sci-Fi']
-concorrente: 'alessandro'
-slug: 'libros-all-systems-white'
+concorrente: 'amaia'
+slug: 'libros-all-systems-redss'
 ---

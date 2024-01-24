@@ -10,16 +10,17 @@
     >
       Home
     </a> -->
-    <span class='relative flex h-3 w-3'>
-      <span
-        class='animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75'
-      ></span>
-      <span class='relative inline-flex rounded-full h-3 w-3 bg-sky-500'></span>
-    </span>
+    <a href='/'>
+      <span class='relative flex h-4 w-4'>
+        <span
+          class='animate-ping ap absolute inline-flex h-full w-full rounded-full'
+        ></span>
+        <span class='ap relative inline-flex rounded-full h-4 w-4'></span>
+      </span>
+    </a>
     <a
       class='py-2 font-bold uppercase'
       href='/libros'
-      target='_blank'
       rel='noopener noreferrer'
     >
       Libros
@@ -37,12 +38,14 @@
       <option value='oihana'>Oihana</option>
       <option value='unai'>Unai</option>
     </select>
-    <span class='relative flex h-3 w-3'>
-      <span
-        class='animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75'
-      ></span>
-      <span class='relative inline-flex rounded-full h-3 w-3 bg-sky-500'></span>
-    </span>
+    <a href='/'>
+      <span class='relative flex h-4 w-4'>
+        <span
+          class='animate-ping ap absolute inline-flex h-full w-full rounded-full'
+        ></span>
+        <span class='ap relative inline-flex rounded-full h-4 w-4'></span>
+      </span>
+    </a>
   </nav>
 </header>
 
@@ -88,5 +91,10 @@
     100% {
       box-shadow: 0 0 0 0 rgba(36, 40, 66, 0.5);
     }
+  }
+
+  span.ap {
+    background-color: var(--text);
+    opacity: 0.75;
   }
 </style>

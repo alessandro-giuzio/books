@@ -21,6 +21,7 @@ const librosCollection = defineCollection({
   alt: z.string(),
   link: z.string(),
   tag:z.array(z.string()),
+  yearRead: z.number(),
   /* yearPublished: z.number(), */
  /*  tags: z.array(z.string()), */
 })

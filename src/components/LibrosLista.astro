@@ -1,20 +1,20 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import CardLibro from "./CardLibro.astro";
+import type { CollectionEntry } from 'astro:content';
+import CardLibro from './CardLibro.astro';
 type Props = {
   libros: CollectionEntry<'libros'>[];
-}
-const {libros} = Astro.props
+};
+const { libros } = Astro.props;
 ---
 
-<div class="libros">
+<div class='libros'>
   {libros.map(libro => <CardLibro libro={libro} />)}
 </div>
 
 <style>
   .libros {
     font-size: 0.875rem;
-    margin-bottom: calc(1em + 2 vw);
+    margin-bottom: calc(1em + 2vw);
     line-height: 16.8px;
     display: grid;
     gap: 1.5em;

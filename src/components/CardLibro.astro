@@ -21,6 +21,7 @@ const { libro } = Astro.props;
     <h3 class='title'>{libro.data.title}</h3>
     <!-- <p>{book.data.body}</p> -->
     <p>{libro.data.author}</p>
+    <p class='concorrente'>{libro.data.concorrente}</p>
     <!-- <p>{book.data.tag}</p> -->
     <ul>
       {libro.data.tag.map(tag => <li>{tag}</li>)}
@@ -36,6 +37,11 @@ const { libro } = Astro.props;
 
   .book p {
     color: #666;
+  }
+
+  .info p.concorrente {
+    color: red;
+    font-size: 0.8em;
   }
 
   ul {
