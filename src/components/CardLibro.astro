@@ -20,11 +20,13 @@ const { libro } = Astro.props;
   <div class='info'>
     <h3 class='title'>{libro.data.title}</h3>
     <p>{libro.data.author}</p>
-    <div x-data='{ open: false }'>
-      <button @click='open = ! open'>Open</button>
+    <div x-data='{ open: false }' class=''>
+      <button @click='open = ! open' class='border px-2 py-1 rounded-lg text-xs'
+        >Open</button
+      >
       <template x-if='open'>
         <div>
-          <p>{libro.data.body}</p>
+          <p class=''>{libro.data.body}</p>
         </div>
       </template>
     </div>
@@ -39,6 +41,10 @@ const { libro } = Astro.props;
 <style>
   .book .info {
     margin-top: 1em;
+  }
+
+  button {
+    border: 1px solid var(--text);
   }
 
   .book p {
