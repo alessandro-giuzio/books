@@ -19,16 +19,20 @@ const { libro } = Astro.props;
   >
   <div class='info'>
     <h3 class='title'>{libro.data.title}</h3>
-    <!-- <p>{book.data.body}</p> -->
     <p>{libro.data.author}</p>
     <div x-data='{ open: false }'>
-      <p class='concorrente'>{libro.data.concorrente}</p>
+      <button @click='open = ! open'>Open</button>
+      <template x-if='open'>
+        <div>
+          <p>{libro.data.body}</p>
+        </div>
+      </template>
     </div>
-    <!-- <p>{book.data.tag}</p> -->
     <ul>
       {libro.data.tag.map(tag => <li>{tag}</li>)}
     </ul>
-    <!-- <p class='tag'>{book.data.yearRead}</p> -->
+    <p class='concorrente'>{libro.data.concorrente}</p>
+    <!-- <p class='tag'>{book.daa.yearRead}</p> -->
   </div>
 </div>
 
@@ -38,7 +42,7 @@ const { libro } = Astro.props;
   }
 
   .book p {
-    color: #666;
+    color: var(--text);
   }
 
   .info p.concorrente {
@@ -55,7 +59,7 @@ const { libro } = Astro.props;
   ul li {
     display: block;
     margin-right: 0.5em;
-    color: #666;
-    font-size: 1;
+    color: var(--text);
+    font-size: 1rem;
   }
 </style>

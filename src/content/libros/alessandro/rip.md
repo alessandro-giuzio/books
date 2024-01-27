@@ -6,7 +6,7 @@ cover: 'https://m.media-amazon.com/images/I/61rmSLY7pdL._SY385_.jpg'
 alt: 'RIP T1'
 link: 'https://amzn.to/4aUekTh'
 yearRead: 2024
-tag: ['Comic', 'Graphic Novel', 'RIP']
+tag: ['Comic', 'Graphic Novel']
 concorrente: 'alessandro'
 slug: 'rip-t1'
 ---
