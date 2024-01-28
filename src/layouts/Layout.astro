@@ -113,13 +113,16 @@ const { title } = Astro.props;
       }
 
       [data-theme='malen'] {
-        --bg: #c49b66;
-        --text: #fff;
-        --bg-header: #a7814f;
+        --bg: #030637; /* Dark blue for the background */
+        --text: #fff; /* White for the text color */
+        --bg-header: #3c0753; /* Deep purple for the header background */
         --bg-card: linear-gradient(
-          rgba(196, 155, 102, 0.66),
-          rgba(196, 155, 102, 0.33)
-        );
+          #030637,
+          /* Starting with dark blue */ #3c0753,
+          /* Transitioning to deep purple */ #720455,
+          /* Moving to a darker pinkish hue */ #910a67
+            /* Ending with a vivid purple */
+        ); /* Card background with a vibrant linear gradient */
       }
       [data-theme='oihana'] {
         --bg: #186f65; /* A deep teal green for the background */
