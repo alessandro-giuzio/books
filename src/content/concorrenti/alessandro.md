@@ -3,7 +3,7 @@ nome: Ale
 username: ale
 alt: Alessandro
 image: './img/alessandro-1.jpg'
-punti: 50
+punti: 51
 borderColor: ''
 slug: 'libros-alessandro'
 ---
