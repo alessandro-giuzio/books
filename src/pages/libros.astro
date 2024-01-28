@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../components/LibrosLista.astro';
 import ButtonAsier from '../components/ButtonAsier.astro';
+import ButtonLuca from '../components/ButtonLuca.astro';
 
 const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti');
@@ -32,6 +33,7 @@ const librosAle = todosLosLibros.filter(
     <div class='flex gap-x-2 mb-8'>
       <div x-data='{ open: false }'>
         <ButtonAsier />
+        <ButtonLuca />
       </div>
       <div x-data='{ open: false }'>
         <button x-on:click='open = !open' class='p-2 bg-blue-500 text-white'>
