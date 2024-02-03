@@ -36,7 +36,7 @@ const librosAle = todosLosLibros.filter(
     <p class='text-red-500 font-bold text-2xl mb-24 max-sm:mb-14'>
       libros del mes
     </p>
-    <div class='flex gap-x-2 mb-8'>
+    <div class='flex flex-wrap gap-2 mb-8 buttons'>
       <div x-data='{ open: false }'>
         <ButtonLuca />
       </div>
@@ -106,4 +106,10 @@ const librosAle = todosLosLibros.filter(
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     animation: fadeInScaleUp 1s ease-out;
   }
+
+  /*  .buttons {
+    display: grid;
+    gap: 1.5em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  } */
 </style>
