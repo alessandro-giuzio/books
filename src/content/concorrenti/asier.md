@@ -2,7 +2,7 @@
 nome: Asier
 username: asier
 alt: asier
-image: './img/oihana.jpg'
+image: './img/asier.png'
 punti: 22
 borderColor: ''
 slug: 'libros-asier'
