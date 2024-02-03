@@ -19,7 +19,6 @@ const librosCollection = defineCollection({
   body: z.string(),
   cover: z.string(),
   alt: z.string(),
-  link: z.string(),
   tag:z.array(z.string()),
   yearRead: z.number(),
   /* yearPublished: z.number(), */

@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 const todosLosLibros = await getCollection('libros');
 // filtrer the libros by concorrente
-const librosAsier = todosLosLibros.filter(
-  libro => libro.data.concorrente === 'asier'
+const librosAmaia = todosLosLibros.filter(
+  libro => libro.data.concorrente === 'amaia'
 );
 ---
 
@@ -11,7 +11,7 @@ const librosAsier = todosLosLibros.filter(
   x-on:click='open = !open'
   class='p-2 bg-[#fff] text-[#155d3f] rounded-lg text-xs font-bold uppercase tracking-wider'
 >
-  Asier
+  Amaia
 </button>
 <div
   x-show='open'
@@ -26,7 +26,7 @@ const librosAsier = todosLosLibros.filter(
   <!-- Your content here -->
   <div class='books'>
     {
-      librosAsier.map(libro => (
+      librosAmaia.map(libro => (
         <div class='book'>
           <div class='book__cover'>
             <img src={libro.data.cover} alt={libro.data.title} />

@@ -5,6 +5,12 @@ import { getCollection } from 'astro:content';
 import LibrosLista from '../components/LibrosLista.astro';
 import ButtonAsier from '../components/ButtonAsier.astro';
 import ButtonLuca from '../components/ButtonLuca.astro';
+import ButtonAmaia from '../components/ButtonAmaia.astro';
+import ButtonMalen from '../components/ButtonMalen.astro';
+import ButtonIrene from '../components/ButtonIrene.astro';
+import ButtonAlessandro from '../components/ButtonAlessandro.astro';
+import ButtonOihana from '../components/ButtonOihana.astro';
+import ButtonUnai from '../components/ButtonUnai.astro';
 
 const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti');
@@ -27,8 +33,8 @@ const librosAle = todosLosLibros.filter(
   <Header />
   <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
     <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>libros</h1>
-    <p class='text-red-500 text-2xl mb-24 max-sm:mb-14'>
-      some Lorem, ipsum dolor.
+    <p class='text-red-500 font-bold text-2xl mb-24 max-sm:mb-14'>
+      libros del mes
     </p>
     <div class='flex gap-x-2 mb-8'>
       <div x-data='{ open: false }'>
@@ -38,66 +44,19 @@ const librosAle = todosLosLibros.filter(
         <ButtonAsier />
       </div>
       <div x-data='{ open: false }'>
-        <button x-on:click='open = !open' class='p-2 bg-blue-500 text-white'>
-          Alessandro's books
-        </button>
-
-        <div
-          x-show='open'
-          x-transition:enter='transition ease-out duration-300'
-          x-transition:enter-start='transform opacity-0 scale-90'
-          x-transition:enter-end='transform opacity-100 scale-100'
-          x-transition:leave='transition ease-in duration-300'
-          x-transition:leave-start='transform opacity-100 scale-100'
-          x-transition:leave-end='transform opacity-0 scale-90'
-          class='mt-2 p-4 border rounded shadow'
-        >
-          <!-- Your content here -->
-          <div class='books'>
-            {
-              librosAle.map(libro => (
-                <div class='book'>
-                  <div class='book__cover'>
-                    <img src={libro.data.cover} alt={libro.data.title} />
-                  </div>
-                  <div class='book__title'>{libro.data.title}</div>
-                  <div class='book__author'>{libro.data.author}</div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        <ButtonAmaia />
       </div>
       <div x-data='{ open: false }'>
-        <button x-on:click='open = !open' class='p-2 bg-blue-500 text-white'>
-          Asier's books
-        </button>
-
-        <div
-          x-show='open'
-          x-transition:enter='transition ease-out duration-300'
-          x-transition:enter-start='transform opacity-0 scale-90'
-          x-transition:enter-end='transform opacity-100 scale-100'
-          x-transition:leave='transition ease-in duration-300'
-          x-transition:leave-start='transform opacity-100 scale-100'
-          x-transition:leave-end='transform opacity-0 scale-90'
-          class='mt-2 p-4 border rounded shadow'
-        >
-          <!-- Your content here -->
-          <div class='books'>
-            {
-              librosAsier.map(libro => (
-                <div class='book'>
-                  <div class='book__cover'>
-                    <img src={libro.data.cover} alt={libro.data.title} />
-                  </div>
-                  <div class='book__title'>{libro.data.title}</div>
-                  <div class='book__author'>{libro.data.author}</div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        <ButtonMalen />
+      </div>
+      <div x-data='{ open: false }'>
+        <ButtonIrene />
+      </div>
+      <div x-data='{ open: false }'>
+        <ButtonOihana />
+      </div>
+      <div x-data='{ open: false }'>
+        <ButtonUnai />
       </div>
     </div>
 
