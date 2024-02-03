@@ -31,12 +31,17 @@ const librosLuca = todosLosLibros.filter(
           <div class='book__cover'>
             <img src={libro.data.cover} alt={libro.data.title} />
           </div>
-          <div class='book__title text-white font-bold'>{libro.data.title}</div>
-          <div class='book__author text-black font-bold'>
-            {libro.data.author}
-          </div>
+          <div class='book__title  font-bold'>{libro.data.title}</div>
+          <div class='book__author  font-bold'>{libro.data.author}</div>
         </div>
       ))
     }
   </div>
 </div>
+
+<style>
+  .book__title,
+  .book__author {
+    color: var(--text);
+  }
+</style>
