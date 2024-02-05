@@ -4,7 +4,7 @@ author: 'Marjane Satrapi'
 body: 'Persepolis'
 cover: 'https://m.media-amazon.com/images/I/61uvlx5+4KL._SY342_.jpg'
 alt: 'Persepolis'
-yearRead: 2024
+monthRead: enero
 tag: ['comic', 'feminismo', 'guerra', 'autobiografia']
 concorrente: 'luca'
 slug: 'libros-persepolis'

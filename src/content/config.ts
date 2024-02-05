@@ -20,7 +20,7 @@ const librosCollection = defineCollection({
   cover: z.string(),
   alt: z.string(),
   tag:z.array(z.string()),
-  yearRead: z.number(),
+  monthRead: z.string(),
   /* yearPublished: z.number(), */
  /*  tags: z.array(z.string()), */
 })

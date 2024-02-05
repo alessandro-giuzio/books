@@ -5,7 +5,7 @@ body: 'Mare Internum, año 75 a. C. Un barco mercante navega rumbo a la isla de 
 cover: 'https://m.media-amazon.com/images/I/81fh0koiVTL._SY342_.jpg
 '
 alt: 'Maldita Roma'
-yearRead: 2024
+monthRead: enero
 tag: ['novela', 'historica']
 concorrente: 'asier'
 slug: 'maldita-roma'

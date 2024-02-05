@@ -5,10 +5,14 @@ type Props = {
   libros: CollectionEntry<'libros'>[];
 };
 const { libros } = Astro.props;
+
+// Filter libros by the month of reading
+const librosEnEnero = libros.filter(libro => libro.data.monthRead === 'enero');
 ---
 
 <div class='libros'>
-  {libros.map(libro => <CardLibro libro={libro} />)}
+  {librosEnEnero.map(libro => <CardLibro libro={libro} />)}
+  <!-- {libros.map(libro => <CardLibro libro={libro} />)} -->
 </div>
 
 <style>

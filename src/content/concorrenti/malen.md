@@ -6,4 +6,5 @@ image: './img/malen.jpeg'
 punti: 5
 borderColor: ''
 slug: 'libros-malen'
+puntiEnero: 5
 ---
