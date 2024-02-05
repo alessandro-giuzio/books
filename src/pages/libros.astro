@@ -36,7 +36,7 @@ const librosAle = todosLosLibros.filter(
     <p class='text-red-500 font-bold text-2xl mb-24 max-sm:mb-14'>
       Todos los libros
     </p>
-    <!-- <div class='flex flex-wrap gap-2 mb-8 buttons'>
+    <div class='flex flex-wrap gap-2 mb-8 buttons'>
       <div x-data='{ open: false }'>
         <ButtonLuca />
       </div>
@@ -61,39 +61,10 @@ const librosAle = todosLosLibros.filter(
       <div x-data='{ open: false }'>
         <ButtonAlessandro />
       </div>
-    </div> -->
+    </div>
+
     <div class='books'>
-      <div
-        class='flex flex-col gap-y-8 sticky top-0 items-start max-h-[100vh] overflow-y-auto'
-      >
-        <div x-data='{ open: false }'>
-          <ButtonLuca />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonAsier />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonAmaia />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonMalen />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonIrene />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonOihana />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonUnai />
-        </div>
-        <div x-data='{ open: false }'>
-          <ButtonAlessandro />
-        </div>
-      </div>
-      <div class='books'>
-        <LibrosLista libros={todosLosLibros} />
-      </div>
+      <LibrosLista libros={todosLosLibros} />
     </div>
   </main>
 </LayoutLibros>
