@@ -1,7 +1,7 @@
 ---
 title: 'Cronicas de la Torre | El Valle de los Lobos'
 author: 'Laura Gallego'
-body: 'Primer libro de la saga de Crónicas de la Torre. Dana es una joven que vive en un castillo con su padre, un mago poderoso. Dana no tiene poderes mágicos, pero su padre la ama y la protege. Un día, Dana descubre que su padre ha sido asesinado y que ella es la siguiente en la lista..'
+body: 'Dana creció en una granja junto a sus hermanos y vivía una vida normal. El día que el Maestro la llevó con él a la Escuela de Alta Hechicería de la Torre, en el Valle de los Lobos, no se imaginaba que su vida cambiaría para siempre y que se convertiría en la depositaria de secretos tan mágicos como antiguos. ¿ '
 cover: 'https://m.media-amazon.com/images/I/91BFf1Xdv4L._SY466_.jpg'
 alt: 'La Torre de los Lobos'
 monthRead: enero
