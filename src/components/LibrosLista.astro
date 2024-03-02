@@ -11,8 +11,8 @@ const librosEnEnero = libros.filter(libro => libro.data.monthRead === 'enero');
 ---
 
 <div class='libros'>
-  {librosEnEnero.map(libro => <CardLibro libro={libro} />)}
-  <!-- {libros.map(libro => <CardLibro libro={libro} />)} -->
+  <!-- {librosEnEnero.map(libro => <CardLibro libro={libro} />)} -->
+  {libros.map(libro => <CardLibro libro={libro} />)}
 </div>
 
 <style>

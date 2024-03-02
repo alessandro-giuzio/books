@@ -14,15 +14,15 @@ import ButtonUnai from '../../components/ButtonUnai.astro';
 
 const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti');
+const librosEnero = todosLosLibros.filter(
+  libro => libro.data.monthRead === 'enero'
+);
 
 // filtrer the libros by concorrente
 const librosAsier = todosLosLibros.filter(
   libro => libro.data.concorrente === 'asier'
 );
 
-const ale = tuttiIconcorrenti.filter(
-  concorrente => concorrente.data.nome === 'alessandro'
-);
 // display ale books
 const librosAle = todosLosLibros.filter(
   libro => libro.data.concorrente === 'alessandro'
@@ -63,7 +63,7 @@ const librosAle = todosLosLibros.filter(
     </div>
 
     <div class='books'>
-      <LibrosLista libros={todosLosLibros} />
+      <LibrosLista libros={librosEnero} />
     </div>
   </main>
 </LayoutLibros>
