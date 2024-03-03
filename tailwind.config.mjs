@@ -28,6 +28,7 @@ height:{
 			},
 			fontFamily: {
         sans: ['Tourney Variable', ...defaulTheme.fontFamily.sans],
+				mono: ['"IBM Plex Mono"', ...defaulTheme.fontFamily.mono],
       },
 		},
 	},
