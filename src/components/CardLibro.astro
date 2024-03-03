@@ -23,7 +23,8 @@ const { libro } = Astro.props;
     <div x-data='{ open: false }' class=''>
       <button
         @click='open = ! open'
-        class='border px-3 py-1 rounded-lg text-xs font-mono'>Sipnosis</button
+        class='border mb-2 px-3 py-1 rounded-lg text-xs font-mono'
+        >Sipnosis</button
       >
       <template x-if='open'>
         <div>
@@ -32,7 +33,13 @@ const { libro } = Astro.props;
       </template>
     </div>
     <ul>
-      {libro.data.tag.map(tag => <li class='font-mono'>{tag}</li>)}
+      {
+        libro.data.tag.map(tag => (
+          <li class='font-mono'>
+            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+          </li>
+        ))
+      }
     </ul>
     <p class='concorrente font-mono'>{libro.data.concorrente}</p>
     <!-- <p class='tag'>{book.daa.yearRead}</p> -->
