@@ -3,14 +3,6 @@ import LayoutLibros from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
-import ButtonAsier from '../../components/ButtonAsier.astro';
-import ButtonLuca from '../../components/ButtonLuca.astro';
-import ButtonAmaia from '../../components/ButtonAmaia.astro';
-import ButtonMalen from '../../components/ButtonMalen.astro';
-import ButtonIrene from '../../components/ButtonIrene.astro';
-import ButtonAlessandro from '../../components/ButtonAlessandro.astro';
-import ButtonOihana from '../../components/ButtonOihana.astro';
-import ButtonUnai from '../../components/ButtonUnai.astro';
 
 const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti');
@@ -35,32 +27,6 @@ const librosAle = todosLosLibros.filter(
     <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>
       libros de enero
     </h1>
-    <div class='flex flex-wrap gap-2 mb-8 buttons'>
-      <div x-data='{ open: false }'>
-        <ButtonLuca />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAsier />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAmaia />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonMalen />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonIrene />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonOihana />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonUnai />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAlessandro />
-      </div>
-    </div>
 
     <div class='books'>
       <LibrosLista libros={librosEnero} />
