@@ -23,7 +23,7 @@ const { libro } = Astro.props;
     <div x-data='{ open: false }' class=''>
       <button
         @click='open = ! open'
-        class='border px-3 py-1 rounded-lg text-xs font-mono'>Open</button
+        class='border px-3 py-1 rounded-lg text-xs font-mono'>Sipnosis</button
       >
       <template x-if='open'>
         <div>
@@ -73,6 +73,26 @@ const { libro } = Astro.props;
 
   button {
     border: 1px solid var(--text);
+    font-weight: 700;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+  }
+
+  button::before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, var(--text), transparent);
+    transform: translateX(-100%);
+    trasition: 0.6s;
+    position: absolute;
+  }
+  button:hover {
+    background: transparent;
+    box-shadow: 0 0 20px 5px var(--text);
   }
 
   .book p {
