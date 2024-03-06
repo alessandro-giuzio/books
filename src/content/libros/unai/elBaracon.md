@@ -8,5 +8,5 @@ alt: 'El baraccon de las mujeres'
 monthRead: febrero
 tag: ['narrativa', 'exilio']
 concorrente: 'unai'
-slug: 'el-baraccon-de-las-mujeres'
+slug: 'el-baracon-de-las-mujeres'
 ---

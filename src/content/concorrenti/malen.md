@@ -3,8 +3,9 @@ nome: Malen
 username: malen
 alt: malen
 image: './img/malen.jpeg'
-punti: 5
+punti: 14
 borderColor: ''
 slug: 'libros-malen'
 puntiEnero: 5
+puntiFebrero: 9
 ---

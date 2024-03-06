@@ -3,8 +3,9 @@ nome: Amaia
 username: amaia
 alt: amaia
 image: './img/amaia.jpg'
-punti: 14
+punti: 29
 borderColor: ''
 slug: 'libros-amaia'
 puntiEnero: 14
+puntiFebrero: 15
 ---
