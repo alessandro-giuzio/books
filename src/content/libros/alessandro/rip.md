@@ -8,4 +8,5 @@ monthRead: enero
 tag: ['Comic', 'Graphic Novel']
 concorrente: 'alessandro'
 slug: 'rip-t1'
+punti: 20
 ---

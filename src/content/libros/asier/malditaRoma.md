@@ -9,4 +9,5 @@ monthRead: enero
 tag: ['novela', 'historica']
 concorrente: 'asier'
 slug: 'maldita-roma'
+punti: 10
 ---

@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['Thriller', 'Humor']
 concorrente: 'alessandro'
 slug: 'un-trabajo-muy-sucio'
+punti: 20
 ---

@@ -8,4 +8,5 @@ monthRead: enero
 tag: ['magia', 'aventura', 'fantasía']
 concorrente: 'luca'
 slug: 'la-maldicion-del-mastro'
+punti: 20
 ---

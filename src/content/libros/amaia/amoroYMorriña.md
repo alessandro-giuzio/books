@@ -9,4 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'exilio']
 concorrente: 'amaia'
 slug: 'amor-y-morriñas'
+punti: 10
 ---

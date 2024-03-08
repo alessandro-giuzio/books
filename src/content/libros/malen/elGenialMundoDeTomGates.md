@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['infantil', 'humor']
 concorrente: 'malen'
 slug: 'tom-gates'
+punti: 10
 ---

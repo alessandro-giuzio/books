@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['magia', 'aventura', 'fantasía']
 concorrente: 'luca'
 slug: 'la-llamada-de-los-muertos'
+punti: 10
 ---

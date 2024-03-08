@@ -9,17 +9,29 @@ const tuttiIconcorrenti = await getCollection('concorrenti');
 const librosFebrero = todosLosLibros.filter(
   libro => libro.data.monthRead === 'febrero'
 );
+
+// filter only unique libros
+const uniqueLibrosFebrero = librosFebrero.filter(
+  (libro, index, self) =>
+    index ===
+    self.findIndex(
+      t =>
+        t.data.title === libro.data.title && t.data.author === libro.data.author
+    )
+);
+
+const countLibrosFebrero = librosFebrero.length;
 ---
 
 <LayoutLibros title='Libros'>
   <Header />
   <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
     <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>
-      libros de febrero
+      libros de febrero <span>{countLibrosFebrero}</span>
     </h1>
 
     <div class='books'>
-      <LibrosLista libros={librosFebrero} />
+      <LibrosLista libros={uniqueLibrosFebrero} />
     </div>
   </main>
 </LayoutLibros>

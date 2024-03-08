@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['novela', 'eleberia', 'euskara']
 concorrente: 'asier'
 slug: 'libros-maitasun-kapitalaa'
+punti: 10
 ---

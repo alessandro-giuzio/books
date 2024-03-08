@@ -8,4 +8,5 @@ monthRead: enero
 tag: ['ipuinak', 'txakurrak']
 concorrente: 'malen'
 slug: 'kixkur'
+punti: 10
 ---

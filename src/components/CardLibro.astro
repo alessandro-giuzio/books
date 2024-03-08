@@ -9,7 +9,11 @@ const tuttiIconcorrenti = await getCollection('concorrenti');
 const { libro } = Astro.props;
 ---
 
-<div class='book'>
+<div class='book relative'>
+  <span
+    class='absolute -top-4 font-mono text-[0.2em] -rotate-[15deg] p-1 bg-[var(--bg) text-[var(--text)]] rounded-full border border-[var(--text)]'
+    >{libro.data.punti}</span
+  >
   <img
     loading='lazy'
     width='180'
@@ -20,6 +24,7 @@ const { libro } = Astro.props;
   <div class='info'>
     <h3 class='title font-mono'>{libro.data.title}</h3>
     <p class='font-mono'>{libro.data.author}</p>
+
     <div x-data='{ open: false }' class=''>
       <button
         @click='open = ! open'
@@ -32,6 +37,7 @@ const { libro } = Astro.props;
         </div>
       </template>
     </div>
+
     <ul>
       {
         libro.data.tag.map(tag => (
@@ -73,6 +79,19 @@ const { libro } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .book {
+    /* box-shadow:
+      rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+      rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+      rgba(0, 0, 0, 0.06) 0px 2px 1px,
+      rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px,
+      rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+    padding: 0.25rem;
   }
   .book .info {
     margin-top: 1em;

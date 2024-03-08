@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['misterio', 'asesinato']
 concorrente: 'unai'
 slug: 'la-casa-de-los-enigmas'
+punti: 10
 ---

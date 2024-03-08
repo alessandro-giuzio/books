@@ -8,4 +8,5 @@ monthRead: enero
 tag: ['novela', 'historica']
 concorrente: 'asier'
 slug: 'roma-soy-yo'
+punti: 10
 ---

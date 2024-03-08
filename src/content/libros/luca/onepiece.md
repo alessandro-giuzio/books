@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['manga', 'piratas']
 concorrente: 'luca'
 slug: 'onepiece'
+punti: 10
 ---

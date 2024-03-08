@@ -19,32 +19,16 @@ import { Image } from 'astro:assets';
 ---
 
 <div class='instructions'>
-  <div class=''>
-    <Image
-      src={concorrente.data.image}
-      alt='proto'
-      class='rounded-full object-cover aspect-square max-w-[120px]'
-      width={100}
-      format='webp'
-    />
+  <Image
+    src={concorrente.data.image}
+    alt='proto'
+    class='rounded-full object-cover aspect-square max-w-[120px]'
+    width={100}
+    format='webp'
+  />
 
-    <!-- <div class='avatar relative -top-5 left-10'>
-      <div class='w-10 rounded-full border-2 border-[#FBF0FF] bg-[#fbf0ff]'>
-        <p
-          class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
-        >
-          {concorrente.data.punti}
-        </p>
-      </div>
-    </div> -->
-  </div>
+  <p class='name text-4xl'>{concorrente.data.nome}</p>
 
-  <div class='items-center'>
-    <div>
-      <p class='name text-4xl'>{concorrente.data.nome}</p>
-      <p class='nickname text-2xl'>{concorrente.data.username}</p>
-    </div>
-  </div>
   <p class='punti text-4xl'>{concorrente.data.punti}</p>
 </div>
 
@@ -52,19 +36,14 @@ import { Image } from 'astro:assets';
   .instructions {
     padding: 1rem;
     border-top: 1px solid white;
-
-    /*  background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    ); */
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 1fr 3fr 40px;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 1rem;
     align-items: center;
     width: 100%;
   }
-  .instructions code {
+  /*   .instructions code {
     font-size: 0.8em;
     font-weight: bold;
     background: rgba(var(--accent-light), 12%);
@@ -74,9 +53,5 @@ import { Image } from 'astro:assets';
   }
   .instructions strong {
     color: rgb(var(--accent-light));
-  }
-
-  .punti {
-    color: var(--text);
-  }
+  } */
 </style>

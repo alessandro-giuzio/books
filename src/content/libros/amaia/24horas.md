@@ -9,4 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'novela corta']
 concorrente: 'amaia'
 slug: '24-horas'
+punti: 10
 ---

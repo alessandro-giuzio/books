@@ -6,19 +6,34 @@ import Leader from '../components/Leader.astro';
 import NotLeader from '../components/NotLeader.astro';
 import { getCollection } from 'astro:content';
 const tuttiConcorrenti = await getCollection('concorrenti');
+const todosLosLibros = await getCollection('libros');
 // Sort by points in descending order
 const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
   .slice(0, 3);
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
+// Calculate the total points per concorrente
+const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
+  const concorrente = libro.data.concorrente;
+  const punti = libro.data.punti;
+
+  if (!acc[concorrente]) {
+    acc[concorrente] = 0;
+  }
+
+  acc[concorrente] += punti;
+  return acc;
+}, {});
+
+console.log(pointsPerConcorrente);
 ---
 
 <Layout title='Irakurketa 2024'>
   <main class='relative'>
     <Header />
     <!-- <div class='box text-red-600'></div> -->
-    <div class='grid grid-cols-3 h-full gap-x-1 mt-12'>
+    <div class='grid grid-cols-3 h-full gap-x-1 mt-14'>
       {
         reordered.map((concorrente, index) => (
           <div

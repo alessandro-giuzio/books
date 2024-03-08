@@ -8,4 +8,5 @@ monthRead: febrero
 tag: ['aventura', 'fantasía']
 concorrente: 'luca'
 slug: 'hobbita'
+punti: 10
 ---

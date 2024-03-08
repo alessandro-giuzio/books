@@ -8,6 +8,20 @@ import NavButtons from '../components/NavButtons.astro';
 const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti');
 
+// filter only unique libros
+const uniqueLibros = todosLosLibros.filter(
+  (libro, index, self) =>
+    index ===
+    self.findIndex(
+      t =>
+        t.data.title === libro.data.title && t.data.author === libro.data.author
+    )
+);
+console.log(uniqueLibros);
+
+// count libros
+const countLibros = todosLosLibros.length;
+
 // filtrer the libros by concorrente
 const librosAsier = todosLosLibros.filter(
   libro => libro.data.concorrente === 'asier'
@@ -27,39 +41,12 @@ const librosAle = todosLosLibros.filter(
   <Header />
   <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
     <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
-      todos los libros
+      todos los libros <span>{countLibros}</span>
     </h1>
     <NavButtons />
 
-    <!-- <div class='flex flex-wrap gap-2 mb-8 buttons'>
-      <div x-data='{ open: false }'>
-        <ButtonLuca />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAsier />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAmaia />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonMalen />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonIrene />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonOihana />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonUnai />
-      </div>
-      <div x-data='{ open: false }'>
-        <ButtonAlessandro />
-      </div>
-    </div> -->
-
     <div class='books'>
-      <LibrosLista libros={todosLosLibros} />
+      <LibrosLista libros={uniqueLibros} />
     </div>
   </main>
 </LayoutLibros>
