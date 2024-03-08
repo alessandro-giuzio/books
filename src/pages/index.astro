@@ -14,7 +14,7 @@ const topThree = tuttiConcorrenti
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
 // Calculate the total points per concorrente
-const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
+/* const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
   const concorrente = libro.data.concorrente;
   const punti = libro.data.punti;
 
@@ -24,9 +24,7 @@ const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
 
   acc[concorrente] += punti;
   return acc;
-}, {});
-
-console.log(pointsPerConcorrente);
+}, {}); */
 ---
 
 <Layout title='Irakurketa 2024'>

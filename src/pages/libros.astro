@@ -6,7 +6,7 @@ import LibrosLista from '../components/LibrosLista.astro';
 import NavButtons from '../components/NavButtons.astro';
 
 const todosLosLibros = await getCollection('libros');
-const tuttiIconcorrenti = await getCollection('concorrenti');
+/* const tuttiIconcorrenti = await getCollection('concorrenti'); */
 
 // filter only unique libros
 const uniqueLibros = todosLosLibros.filter(
@@ -32,9 +32,9 @@ const countLibros = todosLosLibros.length;
 ); */
 
 // display ale books
-const librosAle = todosLosLibros.filter(
+/* const librosAle = todosLosLibros.filter(
   libro => libro.data.concorrente === 'alessandro'
-);
+); */
 ---
 
 <LayoutLibros title='Libros'>
