@@ -3,8 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 type Props = {
   libro: CollectionEntry<'libros'>;
 };
-const todosLosLibros = await getCollection('libros');
-const tuttiIconcorrenti = await getCollection('concorrenti');
+/* const todosLosLibros = await getCollection('libros');
+const tuttiIconcorrenti = await getCollection('concorrenti'); */
 
 const { libro } = Astro.props;
 ---
