@@ -1,103 +1,99 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import corona from '../content/images/corona.svg';
 
 type Props = {
   position: number;
   concorrente: CollectionEntry<'concorrenti'>;
 };
-/* const tuttiConcorrenti = await getCollection('concorrenti'); */
+
 const tuttiConcorrenti = await getCollection('concorrenti');
 const { concorrente, position } = Astro.props;
-const topThree = tuttiConcorrenti
-  .sort((a, b) => b.data.punti - a.data.punti)
-  .slice(0, 3);
+console.log(concorrente);
+console.log(position.valueOf());
 
-// Rearrange the order: [Second Place, First Place, Third Place]
-/* const reordered = [topThree[1], topThree[0], topThree[2]]; */
+/* const todosLosLibros = await getCollection('libros');
+const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
+  const concorrente = libro.data.concorrente;
+  const punti = libro.data.punti;
 
-import { Image } from 'astro:assets';
-import corona from '../content/images/corona.svg';
+  if (!acc[concorrente]) {
+    acc[concorrente] = 0;
+  }
+
+  acc[concorrente] += punti;
+  return acc;
+}, {});
+const sortedConcorrentes = Object.entries(pointsPerConcorrente)
+  .sort((a, b) => b[1] - a[1]) // Sort by points in descending order
+  .slice(0, 3); // Get the top 3 */
 ---
 
-<script></script>
-
-<div class='instructions relative rounded-3xl border-2 border-white'>
-  {/* Conditional rendering for the corona image */}
-  <!--  {
-    position === 1 && (
-      <div class='absolute -top-[158px] -right-[150px]  z-10 flex justify-center items-center'>
-        <Image
-          src={corona}
-          width={74}
-          alt='corona'
-          format='webp'
-          class=' object-cover rounded-3xl transform rotate-[16deg]'
-        />
-      </div>
-    )
-  } -->
-  <div class=''>
-    <Image
-      src={concorrente.data.image}
-      alt='proto'
-      class={`rounded-full border-[10px] ${
-        position === 1
-          ? 'border-borderSilver'
-          : position === 2
-            ? 'border-borderGolden'
-            : 'border-borderBronze'
-      } object-cover aspect-square max-w-[120px] -translate-y-20`}
-      width={124}
-      format='webp'
-    />
-
-    <div class='avatar relative -top-[110px] left-10'>
-      <div
-        class={`w-[42px] rounded-lg rotate-45 h-[42px] grid place-content-center mx-auto  ${
+<div class='flex flex-col gap-2 items-center text-3xl pb-4'>
+  <div class='instructions relative rounded-3xl border-2 border-white'>
+    <div class=''>
+      <Image
+        src={concorrente.data.image}
+        alt='proto'
+        class={`rounded-full border-[10px] ${
           position === 1
-            ? 'border-borderSilver bg-borderSilver'
+            ? 'border-borderSilver'
             : position === 2
-              ? 'border-borderGolden bg-borderGolden'
-              : position === 3
-                ? 'border-borderBronze bg-borderBronze'
-                : 'border-[#FBF0FF]'
-        } bg-[#fbf0ff]`}
-      >
-        <p
-          class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
+              ? 'border-borderGolden'
+              : 'border-borderBronze'
+        } object-cover aspect-square max-w-[120px] -translate-y-20`}
+        width={124}
+        format='webp'
+      />
+
+      <div class='avatar relative -top-[110px] left-10'>
+        <div
+          class={`w-[42px] rounded-lg rotate-45 h-[42px] grid place-content-center mx-auto  ${
+            position === 1
+              ? 'border-borderSilver bg-borderSilver'
+              : position === 2
+                ? 'border-borderGolden bg-borderGolden'
+                : position === 3
+                  ? 'border-borderBronze bg-borderBronze'
+                  : 'border-[#FBF0FF]'
+          } bg-[#fbf0ff]`}
         >
-          {
-            position === 1 ? (
-              <span class='text-3xl -rotate-45'>🥈</span>
-            ) : position === 2 ? (
-              <span class='text-3xl -rotate-45'>🥇</span>
-            ) : position === 3 ? (
-              <span class='text-3xl -rotate-45'>🥉</span>
-            ) : (
-              position
-            )
-          }
-        </p>
+          <p
+            class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
+          >
+            {
+              position === 1 ? (
+                <span class='text-3xl -rotate-45'>🥈</span>
+              ) : position === 2 ? (
+                <span class='text-3xl -rotate-45'>🥇</span>
+              ) : position === 3 ? (
+                <span class='text-3xl -rotate-45'>🥉</span>
+              ) : (
+                position
+              )
+            }
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class='flex flex-col gap-2 items-center text-3xl pb-4'>
-    {
-      position === 2 && (
-        <div class='z-10  flex justify-center items-center'>
-          <Image
-            src={corona}
-            width={74}
-            alt='corona'
-            format='webp'
-            class=' object-cover rounded-3xl transform rotate-[16deg] -translate-y-12'
-          />
-        </div>
-      )
-    }
-    <p class='name'>{concorrente.data.nome}</p>
-    <p class='punti'>{concorrente.data.punti}</p>
-    <p class='nickname'>{concorrente.data.username}</p>
+    <div class='flex flex-col gap-2 items-center text-3xl pb-4'>
+      {
+        position === 2 && (
+          <div class='z-10  flex justify-center items-center'>
+            <Image
+              src={corona}
+              width={74}
+              alt='corona'
+              format='webp'
+              class=' object-cover rounded-3xl transform rotate-[16deg] -translate-y-12'
+            />
+          </div>
+        )
+      }
+      <p class='name'>{concorrente.data.nome}</p>
+      <p class='punti'>{concorrente.data.punti}</p>
+    </div>
   </div>
 </div>
 

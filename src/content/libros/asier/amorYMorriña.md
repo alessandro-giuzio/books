@@ -9,5 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'exilio']
 concorrente: 'asier'
 slug: 'amor-y-morriña'
-punti: 10
+punti: 5
 ---

@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['Thriller']
 concorrente: 'alessandro'
 slug: 'holly'
-punti: 20
+punti: 9
 ---

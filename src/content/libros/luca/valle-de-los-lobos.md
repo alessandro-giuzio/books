@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['fantasía', 'magia']
 concorrente: 'luca'
 slug: 'valle-de-los-lobos'
-punti: 10
+punti: 5
 ---

@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['fantasía', 'magia']
 concorrente: 'luca'
 slug: 'prisionero'
-punti: 10
+punti: 5
 ---

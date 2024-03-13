@@ -8,5 +8,5 @@ monthRead: febrero
 tag: ['comic', 'superheroes', 'marvel']
 concorrente: 'alessandro'
 slug: 'libros-spiderman-entre-los-muertos-ale'
-punti: 20
+punti: 3
 ---

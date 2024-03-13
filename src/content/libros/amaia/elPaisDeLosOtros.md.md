@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['novela', 'historica', 'feminismo']
 concorrente: 'amaia'
 slug: 'el-pais-de-los-otros'
-punti: 10
+punti: 7
 ---

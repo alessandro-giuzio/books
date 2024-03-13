@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 /* import Card from '../components/Card.astro'; */
 import Header from '../components/Header.astro';
 import Leader from '../components/Leader.astro';
+import Mesi from '../components/Mesi.astro';
 import NotLeader from '../components/NotLeader.astro';
 import { getCollection } from 'astro:content';
 const tuttiConcorrenti = await getCollection('concorrenti');
@@ -57,6 +58,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
           .slice(3, 8)
       }
     </div>
+    <Mesi />
   </main>
 </Layout>
 

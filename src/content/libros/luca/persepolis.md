@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['comic', 'feminismo', 'guerra', 'autobiografia']
 concorrente: 'luca'
 slug: 'libros-persepolis'
-punti: 20
+punti: 7
 ---

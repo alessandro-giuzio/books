@@ -1,3 +1,9 @@
-function somma (a,b) {
-    return a + b
-}
+const libro = 5;
+const comic = 3;
+let extra400 = 2
+let extra600 = 4
+const libroMalen = 5;
+let extra120Malen = 2;
+let extra180Malen = 4;
+let extra240Malen = 6;
+let extra400Malen = 8;

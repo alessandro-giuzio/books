@@ -9,5 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'exilio']
 concorrente: 'unai'
 slug: 'el-baracon-de-las-mujeres'
-punti: 10
+punti: 7
 ---

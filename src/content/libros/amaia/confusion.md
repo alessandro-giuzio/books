@@ -9,5 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'exilio']
 concorrente: 'amaia'
 slug: 'confusion-de-sentimientos'
-punti: 10
+punti: 5
 ---

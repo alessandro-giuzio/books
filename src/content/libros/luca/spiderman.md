@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['comic', 'superheroes', 'marvel']
 concorrente: 'luca'
 slug: 'libros-spiderman-entre-los-muertos'
-punti: 20
+punti: 3
 ---

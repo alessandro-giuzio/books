@@ -9,5 +9,5 @@ monthRead: febrero
 tag: ['narrativa', 'novela corta']
 concorrente: 'asier'
 slug: 'veinticuatroHoras'
-punti: 10
+punti: 5
 ---

@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['novela', 'eleberia', 'euskara']
 concorrente: 'oihana'
 slug: 'libros-maitasun-kapitala'
-punti: 10
+punti: 7
 ---

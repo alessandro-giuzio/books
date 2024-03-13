@@ -8,5 +8,5 @@ monthRead: enero
 tag: ['novela', 'feminismo']
 concorrente: 'amaia'
 slug: 'maitasun-kapitala'
-punti: 10
+punti: 7
 ---
