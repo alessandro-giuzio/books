@@ -1,6 +1,7 @@
 ---
 import LayoutLibros from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import Mesi from '../../components/Mesi.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
 
@@ -25,7 +26,7 @@ const countLibrosEnero = librosEnero.length;
 
 <LayoutLibros title='Libros'>
   <Header />
-  <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
+  <main class='px-24 max-sm:px-5 max-w-7xl mx-auto'>
     <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>
       libros de enero <span>{countLibrosEnero}</span>
     </h1>
@@ -33,6 +34,7 @@ const countLibrosEnero = librosEnero.length;
     <div class='books'>
       <LibrosLista libros={uniqueLibrosEnero} />
     </div>
+    <Mesi />
   </main>
 </LayoutLibros>
 
