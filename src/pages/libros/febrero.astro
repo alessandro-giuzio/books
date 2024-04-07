@@ -1,8 +1,12 @@
 ---
 import LayoutLibros from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import H1 from '../../components/UI/H1.astro';
+import Main from '../../components/UI/Main.astro';
+import Books from '../../components/UI/Books.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
+import Mesi from '../../components/Mesi.astro';
 
 const todosLosLibros = await getCollection('libros');
 /* const tuttiIconcorrenti = await getCollection('concorrenti'); */
@@ -25,61 +29,11 @@ const countLibrosFebrero = librosFebrero.length;
 
 <LayoutLibros title='Libros'>
   <Header />
-  <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
-    <h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>
-      libros de febrero <span>{countLibrosFebrero}</span>
-    </h1>
-
-    <div class='books'>
+  <Main>
+    <H1 month='Febrero' count={countLibrosFebrero} />
+    <Books>
       <LibrosLista libros={uniqueLibrosFebrero} />
-    </div>
-  </main>
+    </Books>
+    <Mesi />
+  </Main>
 </LayoutLibros>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    /* width: 800px; */
-    max-width: calc(100% - 0.5rem);
-    color: var(--text);
-    background-color: var(--bg);
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInScaleUp {
-    0% {
-      opacity: 0;
-      transform: scale(0.9) translateY(20px) rotate(-10deg);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1) translateY(0) rotate(0deg);
-    }
-  }
-
-  .books {
-    font-size: 0.875rem;
-    margin-bottom: calc(1em + 2 vw);
-    line-height: 16.8px;
-    display: grid;
-    gap: 1.5em;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    animation: fadeInScaleUp 1s ease-in;
-  }
-
-  /*  .buttons {
-    display: grid;
-    gap: 1.5em;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  } */
-</style>

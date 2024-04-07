@@ -1,0 +1,13 @@
+---
+type Props = {
+  month: string;
+  count: number;
+};
+
+const { month, count } = Astro.props;
+---
+
+<h1 class='text-6xl font-bold text-red-500 uppercase mt-4 mb-16'>
+  Libros de {month}
+  <span>{count}</span>
+</h1>
