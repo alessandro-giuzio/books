@@ -3,23 +3,25 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 type Props = {
   libro: CollectionEntry<'libros'>;
 };
+import { Image } from 'astro:assets';
 /* const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti'); */
 
 const { libro } = Astro.props;
 ---
 
-<div class='book relative'>
+<div class='book relative flex flex-col'>
   <span
     class='absolute -top-4 font-mono text-md -rotate-[15deg] p-1 flex items-center justify-center bg-[var(--bg) text-[var(--text)]] rounded-full border border-[var(--text)] w-8 h-8 bg-[var(--bg)]'
     >{libro.data.punti}</span
   >
-  <img
+  <Image
     loading='lazy'
     width='180'
     height='270'
     src={libro.data.cover}
     alt={libro.data.alt}
+    format='webp'
   />
   <div class='info'>
     <h3 class='title font-mono'>{libro.data.title}</h3>
@@ -130,17 +132,4 @@ const { libro } = Astro.props;
     font-size: 1.25em;
     text-transform: uppercase;
   }
-
-  /* ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0;
-  }
-
-  ul li {
-    display: block;
-    margin-right: 0.5em;
-    color: var(--text);
-    font-size: 1rem;
-  } */
 </style>

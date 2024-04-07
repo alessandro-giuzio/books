@@ -6,6 +6,7 @@ import Leader from '../components/Leader.astro';
 import Mesi from '../components/Mesi.astro';
 import NotLeader from '../components/NotLeader.astro';
 import { getCollection } from 'astro:content';
+import Main from '../components/UI/Main.astro';
 const tuttiConcorrenti = await getCollection('concorrenti');
 const todosLosLibros = await getCollection('libros');
 // Sort by points in descending order
@@ -29,7 +30,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
 ---
 
 <Layout title='Irakurketa 2024'>
-  <main class='relative'>
+  <Main>
     <Header />
     <!-- <div class='box text-red-600'></div> -->
     <div class='grid grid-cols-3 h-full gap-x-1 mt-14'>
@@ -59,21 +60,10 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
       }
     </div>
     <Mesi />
-  </main>
+  </Main>
 </Layout>
 
 <style>
-  main {
-    margin: 0 auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 0.5rem);
-    color: var(--text);
-    background-color: var(--bg);
-    font-size: 20px;
-    line-height: 1.6;
-  }
-
   .box {
     width: 180px;
     height: 80vh;
@@ -103,8 +93,9 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     padding: 0;
+    border: 2px solid red;
   }
-  .astro-a {
+  /*   .astro-a {
     position: absolute;
     top: -32px;
     left: 50%;
@@ -112,14 +103,14 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
     width: 220px;
     height: auto;
     z-index: -1;
-  }
-  h1 {
+  } */
+  /*  h1 {
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
     text-align: center;
     margin-bottom: 1em;
-  }
+  } */
   .text-gradient {
     background-image: var(--accent-gradient);
     -webkit-background-clip: text;
