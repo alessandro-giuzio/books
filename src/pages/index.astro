@@ -15,18 +15,8 @@ const topThree = tuttiConcorrenti
   .slice(0, 3);
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
-// Calculate the total points per concorrente
-/* const pointsPerConcorrente = todosLosLibros.reduce((acc, libro) => {
-  const concorrente = libro.data.concorrente;
-  const punti = libro.data.punti;
 
-  if (!acc[concorrente]) {
-    acc[concorrente] = 0;
-  }
-
-  acc[concorrente] += punti;
-  return acc;
-}, {}); */
+const { slug } = Astro.params;
 ---
 
 <Layout title='Irakurketa 2024'>
@@ -93,7 +83,6 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     padding: 0;
-    border: 2px solid red;
   }
   /*   .astro-a {
     position: absolute;
