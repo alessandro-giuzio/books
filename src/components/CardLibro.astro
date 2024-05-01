@@ -15,14 +15,18 @@ const { libro } = Astro.props;
     class='absolute -top-4 font-mono text-md -rotate-[15deg] p-1 flex items-center justify-center bg-[var(--bg) text-[var(--text)]] rounded-full border border-[var(--text)] w-8 h-8 bg-[var(--bg)]'
     >{libro.data.punti}</span
   >
-  <Image
-    loading='lazy'
-    width='180'
-    height='270'
-    src={libro.data.cover}
-    alt={libro.data.alt}
-    format='webp'
-  />
+  {
+    libro.data.cover && (
+      <Image
+        loading='lazy'
+        width='180'
+        height='270'
+        src={libro.data.cover}
+        alt={libro.data.alt}
+        format='webp'
+      />
+    )
+  }
   <div class='info'>
     <h3 class='title font-mono'>{libro.data.title}</h3>
     <p class='font-mono'>{libro.data.author}</p>

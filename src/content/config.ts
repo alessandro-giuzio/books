@@ -17,7 +17,7 @@ const librosCollection = defineCollection({
   author: z.string(),
   concorrente: z.string(),
   body: z.string(),
-  cover: z.string(),
+  cover: z.string().optional(),
   alt: z.string(),
   tag:z.array(z.string()),
   monthRead: z.string(),
