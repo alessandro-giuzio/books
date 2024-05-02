@@ -9,13 +9,9 @@ import image404 from '../../src/content/images/404.webp';
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>404 Orrialdea Ez Da Aurkitu</title>
-    <link
-      href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'
-      rel='stylesheet'
-    />
   </head>
   <body
-    class='bg-blue-100 flex items-center justify-center h-screen text-center px-4'
+    class='bg-blue-100 flex-col flex items-center justify-center h-screen text-center px-4'
   >
     <div>
       <h1 class='text-6xl font-bold text-blue-600'>404</h1>
@@ -36,8 +32,9 @@ import image404 from '../../src/content/images/404.webp';
       <Image
         src={image404}
         alt='Funny Illustration'
-        class='mx-auto'
+        class='mx-auto rounded-xl shadow-xl'
         style='max-width: 90%; height: auto;'
+        loading='eager'
       />
     </div>
   </body>

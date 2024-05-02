@@ -9,4 +9,5 @@ tag: ['Thriller']
 concorrente: 'alessandro'
 slug: 'holly'
 punti: 9
+type: libro
 ---
