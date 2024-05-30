@@ -3,14 +3,14 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import corona from '../content/images/corona.svg';
 
-const libros = await getCollection('libros');
+/* const libros = await getCollection('libros'); */
 
 type Props = {
   position: number;
   concorrente: CollectionEntry<'concorrenti'>;
 };
 
-const tuttiConcorrenti = await getCollection('concorrenti');
+/* const tuttiConcorrenti = await getCollection('concorrenti'); */
 const { concorrente, position } = Astro.props;
 ---
 
@@ -42,11 +42,9 @@ const { concorrente, position } = Astro.props;
                 : position === 3
                   ? 'border-borderBronze bg-borderBronze'
                   : 'border-[#FBF0FF]'
-          } bg-[#fbf0ff]`}
-        >
+          } bg-[#fbf0ff]`}>
           <p
-            class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'
-          >
+            class='mx-auto text-3xl flex items-center justify-center text-electricAmethyst font-semibold'>
             {
               position === 1 ? (
                 <span class='text-3xl -rotate-45'>🥈</span>

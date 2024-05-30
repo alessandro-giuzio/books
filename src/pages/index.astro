@@ -8,7 +8,7 @@ import NotLeader from '../components/NotLeader.astro';
 import { getCollection } from 'astro:content';
 import Main from '../components/UI/Main.astro';
 const tuttiConcorrenti = await getCollection('concorrenti');
-const todosLosLibros = await getCollection('libros');
+/* const todosLosLibros = await getCollection('libros'); */
 // Sort by points in descending order
 const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
@@ -31,8 +31,7 @@ const { slug } = Astro.params;
               index === 1
                 ? 'translate-y-[-62px] transition duration-900 h-[calc(100%+30px)]'
                 : ''
-            }`}
-          >
+            }`}>
             <Leader concorrente={concorrente} position={index + 1} />
           </div>
         ))

@@ -6,11 +6,11 @@ type Props = {
   concorrente: CollectionEntry<'concorrenti'>;
 };
 /* const tuttiConcorrenti = await getCollection('concorrenti'); */
-const tuttiConcorrenti = await getCollection('concorrenti');
-const { concorrente, position } = Astro.props;
-const topThree = tuttiConcorrenti
+/* const tuttiConcorrenti = await getCollection('concorrenti'); */
+const { concorrente } = Astro.props;
+/* const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
-  .slice(0, 3);
+  .slice(0, 3); */
 
 // Rearrange the order: [Second Place, First Place, Third Place]
 /* const reordered = [topThree[1], topThree[0], topThree[2]]; */
