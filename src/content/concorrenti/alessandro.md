@@ -5,7 +5,7 @@ alt: Alessandro
 image: './img/alessandro-1.jpg'
 punti: 52
 borderColor: ''
-slug: 'libros-alessandro'
+slug: 'alessandro'
 puntiEnero: 12
 puntiFebrero: 8
 puntiMarzo: 14

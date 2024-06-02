@@ -1,0 +1,26 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export const getStaticPaths = async () => {
+  const concorrenti = await getCollection('concorrenti');
+  const paths = concorrenti.map(concorrente => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  console.log('Generated paths:', paths);
+
+  return paths;
+};
+
+type Props = {
+  concorrente: CollectionEntry<'concorrenti'>;
+};
+
+const { concorrente } = Astro.props;
+const { Content, headings } = await concorrente.render();
+---
+
+<h1>{concorrente.data.nome}</h1>
+<span>{concorrente.data.punti}</span>
+<Content />

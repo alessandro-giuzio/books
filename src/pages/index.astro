@@ -15,38 +15,38 @@ const topThree = tuttiConcorrenti
   .slice(0, 3);
 // Rearrange the order: [Second Place, First Place, Third Place]
 const reordered = [topThree[1], topThree[0], topThree[2]];
-
-const { slug } = Astro.params;
 ---
 
 <Layout title='Irakurketa 2024'>
   <Main>
     <Header />
     <!-- <div class='box text-red-600'></div> -->
-    <div class='grid grid-cols-3 h-full gap-x-1 mt-14'>
-      {
-        reordered.map((concorrente, index) => (
-          <div
-            class={`${
-              index === 1
-                ? 'translate-y-[-62px] transition duration-900 h-[calc(100%+30px)]'
-                : ''
-            }`}>
-            <Leader concorrente={concorrente} position={index + 1} />
-          </div>
-        ))
-      }
-    </div>
-    <!-- <div class='box text-red-600'></div> -->
-    <!--   <div class='box text-red-600'></div> -->
-    <div class='sec'>
-      {
-        tuttiConcorrenti
-          .map((concorrente, index) => (
-            <NotLeader concorrente={concorrente} position={index + 1} />
+    <div class='mb-12'>
+      <div class='grid grid-cols-3 h-full gap-x-1 mt-14'>
+        {
+          reordered.map((concorrente, index) => (
+            <div
+              class={`${
+                index === 1
+                  ? 'translate-y-[-62px] transition duration-900 h-[calc(100%+30px)]'
+                  : ''
+              }`}>
+              <Leader concorrente={concorrente} position={index + 1} />
+            </div>
           ))
-          .slice(3, 8)
-      }
+        }
+      </div>
+      <!-- <div class='box text-red-600'></div> -->
+      <!--   <div class='box text-red-600'></div> -->
+      <div class='sec'>
+        {
+          tuttiConcorrenti
+            .map((concorrente, index) => (
+              <NotLeader concorrente={concorrente} position={index + 1} />
+            ))
+            .slice(3, 8)
+        }
+      </div>
     </div>
     <Mesi />
   </Main>
@@ -54,7 +54,7 @@ const { slug } = Astro.params;
 
 <style>
   .box {
-    width: 180px;
+    max-width: 180px;
     height: 80vh;
     position: absolute;
 
