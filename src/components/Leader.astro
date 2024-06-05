@@ -1,14 +1,8 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import corona from '../content/images/corona.svg';
 
 /* const libros = await getCollection('libros'); */
-
-type Props = {
-  position: number;
-  concorrente: CollectionEntry<'concorrenti'>;
-};
 
 /* const tuttiConcorrenti = await getCollection('concorrenti'); */
 const { concorrente, position } = Astro.props;

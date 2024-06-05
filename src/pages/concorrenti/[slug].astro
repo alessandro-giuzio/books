@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import LayoutConcorrente from '../../layouts/LayoutConcorrente.astro';
+
 export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
   const libros = await getCollection('libros');
@@ -21,11 +21,4 @@ type Props = {
   concorrente: CollectionEntry<'concorrenti'>;
   libro: CollectionEntry<'libros'>[];
 };
-
-const { concorrentenpm } = Astro.props;
 ---
-
-<LayoutConcorrente>
-  <h1>{concorrente.data.nome}</h1>
-  <span>{concorrente.data.punti}</span>
-</LayoutConcorrente>

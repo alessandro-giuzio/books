@@ -1,8 +1,4 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-type Props = {
-  libro: CollectionEntry<'libros'>;
-};
 import { Image } from 'astro:assets';
 /* const todosLosLibros = await getCollection('libros');
 const tuttiIconcorrenti = await getCollection('concorrenti'); */
@@ -46,7 +42,7 @@ const { libro } = Astro.props;
 
     <ul>
       {
-        libro.data.tag.map(tag => (
+        libro.data.tag.map((tag: string) => (
           <li class='font-mono'>
             {tag.charAt(0).toUpperCase() + tag.slice(1)}
           </li>
