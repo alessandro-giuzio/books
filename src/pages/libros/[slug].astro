@@ -1,0 +1,26 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+export async function getStaticPaths() {
+  const concorrenti = await getCollection('concorrenti');
+  const libros = await getCollection('libros');
+  // filtrer the libros by concorrente
+
+  const paths = concorrenti.map(concorrente => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  console.log('Generated paths:', paths);
+  console.log('libros:', libros.length);
+
+  return paths;
+}
+
+type Props = {
+  concorrente: CollectionEntry<'concorrenti'>;
+  libro: CollectionEntry<'libros'>[];
+};
+---
+
+<!-- container with all the months -->
+<div></div>

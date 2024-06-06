@@ -1,4 +1,4 @@
-import {z, defineCollection } from "astro:content";
+import {z, defineCollection, reference } from "astro:content";
 
 const concorrentiCollection = defineCollection({
   schema: ({image}) => z.object({
@@ -28,6 +28,7 @@ const librosCollection = defineCollection({
  /*  tags: z.array(z.string()), */
 })
 });
+
 
 export const collections = {
   'concorrenti': concorrentiCollection,
