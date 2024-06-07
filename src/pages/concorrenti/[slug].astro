@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
   return paths;
 }
-export async function get({ params }) {
+export async function get({ params }: { params: { slug: string } }) {
   const concorrenti = await getCollection('concorrenti');
   const concorrente = concorrenti.find(c => c.slug === params.slug);
 
