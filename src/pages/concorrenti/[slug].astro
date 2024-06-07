@@ -5,7 +5,7 @@ export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
   const libros = await getCollection('libros');
   // filtrer the libros by concorrente
-
+  console.log('concorrenti:', concorrenti);
   const paths = concorrenti.map(concorrente => ({
     params: { slug: concorrente.slug },
     props: { concorrente },
@@ -16,12 +16,34 @@ export async function getStaticPaths() {
 
   return paths;
 }
+export async function get({ params }) {
+  const concorrenti = await getCollection('concorrenti');
+  const concorrente = concorrenti.find(c => c.slug === params.slug);
 
+  if (!concorrente) {
+    return {
+      status: 404,
+      body: 'Not Found',
+    };
+  }
+
+  return {
+    props: { concorrente },
+  };
+}
+
+// Define the props type
 type Props = {
   concorrente: CollectionEntry<'concorrenti'>;
   libro: CollectionEntry<'libros'>[];
 };
+const { concorrente } = Astro.props;
 ---
 
-concorrenti slug
 <!-- show the slug -->
+<article class='concorrente-details'>
+  <h1>{concorrente.data.nome}</h1>
+  <!-- <img src={concorrente.data.image} alt={concorrente.data.nome} width='200' />
+  <p>{concorrente.data.description}</p> -->
+  <p>Punti: {concorrente.data.punti}</p>
+</article>
