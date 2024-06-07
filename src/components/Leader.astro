@@ -6,6 +6,7 @@ import corona from '../content/images/corona.svg';
 
 /* const tuttiConcorrenti = await getCollection('concorrenti'); */
 const { concorrente, position } = Astro.props;
+console.log('Concorrente Slug:', concorrente.data.slug);
 ---
 
 <div class='flex flex-col gap-2 items-center text-3xl pb-4'>
@@ -68,7 +69,11 @@ const { concorrente, position } = Astro.props;
           </div>
         )
       }
-      <p class='name'>{concorrente.data.nome}</p>
+      <!-- dynamic route -->
+
+      <a href={`/concorrenti/${concorrente.data.username}`} class='name'
+        >{concorrente.data.username}</a
+      >
       <p class='punti'>{concorrente.data.punti}</p>
     </div>
   </div>

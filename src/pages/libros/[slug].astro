@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
   const libros = await getCollection('libros');
-  // filtrer the libros by concorrente
+  // filter the libros by concorrente
 
   const paths = concorrenti.map(concorrente => ({
     params: { slug: concorrente.slug },
