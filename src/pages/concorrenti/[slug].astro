@@ -1,23 +1,42 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import LibrosLista from '../../components/LibrosLista.astro';
 
 export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
-  const libros = await getCollection('libros');
-  // filtrer the libros by concorrente
-  console.log('concorrenti:', concorrenti);
+
+  if (!concorrenti) {
+    console.error('Failed to fetch concorrenti collection.');
+    return [];
+  }
+
   const paths = concorrenti.map(concorrente => ({
     params: { slug: concorrente.slug },
     props: { concorrente },
   }));
 
-  console.log('Generated paths:', paths);
-  console.log('libros:', libros.length);
-
   return paths;
 }
-export async function get({ params }: { params: { slug: string } }) {
+
+export async function get({
+  params,
+}: {
+  params: {
+    monthRead: string;
+    slug: string;
+  };
+}) {
   const concorrenti = await getCollection('concorrenti');
+  const libros = await getCollection('libros');
+
+  if (!concorrenti || !libros) {
+    console.error('Failed to fetch collections.');
+    return {
+      status: 500,
+      body: 'Internal Server Error',
+    };
+  }
+
   const concorrente = concorrenti.find(c => c.slug === params.slug);
 
   if (!concorrente) {
@@ -27,23 +46,49 @@ export async function get({ params }: { params: { slug: string } }) {
     };
   }
 
+  // Filter books by the specific concorrente
+  const librosForConcorrente = libros.filter(
+    libro => libro.data.concorrente === params.slug
+  );
+
+  // Filter books by monthRead field
+  const monthRead = params.monthRead || 'enero'; // You can adjust this to your needs
+  const librosForMonth = librosForConcorrente.filter(
+    libro => libro.data.monthRead === monthRead
+  );
+
   return {
-    props: { concorrente },
+    props: {
+      concorrente,
+      librosForMonth,
+    },
   };
 }
 
 // Define the props type
 type Props = {
   concorrente: CollectionEntry<'concorrenti'>;
-  libro: CollectionEntry<'libros'>[];
+  librosForMonth: CollectionEntry<'libros'>[];
 };
-const { concorrente } = Astro.props;
+
+const { concorrente, librosForMonth = [] } = Astro.props;
 ---
 
-<!-- show the slug -->
 <article class='concorrente-details'>
   <h1>{concorrente.data.nome}</h1>
   <!-- <img src={concorrente.data.image} alt={concorrente.data.nome} width='200' />
   <p>{concorrente.data.description}</p> -->
   <p>Punti: {concorrente.data.punti}</p>
+
+  <!-- Show books for the specific concorrente and monthRead -->
+  <section>
+    <h2>Books for {concorrente.data.nome}</h2>
+    {
+      librosForMonth.length > 0 ? (
+        <LibrosLista libros={librosForMonth} />
+      ) : (
+        <p>No books available for this month.</p>
+      )
+    }
+  </section>
 </article>
