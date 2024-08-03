@@ -6,6 +6,7 @@ import H1 from '../../components/UI/H1.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
 import Books from '../../components/UI/Books.astro';
+import Mesi from '../../components/Mesi.astro';
 
 const todosLosLibros = await getCollection('libros');
 const librosJunio = todosLosLibros.filter(
@@ -31,6 +32,7 @@ const countLibrosJunio = uniqueLibrosJunio.length;
     <H1 month='Junio' count={countLibrosJunio} />
     <Books>
       <LibrosLista libros={librosJunio} />
+      <Mesi />
     </Books>
   </Main>
 </LayoutLibros>
