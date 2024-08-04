@@ -1,108 +1,86 @@
 ---
 import LayoutLibros from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import CardListCon from '../../components/concorrenti/CardListCon.astro';
 import { getCollection } from 'astro:content';
-import LibrosLista from '../../components/LibrosLista.astro';
-import NavButtons from '../../components/NavButtons.astro';
-
-const todosLosLibros = await getCollection('libros');
-const tuttiIconcorrenti = await getCollection('concorrenti');
-
-// filter only unique libros
-const uniqueLibros = todosLosLibros.filter(
-  (libro, index, self) =>
-    index ===
-    self.findIndex(
-      t =>
-        t.data.title === libro.data.title && t.data.author === libro.data.author
-    )
-);
-/* filter todosloslibros de alessandro del mese de urtarila*/
-const librosAleEnero = todosLosLibros.filter(
-  libro =>
-    libro.data.concorrente === 'alessandro' && libro.data.monthRead === 'enero'
-);
-console.log(librosAleEnero);
-// count libros
-const countLibros = todosLosLibros.length;
-
-// filtrer the libros by concorrente
-/* const librosAsier = todosLosLibros.filter(
-  libro => libro.data.concorrente === 'asier'
-); */
-
-const ale = tuttiIconcorrenti.filter(
-  concorrente => concorrente.data.nome === 'alessandro'
-);
-
-// display ale books
-/* const librosAle = todosLosLibros.filter(
-  libro => libro.data.concorrente === 'alessandro'
-); */
+import type { CollectionEntry } from 'astro:content';
+const concorrenti = await getCollection('concorrenti');
+type Props = {
+  tuttiIconcorrenti: CollectionEntry<'concorrenti'>;
+};
 ---
 
 <LayoutLibros title='Libros'>
   <Header />
   <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
-    <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
+    <h1 class='text-4xl font-bold text-red-800 uppercase mt-4 mb-16'>
       todos los partecipantes
     </h1>
+    <div class='books'>
+      <div class='bg-gray-900 py-24 sm:py-32'>
+        <div class='mx-auto max-w-7xl px-6 text-center lg:px-8'>
+          <div class='mx-auto max-w-2xl'>
+            <h2
+              class='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
+              Ezagutu gure taldea
+            </h2>
+            <p class='mt-4 text-lg leading-8 text-gray-400'>
+              Energia handiko familia bat gara, egiten dugunarekin apasionatuak
+              garenak eta irakurtzea gustatzen zaigu.
+            </p>
+          </div>
+          <CardListCon concorrenti={concorrenti} />
+        </div>
+      </div>
+    </div>
+    <!-- <NavButtons /> -->
   </main>
-  <!-- <NavButtons /> -->
 
-  <div class='books'>
-    <LibrosLista libros={librosAleEnero} />
-    <LibrosLista libros={librosAleEnero} />
-    <LibrosLista libros={librosAleEnero} />
-    <LibrosLista libros={librosAleEnero} />
-    <LibrosLista libros={librosAleEnero} />
-  </div>
-</LayoutLibros>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    /* width: 800px; */
-    max-width: calc(100% - 0.5rem);
-    color: var(--text);
-    background-color: var(--bg);
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
+  <style>
+    main {
+      margin: auto;
+      padding: 1rem;
+      /* width: 800px; */
+      max-width: calc(100% - 0.5rem);
+      color: var(--text);
+      background-color: var(--bg);
+      font-size: 20px;
+      line-height: 1.6;
     }
-    to {
-      opacity: 1;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
-  }
 
-  @keyframes fadeInScaleUp {
-    0% {
-      opacity: 0;
-      transform: scale(0.9) translateY(20px) rotate(-10deg);
+    @keyframes fadeInScaleUp {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px) rotate(-10deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+      }
     }
-    100% {
-      opacity: 1;
-      transform: scale(1) translateY(0) rotate(0deg);
+
+    .books {
+      font-size: 0.875rem;
+      margin-bottom: calc(1em + 2 vw);
+      line-height: 16.8px;
+      display: grid;
+      gap: 1.5em;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      animation: fadeInScaleUp 1s ease-in;
     }
-  }
 
-  .books {
-    font-size: 0.875rem;
-    margin-bottom: calc(1em + 2 vw);
-    line-height: 16.8px;
-    display: grid;
-    gap: 1.5em;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    animation: fadeInScaleUp 1s ease-in;
-  }
-
-  /*  .buttons {
+    /*  .buttons {
     display: grid;
     gap: 1.5em;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   } */
-</style>
+  </style>
+</LayoutLibros>
