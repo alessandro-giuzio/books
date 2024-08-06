@@ -21,8 +21,9 @@ import { Image } from 'astro:assets';
     format='webp'
   />
 
-  <a <a href={`/concorrenti/${concorrente.data.username}`} class='name text-4xl'
-    >{concorrente.data.username}</a
+  <a
+    href={`/concorrenti/${concorrente.data.username}`}
+    class='name capitalize text-4xl'>{concorrente.data.username}</a
   >
 
   <p class='punti text-4xl'>{concorrente.data.punti}</p>
