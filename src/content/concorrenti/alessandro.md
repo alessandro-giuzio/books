@@ -12,4 +12,5 @@ puntiMarzo: 14
 puntiAbril: 6
 puntiMayo: 12
 puntiJunio: 5
+puntiJulio: 0
 ---

@@ -30,7 +30,7 @@ const { libro } = Astro.props;
     <div x-data='{ open: false }' class=''>
       <button
         @click='open = ! open'
-        class='border mb-2 px-3 py-1 rounded-lg text-xs font-mono'
+        class='border mb-2 px-3 py-1 rounded-[8px] text-xs font-mono'
         >Sinopsis</button
       >
       <template x-if='open'>

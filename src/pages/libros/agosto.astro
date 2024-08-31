@@ -1,0 +1,38 @@
+---
+import LayoutLibros from '../../layouts/LayoutLibros.astro';
+import Header from '../../components/Header.astro';
+import Main from '../../components/UI/Main.astro';
+import H1 from '../../components/UI/H1.astro';
+import { getCollection } from 'astro:content';
+import LibrosLista from '../../components/LibrosLista.astro';
+import Books from '../../components/UI/Books.astro';
+import Mesi from '../../components/Mesi.astro';
+
+const todosLosLibros = await getCollection('libros');
+const librosAgosto = todosLosLibros.filter(
+  libro => libro.data.monthRead === 'agosto'
+);
+
+// filter only unique libros
+const uniqueLibrosAgosto = librosAgosto.filter(
+  (libro, index, self) =>
+    index ===
+    self.findIndex(
+      t =>
+        t.data.title === libro.data.title && t.data.author === libro.data.author
+    )
+);
+
+const countLibrosAgosto = uniqueLibrosAgosto.length;
+---
+
+<LayoutLibros title='Libros'>
+  <Header title='Libros' />
+  <Main>
+    <H1 month='Agosto' count={countLibrosAgosto} />
+    <Books>
+      <LibrosLista libros={librosAgosto} />
+      <Mesi />
+    </Books>
+  </Main>
+</LayoutLibros>
