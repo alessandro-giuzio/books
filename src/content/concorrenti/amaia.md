@@ -3,7 +3,7 @@ nome: Amaia
 username: amaia
 alt: amaia
 image: './img/amaia.jpg'
-punti: 71
+punti: 88
 borderColor: ''
 slug: 'amaia'
 puntiEnero: 14
@@ -14,4 +14,5 @@ puntiMayo: 10
 puntiJunio: 5
 puntiJulio: 10
 puntiAgosto: 17
+puntiSeptiembre: 17
 ---
