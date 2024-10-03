@@ -1,6 +1,6 @@
 <header>
   <nav
-    class='flex mx-auto items-center border shadow-lg border-white justify-evenly w-full gap-2 py-4 px-4 text-xs rounded-lg'>
+    class='flex mx-auto items-center border shadow-lg border-white justify-evenly w-full gap-2 py-4 px-4 text-xs'>
     <!-- <a
       class='py-2 font-bold uppercase'
       href='/'
@@ -9,20 +9,20 @@
     >
       Home
     </a> -->
-    <a href='/'>
+    <!--  <a href='/'>
       <span class='relative flex h-4 w-4'>
         <span
           class='animate-ping ap absolute inline-flex h-full w-full rounded-full'
         ></span>
         <span class='ap relative inline-flex rounded-full h-4 w-4'></span>
       </span>
-    </a>
-    <a
+    </a> -->
+    <!--    <a
       class='py-2 font-bold uppercase'
       href='/libros'
       rel='noopener noreferrer'>
       Libros
-    </a>
+    </a> -->
 
     <select data-choose-theme class='py-1 px-1 rounded-md text-lg'>
       <option value=''>Theme</option>
@@ -36,38 +36,26 @@
       <option value='oihana'>Oihana</option>
       <option value='unai'>Unai</option>
     </select>
-    <a href='/'>
+    <!-- <a href='/'>
       <span class='relative flex h-4 w-4'>
         <span
           class='animate-ping ap absolute inline-flex h-full w-full rounded-full'
         ></span>
         <span class='ap relative inline-flex rounded-full h-4 w-4'></span>
       </span>
-    </a>
+    </a> -->
   </nav>
 </header>
 
 <style>
   nav {
-    background: var(--bg-header);
+    background-color: var(--bg-header);
     border: 2px solid var(--nav-border);
-    box-shadow: 2px 4px 8px var(--nav-border);
-    /* animation: pulse 2s infinite; */
-    /*  background-image: linear-gradient(
-      50deg,
-      hsl(274deg 100% 25%) 0%,
-      hsl(297deg 100% 29%) 13%,
-      hsl(319deg 100% 34%) 24%,
-      hsl(342deg 100% 39%) 34%,
-      hsl(4deg 100% 43%) 43%,
-      hsl(26deg 100% 48%) 52%,
-      hsl(30deg 100% 50%) 60%,
-      hsl(15deg 100% 50%) 68%,
-      hsl(1deg 100% 50%) 76%,
-      hsl(346deg 100% 51%) 84%,
-      hsl(331deg 100% 51%) 91%,
-      hsl(316deg 100% 51%) 100%
-    ); */
+    box-shadow: 0px 0px 30px var(--nav-border);
+    animation: pulse 2s infinite;
+    backdrop-filter: blur(60px);
+
+    /* background-image: var(--nav-gradient); */
   }
   a {
     color: var(--text);
@@ -78,16 +66,17 @@
 
   select {
     background-color: var(--bg-card);
+    color: var(--text);
   }
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(36, 40, 66, 0.5);
+      box-shadow: 0 0 0 0 var(--nav-border);
     }
     50% {
-      box-shadow: 0 0 10px 10px rgba(36, 40, 66, 0);
+      box-shadow: 0 0 10px 10px var(--nav-border);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(36, 40, 66, 0.5);
+      box-shadow: 0 0 0 0 var(--nav-border);
     }
   }
 

@@ -38,124 +38,132 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <slot />
+  <body class='h-full'>
+    <slot />
+    <style is:global>
+      :root {
+        --color-default: #fff;
+        --bg: #1e2237;
+        --bg-body: #1e2237;
+        /* bg header with opacity */
+        --bg-header: #242842;
+        --nav-border: #2a2e4a;
+        --text: #fff;
+        --rounded-btn: 0.5rem;
+        --tw-bg-opacity: 1;
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+        --max-width: 1200px;
+      }
 
-  <style is:global>
-    :root {
-      --color-default: #fff;
-      --bg: #1e2237;
-      --bg-body: #1e2237;
-      /* bg header with opacity */
-      --bg-header: #242842;
-      --nav-border: #2a2e4a;
-      --text: #fff;
-      --rounded-btn: 0.5rem;
-      --tw-bg-opacity: 1;
-      --accent: 136, 58, 234;
-      --accent-light: 224, 204, 250;
-      --accent-dark: 49, 10, 101;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
-      );
-      --bg-card: linear-gradient(
-        rgba(var(--accent-dark), 66%),
-        rgba(var(--accent-dark), 33%)
-      );
-    }
+      [data-theme='alessandro'] {
+        --bg: #0c0c0c;
+        --text: #f4f;
+        --bg-header: #0c0c0c;
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+      }
+      [data-theme='amaia'] {
+        --bg: #155d3f;
+        --bg-body: red;
+        --text: #fff;
+        --bg-header: #0e4326;
+        --bg-card: linear-gradient(
+          rgba(21, 93, 63, 0.66),
+          rgba(21, 93, 63, 0.33)
+        );
+      }
+      [data-theme='asier'] {
+        --bg: #155d3f;
+        --bg-body: red;
+        --text: #fff;
+        --bg-header: #0e4326;
+        --bg-card: linear-gradient(
+          rgba(21, 93, 63, 0.66),
+          rgba(21, 93, 63, 0.33)
+        );
+      }
+      [data-theme='irene'] {
+        --bg: #ffb3a7; /* Soft pastel coral */
+        --text: #333; /* Dark gray for readability */
+        --bg-header: #ffcab1; /* Lighter pastel coral */
+        --bg-card: linear-gradient(
+          rgba(255, 202, 177, 0.66),
+          rgba(255, 202, 177, 0.33)
+        );
+      }
 
-    [data-theme='alessandro'] {
-      --bg: #0c0c0c;
-      --text: #f4f;
-      --bg-header: #0c0c0c;
-      --bg-card: linear-gradient(
-        rgba(var(--accent-dark), 66%),
-        rgba(var(--accent-dark), 33%)
-      );
-    }
-    [data-theme='amaia'] {
-      --bg: #155d3f;
-      --bg-body: red;
-      --text: #fff;
-      --bg-header: #0e4326;
-      --bg-card: linear-gradient(
-        rgba(21, 93, 63, 0.66),
-        rgba(21, 93, 63, 0.33)
-      );
-    }
-    [data-theme='asier'] {
-      --bg: #155d3f;
-      --bg-body: red;
-      --text: #fff;
-      --bg-header: #0e4326;
-      --bg-card: linear-gradient(
-        rgba(21, 93, 63, 0.66),
-        rgba(21, 93, 63, 0.33)
-      );
-    }
-    [data-theme='irene'] {
-      --bg: #ffb3a7; /* Soft pastel coral */
-      --text: #333; /* Dark gray for readability */
-      --bg-header: #ffcab1; /* Lighter pastel coral */
-      --bg-card: linear-gradient(
-        rgba(255, 202, 177, 0.66),
-        rgba(255, 202, 177, 0.33)
-      );
-    }
+      [data-theme='luca'] {
+        --bg: #5f8670; /* Background color set to a greenish shade */
+        --text: #fff; /* Keeping text color white for contrast */
+        --bg-header: #ff9800; /* Header background set to a bright orange */
+        --bg-card: linear-gradient(
+          rgba(184, 0, 0, 0.66),
+          rgba(130, 3, 0, 0.33)
+        );
+      }
 
-    [data-theme='luca'] {
-      --bg: #5f8670; /* Background color set to a greenish shade */
-      --text: #fff; /* Keeping text color white for contrast */
-      --bg-header: #ff9800; /* Header background set to a bright orange */
-      --bg-card: linear-gradient(rgba(184, 0, 0, 0.66), rgba(130, 3, 0, 0.33));
-    }
+      [data-theme='malen'] {
+        --bg: #c49b66;
+        --text: #fff;
+        --bg-header: #a7814f;
+        --bg-card: linear-gradient(
+          rgba(196, 155, 102, 0.66),
+          rgba(196, 155, 102, 0.33)
+        );
+      }
 
-    [data-theme='malen'] {
-      --bg: #c49b66;
-      --text: #fff;
-      --bg-header: #a7814f;
-      --bg-card: linear-gradient(
-        rgba(196, 155, 102, 0.66),
-        rgba(196, 155, 102, 0.33)
-      );
-    }
+      [data-theme='oihana'] {
+        --bg: #186f65; /* A deep teal green for the background */
+        --text: #fce09b; /* A light, creamy yellow for text for contrast */
+        --bg-header: #b5cb99; /* A soft, muted green for the header background */
+        --bg-card: linear-gradient(
+          rgba(178, 83, 62, 0.66),
+          /* Dark terracotta gradient start */ rgba(178, 83, 62, 0.33)
+            /* Dark terracotta gradient end, more transparent */
+        );
+      }
 
-    [data-theme='oihana'] {
-      --bg: #186f65; /* A deep teal green for the background */
-      --text: #fce09b; /* A light, creamy yellow for text for contrast */
-      --bg-header: #b5cb99; /* A soft, muted green for the header background */
-      --bg-card: linear-gradient(
-        rgba(178, 83, 62, 0.66),
-        /* Dark terracotta gradient start */ rgba(178, 83, 62, 0.33)
-          /* Dark terracotta gradient end, more transparent */
-      );
-    }
+      [data-theme='unai'] {
+        --bg: #121212;
+        --text: #fff;
+        --bg-header: #0c0c0c;
+        --bg-card: linear-gradient(
+          rgba(18, 18, 18, 0.66),
+          rgba(18, 18, 18, 0.33)
+        );
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        background-size: 224px;
+        height: fit-content;
+      }
+      body {
+        background-color: var(--bg);
+        width: 100%;
+        max-width: var(--max-width);
+        max-width: calc(100% - 0.5rem);
+      }
 
-    [data-theme='unai'] {
-      --bg: #121212;
-      --text: #fff;
-      --bg-header: #0c0c0c;
-      --bg-card: linear-gradient(
-        rgba(18, 18, 18, 0.66),
-        rgba(18, 18, 18, 0.33)
-      );
-    }
-    html {
-      font-family: system-ui, sans-serif;
-      background: #1e2237;
-      background-size: 224px;
-      height: fit-content;
-    }
-    body {
-      background-color: var(--bg-body);
-    }
-
-    /* body {
+      /* body {
 		width: 900px;
 		max-width: calc(100% - 0.5rem);
 		margin-inline: auto;
 	} */
-  </style>
+    </style>
+  </body>
 </html>

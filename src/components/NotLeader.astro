@@ -26,17 +26,17 @@ import { Image } from 'astro:assets';
     class='name capitalize text-4xl'>{concorrente.data.username}</a
   >
 
-  <p class='punti text-4xl'>{concorrente.data.punti}</p>
+  <p class='punti text-3xl'>{concorrente.data.punti}</p>
 </div>
 
 <style>
   .instructions {
     padding: 1rem;
-    border-top: 1px solid white;
+    border-top: 1px solid var(--text);
     margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
     width: 100%;
   }

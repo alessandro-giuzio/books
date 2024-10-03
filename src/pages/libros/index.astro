@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
 import NavButtons from '../../components/NavButtons.astro';
+import Main from 'astro/components/UI/Main.astro';
 
 const todosLosLibros = await getCollection('libros');
 /* const tuttiIconcorrenti = await getCollection('concorrenti'); */
@@ -39,7 +40,7 @@ const countLibros = todosLosLibros.length;
 
 <LayoutLibros title='Libros'>
   <Header />
-  <main class='px-24 max-sm:px-5 max-w-7xl mx-auto w-full'>
+  <Main>
     <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
       todos los libros <span>{countLibros}</span>
     </h1>
@@ -48,7 +49,7 @@ const countLibros = todosLosLibros.length;
     <div class='books'>
       <LibrosLista libros={uniqueLibros} />
     </div>
-  </main>
+  </Main>
 </LayoutLibros>
 
 <style>

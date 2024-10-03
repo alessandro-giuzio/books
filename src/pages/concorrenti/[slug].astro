@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import LibrosLista from '../../components/LibrosLista.astro';
+import Image from 'astro/components/Image.astro';
 
 export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
@@ -76,8 +77,8 @@ const { concorrente, librosForMonth = [] } = Astro.props;
 
 <article class='concorrente-details'>
   <h1>{concorrente.data.nome}</h1>
-  <!-- <img src={concorrente.data.image} alt={concorrente.data.nome} width='200' />
-  <p>{concorrente.data.description}</p> -->
+  <Image src={concorrente.data.image} alt={concorrente.data.nome} width='200' />
+  <p>{concorrente.data.username}</p>
   <p>Punti: {concorrente.data.punti}</p>
 
   <!-- Show books for the specific concorrente and monthRead -->

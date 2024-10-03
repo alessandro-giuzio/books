@@ -1,26 +1,41 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import LayoutLibros from '../../layouts/LayoutLibros.astro';
+import Header from 'astro/components/Header.astro';
+import Main from 'astro/components/UI/Main.astro';
+import H1 from 'astro/components/UI/H1.astro';
+import LibrosLista from 'astro/components/LibrosLista.astro';
+import Books from 'astro/components/UI/Books.astro';
+import Mesi from 'astro/components/Mesi.astro';
+
 export async function getStaticPaths() {
-  const concorrenti = await getCollection('concorrenti');
-  const libros = await getCollection('libros');
-  // filter the libros by concorrente
-
-  const paths = concorrenti.map(concorrente => ({
-    params: { slug: concorrente.slug },
-    props: { concorrente },
+  const meses = await getCollection('libros');
+  if (!meses) {
+    console.error('Failed to fetch libros collection.');
+    return [];
+  }
+  const paths = meses.map(mes => ({
+    params: { slug: mes.data.monthRead },
   }));
-
-  console.log('Generated paths:', paths);
-  console.log('libros:', libros.length);
-
   return paths;
 }
+const { slug } = Astro.params; // Get the slug from the dynamic route
+const libros = await getCollection('libros');
 
-type Props = {
-  concorrente: CollectionEntry<'concorrenti'>;
-  libro: CollectionEntry<'libros'>[];
-};
+// Filter libros based on the slug (which represents the monthRead)
+const filteredLibros = libros.filter(libro => libro.data.monthRead === slug);
+// Count the number of libros
+const countLibros = filteredLibros.length;
 ---
 
-<!-- container with all the months -->
-<div></div>
+<LayoutLibros title='Libros'>
+  <Header title='Libros' />
+  <Main>
+    <H1 month={slug} count={countLibros} />
+    <Books>
+      <LibrosLista libros={filteredLibros} />
+      <Mesi />
+    </Books>
+  </Main>
+</LayoutLibros>

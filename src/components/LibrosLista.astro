@@ -5,12 +5,12 @@ type Props = {
   libros: CollectionEntry<'libros'>[];
 };
 const { libros } = Astro.props;
-
-// No need to filter here, libros are already filtered
+// Shuffle the libros order
+const shuffledLibros = libros.sort(() => Math.random() - 0.5);
 ---
 
 <div class='libros'>
-  {libros.map(libro => <CardLibro libro={libro} />)}
+  {shuffledLibros.map(libro => <CardLibro libro={libro} />)}
 </div>
 
 <style>
