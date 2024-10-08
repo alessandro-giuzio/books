@@ -3,7 +3,7 @@ nome: Irene
 username: irene
 alt: irene
 image: './img/irene.jpeg'
-punti: 50
+punti: 59
 borderColor: ''
 slug: 'irene'
 puntiEnero: 0
@@ -14,4 +14,5 @@ puntiMayo: 7
 puntiJunio: 12
 puntiJulio: 7
 puntiAgosto: 14
+puntiSeptiembre: 9
 ---
