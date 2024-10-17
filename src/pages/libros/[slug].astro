@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import LayoutLibros from '../../layouts/LayoutLibros.astro';
 import Header from 'astro/components/Header.astro';
@@ -29,7 +29,7 @@ const filteredLibros = libros.filter(libro => libro.data.monthRead === slug);
 const countLibros = filteredLibros.length;
 ---
 
-<LayoutLibros title='Libros'>
+<LayoutLibros title='Libros' description='libros 2024'>
   <Header title='Libros' />
   <Main>
     <H1 month={slug} count={countLibros} />
