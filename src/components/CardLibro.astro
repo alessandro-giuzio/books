@@ -1,5 +1,20 @@
 ---
 import { Image } from 'astro:assets';
+function fetchConcorrenteBySlug(concorrente: string) {
+  throw new Error('Function not implemented.');
+}
+
+export async function getStaticProps({
+  params,
+}: {
+  params: { concorrente: string };
+}) {
+  const concorrenteData = await fetchConcorrenteBySlug(params.concorrente); // Fetch concorrente data by slug
+
+  return {
+    props: { concorrente: concorrenteData },
+  };
+}
 
 const { libro } = Astro.props;
 ---
@@ -47,7 +62,9 @@ const { libro } = Astro.props;
         ))
       }
     </ul>
-    <p class='concorrente font-mono'>{libro.data.concorrente}</p>
+    <a href={`/concorrenti/${libro.data.concorrente}`}>
+      <p class='concorrente font-mono'>{libro.data.concorrente}</p>
+    </a>
     <!-- <p class='tag'>{book.daa.yearRead}</p> -->
   </div>
 </div>
