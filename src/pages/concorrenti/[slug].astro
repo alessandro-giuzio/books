@@ -1,9 +1,60 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import LibrosLista from '../../components/LibrosLista.astro';
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
 import Image from 'astro/components/Image.astro';
+import Dashboard from '../../components/dashboard/Dashboard.astro';
+import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
+const libros = await getCollection('libros');
+export const getStaticPaths = async () => {
+  const concorrenti = await getCollection('concorrenti');
+
+  if (!concorrenti) {
+    console.error('Failed to fetch concorrenti collection.');
+    return [];
+  }
+
+  const paths = concorrenti.map(concorrente => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  return paths;
+};
+type Props = {
+  concorrente: CollectionEntry<'concorrenti'> & { data: { slug: string } };
+};
+
+const { concorrente } = Astro.props;
+// Filter libros by the specific concorrente
+const librosForConcorrente = libros.filter(
+  libro => libro.data.concorrente === concorrente.slug
+);
+// Extract akk the ubique tags from libros
+/* const tags = librosForConcorrente
+  .map(libro => libro.data.tag)
+  .flat()
+  .filter((tag, index, self) => self.indexOf(tag) === index);
+console.log(tags); */
+// Extract from all the tags the first 3 that are more used
+const tags = librosForConcorrente
+  .map(libro => libro.data.tag)
+  .flat()
+  .reduce((acc: Record<string, number>, tag: string) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {});
+console.log(tags);
+const sortedTags = Object.entries(tags) // Convert object to an array of [tag, count] pairs
+  .sort((a, b) => (b[1] as number) - (a[1] as number)) // Sort by count in descending order
+  .slice(0, 3); // Take the top three
+
+// To use only the tag names you can map over the sorted array
+const topThreeTags = sortedTags.map(item => item[0]);
+
+console.log(topThreeTags); // Logs the top three most frequent tags
+/* export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
 
   if (!concorrenti) {
@@ -52,44 +103,41 @@ export async function get({
     libro => libro.data.concorrente === params.slug
   );
 
-  // Filter books by monthRead field
-  const monthRead = params.monthRead || 'enero'; // You can adjust this to your needs
-  const librosForMonth = librosForConcorrente.filter(
-    libro => libro.data.monthRead === monthRead
-  );
-
   return {
     props: {
       concorrente,
-      librosForMonth,
+      libros: librosForConcorrente,
     },
   };
 }
 
-// Define the props type
+
 type Props = {
   concorrente: CollectionEntry<'concorrenti'>;
-  librosForMonth: CollectionEntry<'libros'>[];
+  libros: CollectionEntry<'libros'>;
 };
 
-const { concorrente, librosForMonth = [] } = Astro.props;
+const { concorrente, libros } = Astro.props; */
 ---
 
-<article class='concorrente-details'>
-  <h1>{concorrente.data.nome}</h1>
-  <Image src={concorrente.data.image} alt={concorrente.data.nome} width='200' />
-  <p>{concorrente.data.username}</p>
-  <p>Punti: {concorrente.data.punti}</p>
+<Layout>
+  <article class='concorrente-details'>
+    <Dashboard
+      name={concorrente.data.nome}
+      count={librosForConcorrente.length}
+      topThreeTags={topThreeTags}
+    />
 
-  <!-- Show books for the specific concorrente and monthRead -->
-  <section>
-    <h2>Books for {concorrente.data.nome}</h2>
-    {
-      librosForMonth.length > 0 ? (
-        <LibrosLista libros={librosForMonth} />
-      ) : (
-        <p>No books available for this month.</p>
-      )
-    }
-  </section>
-</article>
+    <Image
+      src={concorrente.data.image}
+      alt={concorrente.data.nome}
+      width='200'
+    />
+    <p>{concorrente.data.username}</p>
+    <p>Punti: {concorrente.data.punti}</p>
+
+    <section>
+      <h2>Books for {concorrente.data.nome}</h2>
+    </section>
+  </article>
+</Layout>
