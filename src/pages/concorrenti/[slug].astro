@@ -45,7 +45,7 @@ const tags = librosForConcorrente
     acc[tag] = (acc[tag] || 0) + 1;
     return acc;
   }, {});
-console.log(tags);
+
 const sortedTags = Object.entries(tags) // Convert object to an array of [tag, count] pairs
   .sort((a, b) => (b[1] as number) - (a[1] as number)) // Sort by count in descending order
   .slice(0, 3); // Take the top three
@@ -53,7 +53,6 @@ const sortedTags = Object.entries(tags) // Convert object to an array of [tag, c
 // To use only the tag names you can map over the sorted array
 const topThreeTags = sortedTags.map(item => item[0]);
 
-console.log(topThreeTags); // Logs the top three most frequent tags
 /* export async function getStaticPaths() {
   const concorrenti = await getCollection('concorrenti');
 
@@ -126,6 +125,7 @@ const { concorrente, libros } = Astro.props; */
       name={concorrente.data.nome}
       count={librosForConcorrente.length}
       topThreeTags={topThreeTags}
+      image={concorrente.data.image}
     />
 
     <Image
@@ -133,11 +133,5 @@ const { concorrente, libros } = Astro.props; */
       alt={concorrente.data.nome}
       width='200'
     />
-    <p>{concorrente.data.username}</p>
-    <p>Punti: {concorrente.data.punti}</p>
-
-    <section>
-      <h2>Books for {concorrente.data.nome}</h2>
-    </section>
   </article>
 </Layout>

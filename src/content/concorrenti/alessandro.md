@@ -1,6 +1,6 @@
 ---
 nome: Ale
-username: ale
+username: alessandro
 alt: Alessandro
 image: './img/alessandro-1.jpg'
 punti: 89
