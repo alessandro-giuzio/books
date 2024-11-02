@@ -15,4 +15,5 @@ puntiJunio: 5
 puntiJulio: 0
 puntiAgosto: 16
 puntiSeptiembre: 16
+puntiOctubre: 0
 ---
