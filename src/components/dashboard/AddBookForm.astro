@@ -1,0 +1,56 @@
+<!-- Form with responsive design -->
+<form
+  id='addBookForm'
+  method='POST'
+  data-netlify='true'
+  name='books-form'
+  class='w-full max-w-lg px-4 py-2 mx-auto border-2 border-[var(--text)] rounded-md'>
+  <div class='mb-4'>
+    <span class='text-xl'>Add new Book</span>
+  </div>
+  <div class='mb-4'>
+    <label for='title' class='block text-sm font-medium text-[var(--text)]'
+      >Book Title:</label
+    >
+    <input
+      type='text'
+      id='title'
+      name='title'
+      required
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+    />
+  </div>
+
+  <div class='mb-4'>
+    <label for='author' class='block text-sm font-medium text-[var(--text)'
+      >Author:</label
+    >
+    <input
+      type='text'
+      id='author'
+      name='author'
+      required
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+    />
+  </div>
+
+  <div class='mb-4'>
+    <label for='genre' class='block text-sm font-medium text-[var(--text)'
+      >Genre:</label
+    >
+    <select
+      id='genre'
+      name='genre'
+      class='mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'>
+      <option value='fiction'>Fiction</option>
+      <option value='non-fiction'>Non-Fiction</option>
+      <!-- Additional options -->
+    </select>
+  </div>
+
+  <button
+    id='addBook'
+    class='w-full bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 text-[var(--text) py-2 rounded-lg font-semibold transition-all'>
+    Send it!
+  </button>
+</form>
