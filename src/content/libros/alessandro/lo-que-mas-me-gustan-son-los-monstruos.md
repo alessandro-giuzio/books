@@ -8,5 +8,5 @@ monthRead: noviembre
 tag: ['novela gráfica', 'misterio', 'historia']
 concorrente: 'alessandro'
 slug: 'lo-que-mas-me-gustan-son-los-monstruos'
-punti: 7
+punti: 5
 ---
