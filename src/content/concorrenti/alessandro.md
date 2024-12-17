@@ -3,7 +3,7 @@ nome: Ale
 username: alessandro
 alt: Alessandro
 image: './img/alessandro-1.jpg'
-punti: 110
+punti: 120
 borderColor: ''
 slug: 'alessandro'
 puntiEnero: 12
@@ -17,4 +17,5 @@ puntiAgosto: 16
 puntiSeptiembre: 16
 puntiOctubre: 0
 puntiNoviembre: 21
+puntiDiciembre: 10
 ---
