@@ -28,9 +28,25 @@ const librosCollection = defineCollection({
  /*  tags: z.array(z.string()), */
 })
 });
+const librosCollection25 = defineCollection({
+  schema: z.object({
+  title: z.string(),
+  author: z.string(),
+  concorrente: z.string(),
+  body: z.string(),
+  cover: z.string().optional(),
+  alt: z.string(),
+  tag:z.array(z.string()),
+  monthRead: z.string(),
+  punti: z.number(),
+  yearRead: z.number(),
+ /*  tags: z.array(z.string()), */
+})
+});
 
 
 export const collections = {
   'concorrenti': concorrentiCollection,
   'libros': librosCollection,
+  'libros25': librosCollection25,
 }

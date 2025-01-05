@@ -3,7 +3,7 @@ nome: Unai
 username: unai
 alt: unai
 image: './img/unai.jpeg'
-punti: 37
+punti: 49
 borderColor: ''
 slug: 'unai'
 puntiEnero: 0
@@ -16,4 +16,6 @@ puntiLuglio: 0
 puntiAgosto: 0
 puntiSettembre: 0
 puntiOttobre: 20
+puntiNovembre: 0
+puntiDicembre: 12
 ---

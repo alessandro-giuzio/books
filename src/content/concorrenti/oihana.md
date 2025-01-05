@@ -3,7 +3,7 @@ nome: Oihana
 username: oihana
 alt: oihana
 image: './img/oihana.jpg'
-punti: 99
+punti: 109
 borderColor: ''
 slug: 'oihana'
 puntiEnero: 7
@@ -17,4 +17,5 @@ puntiAgosto: 26
 puntiSeptiembre: 12
 puntiOctubre: 5
 puntiNoviembre: 10
+puntiDiciembre: 10
 ---

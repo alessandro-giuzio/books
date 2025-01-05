@@ -3,7 +3,7 @@ nome: Asier
 username: asier
 alt: asier
 image: './img/asier.png'
-punti: 104
+punti: 109
 borderColor: ''
 slug: 'asier'
 puntiEnero: 20
@@ -17,4 +17,5 @@ puntiAgosto: 20
 puntiSeptiembre: 0
 puntiOctubre: 5
 puntiNoviembre: 10
+puntiDiciembre: 5
 ---
