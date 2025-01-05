@@ -8,7 +8,15 @@ const concorrentiCollection = defineCollection({
   alt: z.string(),
   image: image(),
   punti: z.number(),
-
+})
+});
+const concorrentiCollection25 = defineCollection({
+  schema: ({image}) => z.object({
+  nome: z.string(),
+  username: z.string(),
+  alt: z.string(),
+  image: image(),
+  punti: z.number(),
 })
 });
 
@@ -50,4 +58,5 @@ export const collections = {
   'concorrenti': concorrentiCollection,
   'libros': librosCollection,
   'libros25': librosCollection25,
+  'concorrenti25': concorrentiCollection25,
 }

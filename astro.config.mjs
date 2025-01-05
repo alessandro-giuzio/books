@@ -5,7 +5,9 @@ import vue from "@astrojs/vue";
 
 
 
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), alpinejs(), vue()]
+  integrations: [tailwind(), alpinejs(), vue()],
+
 });

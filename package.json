@@ -16,7 +16,6 @@
     "@astrojs/vue": "^5.0.4",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
-    "@supabase/supabase-js": "^2.47.10",
     "@types/alpinejs": "^3.13.11",
     "@vueuse/core": "^12.3.0",
     "alpinejs": "^3.14.8",
