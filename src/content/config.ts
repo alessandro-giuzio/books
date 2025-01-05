@@ -1,5 +1,6 @@
 import {z, defineCollection } from "astro:content";
 
+
 const concorrentiCollection = defineCollection({
   schema: ({image}) => z.object({
   nome: z.string(),
