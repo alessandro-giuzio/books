@@ -1,7 +1,9 @@
 [build]
   command = "npm run build"
-  publish = "dist" # Where Astro outputs the built site
+  publish = "dist"
+[functions]
+  directory = "netlify/functions"
 
-[[functions]]
-  schedule = "0 0 * * *" # Runs every day at midnight UTC
-  path = "/.netlify/functions/rebuild"
+[[scheduled_functions]]
+  schedule = "0 0 * * *"
+  path = "rebuild"
