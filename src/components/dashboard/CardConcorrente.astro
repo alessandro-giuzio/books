@@ -1,0 +1,56 @@
+---
+interface Props {
+  concorrente: {
+    image: {
+      src: string;
+
+      width: number;
+
+      height: number;
+
+      format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif';
+    };
+
+    nome: string;
+
+    username: string;
+
+    alt: string;
+
+    punti: number;
+  };
+
+  key: string;
+}
+const { concorrente } = Astro.props;
+---
+
+<div class='border border-basque-50 p-3 rounded-lg shadow-lg relative'>
+  <h3 class='font-bold text-basque-50'>{concorrente.nome}</h3>
+  <p>Points: {concorrente.punti}</p>
+
+  <div class='h-4 w-full bg-gray-200 mt-2 rounded-lg'>
+    <div
+      class={`progress-bar`}
+      style={{ '--target-width': `${concorrente.punti}px` }}>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes growWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: var(--target-width);
+    }
+  }
+
+  .progress-bar {
+    background-color: #4caf50;
+    height: 100%;
+    border-radius: 5px;
+    animation: growWidth 2s ease-out forwards;
+  }
+</style>
