@@ -26,15 +26,15 @@
       </div> -->
     </div>
     <ConcorrentiOnTv />
-    <div class="flex flex-col justify-center items-center gap-4">
+    <!-- <div class="flex flex-col justify-center items-center gap-4">
       <span class="text-sunsetGold">Sponsored by</span>
       <img :src="tivo.src" alt="Astro" class="w-24 h-24" />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import tivo from '../../assets/images/tivo.png';
+/* import tivo from '../../assets/images/tivo.png'; */
 import BookOfTheDay from './BookOfTheDay.vue';
 import ConcorrentiOnTv from './ConcorrentiOnTv.vue';
 

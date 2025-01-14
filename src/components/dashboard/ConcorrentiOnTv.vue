@@ -40,7 +40,7 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col justify-center items-center gap-4 relative">
-    <span class="text-sunsetGold text-lg font-bold">Concorrenti</span>
+    <span class="text-sunsetGold text-3xl font-bold">Lehiakideak</span>
 
     <!-- TV Image Container -->
     <div class="relative w-48 h-48">
@@ -48,9 +48,7 @@ onUnmounted(() => {
 
       <!-- Contestant Name on TV -->
       <div
-        class="absolute inset-0 flex justify-center items-center text-white text-xl font-bold bg-black/50">
-        <!-- loop concorrenti -->
-
+        class="absolute inset-0 flex justify-center items-center text-sunsetGold text-2xl font-bold bg-black/50">
         {{ concorrenti[currentIndex].name }}
       </div>
     </div>
