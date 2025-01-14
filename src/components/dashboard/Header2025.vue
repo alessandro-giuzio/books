@@ -25,7 +25,7 @@
         <span class="bg-white px-2 text-sm text-gray-500">Continue</span>
       </div> -->
     </div>
-    <ConcorrentiOnTv client:load />
+    <ConcorrentiOnTv />
     <div class="flex flex-col justify-center items-center gap-4">
       <span class="text-sunsetGold">Sponsored by</span>
       <img :src="tivo.src" alt="Astro" class="w-24 h-24" />

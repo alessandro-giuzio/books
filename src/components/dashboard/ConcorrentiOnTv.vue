@@ -9,21 +9,25 @@ const concorrenti = ref([
   { name: 'Luca' },
   { name: 'Irene' },
   { name: 'Unai' },
+  { name: 'Malen' },
+  { name: 'Oihana' },
 ]);
 
-// ✅ Reactive state for current concorrente
-const currentConcorrente = ref(concorrenti.value[0]);
+// ✅ Track the index instead of reassigning objects
+const currentIndex = ref(0);
 
 let intervalId: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
   console.log('✅ Vue Mounted: ConcorrentiOnTv is running inside Astro');
 
+  // Automatically change concorrenti every 3 seconds
   intervalId = setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * concorrenti.value.length);
-    currentConcorrente.value = { ...concorrenti.value[randomIndex] };
-
-    console.log('🎯 New concorrente:', currentConcorrente.value.name);
+    currentIndex.value = (currentIndex.value + 1) % concorrenti.value.length;
+    console.log(
+      '🎯 New concorrente:',
+      concorrenti.value[currentIndex.value].name
+    );
   }, 3000);
 });
 
@@ -45,7 +49,9 @@ onUnmounted(() => {
       <!-- Contestant Name on TV -->
       <div
         class="absolute inset-0 flex justify-center items-center text-white text-xl font-bold bg-black/50">
-        {{ currentConcorrente.name }}
+        <!-- loop concorrenti -->
+
+        {{ concorrenti[currentIndex].name }}
       </div>
     </div>
   </div>
