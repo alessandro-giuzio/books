@@ -39,8 +39,9 @@ const { concorrente } = Astro.props;
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.querySelector('.progress-bar').style.animation =
-              'growWidth 2s ease-out forwards';
+            (
+              entry.target.querySelector('.progress-bar') as HTMLElement
+            ).style.animation = 'growWidth 2s ease-out forwards';
           }
         });
       },
