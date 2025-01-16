@@ -1,41 +1,58 @@
 ---
+// Props interface as defined
 interface Props {
   concorrente: {
     image: {
       src: string;
-
       width: number;
-
       height: number;
-
       format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif';
     };
-
     nome: string;
-
     username: string;
-
     alt: string;
-
     punti: number;
   };
-
   key: string;
 }
+
 const { concorrente } = Astro.props;
 ---
 
-<div class='border border-basque-50 p-3 rounded-lg shadow-lg relative'>
+<div
+  class='concorrente-container border border-basque-50 p-3 rounded-lg shadow-lg relative'
+  data-id='concorrente-${concorrente.nome}'>
   <h3 class='font-bold text-basque-50'>{concorrente.nome}</h3>
   <p>Points: {concorrente.punti}</p>
 
   <div class='h-4 w-full bg-gray-200 mt-2 rounded-lg'>
     <div
-      class={`progress-bar`}
+      class='progress-bar'
       style={{ '--target-width': `${concorrente.punti}px` }}>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelector('.progress-bar').style.animation =
+              'growWidth 2s ease-out forwards';
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Triggers when 50% of the target is visible
+      }
+    );
+
+    const targets = document.querySelectorAll('.concorrente-container');
+    targets.forEach(target => observer.observe(target));
+  });
+</script>
 
 <style>
   @keyframes growWidth {
@@ -48,9 +65,10 @@ const { concorrente } = Astro.props;
   }
 
   .progress-bar {
-    background-color: #4caf50;
+    background-color: #4caf50; /* Dynamic color can be applied here if needed */
     height: 100%;
     border-radius: 5px;
-    animation: growWidth 2s ease-out forwards;
+    /* Animation moved to JS for conditional triggering */
+    max-width: calc(100vw - 30px);
   }
 </style>
