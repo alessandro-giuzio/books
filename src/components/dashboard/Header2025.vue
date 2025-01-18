@@ -45,6 +45,11 @@ const books = [
   { title: 'To Kill a Mockingbird', author: 'Harper Lee' },
   { title: 'Pride and Prejudice', author: 'Jane Austen' },
   { title: 'Moby-Dick', author: 'Herman Melville' },
+  { title: 'Euskaldunon Egunkaria', author: 'Various Authors' },
+  { title: 'Obabakoak', author: 'Bernardo Atxaga' },
+  { title: 'Gizona bere bakardadean', author: 'Bernardo Atxaga' },
+  { title: 'Soinujolearen semea', author: 'Bernardo Atxaga' },
+  { title: 'Kutsidazu bidea, Ixabel', author: 'Joxean Sagastizabal' },
 ];
 
 // Select a book at build time (using the day of the month)

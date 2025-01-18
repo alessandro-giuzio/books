@@ -57,7 +57,7 @@ function getColor(points: number) {
 
       <!-- Header with Responsive Flexbox -->
       <header
-        class='bg-basque-30 shadow-xl rounded-lg p-4 sm:p-6 flex items-center justify-between'>
+        class='bg-basque-30 shadow-xl rounded-lg px-4 sm:p-6 flex items-center justify-between py-6'>
         <Image
           src={image}
           alt='Profile Picture'
@@ -125,6 +125,9 @@ function getColor(points: number) {
   </div>
 </Layout2025>
 <style>
+  header h2 {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
   @keyframes growWidth {
     from {
       width: 0;
