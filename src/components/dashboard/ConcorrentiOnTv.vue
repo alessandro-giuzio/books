@@ -24,10 +24,7 @@ onMounted(() => {
   // Automatically change concorrenti every 3 seconds
   intervalId = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % concorrenti.value.length;
-    console.log(
-      '🎯 New concorrente:',
-      concorrenti.value[currentIndex.value].name
-    );
+
   }, 3000);
 });
 

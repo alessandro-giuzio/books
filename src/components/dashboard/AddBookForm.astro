@@ -1,56 +1,153 @@
-<!-- Form with responsive design -->
+<!-- Replace or integrate into your existing form markup -->
 <form
   id='addBookForm'
+  name='books-form'
   method='POST'
   data-netlify='true'
-  name='books-form'
-  class='w-full max-w-lg px-4 py-2 mx-auto border-2 border-[var(--text)] rounded-md'>
-  <div class='mb-4'>
-    <span class='text-xl'>Add new Book</span>
-  </div>
-  <div class='mb-4'>
-    <label for='title' class='block text-sm font-medium text-[var(--text)]'
-      >Book Title:</label
+  netlify-honeypot='bot-field'
+  class='w-full max-w-lg px-4 py-4 mx-auto border-2 border-[var(--text)] rounded-md'>
+  <!-- Netlify Hidden Form Name + Honeypot -->
+  <input type='hidden' name='form-name' value='books-form' />
+  <p class='hidden'>
+    <label
+      >Don’t fill this out if you're human: <input name='bot-field' /></label
     >
+  </p>
+
+  <!-- Heading -->
+  <div class='mb-4'>
+    <h2 class='text-xl font-semibold text-[var(--text)]'>Add New Book</h2>
+  </div>
+
+  <!-- Title -->
+  <div class='mb-4'>
+    <label for='title' class='block text-sm font-medium text-[var(--text)]'>
+      Book Title:
+    </label>
     <input
       type='text'
       id='title'
       name='title'
       required
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+      placeholder='Enter the book title'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
+             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
     />
   </div>
 
+  <!-- Author -->
   <div class='mb-4'>
-    <label for='author' class='block text-sm font-medium text-[var(--text)'
-      >Author:</label
-    >
+    <label for='author' class='block text-sm font-medium text-[var(--text)]'>
+      Author:
+    </label>
     <input
       type='text'
       id='author'
       name='author'
       required
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+      placeholder="Enter the author's name"
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
+             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
     />
   </div>
-
+  <!-- concorrente -->
   <div class='mb-4'>
-    <label for='genre' class='block text-sm font-medium text-[var(--text)'
-      >Genre:</label
-    >
+    <label
+      for='concorrente'
+      class='block text-sm font-medium text-[var(--text)]'>
+      Choose Competitor
+    </label>
     <select
-      id='genre'
-      name='genre'
-      class='mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'>
-      <option value='fiction'>Fiction</option>
-      <option value='non-fiction'>Non-Fiction</option>
-      <!-- Additional options -->
+      name='concorrente'
+      id='concorrente'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
+             bg-white shadow-sm focus:outline-none focus:ring-indigo-500
+             focus:border-indigo-500 sm:text-sm'>
+      <option value='alessandro'>Alessandro</option>
+      <option value='asier'>Asier</option>
+      <option value='luca'>Luca</option>
+      <option value='amaia'>Amaia</option>
+      <option value='irene'>Irene</option>
+      <option value='unai'>Unai</option>
+      <option value='malen'>Malen</option>
+      <!-- Add more options as needed -->
     </select>
   </div>
 
+  <!-- Is it a Book or Comic? (Radio buttons) -->
+  <div class='mb-4'>
+    <span class='block text-sm font-medium text-[var(--text)] mb-1'>
+      Type:
+    </span>
+    <label class='inline-flex items-center mr-4'>
+      <input type='radio' name='type' value='book' checked class='form-radio' />
+      <span class='ml-1'>Book</span>
+    </label>
+    <label class='inline-flex items-center'>
+      <input type='radio' name='type' value='comic' class='form-radio' />
+      <span class='ml-1'>Comic</span>
+    </label>
+  </div>
+
+  <!-- Malen? (Checkbox) -->
+  <!--   <div class='mb-4 flex items-center space-x-2'>
+    <input
+      type='checkbox'
+      id='malen'
+      name='malen'
+      class='form-checkbox h-4 w-4'
+    />
+    <label for='malen' class='text-sm font-medium text-[var(--text)]'>
+      Read from Malen?
+    </label>
+  </div> -->
+
+  <!-- Number of Pages -->
+  <div class='mb-4'>
+    <label for='pages' class='block text-sm font-medium text-[var(--text)]'>
+      Number of Pages:
+    </label>
+    <input
+      type='number'
+      id='pages'
+      name='pages'
+      min='0'
+      step='1'
+      placeholder='e.g., 350'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300
+             rounded-md shadow-sm focus:outline-none focus:ring-indigo-500
+             focus:border-indigo-500 sm:text-sm'
+    />
+  </div>
+
+  <!-- Hidden field to capture final points (for Netlify) -->
+  <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> -->
+
+  <!-- Display the calculated points to the user in a read-only field -->
+  <!-- <div class='mb-4'>
+    <label
+      for='calculatedPoints'
+      class='block text-sm font-medium text-[var(--text)]'>
+      Calculated Points:
+    </label>
+    <input
+      type='text'
+      id='calculatedPoints'
+      readonly
+      class='mt-1 block w-full px-3 py-2 border border-gray-300
+             bg-gray-100 cursor-not-allowed rounded-md shadow-sm
+             focus:outline-none sm:text-sm'
+      value='0'
+    />
+  </div> -->
+
+  <!-- Submit Button -->
   <button
     id='addBook'
-    class='w-full bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 text-[var(--text) py-2 rounded-lg font-semibold transition-all'>
+    type='submit'
+    class='w-full bg-yellow-500 hover:bg-yellow-600
+           focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50
+           text-[var(--text)] py-2 rounded-lg font-semibold transition-all'>
     Send it!
   </button>
 </form>
