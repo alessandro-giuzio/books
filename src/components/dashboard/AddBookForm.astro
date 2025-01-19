@@ -17,20 +17,22 @@
 
   <!-- Heading -->
   <div class='mb-4'>
-    <h2 class='text-xl font-semibold text-[var(--text)]'>Add New Book</h2>
+    <h2 class='text-xl font-semibold text-[var(--text)]'>
+      Gehitu liburu berria
+    </h2>
   </div>
 
   <!-- Title -->
   <div class='mb-4'>
     <label for='title' class='block text-sm font-medium text-[var(--text)]'>
-      Book Title:
+      Liburuaren Izenburua:
     </label>
     <input
       type='text'
       id='title'
       name='title'
       required
-      placeholder='Enter the book title'
+      placeholder='Sartu liburuaren izenburua'
       class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
              focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
     />
@@ -39,14 +41,14 @@
   <!-- Author -->
   <div class='mb-4'>
     <label for='author' class='block text-sm font-medium text-[var(--text)]'>
-      Author:
+      Idazlea:
     </label>
     <input
       type='text'
       id='author'
       name='author'
       required
-      placeholder="Enter the author's name"
+      placeholder='Sartu egilearen izena'
       class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
              focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
     />
@@ -56,7 +58,7 @@
     <label
       for='concorrente'
       class='block text-sm font-medium text-[var(--text)]'>
-      Choose Competitor
+      Aukeratu lehiakidea
     </label>
     <select
       name='concorrente'
@@ -78,15 +80,15 @@
   <!-- Is it a Book or Comic? (Radio buttons) -->
   <div class='mb-4'>
     <span class='block text-sm font-medium text-[var(--text)] mb-1'>
-      Type:
+      Mota:
     </span>
     <label class='inline-flex items-center mr-4'>
       <input type='radio' name='type' value='book' checked class='form-radio' />
-      <span class='ml-1'>Book</span>
+      <span class='ml-1'>Liburua</span>
     </label>
     <label class='inline-flex items-center'>
       <input type='radio' name='type' value='comic' class='form-radio' />
-      <span class='ml-1'>Comic</span>
+      <span class='ml-1'>Komikia</span>
     </label>
   </div>
 
@@ -106,7 +108,7 @@
   <!-- Number of Pages -->
   <div class='mb-4'>
     <label for='pages' class='block text-sm font-medium text-[var(--text)]'>
-      Number of Pages:
+      Orrialde kopurua:
     </label>
     <input
       type='number'
@@ -149,6 +151,6 @@
     class='w-full bg-yellow-500 hover:bg-yellow-600
            focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50
            text-[var(--text)] py-2 rounded-lg font-semibold transition-all'>
-    Send it!
+    Bidali!
   </button>
 </form>
