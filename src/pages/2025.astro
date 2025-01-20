@@ -7,6 +7,7 @@ import image from '../assets/images/books.svg';
 import { getCollection } from 'astro:content';
 import CardConcorrente from 'astro/components/dashboard/CardConcorrente.astro';
 import Header2025 from 'astro/components/dashboard/Header2025.vue';
+import NavBar from '../components/dashboard/NavBar.astro';
 
 const concorrenti = await getCollection('concorrenti25');
 
@@ -20,6 +21,7 @@ function getColor(points: number) {
 ---
 
 <Layout2025>
+  <NavBar />
   <div class='min-h-screen flex bg-basque-40'>
     <!-- Responsive Sidebar: Adjust width on smaller screens -->
     <div
