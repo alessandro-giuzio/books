@@ -1,5 +1,5 @@
 ---
-interface Props {
+/* interface Props {
   concorrente: {
     image: {
       src: string;
@@ -21,18 +21,37 @@ interface Props {
   };
 
   key: string;
-}
+} */
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+type Props = {
+  concorrente: CollectionEntry<'concorrenti25'>;
+};
 const { concorrente } = Astro.props;
 ---
 
-<div class='border border-basque-50 p-3 rounded-lg shadow-lg relative'>
-  <h3 class='font-bold text-basque-50'>{concorrente.nome}</h3>
-  <p>Points: {concorrente.punti}</p>
-
-  <div class='h-4 w-full bg-gray-200 mt-2 rounded-lg'>
+<div
+  class='border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row'>
+  <Image
+    src={concorrente.data.image}
+    alt={concorrente.data.alt}
+    class='rounded-full w-20 h-20 object-cover border-2 border-basque-50 shadow-sm mx-auto aspect-auto'
+    style={{ aspectRatio: '1 / 1' }}
+    format='webp'
+  />
+  <div
+    class='flex-1 flex flex-col items-center md:items-start text-center md:text-left'>
+    <h3 class='font-bold text-basque-50 text-xl'>{concorrente.data.nome}</h3>
+    <p class='text-basque-50 text-sm'>
+      Points: <span class='font-semibold'>{concorrente.data.punti}</span>
+    </p>
+    <!-- Progress Bar -->
     <div
-      class={`progress-bar`}
-      style={{ '--target-width': `${concorrente.punti}px` }}>
+      class='h-4 w-full min-w-[150px] bg-gray-200 mt-3 rounded-lg overflow-hidden'>
+      <div
+        class={`progress-bar`}
+        style={{ '--target-width': `${concorrente.data.punti}px` }}>
+      </div>
     </div>
   </div>
 </div>

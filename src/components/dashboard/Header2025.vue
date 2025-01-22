@@ -1,6 +1,7 @@
 <template>
   <div
     class="bg-black border-4 border-white py-24 sm:py-32 mx-auto outline-[10px] outline-black mb-2 flex flex-col gap-8">
+    <!-- how to render image in vue -->
     <div class="mx-auto max-w-2xl text-center">
       <BookOfTheDay :title="todayBook.title" :author="todayBook.author" />
       <!--   <h1

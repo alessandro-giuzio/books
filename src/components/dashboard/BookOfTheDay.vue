@@ -1,6 +1,6 @@
 <template>
   <h2
-    class="text-6xl font-semibold uppercase text-center tracking-tight text-basque-40 sm:text-7xl">
+    class="text-5xl font-semibold uppercase text-center tracking-tight text-basque-40">
     📖 Eguneko liburua
   </h2>
   <!-- <p

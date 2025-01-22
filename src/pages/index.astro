@@ -74,23 +74,29 @@ function getColor(points: number) {
       <!-- Concorrente Details with Responsive Grid -->
       <main class='mt-6'>
         <div class='bg-gray-50 rounded-lg shadow-lg p-6'>
-          <h3 class='text-2xl font-semibold mb-4 text-gray-800'>
-            Lehiakidearen Informazioa
-          </h3>
+          <h4 class='text-2xl font-semibold mb-4 text-gray-800'>
+            🕵️‍♂️ Lehiakidearen Informazioa <span class='text-sm text-red-600'>
+              (Konfidentziala!)</span
+            >
+          </h4>
 
           <!-- Responsive Grid for Concorrente Info -->
-          <div class='grid grid-cols-1 gap-4 p-4'>
+          <div class='grid grid-cols-1 gap-4'>
             {
               concorrenti.map(concorrente => (
-                <CardConcorrente
-                  concorrente={concorrente.data}
-                  key={concorrente.id}
-                />
+                <CardConcorrente concorrente={concorrente} />
               ))
             }
           </div>
           <div
-            class='grid grid-cols-1 md:grid-cols-2 gap-6 border-2 border-basque-50'>
+            class='grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg rounded-lg'>
+            <div
+              class='bg-gradient-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
+              <h4 class='text-gray-700 text-xl font-medium'>
+                Irakurritako Liburuak
+              </h4>
+              <p class='text-3xl font-bold text-basque-20 mt-2'>55</p>
+            </div>
             <div
               class='bg-gradient-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
               <h4 class='text-gray-700 text-xl font-medium'>

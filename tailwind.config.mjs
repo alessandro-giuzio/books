@@ -118,12 +118,18 @@ export default {
           from: { height: 'var(--radix-collapsible-content-height)' },
           to: { height: 0 },
         },
+        fill: {
+          '0%': { width: '0%' },
+          '100%': { width: 'var(--progress-width)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.2s ease-in-out",
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
+          "fill": 'fill 1.5s ease-in-out forwards',
+
       },
     },
   },
