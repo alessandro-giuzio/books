@@ -31,7 +31,8 @@
     <img
       :src="books"
       alt="books in space"
-      class="rounded-lg shadow-lg mx-auto w-full" />
+      class="rounded-lg shadow-lg mx-auto w-full"
+      loading="lazy" />
   </picture>
   <h2
     class="text-5xl font-semibold uppercase text-center tracking-tight text-basque-40">
