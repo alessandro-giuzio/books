@@ -1,13 +1,42 @@
 <template>
+  <picture>
+    <!-- Smallest image for small devices -->
+    <source
+      :srcset="bookImage320.src"
+      media="(max-width: 480px)"
+      alt="books in space"
+      class="rounded-lg shadow-lg mx-auto w-full" />
+
+    <!-- Medium image for tablets -->
+    <source
+      :srcset="bookImage640.src"
+      media="(max-width: 768px)"
+      alt="books in space"
+      class="rounded-lg shadow-lg mx-auto w-full" />
+
+    <!-- Larger image for desktops -->
+    <source
+      :srcset="bookImage1200.src"
+      media="(max-width: 1440px)"
+      alt="books in space"
+      class="rounded-lg shadow-lg mx-auto w-full" />
+
+    <!-- Largest image for large desktops -->
+    <source
+      :srcset="bookImage1920.src"
+      media="(min-width: 1441px)"
+      alt="books in space"
+      class="rounded-lg shadow-lg mx-auto w-full" />
+    <!-- Fallback -->
+    <img
+      :src="books"
+      alt="books in space"
+      class="rounded-lg shadow-lg mx-auto w-full" />
+  </picture>
   <h2
     class="text-5xl font-semibold uppercase text-center tracking-tight text-basque-40">
-    📖 Eguneko liburua
+    Eguneko liburua
   </h2>
-  <!-- <p
-    class="mt-8 text-pretty text-center text-lg font-medium text-basque-40 sm:text-xl/8">
-    Today's featured book:
-  </p> -->
-
   <div class="mt-6 p-4 border border-gray-800 rounded bg-gray-800">
     <h3 class="text-2xl font-bold shadow-xl text-basque-40 mb-2">
       {{ title }}
@@ -17,6 +46,12 @@
 </template>
 
 <script setup lang="ts">
+import bookImage from '../../assets/images/BooksInSpace.jpg';
+import bookImage320 from '../../assets/images/BooksInSpace-320.webp';
+import bookImage640 from '../../assets/images/BooksInSpace-640.webp';
+import bookImage1200 from '../../assets/images/BooksInSpace-1200.webp';
+import bookImage1920 from '../../assets/images/BooksInSpace-1920.webp';
+const books = bookImage.src;
 const props = defineProps<{
   title: string;
   author: string;
