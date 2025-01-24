@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CardLibro2025 from '../../components/dashboard/CardLibro2025.astro';
+type Props = {
+  libros: CollectionEntry<'libros25'>[];
+};
+const { libros } = Astro.props;
+// Shuffle the libros order
+const shuffledLibros = libros.sort(() => Math.random() - 0.5);
+---
+
+<div class='libros'>
+  {shuffledLibros.map(libro => <CardLibro2025 libro={libro} />)}
+</div>
+<style>
+  .libros {
+    font-size: 0.875rem;
+    margin-bottom: calc(1em + 2vw);
+    line-height: 16.8px;
+    display: grid;
+    gap: 1.5em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+</style>
