@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout2025 from '../../layouts/Layout2025.astro';
 import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
+import Layout2025 from '../../layouts/Layout2025.astro';
+import NavLiburuak2025 from '@components/dashboard/NavLiburuak2025.vue';
 
 const todosLosLibros2025 = await getCollection('libros25');
 const uniqueLibros25 = todosLosLibros2025.filter(
@@ -15,7 +16,7 @@ const uniqueLibros25 = todosLosLibros2025.filter(
 ---
 
 <Layout2025 title='liburuak'>
-  <div class='min-h-screen bg-basque-40 overflow-x-hidden p-6'>
+  <div class='min-h-screen bg-basque-10 overflow-x-hidden p-6'>
     <div class='books'>
       <LibrosLista2025 libros={uniqueLibros25} />
     </div>

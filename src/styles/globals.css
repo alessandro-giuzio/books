@@ -3,17 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(20px);
-    }
-  }
   :root {
-    --stripes-color: black;
-    --stripes-angle: -45deg;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -44,6 +34,16 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --stripes-color: black;
+    --stripes-angle: -45deg;
+
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
   }
 
   .dark {
@@ -76,17 +76,25 @@
 
     --ring: 212.7 26.8% 83.9%;
   }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(20px);
+    }
+  }
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
-
+} */
 @layer components {
   .stripes {
     position: relative;

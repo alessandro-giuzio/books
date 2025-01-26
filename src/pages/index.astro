@@ -7,8 +7,55 @@ import image from '../assets/images/books.svg';
 import { getCollection } from 'astro:content';
 import CardConcorrente from 'astro/components/dashboard/CardConcorrente.astro';
 import Header2025 from 'astro/components/dashboard/Header2025.vue';
+import '@styles/globals.css';
 
 const concorrenti = await getCollection('concorrenti25');
+const todosLosLibros2025 = await getCollection('libros25');
+const uniqueLibros25 = todosLosLibros2025.filter(
+  (libro, index, self) =>
+    index ===
+    self.findIndex(
+      t =>
+        t.data.title === libro.data.title && t.data.author === libro.data.author
+    )
+);
+let countLibros = uniqueLibros25.length;
+console.log(countLibros);
+interface Concorrente {
+  id: number;
+  name: string;
+  points: number;
+}
+export interface Props {
+  concorrenti: Concorrente[];
+}
+
+const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
+
+const monthsInSpanish = [
+  'enero',
+  'febrero',
+  'marzo',
+  'abril',
+  'mayo',
+  'junio',
+  'julio',
+  'agosto',
+  'septiembre',
+  'octubre',
+  'noviembre',
+  'diciembre',
+];
+
+const currentMonthIndex = new Date().getMonth(); // 0-based index
+const currentMonthName = monthsInSpanish[currentMonthIndex];
+
+const booksThisMonth = todosLosLibros2025.filter(
+  book => book.data.monthRead === currentMonthName
+);
+
+const booksThisMonthCount = booksThisMonth.length;
+console.log('enero::', booksThisMonthCount);
 
 // Function to determine color based on points (customize as needed)
 function getColor(points: number) {
@@ -24,10 +71,13 @@ function getColor(points: number) {
     <!-- Responsive Sidebar: Adjust width on smaller screens -->
     <div
       class='hidden md:block lg:block w-64 bg-black text-gray-100 flex-col justify-between'>
-      <div class='p-6'>
-        <h1 class='text-2xl font-bold text-basque-10 tracking-wide'>
+      <div class='p-0'>
+        <h1 class='text-2xl font-bold text-basque-10 tracking-wide px-1'>
           Liburu Lehiaket
         </h1>
+        <div class='hidden md:block'>
+          <AddBookForm />
+        </div>
         <nav class='mt-8 space-y-4'>
           <a
             href='#'
@@ -46,13 +96,10 @@ function getColor(points: number) {
           </a>
         </nav>
       </div>
-      <div class='p-6 hidden md:block'>
-        <AddBookForm />
-      </div>
     </div>
 
     <!-- Main Content Area -->
-    <div class='flex-1 px-6 overflow-y-auto bg-black'>
+    <div class='flex-1 px-0 overflow-y-auto bg-black'>
       <Header2025 client:load />
 
       <!-- Header with Responsive Flexbox -->
@@ -83,7 +130,7 @@ function getColor(points: number) {
           <!-- Responsive Grid for Concorrente Info -->
           <div class='grid grid-cols-1 gap-4'>
             {
-              concorrenti.map(concorrente => (
+              shuffledConcorrenti.map(concorrente => (
                 <CardConcorrente concorrente={concorrente} />
               ))
             }
@@ -95,14 +142,18 @@ function getColor(points: number) {
               <h4 class='text-gray-700 text-xl font-medium'>
                 Irakurritako Liburuak
               </h4>
-              <p class='text-3xl font-bold text-basque-20 mt-2'>55</p>
+              <p class='text-3xl font-bold text-basque-20 mt-2'>
+                {countLibros}
+              </p>
             </div>
             <div
               class='bg-gradient-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
               <h4 class='text-gray-700 text-xl font-medium'>
-                Irakurritako Liburuak
+                Hilabete honetan irakurritako liburuak
               </h4>
-              <p class='text-3xl font-bold text-basque-20 mt-2'>55</p>
+              <p class='text-3xl font-bold text-basque-20 mt-2'>
+                {booksThisMonthCount}
+              </p>
             </div>
             <div
               class='bg-gradient-to-tr from-pink-100 to-pink-200 p-4 sm:p-6 rounded-lg shadow-md md:col-span-2 hover:scale-105 transition-transform'>
