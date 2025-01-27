@@ -45,11 +45,11 @@ const librosCollection25 = defineCollection({
   body: z.string(),
   cover: z.string().optional(),
   alt: z.string(),
-  tag:z.array(z.string()),
+  /* tag:z.array(z.string()), */
   monthRead: z.string(),
   punti: z.number(),
   yearRead: z.number(),
- /*  tags: z.array(z.string()), */
+  tags: z.array(z.string()),
 })
 });
 

@@ -5,9 +5,9 @@ body: 'Cuando Penny Dahl contacta con Finders Keepers para que la ayuden a encon
 cover: 'https://m.media-amazon.com/images/I/A1z5fc2+vsL._SY466_.jpg'
 alt: 'Holly: a novel'
 monthRead: enero
-tag: ['Thriller']
+tags: ['Comedy']
 concorrente: 'alessandro'
-slug: 'holly-enero'
+slug: 'holly-enero-1'
 punti: 9
 yearRead: 2025
 type: libro

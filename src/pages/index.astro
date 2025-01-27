@@ -7,6 +7,7 @@ import CardConcorrente from 'astro/components/dashboard/CardConcorrente.astro';
 import Header2025 from 'astro/components/dashboard/Header2025.vue';
 import BookCount from 'astro/components/dashboard/BookCount.astro';
 import BookYearCount from 'astro/components/dashboard/BookYearCount.astro';
+import IconsTags2025 from 'astro/components/dashboard/IconsTags2025.astro';
 import '@styles/globals.css';
 
 const currentPath = Astro.url.pathname;
@@ -99,7 +100,8 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
             class='grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg rounded-lg'>
             <BookCount />
             <BookYearCount />
-            <div
+            <IconsTags2025 />
+            <!--  <div
               class='bg-gradient-to-tr from-pink-100 to-pink-200 p-4 sm:p-6 rounded-lg shadow-md md:col-span-2 hover:scale-105 transition-transform'>
               <h4 class='text-gray-700 text-lg sm:text-xl font-medium'>
                 Genero Kuttunak
@@ -107,15 +109,9 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
               <ul
                 class='flex justify-center space-x-2 sm:space-x-4 mt-2 sm:mt-4'>
                 top 3
-                <!--  {
-                topThreeTags.map((tag: string) => (
-                  <li class='bg-pink-300 text-pink-900 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm'>
-                    {tag}
-                  </li>
-                ))
-              } -->
+
               </ul>
-            </div>
+            </div> -->
             <div class='p-6 sm:block md:hidden'>
               <AddBookForm />
             </div>
