@@ -43,7 +43,7 @@ export default {
         softPear: '#f8ffe5',
         tropicalSky:'#05bcff',
         bubblegumBlast:'#ff05bc',
-        background: '#1E2237',
+        backgrounds: '#1E2237',
         borderGolden: '#F0A000',
         borderSilver: '#C0C0C0',
         borderBronze: '#CD7F32',

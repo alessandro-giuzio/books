@@ -1,3 +1,12 @@
+---
+const currentPath = Astro.url.pathname;
+function activeLink(path: string) {
+  return currentPath === path
+    ? 'bg-basque-10 text-white font-semibold uppercase'
+    : '';
+}
+---
+
 <nav class='bg-gray-800 overflow-x-hidden'>
   <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
     <div class='flex h-16 items-center justify-center'>
@@ -11,21 +20,21 @@
         <li>
           <a
             href='/'
-            class='text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md'>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/')}`}>
             Home
           </a>
         </li>
         <li>
           <a
             href='/liburuak'
-            class='text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md'>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/liburuak')}`}>
             Liburuak
           </a>
         </li>
         <li>
           <a
             href='/2024'
-            class='text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md'>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/2024')}`}>
             2024
           </a>
         </li>

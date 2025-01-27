@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+
+let countLibros24 = 0;
+let countBooksFromYear = 0;
+
+try {
+  // Fetch books
+  const todosLosLibros2024 = await getCollection('libros');
+
+  // Filter unique books
+  const uniqueLibros24 = todosLosLibros2024.filter(
+    (libro, index, self) =>
+      index ===
+      self.findIndex(
+        t =>
+          t.data.title === libro.data.title &&
+          t.data.author === libro.data.author
+      )
+  );
+  countLibros24 = uniqueLibros24.length;
+
+  const todosLosLibros2025 = await getCollection('libros25');
+  const yearRead = 2025; // Change this to the desired year
+  const booksFromYear = todosLosLibros2025.filter(
+    book => book.data.yearRead === yearRead
+  );
+
+  // Count the books
+  countBooksFromYear = booksFromYear.length;
+  console.log(`Books read in ${yearRead}:`, countBooksFromYear);
+} catch (error) {
+  console.error('Error fetching or processing books:', error);
+}
+// compare the books read in 2024 and 2025 if the number is less make the number red
+const booksThisYearCountColor =
+  countBooksFromYear < countLibros24 ? 'text-red-500' : 'text-basque-20';
+---
+
+<div
+  class='bg-gradient-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md hover:scale-105 transition-transform flex flex-col gap-4'>
+  <h4 class='text-gray-700 text-xl font-medium text-center'>
+    Aurten irakurritako liburuak
+  </h4>
+  <div class='flex flex-col items-center space-y-6'>
+    <!-- 2025 Books Count -->
+    <div class='flex flex-col items-center'>
+      <p class={`text-5xl font-extrabold ${booksThisYearCountColor}`}>
+        {countBooksFromYear}
+      </p>
+      <p class='text-sm text-gray-600 mt-1 text-center'>
+        2025ean irakurritako liburuak
+      </p>
+    </div>
+    <!-- 2024 Books Count -->
+    <div class='flex flex-col items-center'>
+      <p class='text-5xl font-extrabold text-backgrounds'>
+        {countLibros24}
+      </p>
+      <p class='text-sm text-gray-600 mt-1 text-center'>
+        2024ean irakurritako liburuak
+      </p>
+    </div>
+  </div>
+</div>
