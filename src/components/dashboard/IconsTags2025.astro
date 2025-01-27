@@ -11,9 +11,7 @@ const tagCounts = tags.reduce((acc: { [key: string]: number }, tag: string) => {
 }, {});
 // get unique tags
 const uniqueTags = [...new Set(tags)];
-// Debug the tag counts
-console.log('Tag Counts:', tagCounts);
-console.log('Unique Tags:', uniqueTags);
+
 // Shuffle and pick top 4 tags
 const shuffledTags = Object.entries(tagCounts)
   .sort(() => Math.random() - 0.5)

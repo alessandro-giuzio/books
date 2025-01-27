@@ -1,27 +1,4 @@
 ---
-/* interface Props {
-  concorrente: {
-    image: {
-      src: string;
-
-      width: number;
-
-      height: number;
-
-      format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif';
-    };
-
-    nome: string;
-
-    username: string;
-
-    alt: string;
-
-    punti: number;
-  };
-
-  key: string;
-} */
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 type Props = {
@@ -31,7 +8,7 @@ const { concorrente } = Astro.props;
 ---
 
 <div
-  class='border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row'>
+  class='border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row bg-white'>
   <Image
     src={concorrente.data.image}
     alt={concorrente.data.alt}
@@ -73,3 +50,23 @@ const { concorrente } = Astro.props;
     animation: growWidth 2s ease-out forwards;
   }
 </style>
+
+<script>
+  // Intersection Observer to trigger animation
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-progress'); // Add the animation class
+          observer.unobserve(entry.target); // Stop observing once triggered
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  // Attach observer to all progress bars
+  document.querySelectorAll('.progress-bar').forEach(bar => {
+    observer.observe(bar);
+  });
+</script>
