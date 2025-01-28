@@ -64,9 +64,9 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
       <Header2025 client:load />
 
       <!-- Header with Responsive Flexbox -->
-      <header
-        class='bg-basque-10 shadow-xl rounded-lg px-4 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'>
-        <!-- <Image
+      <!--  <header
+        class='bg-basque-10 shadow-xl rounded-lg px-4 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'> -->
+      <!-- <Image
           src={image}
           alt='Profile Picture'
           class='rounded-full'
@@ -74,22 +74,26 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
           height='56'
           format='webp'
         /> -->
-        <!--   <h2 class='text-2xl sm:text-3xl font-semi text-gray-800'>
+      <!--   <h2 class='text-2xl sm:text-3xl font-semi text-gray-800'>
           Lehiakidearen Irakurketa Aurrerapena
         </h2> -->
-      </header>
+      <!--   </header> -->
 
       <!-- Concorrente Details with Responsive Grid -->
       <main class='mt-6'>
         <div class='bg-black rounded-t-lg shadow-lg p-6 flex flex-col gap-8'>
-          <h4 class='text-2xl font-semibold mb-4 text-gray-100'>
-            🕵️‍♂️ Lehiakidearen Informazioa <span class='text-sm text-red-600'>
-              (Konfidentziala!)</span
-            >
-          </h4>
+          <header
+            class='bg-basque-10 shadow-xl rounded-lg px-1 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'>
+            <h4 class='text-xl md:text-3xl font-semibold text-white shadow-xl'>
+              🕵️‍♂️ Lehiakidearen Informazioa <span
+                class='text-lg text-red-500 shadow-xl'>
+                (Konfidentziala!)</span
+              >
+            </h4>
+          </header>
 
           <!-- Responsive Grid for Concorrente Info -->
-          <div class='grid grid-cols-1 gap-4'>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
             {
               shuffledConcorrenti.map(concorrente => (
                 <CardConcorrente concorrente={concorrente} />

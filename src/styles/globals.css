@@ -127,7 +127,7 @@
 
 @layer utilities {
   .stripes-white {
-    --stripes-color: white;
+    --stripes-color: #13004e;
   }
   .stripes-reverse {
     --stripes-angle: 45deg;
