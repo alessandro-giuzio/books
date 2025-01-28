@@ -1,0 +1,100 @@
+---
+import Layout2025 from '../layouts/Layout2025.astro';
+import { Image } from 'astro:assets';
+import cassetta1 from '../assets/images/cassette/cassette-1.svg';
+import cassetta2 from '../assets/images/cassette/cassette-2.svg';
+import cassetta3 from '../assets/images/cassette/cassette-3.svg';
+import cassetta4 from '../assets/images/cassette/cassette-4.svg';
+import cassetta5 from '../assets/images/cassette/cassette-5.svg';
+import Bluesky from '../assets/images/BlueskyLogo.svg';
+import Email from '../assets/images/EmailSend.svg';
+import ArrowDown from '../assets/images/arrow-down-red.svg';
+---
+
+<Layout2025 title='kontaktua'>
+  <div
+    class='min-h-[calc(100vh-200px)] bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-800'>
+    <!-- Main Section -->
+    <section class='max-w-5xl mx-auto py-16 px-6'>
+      <!-- Funny Intro -->
+      <div class='text-center mb-12'>
+        <h1 class='text-4xl md:text-5xl font-extrabold text-gray-900 mb-4'>
+          Formas divertidas de contactarme
+        </h1>
+        <div class='flex gap-1 flex-wrap items-center justify-center'>
+          <Image src={cassetta1} alt='Cassette Tape' class='w-16 h-16' />
+          <Image src={cassetta2} alt='Cassette Tape' class='w-16 h-16' />
+          <Image src={cassetta3} alt='Cassette Tape' class='w-16 h-16' />
+          <Image src={cassetta4} alt='Cassette Tape' class='w-16 h-16' />
+          <!--  <Image src={cassetta5} alt='Cassette Tape' class='w-16 h-16' /> -->
+        </div>
+        <p class='text-lg md:text-xl text-gray-600'>
+          Sin formularios aburridos. Aquí tienes varias formas de ponerte en
+          contacto conmigo.
+          <Image src={ArrowDown} alt='Arrow Down' class='w-16 h-16 mx-auto' />
+        </p>
+      </div>
+
+      <!-- Contact Options -->
+      <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <!-- Email Card -->
+        <div
+          class='bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform'>
+          <Image src={Email} alt='Email Send' class='w-16 h-16 mx-auto mb-4' />
+
+          <img
+            src='https://cdn-icons-png.flaticon.com/512/732/732200.png'
+            alt='Icono de correo'
+            class='w-16 h-16 mx-auto mb-4'
+          />
+          <h3 class='text-xl font-bold'>Correo Electrónico</h3>
+          <p class='text-gray-600'>
+            No olvides escribir un asunto interesante.
+          </p>
+          <a
+            href='mailto:hola@agencyga.es'
+            class='block mt-4 text-green-600 hover:underline'>
+            hola@agencyga.es
+          </a>
+        </div>
+
+        <!-- Phone Card -->
+        <div
+          class='bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform'>
+          <img
+            src='https://cdn-icons-png.flaticon.com/512/455/455705.png'
+            alt='Icono de teléfono'
+            class='w-16 h-16 mx-auto mb-4'
+          />
+          <h3 class='text-xl font-bold'>Teléfono</h3>
+          <p class='text-gray-600'>Llámame si prefieres algo más clásico.</p>
+          <a
+            href='tel:+34678518892'
+            class='block mt-4 text-green-600 hover:underline'>
+            +34 678 518 892
+          </a>
+        </div>
+
+        <!-- Social Media Card -->
+        <div
+          class='bg-white shadow-lg rounded-lg p-6 text-center hover:scale-105 transition-transform'>
+          <Image
+            src={Bluesky}
+            alt='Bluesky Logo'
+            class='w-16 h-16 mx-auto mb-4'
+          />
+
+          <h3 class='text-xl font-bold'>Redes Sociales</h3>
+          <p class='text-gray-600'>
+            Envíame un mensaje o mira mis publicaciones.
+          </p>
+          <a
+            href='https://bsky.app/profile/giuzioale.bsky.social'
+            class='block mt-4 text-blue-500 hover:underline'>
+            Bluesky
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout2025>

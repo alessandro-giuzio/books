@@ -90,6 +90,7 @@ export default {
       fontFamily: {
         sans: ['Tourney Variable', ...defaultTheme.fontFamily.sans],
         mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
+        marker:['Permanent Marker',...defaultTheme.fontFamily.sans],
       },
       daisyui: {
         themes: [

@@ -1,40 +1,78 @@
 ---
 import { Image } from 'astro:assets';
 import image404 from '../assets/images/404.webp';
+import '../styles/base.css';
+import '../styles/globals.css';
+// Supports weights 100-900
+import '@fontsource-variable/raleway';
+const { title = '404 Orrialdea Ez Da Aurkitu', socialImage = '/okBooks.webp' } =
+  Astro.props;
 ---
 
 <!doctype html>
-<html lang='eu'>
+<html lang='eu' class='h-full'>
   <head>
+    <title>{title}</title>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>404 Orrialdea Ez Da Aurkitu</title>
-  </head>
-  <body
-    class='bg-blue-100 flex-col flex items-center justify-center h-screen text-center px-4'>
-    <div>
-      <h1 class='text-6xl font-bold text-blue-600'>404</h1>
-      <p class='text-2xl font-semibold mt-4'>Orrialdea Ez Da Aurkitu</p>
-      <p class='mt-2'>
-        Barkatu, baina bilatzen ari zaren orrialdea ez dago edo beste leku
-        batean dago.
-      </p>
-      <a
-        href='/'
-        class='inline-block bg-blue-500 text-white mt-4 px-6 py-3 rounded hover:bg-blue-700 transition-colors'
-        >Hasiera Orrialdera Itzuli</a
-      >
-    </div>
+    <meta name='author' content='Alessandro Giuzio' />
+    <meta name='description' content='Diseño Web en Donostia | San Sebastian' />
 
-    <!-- Optional: Include a humorous image or illustration -->
-    <div class='mt-8'>
+    <meta property='og:title' content={title} />
+    <meta
+      property='og:description'
+      content='Euskal Irakurle Lehiaketa 2025 gunea: Zure liburu gogokoenen inguruan irakurle komunitate batekin elkarbanatu, eta irakurketa lehiaketa batean parte hartu. Gune honek irakurketa aurrerapena, lehiakideen sailkapena eta hilabeteko liburu aipagarrienak eskaintzen ditu.'
+    />
+    <meta property='og:image' content={socialImage} />
+    <meta property='og:url' content={Astro.url} />
+    <meta property='og:site_name' content={title} />
+    <meta name='twitter:card' content={socialImage} />
+    <meta
+      name='twitter:image:alt'
+      content='Euskal etxe bateko irakurle txoko atsegina, leiho ondoko eserlekuan gorriak, berdeak eta zuriak diren kojinekin, alboan txapela eta kafea duen mahai txikiarekin eta liburuen pila batzuekin, Euskal Herriko landa berdea ikuspegiarekin.'
+    />
+
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+  </head>
+  <body class='h-full'>
+    <main class='relative isolate min-h-full'>
       <Image
         src={image404}
         alt='Funny Illustration'
-        class='mx-auto rounded-xl shadow-xl'
-        style='max-width: 90%; height: auto;'
-        loading='eager'
+        class='absolute inset-0 -z-10 size-full object-cover object-top'
+        format='webp'
       />
-    </div>
+      <div class='mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8'>
+        <p class='text-4xl font-semibold text-white text-shadow-lg'>404</p>
+        <h1
+          class='mt-4 text-5xl font-semibold tracking-tight text-white sm:text-7xl text-shadow-lg'>
+          Ez da orria aurkitu
+        </h1>
+        <p
+          class='mt-6 text-lg font-medium text-gray-200/90 sm:text-xl text-shadow-md'>
+          Barkatu, baina bilatzen ari zaren orrialdea ez dago edo beste leku
+          batean dago.
+        </p>
+        <div class='mt-10 flex justify-center'>
+          <a
+            href='/'
+            class='text-lg font-bold text-white text-shadow-lg sm:text-xl transition-colors'
+            ><span aria-hidden='true'>&larr;</span> Itzuli etxera</a
+          >
+        </div>
+      </div>
+    </main>
   </body>
 </html>
+<style>
+  body {
+    font-family: 'Raleway Variable', sans-serif;
+  }
+  .text-shadow-lg {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .text-shadow-md {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+</style>

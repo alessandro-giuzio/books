@@ -16,6 +16,7 @@
     "@astrojs/vue": "^5.0.5",
     "@fontsource-variable/raleway": "^5.1.1",
     "@fontsource/aileron": "^5.1.0",
+    "@fontsource/permanent-marker": "^5.1.1",
     "@fontsource/special-elite": "^5.1.1",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",

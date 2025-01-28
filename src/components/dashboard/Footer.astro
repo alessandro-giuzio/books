@@ -1,3 +1,9 @@
+---
+const currentPage = Astro.url.pathname;
+import { Image } from 'astro:assets';
+import Arrow from '../../assets/images/arrow-up.svg';
+---
+
 <footer class='bg-gray-800'>
   <div class='flex flex-col mx-auto max-w-7xl px-6 py-8 lg:px-8'>
     <!-- Fun Basque message -->
@@ -5,31 +11,47 @@
       <p class='text-sm text-center text-gray-400'>
         Ez dago sare sozialik hemen — kanpora irten eta benetako mundua gozatu!
       </p>
-
-      <ul class='flex space-x-4'>
-        <li>
-          <a
-            href='/kontaktua'
-            class='text-sm text-gray-400 hover:text-gray-300'>
-            Kontaktua
-          </a>
-        </li>
-        <li>
-          <a href='/nor-gara' class='text-sm text-gray-400 hover:text-gray-300'>
-            Nor gara
-          </a>
-        </li>
-      </ul>
-
-      <button
-        class='bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded'
-        onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-        Hasierara itzuli
-      </button>
+      <nav>
+        <ul class='flex space-x-4'>
+          <li>
+            <a
+              href='/kontaktua'
+              class={`text-sm font-medium ${
+                currentPage === '/kontaktua'
+                  ? 'text-gray-200 underline'
+                  : 'text-gray-400'
+              } hover:text-gray-200 transition-colors duration-200`}>
+              Kontaktua
+            </a>
+          </li>
+          <li>
+            <a
+              href='/nor-gara'
+              class={`text-sm font-medium ${
+                currentPage === '/nor-gara'
+                  ? 'text-gray-200 underline'
+                  : 'text-gray-400'
+              } hover:text-gray-200 transition-colors duration-200`}>
+              Nor gara
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <a href='' onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <Image src={Arrow} alt='Arrow Up' class='w-16 h-24 inline-block' />
+        <span class='text-white'>Hasierara itzuli</span>
+      </a>
     </div>
   </div>
   <!-- Copyright -->
-  <p class='text-center text-sm text-gray-400 md:mt-0'>
-    &copy; 2025 Alessandro Giuzio
+  <p class='text-center text-sm text-gray-500 md:mt-0'>
+    &copy; 2025
+    <a
+      href='https://www.agencyga.es'
+      class='font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200'
+      target='_blank'
+      rel='noopener noreferrer'>
+      Alessandro Giuzio
+    </a>
   </p>
 </footer>
