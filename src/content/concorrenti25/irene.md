@@ -3,6 +3,6 @@ nome: Irene
 username: irene
 alt: Irene
 image: '../../content/concorrenti/img/irene.jpeg'
-punti: 33
+punti: 0
 slug: 'irene'
 ---
