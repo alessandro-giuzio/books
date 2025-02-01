@@ -3,6 +3,6 @@ nome: Oihana
 username: oihana
 alt: Oihana
 image: '../../content/concorrenti/img/oihana.jpg'
-punti: 0
+punti: 5
 slug: 'oihana'
 ---
