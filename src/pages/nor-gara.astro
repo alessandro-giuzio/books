@@ -2,12 +2,62 @@
 import Layout2025 from '../layouts/Layout2025.astro';
 import { Image } from 'astro:assets';
 import SunsetBook from '../assets/images/sunsetBook.jpg';
+import HeroImg from '../assets/images/heroNew.webp';
 ---
 
 <Layout2025 title='Nor gara'>
-  <h1 class='text-6xl font-bold uppercase text-red-600 animate-bounce'>
+  <!--   <h1 class='text-6xl font-bold uppercase text-red-600 animate-bounce'>
     🚧 Oops! We’re still building this... with duct tape. 🚧
-  </h1>
+  </h1> -->
+  <div class='relative bg-gray-950'>
+    <!-- Background Image with Overlay -->
+    <div class='relative isolate overflow-hidden pt-14'>
+      <Image
+        src={HeroImg}
+        alt='Background Image'
+        class='absolute inset-0 -z-10 size-full object-cover'
+      />
+      <div class='absolute inset-0 -z-10 bg-gray-950/50'></div>
+      <!-- Overlay for contrast -->
+
+      <div class='mx-auto max-w-7xl px-6 lg:px-8'>
+        <div class='mx-auto max-w-2xl py-32 sm:py-48 lg:py-56'>
+          <div class='hidden sm:mb-8 sm:flex sm:justify-center'>
+            <div
+              class='relative rounded-full px-3 py-1 text-sm text-gray-200 ring-1 ring-gray-400 hover:ring-white'>
+              Announcing our next round of funding. <a
+                href='#'
+                class='font-semibold text-white'>Read more &rarr;</a
+              >
+            </div>
+          </div>
+          <div class='text-center'>
+            <h1
+              class='text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl'>
+              Data to enrich your online business
+            </h1>
+            <p class='mt-8 text-lg font-medium text-gray-300 sm:text-xl'>
+              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+              lorem cupidatat commodo.
+            </p>
+            <div class='mt-10 flex items-center justify-center gap-x-6'>
+              <a
+                href='#'
+                class='rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'>
+                Get started
+              </a>
+              <a
+                href='#'
+                class='text-sm font-semibold text-gray-200 hover:text-white'
+                >Learn more &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class='bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'>
     <div class='relative isolate px-6 pt-14 lg:px-8'>
       <!-- Background Gradient Effects -->
