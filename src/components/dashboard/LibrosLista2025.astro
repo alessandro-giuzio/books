@@ -1,18 +1,24 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import CardLibro2025 from '../../components/dashboard/CardLibro2025.astro';
 import CardVue from '../../components/dashboard/CardVue.vue';
+
 type Props = {
   libros: CollectionEntry<'libros25'>[];
 };
+
 const { libros } = Astro.props;
 // Shuffle the libros order
 const shuffledLibros = libros.sort(() => Math.random() - 0.5);
 ---
 
 <div class='libros'>
-  {shuffledLibros.map(libro => <CardVue libro={libro.data} />)}
+  {
+    shuffledLibros.map(libro => (
+      <CardVue libro={{ ...libro.data, slug: libro.slug }} />
+    ))
+  }
 </div>
+
 <style>
   .libros {
     font-size: 0.875rem;

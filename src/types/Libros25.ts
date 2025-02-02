@@ -9,4 +9,5 @@ export interface Libros25 {
   monthRead: string;
   punti: number;
   yearRead: number;
+  slug: string;
 }
