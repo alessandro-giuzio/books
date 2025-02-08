@@ -23,8 +23,7 @@ const { concorrente } = Astro.props;
       Puntuak: <span class='font-semibold'>{concorrente.data.punti}</span>
     </p>
     <!-- Progress Bar -->
-    <div
-      class='h-4 w-full min-w-[180px] bg-gray-200 mt-3 rounded-lg overflow-hidden'>
+    <div class='h-4 w-full bg-gray-200 mt-3 rounded-lg overflow-hidden'>
       <div
         class={`progress-bar`}
         style={{ '--target-width': `${concorrente.data.punti}px` }}>
