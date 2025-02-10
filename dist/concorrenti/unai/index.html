@@ -27,14 +27,14 @@ Gehitu liburu berria
 </h2> </div> <!-- Title --> <div class="mb-4"> <label for="title" class="block text-sm font-medium text-[var(--text)]">
 Liburuaren Izenburua:
 </label> <input type="text" id="title" name="title" required placeholder="Sartu liburuaren izenburua" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black
-             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> </div> <!-- Author --> <div class="mb-4"> <label for="author" class="block text-sm font-medium text-[var(--text)]">
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> </div> <!-- Author --> <div class="mb-4"> <label for="author" class="block text-sm font-medium text-[var(--text)]">
 Idazlea:
 </label> <input type="text" id="author" name="author" required placeholder="Sartu egilearen izena" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- concorrente --> <div class="mb-4"> <label for="concorrente" class="block text-sm font-medium text-[var(--text)]">
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- concorrente --> <div class="mb-4"> <label for="concorrente" class="block text-sm font-medium text-[var(--text)]">
 Aukeratu lehiakidea
 </label> <select name="concorrente" id="concorrente" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-             bg-white shadow-sm focus:outline-none focus:ring-indigo-500
-             focus:border-indigo-500 sm:text-sm text-black"> <option value="alessandro">Alessandro</option> <option value="amaia">Amaia</option> <option value="asier">Asier</option> <option value="irene">Irene</option> <option value="luca">Luca</option> <option value="oihana">Oihana</option> <option value="malen">Malen</option> <option value="unai">Unai</option> <!-- Add more options as needed --> </select> </div> <!-- Is it a Book or Comic? (Radio buttons) --> <div class="mb-4"> <span class="block text-sm font-medium text-[var(--text)] mb-1">
+            bg-white shadow-sm focus:outline-none focus:ring-indigo-500
+            focus:border-indigo-500 sm:text-sm text-black"> <option value="alessandro">Alessandro</option> <option value="amaia">Amaia</option> <option value="asier">Asier</option> <option value="irene">Irene</option> <option value="luca">Luca</option> <option value="oihana">Oihana</option> <option value="malen">Malen</option> <option value="unai">Unai</option> <!-- Add more options as needed --> </select> </div> <!-- Is it a Book or Comic? (Radio buttons) --> <div class="mb-4"> <span class="block text-sm font-medium text-[var(--text)] mb-1">
 Mota:
 </span> <label class="inline-flex items-center mr-4"> <input type="radio" name="type" value="book" checked class="form-radio"> <span class="ml-1">Liburua</span> </label> <label class="inline-flex items-center"> <input type="radio" name="type" value="comic" class="form-radio"> <span class="ml-1">Komikia</span> </label> </div> <!-- Malen? (Checkbox) --> <!--   <div class='mb-4 flex items-center space-x-2'>
     <input
@@ -50,7 +50,11 @@ Mota:
 Orrialde kopurua:
 </label> <input type="number" id="pages" name="pages" min="0" step="1" placeholder="e.g., 350" class="mt-1 block w-full px-3 py-2 border border-gray-300
              rounded-md shadow-sm focus:outline-none focus:ring-indigo-500
-             focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- Hidden field to capture final points (for Netlify) --> <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> --> <!-- Display the calculated points to the user in a read-only field --> <!-- <div class='mb-4'>
+             focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- input for a link --> <div class="mb-4"> <label for="link" class="block text-sm font-medium text-[var(--text)]">
+Linka:
+</label> <input type="text" id="link" name="link" placeholder="Sartu liburuaren linka" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+            sm:text-sm text-black"> </div> <!-- Hidden field to capture final points (for Netlify) --> <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> --> <!-- Display the calculated points to the user in a read-only field --> <!-- <div class='mb-4'>
     <label
       for='calculatedPoints'
       class='block text-sm font-medium text-[var(--text)]'>
@@ -85,14 +89,14 @@ Gehitu liburu berria
 </h2> </div> <!-- Title --> <div class="mb-4"> <label for="title" class="block text-sm font-medium text-[var(--text)]">
 Liburuaren Izenburua:
 </label> <input type="text" id="title" name="title" required placeholder="Sartu liburuaren izenburua" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black
-             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> </div> <!-- Author --> <div class="mb-4"> <label for="author" class="block text-sm font-medium text-[var(--text)]">
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> </div> <!-- Author --> <div class="mb-4"> <label for="author" class="block text-sm font-medium text-[var(--text)]">
 Idazlea:
 </label> <input type="text" id="author" name="author" required placeholder="Sartu egilearen izena" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- concorrente --> <div class="mb-4"> <label for="concorrente" class="block text-sm font-medium text-[var(--text)]">
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- concorrente --> <div class="mb-4"> <label for="concorrente" class="block text-sm font-medium text-[var(--text)]">
 Aukeratu lehiakidea
 </label> <select name="concorrente" id="concorrente" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-             bg-white shadow-sm focus:outline-none focus:ring-indigo-500
-             focus:border-indigo-500 sm:text-sm text-black"> <option value="alessandro">Alessandro</option> <option value="amaia">Amaia</option> <option value="asier">Asier</option> <option value="irene">Irene</option> <option value="luca">Luca</option> <option value="oihana">Oihana</option> <option value="malen">Malen</option> <option value="unai">Unai</option> <!-- Add more options as needed --> </select> </div> <!-- Is it a Book or Comic? (Radio buttons) --> <div class="mb-4"> <span class="block text-sm font-medium text-[var(--text)] mb-1">
+            bg-white shadow-sm focus:outline-none focus:ring-indigo-500
+            focus:border-indigo-500 sm:text-sm text-black"> <option value="alessandro">Alessandro</option> <option value="amaia">Amaia</option> <option value="asier">Asier</option> <option value="irene">Irene</option> <option value="luca">Luca</option> <option value="oihana">Oihana</option> <option value="malen">Malen</option> <option value="unai">Unai</option> <!-- Add more options as needed --> </select> </div> <!-- Is it a Book or Comic? (Radio buttons) --> <div class="mb-4"> <span class="block text-sm font-medium text-[var(--text)] mb-1">
 Mota:
 </span> <label class="inline-flex items-center mr-4"> <input type="radio" name="type" value="book" checked class="form-radio"> <span class="ml-1">Liburua</span> </label> <label class="inline-flex items-center"> <input type="radio" name="type" value="comic" class="form-radio"> <span class="ml-1">Komikia</span> </label> </div> <!-- Malen? (Checkbox) --> <!--   <div class='mb-4 flex items-center space-x-2'>
     <input
@@ -108,7 +112,11 @@ Mota:
 Orrialde kopurua:
 </label> <input type="number" id="pages" name="pages" min="0" step="1" placeholder="e.g., 350" class="mt-1 block w-full px-3 py-2 border border-gray-300
              rounded-md shadow-sm focus:outline-none focus:ring-indigo-500
-             focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- Hidden field to capture final points (for Netlify) --> <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> --> <!-- Display the calculated points to the user in a read-only field --> <!-- <div class='mb-4'>
+             focus:border-indigo-500 sm:text-sm text-black"> </div> <!-- input for a link --> <div class="mb-4"> <label for="link" class="block text-sm font-medium text-[var(--text)]">
+Linka:
+</label> <input type="text" id="link" name="link" placeholder="Sartu liburuaren linka" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+            sm:text-sm text-black"> </div> <!-- Hidden field to capture final points (for Netlify) --> <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> --> <!-- Display the calculated points to the user in a read-only field --> <!-- <div class='mb-4'>
     <label
       for='calculatedPoints'
       class='block text-sm font-medium text-[var(--text)]'>
