@@ -42,8 +42,12 @@ defineProps<{
 
     <!-- Footer Always Sticks to Bottom -->
     <CardFooter
-      class="p-4 bg-gray-100 text-sm text-gray-600 flex justify-between mt-auto">
-      <a :href="`/concorrenti/${libro.concorrente}`"> </a>
+      class="p-2 bg-gray-100 text-sm text-gray-600 flex justify-between mt-auto">
+      <a
+        :href="`/concorrenti/${libro.concorrente}`"
+        class="first-letter:uppercase">
+        {{ libro.concorrente }}
+      </a>
       <a :href="`/liburuak/${libro.monthRead}/`">
         <span class="font-semibold text-xs">{{ libro.monthRead }}</span></a
       >
