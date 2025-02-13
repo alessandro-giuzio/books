@@ -33,7 +33,7 @@ const selectedMonth = books[0]?.monthRead || "Hilabete ezezaguna"; // Fallback i
     {books.length > 0 ? (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {books.map(book => (
-          <div key={book.title} class="bg-white shadow-lg rounded-xl p-4 transition transform hover:scale-105">
+          <div class="bg-white shadow-lg rounded-xl p-4 transition transform hover:scale-105">
             <!-- Book Cover -->
             {book.cover ? (
               <img src={book.cover} alt={book.title} class="rounded-md w-full object-cover h-48" />
