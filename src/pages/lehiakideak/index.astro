@@ -4,7 +4,6 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 const concorrenti = await getCollection('concorrenti25');
 const libri = await getCollection('libros25');
-console.log(libri.length);
 
 // Function to get two random competitors
 function getTwoRandomCompetitors() {
