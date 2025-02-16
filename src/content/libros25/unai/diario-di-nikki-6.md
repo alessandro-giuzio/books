@@ -11,4 +11,5 @@ slug: 'diario-de-nikki-6'
 punti: 2
 yearRead: 2025
 type: book
+pages: 178
 ---

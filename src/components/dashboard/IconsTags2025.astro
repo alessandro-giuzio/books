@@ -9,13 +9,12 @@ const tagCounts = tags.reduce((acc: { [key: string]: number }, tag: string) => {
   acc[tag] = (acc[tag] || 0) + 1; // Increment the count for each tag
   return acc;
 }, {});
-console.log(tags);
+
 // sort tags by count
 const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
-console.log(sortedTags);
+
 // get top 6 tags
 const topTags = sortedTags.slice(0, 6);
-console.log(topTags);
 
 // get unique tags
 const uniqueTags = [...new Set(tags)];

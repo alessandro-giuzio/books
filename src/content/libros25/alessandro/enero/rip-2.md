@@ -11,4 +11,5 @@ slug: 'rip-2'
 punti: 5
 yearRead: 2025
 type: comic
+pages: 112
 ---

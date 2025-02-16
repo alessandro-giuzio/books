@@ -50,6 +50,8 @@ const librosCollection25 = defineCollection({
     punti: z.number(),
     yearRead: z.number(),
     tags: z.array(z.string()),
+    pages: z.number().optional(),
+
   }),
 });
 

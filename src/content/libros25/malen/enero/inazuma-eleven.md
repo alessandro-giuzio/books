@@ -11,4 +11,5 @@ slug: 'inazuma-eleven'
 punti: 4
 yearRead: 2025
 type: comic
+pages: 184
 ---

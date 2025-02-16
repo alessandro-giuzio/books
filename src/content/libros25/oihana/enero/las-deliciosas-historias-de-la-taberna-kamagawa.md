@@ -11,4 +11,5 @@ slug: 'las-deliciosas-historias-de-la-taberna-kamagawa'
 punti: 5
 yearRead: 2025
 type: book
+pages: 208
 ---

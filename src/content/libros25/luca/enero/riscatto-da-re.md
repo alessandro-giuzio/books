@@ -11,4 +11,5 @@ slug: 'rioscatto-da-re'
 punti: 4
 yearRead: 2025
 type: comic
+pages: 53
 ---

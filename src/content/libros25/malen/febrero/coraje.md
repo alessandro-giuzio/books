@@ -11,4 +11,5 @@ slug: 'coraje'
 punti: 4
 yearRead: 2025
 type: comic
+pages: 224
 ---

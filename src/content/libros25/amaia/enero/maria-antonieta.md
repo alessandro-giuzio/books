@@ -11,4 +11,5 @@ slug: 'maria-antonieta'
 punti: 5
 yearRead: 2025
 type: book
+pages: 544
 ---
