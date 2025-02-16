@@ -16,7 +16,7 @@ function getTwoRandomCompetitors() {
 const [competitor1, competitor2] = getTwoRandomCompetitors();
 
 // Get books read by each competitor
-function getBooksByCompetitor(competitor) {
+function getBooksByCompetitor(competitor: { nome: string; username: string }) {
   if (!competitor) return [];
 
   return libri.filter(({ data }) => {
