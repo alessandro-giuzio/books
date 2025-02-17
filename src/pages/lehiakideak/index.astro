@@ -13,6 +13,7 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
     <p>Lehiakideak hemen agertuko dira.</p>
     <button class='btn btn-success'>CTA</button>
   </section>
+
   <section class='profiles'>
     {
       concorrenti.map(concorrente => (
@@ -25,29 +26,30 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
       ))
     }
   </section>
-</Layout2025>
-<style>
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
 
-  h1 {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-  }
-  p {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .profiles {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
-</style>
+  <style>
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+  </style>
+</Layout2025>
