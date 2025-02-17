@@ -4,17 +4,21 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 const concorrenti = await getCollection('concorrenti25');
 const libri = await getCollection('libros25');
+import Battle from 'astro/components/dashboard/Battle.vue';
 
-// Function to get two random competitors
+// Ensure concorrenti is an array
+const concorrentiArray = Array.isArray(concorrenti) ? concorrenti : [];
+
 function getTwoRandomCompetitors() {
-  if (concorrenti.length < 2) return [];
-  let [comp1, comp2] = concorrenti.sort(() => 0.5 - Math.random()).slice(0, 2);
+  if (concorrentiArray.length < 2) return [];
+  let [comp1, comp2] = concorrentiArray
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2);
   return [comp1.data, comp2.data];
 }
 
 const [competitor1, competitor2] = getTwoRandomCompetitors();
 
-// Get books read by each competitor
 function getBooksByCompetitor(competitor: { nome: string; username: string }) {
   if (!competitor) return [];
 
@@ -30,8 +34,10 @@ function getBooksByCompetitor(competitor: { nome: string; username: string }) {
 const books1 = getBooksByCompetitor(competitor1);
 const books2 = getBooksByCompetitor(competitor2);
 
-// Determine Winner (Stat-Based)
-function determineWinner(c1: { nome: string }, c2: { nome: string }) {
+function determineWinner(
+  c1: { nome: string; username: string },
+  c2: { nome: string; username: string }
+) {
   if (!c1 || !c2) return null;
   const score1 = books1.length;
   const score2 = books2.length;
@@ -40,8 +46,8 @@ function determineWinner(c1: { nome: string }, c2: { nome: string }) {
 const winner = determineWinner(competitor1, competitor2);
 ---
 
-<Layout2025>
-  <h1 class='text-3xl font-bold text-center my-6'>📚 Reading Battle</h1>
+<Layout2025 concorrenti={concorrentiArray}>
+  <Battle concorrenti={concorrentiArray} libri={libri} />
 
   <div class='flex justify-center items-center gap-6 text-center'>
     <!-- Competitor 1 -->
