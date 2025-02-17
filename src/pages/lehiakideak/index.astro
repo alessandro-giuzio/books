@@ -1,121 +1,53 @@
 ---
 import Layout2025 from '../../layouts/Layout2025.astro';
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import CardConcorrente from 'astro/components/dashboard/CardConcorrente.astro';
 const concorrenti = await getCollection('concorrenti25');
-const libri = await getCollection('libros25');
-import Battle from 'astro/components/dashboard/Battle.vue';
 
-// Ensure concorrenti is an array
-const concorrentiArray = Array.isArray(concorrenti) ? concorrenti : [];
-
-function getTwoRandomCompetitors() {
-  if (concorrentiArray.length < 2) return [];
-  let [comp1, comp2] = concorrentiArray
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 2);
-  return [comp1.data, comp2.data];
-}
-
-const [competitor1, competitor2] = getTwoRandomCompetitors();
-
-function getBooksByCompetitor(competitor: { nome: string; username: string }) {
-  if (!competitor) return [];
-
-  return libri.filter(({ data }) => {
-    const concorrente = data.concorrente.trim().toLowerCase();
-    return (
-      concorrente === competitor.nome.trim().toLowerCase() ||
-      concorrente === competitor.username.trim().toLowerCase()
-    );
-  });
-}
-
-const books1 = getBooksByCompetitor(competitor1);
-const books2 = getBooksByCompetitor(competitor2);
-
-function determineWinner(
-  c1: { nome: string; username: string },
-  c2: { nome: string; username: string }
-) {
-  if (!c1 || !c2) return null;
-  const score1 = books1.length;
-  const score2 = books2.length;
-  return score1 > score2 ? c1 : score2 > score1 ? c2 : null;
-}
-const winner = determineWinner(competitor1, competitor2);
+import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vue';
 ---
 
-<Layout2025 concorrenti={concorrentiArray}>
-  <Battle concorrenti={concorrentiArray} libri={libri} />
-
-  <div class='flex justify-center items-center gap-6 text-center'>
-    <!-- Competitor 1 -->
+<Layout2025 title='Lehiakideak'>
+  <section class='hero'>
+    <h1>Ezagutu lehiakideak!</h1>
+    <p>Lehiakideak hemen agertuko dira.</p>
+    <button class='btn btn-success'>CTA</button>
+  </section>
+  <section class='profiles'>
     {
-      competitor1 && (
-        <div class='flex flex-col items-center p-4 border rounded-lg shadow-md bg-white'>
-          <Image
-            src={competitor1.image}
-            alt={competitor1.nome}
-            class='w-32 h-32 object-cover rounded-full'
-          />
-          <h2 class='text-xl font-semibold mt-2'>{competitor1.nome}</h2>
-          <p class='text-gray-600'>📖 Books Read: {books1.length}</p>
-          <ul class='text-sm text-gray-500 mt-2'>
-            {books1.map(({ data }) => (
-              <li>
-                📘 {data.title} ({data.pages} pages)
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
+      concorrenti.map(concorrente => (
+        <ArticleLehiakideak
+          concorrente={{
+            ...concorrente.data,
+            image: concorrente.data.image.src,
+          }}
+        />
+      ))
     }
-
-    <!-- VS Text -->
-    <div class='text-3xl font-bold text-red-600'>VS</div>
-
-    <!-- Competitor 2 -->
-    {
-      competitor2 && (
-        <div class='flex flex-col items-center p-4 border rounded-lg shadow-md bg-white'>
-          <Image
-            src={competitor2.image}
-            alt={competitor2.nome}
-            class='w-32 h-32 object-cover rounded-full'
-          />
-          <h2 class='text-xl font-semibold mt-2'>{competitor2.nome}</h2>
-          <p class='text-gray-600'>📖 Books Read: {books2.length}</p>
-          <ul class='text-sm text-gray-500 mt-2'>
-            {books2.map(({ data }) => (
-              <li>
-                📘 {data.title} ({data.pages} pages)
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-  </div>
-
-  <!-- Winner Announcement -->
-  {
-    winner && (
-      <div class='text-center mt-6 p-4 bg-green-100 rounded-lg'>
-        <h2 class='text-2xl font-bold text-green-700'>
-          🏆 {winner.nome} Wins!
-        </h2>
-      </div>
-    )
+  </section>
+</Layout2025>
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
   }
 
-  <!-- Start New Battle Button -->
-  <div class='text-center mt-6'>
-    <form method='post'>
-      <button
-        class='bg-blue-500 text-white px-4 py-2 rounded-md'
-        formaction='?battle=true'>Start New Battle</button
-      >
-    </form>
-  </div>
-</Layout2025>
+  h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+</style>
