@@ -6,5 +6,5 @@ image: '../../content/concorrenti/img/luca.jpg'
 punti: 4
 puntiEnero: 4
 urtarrilekoPuntuak: 4
-slug: 'luca'
+slug: 'luca-25'
 ---

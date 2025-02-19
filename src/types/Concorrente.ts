@@ -4,4 +4,5 @@ export type ConcorrenteData = {
   alt: string;
   image: string;
   punti: number;
+  slug?: string;
 }

@@ -2,7 +2,7 @@
   <Card
     class="max-w-md shadow-lg rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow bg-white flex flex-col h-full">
     <!-- Adjusted Image -->
-    <a :href="`/liburuak/${concorrente.nome}`">
+    <a :href="`/lehiakideak/${concorrente.slug}`">
       <img
         :src="concorrente.image || '/placeholder-image.jpg'"
         :alt="`Cover of ${concorrente.nome}`"

@@ -1,0 +1,23 @@
+---
+import Layout2025 from '../../layouts/Layout2025.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const lehiakideak = await getCollection('concorrenti25');
+
+  console.log(
+    '🚀 DEBUG concorrenti25 entries:',
+    JSON.stringify(lehiakideak, null, 2)
+  );
+  return lehiakideak.map(lehiakide => ({
+    params: { slug: lehiakide.data.slug },
+    props: { lehiakide: { ...lehiakide.data, slug: lehiakide.data.slug } },
+  }));
+}
+
+const { lehiakide } = Astro.props;
+---
+
+<Layout2025>
+  {lehiakide ? <h1>{lehiakide.slug}</h1> : <h1>Loading...</h1>}
+</Layout2025>

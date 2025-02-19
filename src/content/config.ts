@@ -8,6 +8,7 @@ const concorrentiCollection = defineCollection({
       alt: z.string(),
       image: image(),
       punti: z.number(),
+      slug: z.string().optional(),
     }),
 });
 
@@ -19,6 +20,7 @@ const concorrentiCollection25 = defineCollection({
       alt: z.string(),
       image: image(),
       punti: z.number(),
+      slug: z.string().optional(),
     }),
 });
 

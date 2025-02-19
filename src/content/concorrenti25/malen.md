@@ -8,5 +8,5 @@ puntiEnero: 5
 urtarrilekoPuntuak: 5
 puntiFebrero: 5
 otsailakoPuntuak: 5
-slug: 'malen'
+slug: 'malen-25'
 ---
