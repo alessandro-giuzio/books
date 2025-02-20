@@ -1,5 +1,10 @@
 <template>
   <Card
+    :concorrente="{
+      ...concorrente,
+      slug:
+        concorrente.slug || concorrente.nome.toLowerCase().replace(/\s+/g, '-'),
+    }"
     class="max-w-md shadow-lg rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow bg-white flex flex-col h-full">
     <!-- Adjusted Image -->
     <a :href="`/lehiakideak/${concorrente.slug}`">
@@ -31,11 +36,13 @@
         :href="`/concorrenti/${concorrente.nome}`"
         class="first-letter:uppercase">
         <!--  {{ libro.concorrente }} -->
+        llll
       </a>
-      <!-- <a :href="`/liburuak/${libro.monthRead}/`">
-        <span class="font-semibold text-xs">{{ libro.monthRead }}</span></a
-      > -->
-      <!--  <span class="flex items-center gap-1 font-semibold">
+      <!--  <a :href="`/liburuak/${libro.monthRead}/`">
+        <span class="font-semibold text-xs">{{ libro.monthRead }}</span>
+      </a> -->
+
+      <!-- <span class="flex items-center gap-1 font-semibold">
         Punti: <span class="text-basque-20 font-bold">{{ libro.punti }}</span>
       </span> -->
     </CardFooter>
@@ -53,7 +60,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
-defineProps<{
+const props = defineProps<{
   concorrente: ConcorrenteData;
 }>();
 </script>

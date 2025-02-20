@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import type { Libros25 } from '../../types/Libros25';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-
-defineProps<{
-  libro: Libros25;
-}>();
-</script>
-
 <template>
   <Card
     class="max-w-md shadow-lg rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow bg-white flex flex-col h-full">
@@ -57,3 +41,18 @@ defineProps<{
     </CardFooter>
   </Card>
 </template>
+<script setup lang="ts">
+import type { Libros25 } from '../../types/Libros25';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+
+defineProps<{
+  libro: Libros25;
+}>();
+</script>

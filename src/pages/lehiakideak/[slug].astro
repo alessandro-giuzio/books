@@ -1,0 +1,37 @@
+---
+import Layout2025 from '../../layouts/Layout2025.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const lehiakideak = await getCollection('concorrenti25');
+
+  console.log(
+    '🚀 DEBUG concorrenti25 entries:',
+    lehiakideak.map(lehiakide => ({
+      nome: lehiakide.data.nome,
+      slug: lehiakide.data.slug, // Debug the actual slug
+      fullData: lehiakide.data,
+    }))
+  );
+  return lehiakideak.map(lehiakide => {
+    // Ensure slug is always defined
+    const slug =
+      lehiakide.data.slug ||
+      lehiakide.data.nome.toLowerCase().replace(/\s+/g, '-');
+
+    console.log('✅ DEBUG Slug:', slug, 'for', lehiakide.data.nome); // Verify fix
+
+    return {
+      params: { slug }, // Use the generated slug
+      props: { lehiakide: { ...lehiakide.data, slug } }, // Ensure lehiakide contains slug
+    };
+  });
+}
+const { slug } = Astro.params;
+const { lehiakide } = Astro.props;
+---
+
+<Layout2025>
+  {lehiakide.slug}
+  {lehiakide ? <h1>{lehiakide.slug}</h1> : <h1>Loading...</h1>}
+</Layout2025>
