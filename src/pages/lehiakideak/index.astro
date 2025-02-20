@@ -40,8 +40,15 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
           <ArticleLehiakideak
             concorrente={{
               ...concorrente.data,
-              image: concorrente.data.image.src,
-              slug: concorrente.data.slug,
+              slug:
+                concorrente.data.slug ||
+                concorrente.data.nome.toLowerCase().replace(/\s+/g, '-'),
+              image: {
+                src: concorrente.data.image.src,
+                width: concorrente.data.image.width,
+                height: concorrente.data.image.height,
+                format: concorrente.data.image.format,
+              },
             }}
           />
         ))

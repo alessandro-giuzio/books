@@ -5,28 +5,22 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const lehiakideak = await getCollection('concorrenti25');
 
-  console.log(
-    '🚀 DEBUG concorrenti25 entries:',
-    lehiakideak.map(lehiakide => ({
-      nome: lehiakide.data.nome,
-      slug: lehiakide.data.slug, // Debug the actual slug
-      fullData: lehiakide.data,
-    }))
-  );
   return lehiakideak.map(lehiakide => {
-    // Ensure slug is always defined
-    const slug =
-      lehiakide.data.slug ||
-      lehiakide.data.nome.toLowerCase().replace(/\s+/g, '-');
+    const nome = lehiakide.data.nome;
+    let slug = lehiakide.data.slug;
 
-    console.log('✅ DEBUG Slug:', slug, 'for', lehiakide.data.nome); // Verify fix
+    if (!slug) {
+      console.warn(`⚠️ Missing slug for ${nome}, generating from nome.`);
+      slug = nome.toLowerCase().replace(/\s+/g, '-');
+    }
 
     return {
-      params: { slug }, // Use the generated slug
-      props: { lehiakide: { ...lehiakide.data, slug } }, // Ensure lehiakide contains slug
+      params: { slug },
+      props: { lehiakide: { ...lehiakide.data, slug } },
     };
   });
 }
+
 const { slug } = Astro.params;
 const { lehiakide } = Astro.props;
 ---

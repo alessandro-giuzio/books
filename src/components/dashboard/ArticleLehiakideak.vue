@@ -9,7 +9,7 @@
     <!-- Adjusted Image -->
     <a :href="`/lehiakideak/${concorrente.slug}`">
       <img
-        :src="concorrente.image || '/placeholder-image.jpg'"
+        :src="concorrente.image?.src || '/placeholder-image.jpg'"
         :alt="`Cover of ${concorrente.nome}`"
         class="w-full h-52 md:h-72 object-cover object-top rounded-t-md" />
     </a>
