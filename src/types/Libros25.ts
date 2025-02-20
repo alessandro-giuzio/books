@@ -10,4 +10,6 @@ export interface Libros25 {
   punti: number;
   yearRead: number;
   slug: string;
+  featured?: boolean;
+  pages?: number;
 }

@@ -2,6 +2,7 @@
 nome: Unai
 username: unai
 alt: Unai
+bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget'
 image: '../../content/concorrenti/img/unai.jpeg'
 punti: 10
 puntiEnero: 10

@@ -21,6 +21,7 @@ const concorrentiCollection25 = defineCollection({
       image: image(),
       punti: z.number(),
       slug: z.string().optional(),
+      bio: z.string().optional(),
     }),
 });
 
@@ -53,6 +54,7 @@ const librosCollection25 = defineCollection({
     yearRead: z.number(),
     tags: z.array(z.string()),
     pages: z.number().optional(),
+    featured: z.boolean().optional(),
 
   }),
 });

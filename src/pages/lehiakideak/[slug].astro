@@ -1,31 +1,121 @@
 ---
 import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
+import Wrapper from '../../components/containers/Wrapper.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const lehiakideak = await getCollection('concorrenti25');
+  const liburuak = await getCollection('libros25');
 
   return lehiakideak.map(lehiakide => {
     const nome = lehiakide.data.nome;
     let slug = lehiakide.data.slug;
 
     if (!slug) {
-      console.warn(`⚠️ Missing slug for ${nome}, generating from nome.`);
+      // console.warn(`⚠️ Missing slug for ${nome}, generating from nome.`);
       slug = nome.toLowerCase().replace(/\s+/g, '-');
     }
 
+    // Assign slug back to ensure it's present
+    lehiakide.data.slug = slug;
+
+    // Debugging: Print the concorrente and its slug
+    //console.log(`🔹 Concorrente: ${nome} | Slug: ${slug}`);
+
+    // Adjusted filter to match books correctly
+    const liburuakForLehiakide = liburuak.filter(
+      libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
+    );
+    // Filter the featured books
+    const featuredLiburuak = liburuakForLehiakide.filter(
+      libro => libro.data.featured
+    );
+    // Debugging: Log found books
+    //console.log(`📚 Books for ${nome} (${slug}):`, liburuakForLehiakide);
+
     return {
       params: { slug },
-      props: { lehiakide: { ...lehiakide.data, slug } },
+      props: {
+        lehiakide: { ...lehiakide, data: { ...lehiakide.data, slug } }, // Ensure slug is always set
+        liburuakForLehiakide,
+        featuredLiburuak,
+      },
     };
   });
 }
 
 const { slug } = Astro.params;
-const { lehiakide } = Astro.props;
+const { lehiakide, liburuakForLehiakide, featuredLiburuak } = Astro.props;
 ---
 
-<Layout2025>
-  {lehiakide.slug}
-  {lehiakide ? <h1>{lehiakide.slug}</h1> : <h1>Loading...</h1>}
+<Layout2025 title={`🏴‍☠️ ${lehiakide.data.nome} 🏴‍☠️`}>
+  <!-- Hero Section -->
+  <Wrapper
+    variant='hero'
+    class='grid grid-cols-1 gap-4 md:grid-cols-2 items-center'>
+    <div class='overflow-hidden relative w-full flex justify-center'>
+      <Image
+        src={lehiakide.data.image}
+        alt={lehiakide.data.alt}
+        class='rounded-full object-cover aspect-[16/10] w-40 h-40 md:w-60 md:h-60'
+        format='webp'
+      />
+    </div>
+    <div class='text-center md:text-left'>
+      <h1 class='text-4xl font-bold'>{lehiakide.data.nome}</h1>
+      <p class='text-lg text-gray-700'>{lehiakide.data.bio}</p>
+    </div>
+  </Wrapper>
+  <!-- Featured Book -->
+  <Wrapper variant='standard'>
+    <h2 class='text-3xl font-semibold mb-4'>⭐ Featured Book</h2>
+
+    {
+      featuredLiburuak.length > 0 ? (
+        featuredLiburuak.map(libro => (
+          <div class='flex flex-col items-center text-center p-4 bg-yellow-100 rounded-lg shadow-md'>
+            <img
+              src={libro.data.cover}
+              alt={`Cover of ${libro.data.title}`}
+              class='w-40 h-60 rounded-md shadow-lg'
+            />
+            <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
+            <p class='text-md text-gray-600'>By {libro.data.author}</p>
+          </div>
+        ))
+      ) : (
+        <p class='text-gray-500 text-lg'>No featured book available.</p>
+      )
+    }
+  </Wrapper>
+
+  <!-- Books Section -->
+  <Wrapper variant='standard'>
+    <h2 class='text-3xl font-semibold mb-4'>📚 Books Read</h2>
+
+    <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      {
+        liburuakForLehiakide.length > 0 ? (
+          liburuakForLehiakide.map(libro => (
+            <div class='flex flex-col items-center text-center p-4 bg-gray-100 rounded-lg shadow-md'>
+              {
+                <img
+                  src={libro.data.cover}
+                  alt={`Cover of ${libro.data.title}`}
+                  class='w-40 h-60 rounded-md shadow-lg'
+                />
+              }
+              <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
+              <p class='text-md text-gray-600'>By {libro.data.author}</p>
+            </div>
+          ))
+        ) : (
+          <p class='text-gray-500 text-lg'>
+            No books found for this concorrente.
+          </p>
+        )
+      }
+    </div>
+  </Wrapper>
 </Layout2025>

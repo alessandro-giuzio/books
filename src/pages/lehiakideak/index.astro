@@ -40,6 +40,7 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
           <ArticleLehiakideak
             concorrente={{
               ...concorrente.data,
+              bio: concorrente.data.bio || '',
               slug:
                 concorrente.data.slug ||
                 concorrente.data.nome.toLowerCase().replace(/\s+/g, '-'),

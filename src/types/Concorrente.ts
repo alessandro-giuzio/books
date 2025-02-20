@@ -2,6 +2,7 @@ export type ConcorrenteData = {
   nome: string;
   username: string;
   alt: string;
+  bio: string;
   image: {
     src: string;
     width: number;

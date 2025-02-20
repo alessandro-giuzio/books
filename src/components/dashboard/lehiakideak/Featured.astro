@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const libros25 = await getCollection('libros25');
+export const getStaticPaths = async () => {
+  const concorrenti = await getCollection('concorrenti25');
+
+  if (!concorrenti) {
+    console.error('Failed to fetch concorrenti collection.');
+    return [];
+  }
+
+  const paths = concorrenti.map(concorrente => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  return paths;
+};
+type Props = {
+  concorrente: CollectionEntry<'concorrenti25'> & { data: { slug: string } };
+  libros: CollectionEntry<'libros25'>[];
+};
+
+const { concorrente } = Astro.props;
+// Filter libros by the specific concorrente
+const librosForConcorrente = libros25.filter(
+  libro => libro.data.concorrente === concorrente.slug
+);
+---
+
+{concorrente.data.nome}
+{librosForConcorrente.length}

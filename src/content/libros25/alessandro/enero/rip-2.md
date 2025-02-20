@@ -6,10 +6,11 @@ cover: 'https://m.media-amazon.com/images/I/71tQyoURmRL._SY522_.jpg'
 alt: 'Rip T2'
 monthRead: urtarrila
 tags: ['Thriller', 'Misterio']
-concorrente: 'alessandro'
+concorrente: 'ale'
 slug: 'rip-2'
 punti: 5
 yearRead: 2025
 type: comic
 pages: 112
+featured: true
 ---
