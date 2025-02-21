@@ -7,6 +7,7 @@ import { Image } from 'astro:assets';
 export async function getStaticPaths() {
   const lehiakideak = await getCollection('concorrenti25');
   const liburuak = await getCollection('libros25');
+  const libros24 = await getCollection('libros');
 
   return lehiakideak.map(lehiakide => {
     const nome = lehiakide.data.nome;
@@ -27,6 +28,41 @@ export async function getStaticPaths() {
     const liburuakForLehiakide = liburuak.filter(
       libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
     );
+    // Libros from the previous year
+    const liburuak24ForLehiakide = libros24.filter(
+      libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
+    );
+    // Count the number of books read
+    const count25 = liburuakForLehiakide.length;
+    const count24 = liburuak24ForLehiakide.length;
+
+    // Extract all the tags from the liburuak24ForLehiakide
+    const tags24 = liburuak24ForLehiakide
+      .map(libro => libro.data.tag)
+      .flat()
+      .reduce((acc: { [key: string]: number }, tag: string) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+        return acc;
+      }, {});
+    // Extract all the tags from the liburuakForLehiakide
+    const tags25 = liburuakForLehiakide
+      .map(libro => libro.data.tags)
+      .flat()
+      .reduce((acc: { [key: string]: number }, tag: string) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+        return acc;
+      }, {});
+    // Sort the tags by count of the 2 years
+    const sortedTags24 = Object.entries(tags24)
+      .sort((a, b) => (b[1] as number) - (a[1] as number))
+      .slice(0, 3);
+    const sortedTags25 = Object.entries(tags25)
+      .sort((a, b) => (b[1] as number) - (a[1] as number))
+      .slice(0, 3);
+    // To use only the tag names you can map over the sorted array
+    const topThreeTags24 = sortedTags24.map(item => item[0]);
+    const topThreeTags25 = sortedTags25.map(item => item[0]);
+
     // Filter the featured books
     const featuredLiburuak = liburuakForLehiakide.filter(
       libro => libro.data.featured
@@ -39,83 +75,167 @@ export async function getStaticPaths() {
       props: {
         lehiakide: { ...lehiakide, data: { ...lehiakide.data, slug } }, // Ensure slug is always set
         liburuakForLehiakide,
+        liburuak24ForLehiakide,
         featuredLiburuak,
+        count25,
+        count24,
+        tags24,
+        tags25,
+        topThreeTags24,
+        topThreeTags25,
       },
     };
   });
 }
 
 const { slug } = Astro.params;
-const { lehiakide, liburuakForLehiakide, featuredLiburuak } = Astro.props;
+const {
+  lehiakide,
+  liburuakForLehiakide,
+  liburuak24ForLehiakide,
+  featuredLiburuak,
+  count25,
+  count24,
+  tags24,
+  tags25,
+  topThreeTags24,
+  topThreeTags25,
+} = Astro.props;
 ---
 
 <Layout2025 title={`🏴‍☠️ ${lehiakide.data.nome} 🏴‍☠️`}>
   <!-- Hero Section -->
-  <Wrapper
-    variant='hero'
-    class='grid grid-cols-1 gap-4 md:grid-cols-2 items-center'>
-    <div class='overflow-hidden relative w-full flex justify-center'>
-      <Image
-        src={lehiakide.data.image}
-        alt={lehiakide.data.alt}
-        class='rounded-full object-cover aspect-[16/10] w-40 h-40 md:w-60 md:h-60'
-        format='webp'
-      />
-    </div>
-    <div class='text-center md:text-left'>
-      <h1 class='text-4xl font-bold'>{lehiakide.data.nome}</h1>
-      <p class='text-lg text-gray-700'>{lehiakide.data.bio}</p>
-    </div>
-  </Wrapper>
-  <!-- Featured Book -->
-  <Wrapper variant='standard'>
-    <h2 class='text-3xl font-semibold mb-4'>⭐ Featured Book</h2>
+  <main class='flex flex-col gap-8'>
+    <Wrapper
+      variant='hero'
+      class='grid grid-cols-1 gap-4 md:grid-cols-2 items-center bg-basque-15'>
+      <div class='overflow-hidden relative w-full flex justify-center'>
+        <Image
+          src={lehiakide.data.image}
+          alt={lehiakide.data.alt}
+          class='rounded-full object-cover aspect-[16/10] w-40 h-40 md:w-60 md:h-60'
+          format='webp'
+        />
+      </div>
+      <div class='text-center md:text-left'>
+        <h1 class='text-4xl text-whisperingLilac font-bold'>
+          {lehiakide.data.nome}
+        </h1>
+        <p class='text-lg text-whisperingLilac'>{lehiakide.data.bio}</p>
+      </div>
+    </Wrapper>
 
-    {
-      featuredLiburuak.length > 0 ? (
-        featuredLiburuak.map(libro => (
-          <div class='flex flex-col items-center text-center p-4 bg-yellow-100 rounded-lg shadow-md'>
-            <img
-              src={libro.data.cover}
-              alt={`Cover of ${libro.data.title}`}
-              class='w-40 h-60 rounded-md shadow-lg'
-            />
-            <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
-            <p class='text-md text-gray-600'>By {libro.data.author}</p>
-          </div>
-        ))
-      ) : (
-        <p class='text-gray-500 text-lg'>No featured book available.</p>
-      )
-    }
-  </Wrapper>
-
-  <!-- Books Section -->
-  <Wrapper variant='standard'>
-    <h2 class='text-3xl font-semibold mb-4'>📚 Books Read</h2>
-
-    <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
-      {
-        liburuakForLehiakide.length > 0 ? (
-          liburuakForLehiakide.map(libro => (
-            <div class='flex flex-col items-center text-center p-4 bg-gray-100 rounded-lg shadow-md'>
-              {
+    <Wrapper variant='standard'>
+      <div class='grid grid-cols-1 md:grid-cols-2 space-x-2 gap-y-8'>
+        <!-- Featured Book -->
+        {
+          featuredLiburuak.length > 0 ? (
+            featuredLiburuak.map(libro => (
+              <div class='flex flex-col items-center text-center p-4 bg-yellow-100 rounded-lg shadow-md'>
+                <h2 class='text-3xl font-semibold mb-4'>⭐ Featured Book</h2>
                 <img
                   src={libro.data.cover}
                   alt={`Cover of ${libro.data.title}`}
                   class='w-40 h-60 rounded-md shadow-lg'
                 />
-              }
-              <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
-              <p class='text-md text-gray-600'>By {libro.data.author}</p>
-            </div>
-          ))
-        ) : (
-          <p class='text-gray-500 text-lg'>
-            No books found for this concorrente.
+                <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
+                <p class='text-md text-gray-600'>By {libro.data.author}</p>
+              </div>
+            ))
+          ) : (
+            <p class='text-gray-500 text-lg'>No featured book available.</p>
+          )
+        }
+        <div
+          class='bg-basque-15 rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl'>
+          <div>
+            <h2
+              class='text-4xl font-bold text-basque-90 mb-4 flex items-center gap-2'>
+              📚 <span
+                class='bg-basque-50 text-white px-4 py-2 rounded-lg shadow-md'
+                >Liburuen Kopurua</span
+              >
+            </h2>
+            <p class='text-lg text-basque-80 uppercase tracking-wide'>
+              📅 Urte Hau
+            </p>
+            <p class='text-6xl font-extrabold text-basque-50 drop-shadow-lg'>
+              {count25}
+            </p>
+          </div>
+
+          <div class='w-16 h-1 bg-basque-50 my-4 rounded-full'></div>
+          <!-- Separator Line -->
+
+          <p class='text-lg text-basque-80 uppercase tracking-wide'>
+            📖 Aurreko Urtea
           </p>
-        )
-      }
-    </div>
-  </Wrapper>
+          <p class='text-4xl font-bold text-basque-60'>{count24}</p>
+        </div>
+        <div
+          class='bg-basque-25 md:col-span-2 p-6 text-white text-center rounded-lg shadow-lg'>
+          <!-- 2024 Tags -->
+          <div class='mb-4'>
+            <h3 class='text-lg sm:text-xl font-semibold'>📌 2024ko Etiketak</h3>
+            <ul
+              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-2 sm:mt-4'>
+              {
+                topThreeTags24.map((tag: string) => (
+                  <li class='bg-white text-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase'>
+                    {tag}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- 2025 Tags -->
+          <div>
+            <h3 class='text-lg sm:text-xl font-semibold'>
+              📌 2025eko Etiketak
+            </h3>
+            <ul
+              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-2 sm:mt-4'>
+              {
+                topThreeTags25.map((tag: string) => (
+                  <li class='bg-white text-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase'>
+                    {tag}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+
+    <!-- Books Section -->
+    <Wrapper variant='standard'>
+      <h2 class='text-3xl font-semibold mb-4'>📚 Books Read</h2>
+
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        {
+          liburuakForLehiakide.length > 0 ? (
+            liburuakForLehiakide.map(libro => (
+              <div class='flex flex-col items-center text-center p-4 bg-gray-100 rounded-lg shadow-md'>
+                {
+                  <img
+                    src={libro.data.cover}
+                    alt={`Cover of ${libro.data.title}`}
+                    class='w-40 h-60 rounded-md shadow-lg'
+                  />
+                }
+                <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
+                <p class='text-md text-gray-600'>By {libro.data.author}</p>
+              </div>
+            ))
+          ) : (
+            <p class='text-gray-500 text-lg'>
+              No books found for this concorrente.
+            </p>
+          )
+        }
+      </div>
+    </Wrapper>
+  </main>
 </Layout2025>
