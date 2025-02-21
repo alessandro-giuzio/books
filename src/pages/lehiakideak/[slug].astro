@@ -105,23 +105,24 @@ const {
 
 <Layout2025 title={`🏴‍☠️ ${lehiakide.data.nome} 🏴‍☠️`}>
   <!-- Hero Section -->
-  <main class='flex flex-col gap-8'>
-    <Wrapper
-      variant='hero'
-      class='grid grid-cols-1 gap-4 md:grid-cols-2 items-center bg-basque-15'>
-      <div class='overflow-hidden relative w-full flex justify-center'>
-        <Image
-          src={lehiakide.data.image}
-          alt={lehiakide.data.alt}
-          class='rounded-full object-cover aspect-[16/10] w-40 h-40 md:w-60 md:h-60'
-          format='webp'
-        />
-      </div>
-      <div class='text-center md:text-left'>
-        <h1 class='text-4xl text-whisperingLilac font-bold'>
-          {lehiakide.data.nome}
-        </h1>
-        <p class='text-lg text-whisperingLilac'>{lehiakide.data.bio}</p>
+  <main class='flex flex-col gap-8 bg-le-100'>
+    <Wrapper variant='hero' class='flex justify-center w-full'>
+      <div
+        class='grid grid-cols-1 gap-4 md:grid-cols-2 items-center bg-le-bgCard rounded-xl shadow-md border-2 border-le-borderPrimary max-w-4xl w-full px-1 py-2'>
+        <div class='overflow-hidden relative w-full flex justify-center'>
+          <Image
+            src={lehiakide.data.image}
+            alt={lehiakide.data.alt}
+            class='rounded-full object-cover aspect-[16/10] w-40 h-40 md:w-60 md:h-60'
+            format='webp'
+          />
+        </div>
+        <div class='text-center md:text-left'>
+          <h1 class='text-4xl text-le-textPrimary font-bold'>
+            {lehiakide.data.nome}
+          </h1>
+          <p class='text-lg text-le-textSecondary'>{lehiakide.data.bio}</p>
+        </div>
       </div>
     </Wrapper>
 
@@ -131,15 +132,19 @@ const {
         {
           featuredLiburuak.length > 0 ? (
             featuredLiburuak.map(libro => (
-              <div class='flex flex-col items-center text-center p-4 bg-yellow-100 rounded-lg shadow-md'>
-                <h2 class='text-3xl font-semibold mb-4'>⭐ Featured Book</h2>
+              <div class='flex flex-col items-center text-center p-4 bg-le-bgCard rounded-xl shadow-md border-2 border-le-borderPrimary text-le-textPrimary'>
+                <h2 class='md:text-4xl text-lg  font-semibold mb-4'>
+                  ⭐ Featured Book
+                </h2>
                 <img
                   src={libro.data.cover}
                   alt={`Cover of ${libro.data.title}`}
                   class='w-40 h-60 rounded-md shadow-lg'
                 />
                 <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
-                <p class='text-md text-gray-600'>By {libro.data.author}</p>
+                <p class='text-md text-le-textSecondary'>
+                  By {libro.data.author}
+                </p>
               </div>
             ))
           ) : (
@@ -147,41 +152,44 @@ const {
           )
         }
         <div
-          class='bg-basque-15 rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl'>
+          class='bg-le-bgCard text-electricAmethyst rounded-xl shadow-xl p-8 flex flex-col items-center text-center border-2 border-le-borderPrimary'>
           <div>
             <h2
-              class='text-4xl font-bold text-basque-90 mb-4 flex items-center gap-2'>
+              class='md:text-4xl text-lg font-bold text-basque-90 mb-4 flex items-center gap-2'>
               📚 <span
-                class='bg-basque-50 text-white px-4 py-2 rounded-lg shadow-md'
+                class='bg-le-bgHighlight text-le-textPrimary px-4 py-2 rounded-lg shadow-md'
                 >Liburuen Kopurua</span
               >
             </h2>
-            <p class='text-lg text-basque-80 uppercase tracking-wide'>
+            <p class='text-lg text-le-textPrimary uppercase tracking-wide'>
               📅 Urte Hau
             </p>
-            <p class='text-6xl font-extrabold text-basque-50 drop-shadow-lg'>
+            <p
+              class='text-6xl font-extrabold text-le-textSecondary drop-shadow-lg'>
               {count25}
             </p>
           </div>
 
-          <div class='w-16 h-1 bg-basque-50 my-4 rounded-full'></div>
+          <div class='w-16 h-1 bg-le-textSecondary my-4 rounded-full'></div>
           <!-- Separator Line -->
 
-          <p class='text-lg text-basque-80 uppercase tracking-wide'>
+          <p class='text-lg text-le-textPrimary uppercase tracking-wide'>
             📖 Aurreko Urtea
           </p>
-          <p class='text-4xl font-bold text-basque-60'>{count24}</p>
+          <p class='text-6xl font-bold text-le-textSecondary'>{count24}</p>
         </div>
         <div
-          class='bg-basque-25 md:col-span-2 p-6 text-white text-center rounded-lg shadow-lg'>
+          class='bg-le-bgCard md:col-span-2 p-6 text-le-textPrimary text-center border-2 border-le-borderPrimary rounded-xl shadow-lg'>
           <!-- 2024 Tags -->
           <div class='mb-4'>
-            <h3 class='text-lg sm:text-xl font-semibold'>📌 2024ko Etiketak</h3>
+            <h3 class='md:text-4xl text-lg sm:text-xl font-semibold'>
+              📌 2024ko Etiketak
+            </h3>
             <ul
-              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-2 sm:mt-4'>
+              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-4 sm:mt-6'>
               {
                 topThreeTags24.map((tag: string) => (
-                  <li class='bg-white text-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase'>
+                  <li class='bg-le-bgSection text-le-textPrimary px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase border border-le-borderPrimary'>
                     {tag}
                   </li>
                 ))
@@ -191,14 +199,14 @@ const {
 
           <!-- 2025 Tags -->
           <div>
-            <h3 class='text-lg sm:text-xl font-semibold'>
+            <h3 class='md:text-4xl text-lg sm:text-xl font-semibold'>
               📌 2025eko Etiketak
             </h3>
             <ul
-              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-2 sm:mt-4'>
+              class='flex flex-wrap justify-center gap-2 sm:gap-3 mt-4 sm:mt-6'>
               {
                 topThreeTags25.map((tag: string) => (
-                  <li class='bg-white text-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase'>
+                  <li class='bg-le-bgHighlight text-le-textPrimary px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm md:text-base first-letter:uppercase border border-le-borderSecondary'>
                     {tag}
                   </li>
                 ))
@@ -210,14 +218,16 @@ const {
     </Wrapper>
 
     <!-- Books Section -->
-    <Wrapper variant='standard'>
-      <h2 class='text-3xl font-semibold mb-4'>📚 Books Read</h2>
+    <Wrapper variant='standard' class='mb-4'>
+      <h2 class='md:text-4xl text-lg font-semibold mb-6 text-le-textPrimary'>
+        📚 Books Read
+      </h2>
 
-      <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
         {
           liburuakForLehiakide.length > 0 ? (
             liburuakForLehiakide.map(libro => (
-              <div class='flex flex-col items-center text-center p-4 bg-gray-100 rounded-lg shadow-md'>
+              <div class='flex flex-col items-center text-center p-4 bg-le-bgHighlight rounded-lg shadow-md'>
                 {
                   <img
                     src={libro.data.cover}
@@ -225,8 +235,12 @@ const {
                     class='w-40 h-60 rounded-md shadow-lg'
                   />
                 }
-                <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
-                <p class='text-md text-gray-600'>By {libro.data.author}</p>
+                <h3 class='text-xl font-bold mt-2 text-le-textPrimary'>
+                  {libro.data.title}
+                </h3>
+                <p class='text-md text-le-textSecondary'>
+                  By {libro.data.author}
+                </p>
               </div>
             ))
           ) : (

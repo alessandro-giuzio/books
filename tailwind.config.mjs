@@ -32,6 +32,35 @@ export default {
           50:'oklch(38.83% 0.041 237.32)',
           60:'oklch(37.53% 0.0438 226.2)'
         },
+
+          le: {
+            // 🌑 **Dark Base Colors** (Backgrounds, Deep Elements)
+            100: '#000022', // "Midnight Abyss" - Deepest background color
+            200: '#040f16', // "Deep Twilight" - Slightly lighter dark background
+            300: '#001242', // "Royal Navy" - Darker blue accent
+            400: '#005e7c', // "Ocean Depths" - Muted teal accent
+            500: '#0094c6', // "Sky Surge" - Brightest pop of blue
+
+            // 🌫 **Text Colors**
+            textPrimary: '#F5F7FA', // "Mist White" - Best for text on dark backgrounds
+            textSecondary: '#C0C8D6', // "Cloud Gray" - Secondary text, less contrast
+            textAccent: '#0094c6', // "Sky Surge" - For highlights, links, interactive elements
+
+            // 🎨 **Borders & Dividers**
+            borderPrimary: '#005e7c', // "Ocean Depths" - Subtle dividers
+            borderSecondary: '#001242', // "Royal Navy" - Slightly stronger borders
+
+            // 🔥 **Accents & Highlights**
+            accent: '#0094c6', // "Sky Surge" - Standout elements like buttons, CTAs
+            hover: '#00789e', // "Teal Tide" - Slightly muted hover effect
+            danger: '#ff4c4c', // "Alert Red" - For warnings, errors
+
+            // 📄 **Component Backgrounds**
+            bgCard: '#001242', // "Royal Navy" - Background for card elements
+            bgSection: '#040f16', // "Deep Twilight" - Section backgrounds
+            bgHighlight: '#0094c6', // "Sky Surge" - Highlighted sections
+          },
+
         midnightMystery: '#13004e',
         royalIndigo: '#48007e',
         electricAmethyst: '#7f00b1',
