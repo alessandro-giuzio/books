@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import alpinejs from "@astrojs/alpinejs";
 import vue from "@astrojs/vue";
 import path from 'path';
+import vtbot from 'astro-vtbot';
 
 
 
@@ -24,5 +25,6 @@ export default defineConfig({
     }),
     alpinejs(),
     vue(),
+    vtbot()
   ],
 });
