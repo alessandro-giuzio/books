@@ -119,26 +119,29 @@ import Arrow from '../../assets/images/arrow-up.svg';
   </div>
 </footer>
 <script type='module'>
-  document.addEventListener('DOMContentLoaded', () => {
+  function startWaveAnimation() {
     const waveSegments = document.querySelectorAll('.wave-segment');
-    // Controls the phase of the wave animation
+
+    if (!waveSegments.length) return; // Avoid errors if no segments found
+
     let wavePhase = 0;
+
     function animateWave() {
-      // Calculate a vertical offset for each wave segment using the sine function
       waveSegments.forEach((segment, index) => {
-        // '0.3' adjusts the wavelength, and '20' sets the amplitude (max vertical displacement)
         const offset = Math.sin((wavePhase + index) * 0.3) * 20;
-        // Applies the calculated offset to the `margin-top` property
-        //
-        // `Math.max(0, offset)` ensures no negative values, keeping segments aligned at the top
         segment.style.marginTop = `${Math.max(0, offset)}px`;
       });
-      // Increments the phase to create the motion (adjusts animation speed)
+
       wavePhase += 0.1;
-      // Recursively calls `animateWave` for smooth, frame-based animation
       requestAnimationFrame(animateWave);
     }
-    // Starts the wave animation
+
     animateWave();
-  });
+  }
+
+  // Run wave animation on initial page load
+  document.addEventListener('DOMContentLoaded', startWaveAnimation);
+
+  // Re-run animation after client-side navigation (ClientRouter fix)
+  document.addEventListener('astro:after-swap', startWaveAnimation);
 </script>
