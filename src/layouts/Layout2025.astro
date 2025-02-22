@@ -17,29 +17,29 @@ const { title = 'Irakurketa 2025', socialImage = '/okBooks.webp' } =
   <head>
     <ClientRouter />
     <title>{title}</title>
+    <!-- Sitemap -->
 
-    <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
-
-    <meta name='author' content='Alessandro Giuzio' />
-    <meta name='description' content='Diseño Web en Donostia | San Sebastian' />
-
-    <meta property='og:title' content={title} />
-    <meta
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <meta charset='utf-8' /><meta
+      name='viewport'
+      content='width=device-width, initial-scale=1'
+    /><meta name='author' content='Alessandro Giuzio' /><meta
+      name='description'
+      content='Diseño Web en Donostia | San Sebastian'
+    /><meta property='og:title' content={title} /><meta
       property='og:description'
       content='Euskal Irakurle Lehiaketa 2025 gunea: Zure liburu gogokoenen inguruan irakurle komunitate batekin elkarbanatu, eta irakurketa lehiaketa batean parte hartu. Gune honek irakurketa aurrerapena, lehiakideen sailkapena eta hilabeteko liburu aipagarrienak eskaintzen ditu.'
-    />
-    <meta property='og:image' content={socialImage} />
-    <meta property='og:url' content={Astro.url} />
-    <meta property='og:site_name' content={title} />
-    <meta name='twitter:card' content={socialImage} />
-    <meta
+    /><meta property='og:image' content={socialImage} /><meta
+      property='og:url'
+      content={Astro.url}
+    /><meta property='og:site_name' content={title} /><meta
+      name='twitter:card'
+      content={socialImage}
+    /><meta
       name='twitter:image:alt'
       content='Euskal etxe bateko irakurle txoko atsegina, leiho ondoko eserlekuan gorriak, berdeak eta zuriak diren kojinekin, alboan txapela eta kafea duen mahai txikiarekin eta liburuen pila batzuekin, Euskal Herriko landa berdea ikuspegiarekin.'
-    />
-
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-  </head>
+    /><link rel='icon' type='image/svg+xml' href='/favicon.svg' /></head
+  >
 
   <body>
     <Navbar />

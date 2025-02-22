@@ -8,8 +8,14 @@ import vtbot from 'astro-vtbot';
 
 
 
+import sitemap from '@astrojs/sitemap';
+
+
+
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://irakurleak.eus',
   vite: {
     resolve: {
       alias: {
@@ -19,12 +25,8 @@ export default defineConfig({
       },
     },
   },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false, // Disable Tailwind's base styles
-    }),
-    alpinejs(),
-    vue(),
-    vtbot()
-  ],
+  integrations:
+  [tailwind({
+    applyBaseStyles: false, // Disable Tailwind's base styles
+  }), alpinejs(), vue(), vtbot(), sitemap()],
 });
