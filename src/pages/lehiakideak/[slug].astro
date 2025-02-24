@@ -30,9 +30,25 @@ export async function getStaticPaths() {
       libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
     );
     // Libros from the previous year
-    const liburuak24ForLehiakide = libros24.filter(
-      libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
+    // Define possible variants for each concorrente
+    const nameVariants: Record<string, string[]> = {
+      ale: ['alessandro', 'ale'], // Add all possible variations
+      // Add more concorrenti if necessary
+    };
+
+    // Get possible names for the current concorrente
+    const possibleNames = nameVariants[slug.toLowerCase()] || [
+      slug.toLowerCase(),
+    ];
+
+    // Filter using the name variants
+    const liburuak24ForLehiakide = libros24.filter(libro =>
+      possibleNames.includes(libro.data.concorrente.toLowerCase())
     );
+
+    /* console.log(`🔍 Checking Books for: ${slug}`);
+    console.log(`🔹 Matching names:`, possibleNames);
+    console.log(`✅ Matched Books:`, liburuak24ForLehiakide); */
     // debug the books for the concorrente for last year
     /*   console.log(`📚 Books for ${nome} (${slug}):`, liburuak24ForLehiakide); */
     // Count the number of books read
