@@ -3,7 +3,7 @@
 /* import '@fontsource-variable/tourney'; */
 import '../styles/base.css';
 import '../styles/globals.css';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 interface Props {
   title?: string;
   description?: string;
@@ -45,155 +45,160 @@ const { title, description } = Astro.props;
 
   <!--  <link rel='icon' href='https://fav.farm/📚🚀' /> -->
 
-  <ViewTransitions />
+  <ClientRouter />
+
+  <body class='h-full'>
+    <slot />
+    <style is:global>
+      :root {
+        --color-default: #fff;
+        --bg: #1e2237;
+        /* bg header with opacity */
+        --bg-header: #242842;
+        --nav-border: #2a2e4a;
+        --text: #fff;
+        --rounded-btn: 0.5rem;
+        --tw-bg-opacity: 1;
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+        --max-width: 1200px;
+      }
+
+      [data-theme='alessandro'] {
+        --bg: #0c0c0c;
+        --text: #f4f;
+        --bg-header: #0c0c0c;
+        --bg-card: linear-gradient(
+          rgba(var(--accent-dark), 66%),
+          rgba(var(--accent-dark), 33%)
+        );
+        --nav-border: #660066;
+        --nav-gradient: linear-gradient(
+          50deg,
+          hsl(300deg 100% 25%) 0%,
+          hsl(330deg 100% 35%) 25%,
+          hsl(350deg 100% 40%) 50%,
+          hsl(10deg 100% 50%) 75%,
+          hsl(20deg 100% 55%) 100%
+        );
+      }
+      [data-theme='amaia'] {
+        --bg: #007acc;
+        --text: #fff;
+        --bg-header: #0057a8;
+        --bg-card: linear-gradient(
+          rgba(0, 122, 204, 0.66),
+          rgba(0, 122, 204, 0.33)
+        );
+        --nav-border: #004080;
+        --nav-gradient: linear-gradient(
+          50deg,
+          hsl(204deg 100% 45%) 0%,
+          hsl(197deg 100% 50%) 25%,
+          hsl(190deg 100% 60%) 50%,
+          hsl(180deg 100% 65%) 75%,
+          hsl(170deg 100% 70%) 100%
+        );
+      }
+      [data-theme='asier'] {
+        --bg: #155d3f;
+        --text: #fff;
+        --bg-header: #0e4326;
+        --bg-card: linear-gradient(
+          rgba(21, 93, 63, 0.66),
+          rgba(21, 93, 63, 0.33)
+        );
+        --nav-border: #0a3b29;
+      }
+      [data-theme='irene'] {
+        --bg: #ffb3a7; /* Soft pastel coral */
+        --text: #333; /* Dark gray for readability */
+        --bg-header: #ffcab1; /* Lighter pastel coral */
+        --bg-card: linear-gradient(
+          rgba(255, 202, 177, 0.66),
+          rgba(255, 202, 177, 0.33)
+        );
+        --nav-border: #e6958b;
+      }
+
+      [data-theme='luca'] {
+        --bg: #5f8670; /* Background color set to a greenish shade */
+        --text: #fff; /* Keeping text color white for contrast */
+        --bg-header: #ff9800; /* Header background set to a bright orange */
+        --bg-card: linear-gradient(
+          rgba(184, 0, 0, 0.66),
+          rgba(130, 3, 0, 0.33)
+        );
+        --nav-border: #4b634d;
+      }
+
+      [data-theme='malen'] {
+        --bg: #030637; /* Dark blue for the background */
+        --text: #fff; /* White for the text color */
+        --bg-header: #3c0753; /* Deep purple for the header background */
+        --bg-card: linear-gradient(
+          #030637,
+          /* Starting with dark blue */ #3c0753,
+          /* Transitioning to deep purple */ #720455,
+          /* Moving to a darker pinkish hue */ #910a67
+            /* Ending with a vivid purple */
+        ); /* Card background with a vibrant linear gradient */
+        --nav-border: #4a034e;
+      }
+      [data-theme='oihana'] {
+        --bg: #186f65; /* A deep teal green for the background */
+        --text: #fce09b; /* A light, creamy yellow for text for contrast */
+        --bg-header: #b5cb99; /* A soft, muted green for the header background */
+        --bg-card: linear-gradient(
+          rgba(178, 83, 62, 0.66),
+          /* Dark terracotta gradient start */ rgba(178, 83, 62, 0.33)
+            /* Dark terracotta gradient end, more transparent */
+        );
+        --nav-border: #964b3e;
+      }
+
+      [data-theme='unai'] {
+        --bg: #ebd9b4;
+        --text: #000;
+        --bg-header: #9dbc98;
+        --bg-card: linear-gradient(
+          rgba(99, 136, 137, 0.66),
+          /* #638889 with 66% opacity */ rgba(99, 136, 137, 0.33)
+            /* #638889 with 33% opacity */
+        );
+        --nav-border: #7a8c73;
+      }
+
+      html {
+        font-family: system-ui, sans-serif;
+        background: #1e2237;
+        background-size: 224px;
+        height: fit-content;
+      }
+
+      body {
+        margin-inline: auto;
+        width: 100%;
+        max-width: var(--max-width);
+        max-width: calc(100% - 0.5rem);
+      }
+      main {
+        width: 100%;
+        /* max-width: var(--max-width); */
+        margin: 0 auto;
+      }
+    </style>
+  </body>
+
 </html>
-<body class='h-full'>
-  <slot />
-  <style is:global>
-    :root {
-      --color-default: #fff;
-      --bg: #1e2237;
-      /* bg header with opacity */
-      --bg-header: #242842;
-      --nav-border: #2a2e4a;
-      --text: #fff;
-      --rounded-btn: 0.5rem;
-      --tw-bg-opacity: 1;
-      --accent: 136, 58, 234;
-      --accent-light: 224, 204, 250;
-      --accent-dark: 49, 10, 101;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
-      );
-      --bg-card: linear-gradient(
-        rgba(var(--accent-dark), 66%),
-        rgba(var(--accent-dark), 33%)
-      );
-      --max-width: 1200px;
-    }
-
-    [data-theme='alessandro'] {
-      --bg: #0c0c0c;
-      --text: #f4f;
-      --bg-header: #0c0c0c;
-      --bg-card: linear-gradient(
-        rgba(var(--accent-dark), 66%),
-        rgba(var(--accent-dark), 33%)
-      );
-      --nav-border: #660066;
-      --nav-gradient: linear-gradient(
-        50deg,
-        hsl(300deg 100% 25%) 0%,
-        hsl(330deg 100% 35%) 25%,
-        hsl(350deg 100% 40%) 50%,
-        hsl(10deg 100% 50%) 75%,
-        hsl(20deg 100% 55%) 100%
-      );
-    }
-    [data-theme='amaia'] {
-      --bg: #007acc;
-      --text: #fff;
-      --bg-header: #0057a8;
-      --bg-card: linear-gradient(
-        rgba(0, 122, 204, 0.66),
-        rgba(0, 122, 204, 0.33)
-      );
-      --nav-border: #004080;
-      --nav-gradient: linear-gradient(
-        50deg,
-        hsl(204deg 100% 45%) 0%,
-        hsl(197deg 100% 50%) 25%,
-        hsl(190deg 100% 60%) 50%,
-        hsl(180deg 100% 65%) 75%,
-        hsl(170deg 100% 70%) 100%
-      );
-    }
-    [data-theme='asier'] {
-      --bg: #155d3f;
-      --text: #fff;
-      --bg-header: #0e4326;
-      --bg-card: linear-gradient(
-        rgba(21, 93, 63, 0.66),
-        rgba(21, 93, 63, 0.33)
-      );
-      --nav-border: #0a3b29;
-    }
-    [data-theme='irene'] {
-      --bg: #ffb3a7; /* Soft pastel coral */
-      --text: #333; /* Dark gray for readability */
-      --bg-header: #ffcab1; /* Lighter pastel coral */
-      --bg-card: linear-gradient(
-        rgba(255, 202, 177, 0.66),
-        rgba(255, 202, 177, 0.33)
-      );
-      --nav-border: #e6958b;
-    }
-
-    [data-theme='luca'] {
-      --bg: #5f8670; /* Background color set to a greenish shade */
-      --text: #fff; /* Keeping text color white for contrast */
-      --bg-header: #ff9800; /* Header background set to a bright orange */
-      --bg-card: linear-gradient(rgba(184, 0, 0, 0.66), rgba(130, 3, 0, 0.33));
-      --nav-border: #4b634d;
-    }
-
-    [data-theme='malen'] {
-      --bg: #030637; /* Dark blue for the background */
-      --text: #fff; /* White for the text color */
-      --bg-header: #3c0753; /* Deep purple for the header background */
-      --bg-card: linear-gradient(
-        #030637,
-        /* Starting with dark blue */ #3c0753,
-        /* Transitioning to deep purple */ #720455,
-        /* Moving to a darker pinkish hue */ #910a67
-          /* Ending with a vivid purple */
-      ); /* Card background with a vibrant linear gradient */
-      --nav-border: #4a034e;
-    }
-    [data-theme='oihana'] {
-      --bg: #186f65; /* A deep teal green for the background */
-      --text: #fce09b; /* A light, creamy yellow for text for contrast */
-      --bg-header: #b5cb99; /* A soft, muted green for the header background */
-      --bg-card: linear-gradient(
-        rgba(178, 83, 62, 0.66),
-        /* Dark terracotta gradient start */ rgba(178, 83, 62, 0.33)
-          /* Dark terracotta gradient end, more transparent */
-      );
-      --nav-border: #964b3e;
-    }
-
-    [data-theme='unai'] {
-      --bg: #ebd9b4;
-      --text: #000;
-      --bg-header: #9dbc98;
-      --bg-card: linear-gradient(
-        rgba(99, 136, 137, 0.66),
-        /* #638889 with 66% opacity */ rgba(99, 136, 137, 0.33)
-          /* #638889 with 33% opacity */
-      );
-      --nav-border: #7a8c73;
-    }
-
-    html {
-      font-family: system-ui, sans-serif;
-      background: #1e2237;
-      background-size: 224px;
-      height: fit-content;
-    }
-
-    body {
-      margin-inline: auto;
-      width: 100%;
-      max-width: var(--max-width);
-      max-width: calc(100% - 0.5rem);
-    }
-    main {
-      width: 100%;
-      /* max-width: var(--max-width); */
-      margin: 0 auto;
-    }
-  </style>
-</body>

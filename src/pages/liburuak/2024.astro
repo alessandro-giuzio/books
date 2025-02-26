@@ -1,0 +1,26 @@
+---
+import Layout2025 from '../../layouts/Layout2025.astro';
+import { getCollection } from 'astro:content';
+const todosLosLibros = await getCollection('libros');
+import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vue';
+import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
+
+// filter only unique libros
+const uniqueLibros = todosLosLibros.filter(
+  (libro, index, self) =>
+    index ===
+    self.findIndex(
+      t =>
+        t.data.title === libro.data.title && t.data.author === libro.data.author
+    )
+);
+
+// count libros
+const countLibros = todosLosLibros.length;
+---
+
+<Layout2025 title='liburuak'>
+  <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
+    todos los libros del (2024) <span>{countLibros} </span>
+  </h1>
+</Layout2025>`;

@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-/* import Card from '../components/Card.astro'; */
 import Header from '../components/Header.astro';
-import Leader from '../components/Leader.astro';
+import Leader from '../components/2024/Leader.astro';
 import Mesi from '../components/Mesi.astro';
-import NotLeader from '../components/NotLeader.astro';
+import NotLeader from '../components/2024/NotLeader.astro';
 import { getCollection } from 'astro:content';
 import Main from '../components/UI/Main.astro';
 const tuttiConcorrenti = await getCollection('concorrenti');
-/* const todosLosLibros = await getCollection('libros'); */
+
 // Sort by points in descending order
 const topThree = tuttiConcorrenti
   .sort((a, b) => b.data.punti - a.data.punti)
@@ -17,7 +16,7 @@ const topThree = tuttiConcorrenti
 const reordered = [topThree[1], topThree[0], topThree[2]];
 ---
 
-<Layout title='Irakurketa 2025' description='Irakurketa 2025'>
+<Layout title='Irakurketa 2024' description='Irakurketa 2024'>
   <Header />
   <Main>
     <div class='mb-12 border border-collapse border-transparent'>
@@ -30,11 +29,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
                   ? 'translate-y-[-40px] md:translate-y-[-50px] lg:translate-y-[-62px] transition  h-[calc(100%+20px)] md:h-[calc(100%+25px)] lg:h-[calc(100%+30px)]'
                   : ''
               }`}>
-              <Leader
-                concorrente={concorrente}
-                position={index + 1}
-                key={index}
-              />
+              <Leader concorrente={concorrente} position={index + 1} />
             </div>
           ))
         }
@@ -45,11 +40,7 @@ const reordered = [topThree[1], topThree[0], topThree[2]];
           tuttiConcorrenti
             .slice(3, 8)
             .map((concorrente, index) => (
-              <NotLeader
-                concorrente={concorrente}
-                position={index + 4}
-                key={index}
-              />
+              <NotLeader concorrente={concorrente} position={index + 4} />
             ))
         }
       </div>

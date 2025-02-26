@@ -1,10 +1,28 @@
 ---
 import { Image } from 'astro:assets';
-import corona from '../assets/images/corona.svg';
+import corona from '../../assets/images/corona.svg';
+import { getCollection } from 'astro:content';
 
-/* const libros = await getCollection('libros'); */
+export const getStaticPaths = async () => {
+  const concorrenti = await getCollection('concorrenti');
 
-/* const tuttiConcorrenti = await getCollection('concorrenti'); */
+  if (!concorrenti) {
+    console.error('Failed to fetch concorrenti collection.');
+    return [];
+  }
+
+  const paths = concorrenti.map((concorrente: any) => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  return paths;
+};
+export interface Props {
+  concorrente: any;
+  position: number;
+}
+
 const { concorrente, position } = Astro.props;
 ---
 
@@ -70,7 +88,7 @@ const { concorrente, position } = Astro.props;
       }
       <!-- dynamic route -->
 
-      <a href={`/concorrenti/${concorrente.data.username}`} class='name'
+      <a href={`/lehiakideak/${concorrente.slug}`} class='name'
         >{concorrente.data.nome}</a
       >
       <p class='punti'>{concorrente.data.punti}</p>

@@ -1,0 +1,54 @@
+---
+const { concorrente } = Astro.props;
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = async () => {
+  const concorrenti = await getCollection('concorrenti');
+
+  if (!concorrenti) {
+    console.error('Failed to fetch concorrenti collection.');
+    return [];
+  }
+
+  const paths = concorrenti.map((concorrente: any) => ({
+    params: { slug: concorrente.slug },
+    props: { concorrente },
+  }));
+
+  return paths;
+};
+export interface Props {
+  concorrente: any;
+  position: number;
+}
+import { Image } from 'astro:assets';
+---
+
+<div class='instructions'>
+  <Image
+    src={concorrente.data.image}
+    alt='proto'
+    class='rounded-full object-cover aspect-square max-w-[120px]'
+    width={100}
+    format='webp'
+  />
+
+  <a href={`/lehiakideak/${concorrente.slug}`} class='name capitalize text-2xl'
+    >{concorrente.data.username}</a
+  >
+
+  <p class='punti text-3xl'>{concorrente.data.punti}</p>
+</div>
+
+<style>
+  .instructions {
+    padding: 1rem;
+    border-top: 1px solid var(--text);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+  }
+</style>

@@ -5,7 +5,7 @@ alt: Alessandro
 image: './img/alessandro-1.jpg'
 punti: 120
 borderColor: ''
-slug: 'alessandro'
+slug: 'ale'
 puntiEnero: 12
 puntiFebrero: 8
 puntiMarzo: 14
