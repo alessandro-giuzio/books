@@ -20,10 +20,12 @@ const countLibros = todosLosLibros.length;
 ---
 
 <Layout2025 title='liburuak'>
-  <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
-    todos los libros del (2024) <span>{countLibros} </span>
-  </h1>
-  <div class='books'>
-    <LibrosLista2024 libros={uniqueLibros} />
+  <div class='min-h-screen bg-basque-10 overflow-x-hidden p-6'>
+    <h1 class='text-3xl font-bold text-white mt-4 mb-16'>
+      Todos los libros del (2024) <span>{countLibros} </span>
+    </h1>
+    <div class='books'>
+      <LibrosLista2024 libros={uniqueLibros} />
+    </div>
   </div>
-</Layout2025>`;
+</Layout2025>;
