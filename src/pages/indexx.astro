@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 /* import Card from '../components/Card.astro'; */
-import Header from '../components/Header.astro';
-import Leader from '../components/Leader.astro';
+import Header from '../components/2024/Header.astro';
+import Leader from '../components/2024/Leader.astro';
 import Mesi from '../components/Mesi.astro';
-import NotLeader from '../components/NotLeader.astro';
+import NotLeader from '../components/2024/NotLeader.astro';
 import { getCollection } from 'astro:content';
 import Main from '../components/UI/Main.astro';
 const tuttiConcorrenti = await getCollection('concorrenti');
@@ -31,11 +31,7 @@ const libro25 = await getCollection('libros25');
                   ? 'translate-y-[-40px] md:translate-y-[-50px] lg:translate-y-[-62px] transition  h-[calc(100%+20px)] md:h-[calc(100%+25px)] lg:h-[calc(100%+30px)]'
                   : ''
               }`}>
-              <Leader
-                concorrente={concorrente}
-                position={index + 1}
-                key={index}
-              />
+              <Leader concorrente={concorrente} position={index + 1} />
             </div>
           ))
         }
@@ -46,11 +42,7 @@ const libro25 = await getCollection('libros25');
           tuttiConcorrenti
             .slice(3, 8)
             .map((concorrente, index) => (
-              <NotLeader
-                concorrente={concorrente}
-                position={index + 4}
-                key={index}
-              />
+              <NotLeader concorrente={concorrente} position={index + 4} />
             ))
         }
       </div>

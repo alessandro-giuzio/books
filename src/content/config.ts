@@ -38,6 +38,7 @@ const librosCollection = defineCollection({
     punti: z.number(),
     type: z.string().optional(),
     extra: z.string().optional(),
+    slug: z.string().optional(),
   }),
 });
 

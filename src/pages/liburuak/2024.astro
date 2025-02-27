@@ -2,8 +2,8 @@
 import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
 const todosLosLibros = await getCollection('libros');
-import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vue';
-import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
+
+import LibrosLista2024 from 'astro/components/2024/LibrosLista2024.astro';
 
 // filter only unique libros
 const uniqueLibros = todosLosLibros.filter(
@@ -23,4 +23,7 @@ const countLibros = todosLosLibros.length;
   <h1 class='text-6xl font-bold text-red-800 uppercase mt-4 mb-16'>
     todos los libros del (2024) <span>{countLibros} </span>
   </h1>
+  <div class='books'>
+    <LibrosLista2024 libros={uniqueLibros} />
+  </div>
 </Layout2025>`;

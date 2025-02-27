@@ -2,12 +2,12 @@
   <Card
     class="max-w-md shadow-lg rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow bg-white flex flex-col h-full">
     <!-- Adjusted Image -->
-    <a :href="`/liburuak/${libro.slug}`">
-      <img
-        :src="libro.cover || '/placeholder-image.jpg'"
-        :alt="`Cover of ${libro.title}`"
-        class="w-full h-52 md:h-72 object-cover object-top rounded-t-md" />
-    </a>
+    <!-- <a :href="`/liburuak/${libro.slug}`"> -->
+    <img
+      :src="libro.cover || '/placeholder-image.jpg'"
+      :alt="`Cover of ${libro.title}`"
+      class="w-full h-52 md:h-72 object-cover object-top rounded-t-md" />
+    <!-- </a> -->
 
     <CardHeader class="p-4">
       <CardTitle class="text-xl font-semibold text-gray-900">
@@ -42,7 +42,6 @@
   </Card>
 </template>
 <script setup lang="ts">
-import type { Libros25 } from '../../types/Libros25';
 import type { Libros24 } from '../../types/Libros24';
 import {
   Card,
@@ -54,6 +53,6 @@ import {
 } from '@/components/ui/card';
 
 defineProps<{
-  libro: Libros25;
+  libro: Libros24;
 }>();
 </script>
