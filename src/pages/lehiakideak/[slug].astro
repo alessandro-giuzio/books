@@ -162,27 +162,35 @@ const {
         <!-- Featured Book -->
         {
           featuredLiburuak.length > 0 ? (
-            featuredLiburuak.map(libro => (
-              <div class='flex flex-col items-center text-center p-4 bg-le-bgCard rounded-xl shadow-md border-2 border-le-borderPrimary text-le-textPrimary'>
-                <h2 class='md:text-4xl text-lg font-semibold mb-4'>
-                  📖 Books Read
-                </h2>
+            (() => {
+              const randomIndex = Math.floor(
+                Math.random() * featuredLiburuak.length
+              );
+              const libro = featuredLiburuak[randomIndex]; // Select a random book
+              return (
+                <div class='flex flex-col items-center text-center p-4 bg-le-bgCard rounded-xl shadow-md border-2 border-le-borderPrimary text-le-textPrimary'>
+                  <h2 class='md:text-4xl text-lg font-semibold mb-4'>
+                    📖 Featured Book
+                  </h2>
 
-                <img
-                  src={libro.data.cover}
-                  alt={`Cover of ${libro.data.title}`}
-                  class='w-40 h-60 rounded-md shadow-lg'
-                />
-                <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
-                <p class='text-md text-le-textSecondary'>
-                  By {libro.data.author}
-                </p>
-              </div>
-            ))
+                  <img
+                    src={libro.data.cover}
+                    alt={`Cover of ${libro.data.title}`}
+                    class='w-40 h-60 rounded-md shadow-lg'
+                    title={libro.data.title}
+                  />
+                  <h3 class='text-xl font-bold mt-2'>{libro.data.title}</h3>
+                  <p class='text-md text-le-textSecondary'>
+                    By {libro.data.author}
+                  </p>
+                </div>
+              );
+            })()
           ) : (
             <p class='text-gray-500 text-lg'>No featured book available.</p>
           )
         }
+
         <div
           class='bg-le-bgCard text-electricAmethyst rounded-xl shadow-xl p-8 flex flex-col items-center text-center border-2 border-le-borderPrimary'>
           <div>
