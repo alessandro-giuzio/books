@@ -22,8 +22,13 @@ const countLibros = todosLosLibros.length;
 <Layout2025 title='liburuak'>
   <div class='min-h-screen bg-basque-10 overflow-x-hidden p-6'>
     <h1 class='text-3xl font-bold text-white mt-4 mb-16'>
-      Todos los libros del (2024) <span>{countLibros} </span>
+      📚 2024ko Liburutegia Arakatzen:
+      <span
+        class='text-yellow-400 font-extrabold animate-pulse drop-shadow-lg scale-110'>
+        {countLibros}
+      </span> titulu bakarrak
     </h1>
+
     <div class='books'>
       <LibrosLista2024 libros={uniqueLibros} />
     </div>

@@ -5,6 +5,7 @@ import Layout2025 from '../../layouts/Layout2025.astro';
 import NavLiburuak2025 from '@components/dashboard/NavLiburuak2025.vue';
 
 const todosLosLibros2025 = await getCollection('libros25');
+const countLibros = todosLosLibros2025.length;
 const uniqueLibros25 = todosLosLibros2025.filter(
   (libro, index, self) =>
     index ===
@@ -16,7 +17,21 @@ const uniqueLibros25 = todosLosLibros2025.filter(
 ---
 
 <Layout2025 title='liburuak'>
-  <div class='min-h-screen bg-basque-10 overflow-x-hidden p-6'>
+  <div class='min-h-screen relative bg-basque-10 overflow-x-hidden p-6'>
+    <!-- Link to 2024 collection page -->
+    <a
+      href='/liburuak/2024'
+      class='fixed top-40 right-4 text-white bg-basque-50 px-4 py-2 rounded-lg shadow-md hover:bg-basque-60 transition z-50'>
+      ← 2024ko Bilduma
+    </a>
+
+    <h1 class='text-3xl font-bold text-white mt-4 mb-16'>
+      📚 2025ko Liburutegia Arakatzen:
+      <span
+        class='text-cyan-300 font-extrabold animate-pulse drop-shadow-lg scale-110 text-4xl'>
+        {countLibros}
+      </span> titulu bakarrak
+    </h1>
     <div class='books'>
       <LibrosLista2025 libros={uniqueLibros25} />
     </div>

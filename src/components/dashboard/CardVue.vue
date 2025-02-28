@@ -36,7 +36,7 @@
         <span class="font-semibold text-xs">{{ libro.monthRead }}</span></a
       >
       <span class="flex items-center gap-1 font-semibold">
-        Punti: <span class="text-basque-20 font-bold">{{ libro.punti }}</span>
+        Puntuak: <span class="text-basque-20 font-bold">{{ libro.punti }}</span>
       </span>
     </CardFooter>
   </Card>

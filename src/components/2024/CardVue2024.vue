@@ -4,7 +4,7 @@
     <!-- Adjusted Image -->
     <!-- <a :href="`/liburuak/${libro.slug}`"> -->
     <img
-      :src="libro.cover || '/placeholder-image.jpg'"
+      :src="libro.cover || '/src/assets/images/no-cover.webp'"
       :alt="`Cover of ${libro.title}`"
       class="w-full h-52 md:h-72 object-cover object-top rounded-t-md" />
     <!-- </a> -->
@@ -27,14 +27,17 @@
     <!-- Footer Always Sticks to Bottom -->
     <CardFooter
       class="p-2 bg-gray-100 text-sm text-gray-600 flex justify-between mt-auto">
-      <a
-        :href="`/concorrenti/${libro.concorrente}`"
-        class="first-letter:uppercase">
+      <!--  <a
+        :href="`/lehiakideak/${libro.concorrente}`" -->
+      <span class="first-letter:uppercase text-basque-20 font-bold">
         {{ libro.concorrente }}
-      </a>
-      <a :href="`/liburuak/${libro.monthRead}/`">
-        <span class="font-semibold text-xs">{{ libro.monthRead }}</span></a
-      >
+      </span>
+      <!--  </a> -->
+      <!--  <a :href="`/liburuak/${libro.monthRead}/`"> -->
+      <span class="font-semibold text-xs first-letter:uppercase">{{
+        libro.monthRead
+      }}</span>
+      <!--  </a> -->
       <span class="flex items-center gap-1 font-semibold">
         Punti: <span class="text-basque-20 font-bold">{{ libro.punti }}</span>
       </span>
