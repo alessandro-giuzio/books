@@ -8,7 +8,7 @@ monthRead: otsaila
 tags: ['Manson', 'Hollywood']
 concorrente: 'ale'
 slug: 'chaos'
-punti: 7
+punti: 9
 yearRead: 2025
 type: book
 pages: 520
