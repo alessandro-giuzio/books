@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
-import NavLiburuak2025 from '@components/dashboard/NavLiburuak2025.vue';
 
 const todosLosLibros2025 = await getCollection('libros25');
 const countLibros = todosLosLibros2025.length;
@@ -21,8 +20,8 @@ const uniqueLibros25 = todosLosLibros2025.filter(
     <!-- Link to 2024 collection page -->
     <a
       href='/liburuak/2024'
-      class='fixed top-40 right-4 text-white bg-basque-50 px-4 py-2 rounded-lg shadow-md hover:bg-basque-60 transition z-50'>
-      ← 2024ko Bilduma
+      class='fixed top-40 right-4 text-white bg-basque-50 px-4 py-2 rounded-lg shadow-md hover:bg-basque-60 transition z-50 animate-wiggle'>
+      ← 2024ko Bilduma 🤪
     </a>
 
     <h1 class='text-3xl font-bold text-white mt-4 mb-16'>
@@ -37,3 +36,24 @@ const uniqueLibros25 = todosLosLibros2025.filter(
     </div>
   </div>
 </Layout2025>
+<style>
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.6s ease-in-out infinite alternate-reverse;
+  }
+</style>
