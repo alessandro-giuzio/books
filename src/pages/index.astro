@@ -51,6 +51,11 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
             Liburuak
           </a>
           <a
+            href='/lehiakideak'
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/lehiakideak')}`}>
+            Lehiakideak
+          </a>
+          <a
             href='/2024'
             class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/2024')}`}>
             2024
@@ -62,23 +67,6 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
     <!-- Main Content Area -->
     <div class='flex-1 px-0 overflow-y-auto bg-black'>
       <Header2025 client:load />
-
-      <!-- Header with Responsive Flexbox -->
-      <!--  <header
-        class='bg-basque-10 shadow-xl rounded-lg px-4 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'> -->
-      <!-- <Image
-          src={image}
-          alt='Profile Picture'
-          class='rounded-full'
-          width='56'
-          height='56'
-          format='webp'
-        /> -->
-      <!--   <h2 class='text-2xl sm:text-3xl font-semi text-gray-800'>
-          Lehiakidearen Irakurketa Aurrerapena
-        </h2> -->
-      <!--   </header> -->
-
       <!-- Concorrente Details with Responsive Grid -->
       <main class='mt-6'>
         <div class='bg-black rounded-t-lg shadow-lg p-6 flex flex-col gap-8'>

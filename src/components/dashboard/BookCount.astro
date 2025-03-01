@@ -58,14 +58,11 @@ const booksThisMonth2025 = todosLosLibros2025.filter(
   book => book.data.monthRead === currentMonthName
 );
 const booksThisMonthCount2025 = booksThisMonth2025.length;
-console.log(booksThisMonth2025);
 
 const booksThisMonth2024 = todosLosLibros2024.filter(
   book => book.data.monthRead === currentMonthNameSpanish
 );
 const booksThisMonthCount2024 = booksThisMonth2024.length;
-
-console.log('Books this month in 2024:', booksThisMonth2024);
 
 // Compare the books read in 2024 and 2025; if the number in 2025 is less, make the number red
 const booksThisMonthCountColor =
