@@ -1,4 +1,3 @@
-<!-- Replace or integrate into your existing form markup -->
 <form
   id='addBookForm'
   name='books-form'
@@ -6,66 +5,62 @@
   action='/success'
   data-netlify='true'
   netlify-honeypot='bot-field'
-  class='w-full max-w-lg px-4 py-4 mx-auto border-2 border-white rounded-md'>
-  <!-- Netlify Hidden Form Name + Honeypot -->
+  class='w-full max-w-lg px-4 py-6 mx-auto border-2 border-white rounded-md'>
+  <!-- Netlify Hidden Fields -->
   <input type='hidden' name='form-name' value='books-form' />
   <p class='hidden'>
-    <label
-      >Don’t fill this out if you're human: <input name='bot-field' /></label
-    >
+    <label>
+      Don’t fill this out if you're human:
+      <input name='bot-field' />
+    </label>
   </p>
 
   <!-- Heading -->
-  <div class='mb-4'>
-    <h2 class='text-xl font-semibold text-[var(--text)]'>
-      Gehitu liburu berria
-    </h2>
-  </div>
+  <h2 class='text-xl font-semibold text-[var(--text)] mb-4'>
+    Gehitu liburu berria
+  </h2>
 
   <!-- Title -->
   <div class='mb-4'>
-    <label for='title' class='block text-sm font-medium text-[var(--text)]'>
-      Liburuaren Izenburua:
-    </label>
+    <label for='title' class='block text-sm font-medium text-[var(--text)]'
+      >Liburuaren Izenburua:</label
+    >
     <input
       type='text'
       id='title'
       name='title'
       required
       placeholder='Sartu liburuaren izenburua'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black
-            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
     />
   </div>
 
   <!-- Author -->
   <div class='mb-4'>
-    <label for='author' class='block text-sm font-medium text-[var(--text)]'>
-      Idazlea:
-    </label>
+    <label for='author' class='block text-sm font-medium text-[var(--text)]'
+      >Idazlea:</label
+    >
     <input
       type='text'
       id='author'
       name='author'
       required
       placeholder='Sartu egilearen izena'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
     />
   </div>
-  <!-- concorrente -->
+
+  <!-- Concorrente Selection -->
   <div class='mb-4'>
     <label
       for='concorrente'
-      class='block text-sm font-medium text-[var(--text)]'>
-      Aukeratu lehiakidea
-    </label>
+      class='block text-sm font-medium text-[var(--text)]'
+      >Aukeratu lehiakidea:</label
+    >
     <select
       name='concorrente'
       id='concorrente'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-            bg-white shadow-sm focus:outline-none focus:ring-indigo-500
-            focus:border-indigo-500 sm:text-sm text-black'>
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm text-black'>
       <option value='alessandro'>Alessandro</option>
       <option value='amaia'>Amaia</option>
       <option value='asier'>Asier</option>
@@ -74,15 +69,12 @@
       <option value='oihana'>Oihana</option>
       <option value='malen'>Malen</option>
       <option value='unai'>Unai</option>
-      <!-- Add more options as needed -->
     </select>
   </div>
 
-  <!-- Is it a Book or Comic? (Radio buttons) -->
+  <!-- Book Type -->
   <div class='mb-4'>
-    <span class='block text-sm font-medium text-[var(--text)] mb-1'>
-      Mota:
-    </span>
+    <span class='block text-sm font-medium text-[var(--text)] mb-1'>Mota:</span>
     <label class='inline-flex items-center mr-4'>
       <input type='radio' name='type' value='book' checked class='form-radio' />
       <span class='ml-1'>Liburua</span>
@@ -93,80 +85,39 @@
     </label>
   </div>
 
-  <!-- Malen? (Checkbox) -->
-  <!--   <div class='mb-4 flex items-center space-x-2'>
-    <input
-      type='checkbox'
-      id='malen'
-      name='malen'
-      class='form-checkbox h-4 w-4'
-    />
-    <label for='malen' class='text-sm font-medium text-[var(--text)]'>
-      Read from Malen?
-    </label>
-  </div> -->
-
   <!-- Number of Pages -->
   <div class='mb-4'>
-    <label for='pages' class='block text-sm font-medium text-[var(--text)]'>
-      Orrialde kopurua:
-    </label>
+    <label for='pages' class='block text-sm font-medium text-[var(--text)]'
+      >Orrialde kopurua:</label
+    >
     <input
       type='number'
       id='pages'
       name='pages'
-      min='0'
-      step='1'
+      min='1'
       placeholder='e.g., 350'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300
-             rounded-md shadow-sm focus:outline-none focus:ring-indigo-500
-             focus:border-indigo-500 sm:text-sm text-black'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
     />
   </div>
-  <!-- input for a link -->
+
+  <!-- Link Input -->
   <div class='mb-4'>
-    <label for='link' class='block text-sm font-medium text-[var(--text)]'>
-      Linka:
-    </label>
+    <label for='link' class='block text-sm font-medium text-[var(--text)]'
+      >Linka:</label
+    >
     <input
-      type='text'
+      type='url'
       id='link'
       name='link'
       placeholder='Sartu liburuaren linka'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md
-            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-            sm:text-sm text-black'
+      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
     />
   </div>
 
-  <!-- Hidden field to capture final points (for Netlify) -->
-  <!-- <input type='hidden' id='totalPoints' name='points' value='0' /> -->
-
-  <!-- Display the calculated points to the user in a read-only field -->
-  <!-- <div class='mb-4'>
-    <label
-      for='calculatedPoints'
-      class='block text-sm font-medium text-[var(--text)]'>
-      Calculated Points:
-    </label>
-    <input
-      type='text'
-      id='calculatedPoints'
-      readonly
-      class='mt-1 block w-full px-3 py-2 border border-gray-300
-             bg-gray-100 cursor-not-allowed rounded-md shadow-sm
-             focus:outline-none sm:text-sm'
-      value='0'
-    />
-  </div> -->
-
   <!-- Submit Button -->
   <button
-    id='addBook'
     type='submit'
-    class='w-full bg-yellow-500 hover:bg-yellow-600
-           focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50
-           text-[var(--text)] py-2 rounded-lg font-semibold transition-all'>
+    class='w-full bg-yellow-500 hover:bg-yellow-600 text-black py-2 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-yellow-500'>
     Bidali!
   </button>
 </form>
