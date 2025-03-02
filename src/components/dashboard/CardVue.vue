@@ -28,7 +28,7 @@
     <CardFooter
       class="p-2 bg-gray-100 text-sm text-gray-600 flex justify-between mt-auto">
       <a
-        :href="`/concorrenti/${libro.concorrente}`"
+        :href="`/lehiakideak/${libro.concorrente}`"
         class="first-letter:uppercase">
         {{ libro.concorrente }}
       </a>
