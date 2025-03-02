@@ -139,11 +139,12 @@ const {
           />
         </div>
         <div class='text-center md:text-left'>
-          <h1 class='text-4xl text-le-textPrimary font-bold animate-fade-in'>
+          <h1
+            class='text-4xl text-le-textPrimary font-bold animate-fade-in shadow-xl'>
             {lehiakide.data.nome}
           </h1>
           <p
-            class='text-lg text-le-textSecondary'
+            class='text-lg text-le-textSecondary prose'
             transition:animate={move({
               duration: '1.5s',
               easing: 'cubic-bezier(.16,.73,.05,1.52)',
@@ -155,7 +156,7 @@ const {
     </Wrapper>
 
     <Wrapper variant='standard'>
-      <div class='grid grid-cols-1 md:grid-cols-2 space-x-2 gap-y-8'>
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
         <!-- Featured Book -->
         {
           featuredLiburuak.length > 0 ? (
@@ -257,10 +258,11 @@ const {
     <!-- Books Section -->
     <Wrapper variant='standard' class='mb-4'>
       <h2 class='md:text-4xl text-lg font-semibold mb-6 text-le-textPrimary'>
-        📚 Books Read
+        📚 Books Read 2025
       </h2>
 
-      <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div
+        class='grid grid-cols-1 justify-center md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {
           liburuakForLehiakide.length > 0 ? (
             liburuakForLehiakide.map(libro => (
@@ -283,6 +285,40 @@ const {
           ) : (
             <p class='text-gray-500 text-lg'>
               No books found for this concorrente.
+            </p>
+          )
+        }
+      </div>
+    </Wrapper>
+    <Wrapper variant='standard' class='mb-4'>
+      <h2 class='md:text-4xl text-lg font-semibold mb-6 text-le-textPrimary'>
+        📚 Books Read 2024
+      </h2>
+
+      <div
+        class='grid grid-cols-1 justify-center md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        {
+          liburuak24ForLehiakide.length > 0 ? (
+            liburuak24ForLehiakide.map(libro => (
+              <div class='flex flex-col items-center text-center p-4 bg-le-bgHighlight rounded-lg shadow-md'>
+                {
+                  <img
+                    src={libro.data.cover}
+                    alt={`Cover of ${libro.data.title}`}
+                    class='w-40 h-60 rounded-md shadow-lg'
+                  />
+                }
+                <h3 class='text-xl font-bold mt-2 text-le-textPrimary'>
+                  {libro.data.title}
+                </h3>
+                <p class='text-md text-le-textSecondary'>
+                  By {libro.data.author}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p class='text-gray-500 text-lg'>
+              No books found for this concorrente in 2024.
             </p>
           )
         }
