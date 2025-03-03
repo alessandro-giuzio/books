@@ -2,7 +2,7 @@
 nome: Luca
 username: luca
 alt: Luca
-bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget'
+bio: 'Azken lehiaketako irabazlea eta irakurketaren benetako zale amorratua, Luca beti dabil liburuen artean murgilduta, istorio berriak eta ezagutzak deskubritzen. Irakurtzea abentura gisa hartzen du, eta bere jakin-minak generoz genero eramaten du. 14 urterekin dagoeneko irakurtzeko erronkak gustuko ditu, eta aurten ere tituluari eusteko prest dago! 📚🏆🚀'
 image: '../../content/concorrenti/img/luca.jpg'
 punti: 14
 puntiEnero: 4
