@@ -144,7 +144,7 @@ const {
             {lehiakide.data.nome}
           </h1>
           <p
-            class='text-lg text-le-textSecondary prose'
+            class='text-lg text-le-textPrimary'
             transition:animate={move({
               duration: '1.5s',
               easing: 'cubic-bezier(.16,.73,.05,1.52)',
@@ -172,7 +172,7 @@ const {
                   </h2>
 
                   <img
-                    src={libro.data.cover}
+                    src={libro.data.cover || '/public/assets/no-cover.webp'}
                     alt={`Cover of ${libro.data.title}`}
                     class='w-40 h-60 rounded-md shadow-lg'
                     title={libro.data.title}

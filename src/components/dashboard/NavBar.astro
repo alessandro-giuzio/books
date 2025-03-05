@@ -1,7 +1,8 @@
 ---
 const currentPath = Astro.url.pathname;
+
 function activeLink(path: string) {
-  return currentPath === path
+  return currentPath === path || currentPath.startsWith(`${path}/`)
     ? 'bg-basque-10 text-white font-semibold uppercase'
     : 'text-gray-100';
 }

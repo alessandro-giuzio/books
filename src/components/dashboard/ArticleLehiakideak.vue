@@ -11,16 +11,19 @@
       <img
         :src="concorrente.image?.src || '/placeholder-image.jpg'"
         :alt="`Cover of ${concorrente.nome}`"
-        class="w-full h-52 md:h-72 object-cover object-topaspect-16/10 rounded-t-md" />
+        class="w-full h-52 md:h-72 object-cover aspect-16/10 rounded-t-md" />
     </a>
 
     <CardHeader class="p-4">
       <CardTitle class="text-xl font-semibold text-gray-900">
-        Bio:
-        <p class="text-sm text-gray-700">{{ concorrente.bio }}</p>
+        <!--  <p class="text-sm mt-2 text-gray-700 tracking-wide">
+          {{ concorrente.bio }}
+        </p> -->
       </CardTitle>
-      <CardDescription class="text-sm text-gray-700 mt-1 line-clamp-4">
-        <!-- {{ libro.body }} -->
+      <CardDescription>
+        <p class="text-sm mt-2 text-gray-700 tracking-wide leading-snug">
+          {{ concorrente.bio }}
+        </p>
       </CardDescription>
     </CardHeader>
 
@@ -31,7 +34,7 @@
 
     <!-- Footer Always Sticks to Bottom -->
     <CardFooter
-      class="p-2 bg-gray-100 text-sm text-gray-600 flex justify-between mt-auto">
+      class="p-2 bg-gray-300 text-sm text-gray-600 flex justify-between mt-auto">
       <a a :href="`/lehiakideak/${concorrente.slug}`">
         <!--  {{ libro.concorrente }} -->
         {{ concorrente.nome }}

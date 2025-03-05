@@ -3,14 +3,13 @@ import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import heroImg from '../../assets/images/lehiakideak/hero.webp';
-import CardConcorrente from 'astro/components/dashboard/CardConcorrente.astro';
 const concorrenti = await getCollection('concorrenti25');
 
 import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vue';
 ---
 
 <Layout2025 title='Lehiakideak'>
-  <main>
+  <main class='bg-basque-10'>
     <section id='hero-lehiakideak'>
       <div class='container'>
         <div>
@@ -20,8 +19,10 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
             class='rounded-full hero-image'
             format='webp'
           />
-          <h1>Lehiakideak: Irakurtzeko Erronka Handia</h1>
-          <p>
+          <h1 class='text-le-textPrimary'>
+            Lehiakideak: Irakurtzeko Erronka Handia
+          </h1>
+          <p class='text-le-textPrimary'>
             Lehiakide bakoitzak bere bidea du, bere gustuko liburuak eta bere
             irakurtzeko estilo berezia. Batzuek abentura liburuak edo fikzio
             klasikoak nahiago dituzte, beste batzuek, aldiz, saiakera edo
@@ -58,9 +59,6 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
   </main>
 </Layout2025>
 <style>
-  main {
-    background: #e6ffe0;
-  }
   .container {
     padding: 2rem;
     margin: 0 auto;
