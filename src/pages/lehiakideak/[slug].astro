@@ -171,9 +171,13 @@ const {
                     📖 Featured Book
                   </h2>
 
-                  <img
-                    src={libro.data.cover || '/assets/no-cover.webp'}
+                  <Image
+                    src={
+                      libro.data.cover || '../../assets/images/no-cover.webp'
+                    }
                     alt={`Cover of ${libro.data.title}`}
+                    width={160}
+                    height={240}
                     class='w-40 h-60 rounded-md shadow-lg'
                     title={libro.data.title}
                   />
