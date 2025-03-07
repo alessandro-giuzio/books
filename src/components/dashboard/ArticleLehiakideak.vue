@@ -28,7 +28,7 @@
     </CardHeader>
 
     <!-- Flexible Content to Push Footer Down -->
-    <CardContent class="p-4 text-gray-800 flex-grow">
+    <CardContent class="p-4 text-gray-800 grow">
       <p class="text-sm"></p>
     </CardContent>
 

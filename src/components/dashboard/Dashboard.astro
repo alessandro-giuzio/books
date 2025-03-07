@@ -6,7 +6,7 @@ import AddBookForm from './AddBookForm.astro';
 ---
 
 <div
-  class='min-h-screen flex bg-gradient-to-r from-yellow-300 via-red-300 to-pink-300'>
+  class='min-h-screen flex bg-linear-to-r from-yellow-300 via-red-300 to-pink-300'>
   <!-- Responsive Sidebar: Adjust width on smaller screens -->
   <div
     class='hidden sm:hidden md:block lg:block w-64 bg-red-900 text-gray-100 flex-col justify-between'>
@@ -72,19 +72,19 @@ import AddBookForm from './AddBookForm.astro';
         <!-- Responsive Grid for Concorrente Info -->
         <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div
-            class='bg-gradient-to-tr from-blue-100 to-blue-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
+            class='bg-linear-to-tr from-blue-100 to-blue-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
             <h4 class='text-gray-700 text-xl font-medium'>Name</h4>
             <p class='text-3xl font-bold text-blue-700 mt-2'>{name}</p>
           </div>
           <div
-            class='bg-gradient-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
+            class='bg-linear-to-tr from-green-100 to-green-200 p-6 rounded-lg shadow-md text-center hover:scale-105 transition-transform'>
             <h4 class='text-gray-700 text-xl font-medium'>
               Irakurritako Liburuak
             </h4>
             <p class='text-3xl font-bold text-green-700 mt-2'>{count}</p>
           </div>
           <div
-            class='bg-gradient-to-tr from-pink-100 to-pink-200 p-4 sm:p-6 rounded-lg shadow-md md:col-span-2 hover:scale-105 transition-transform'>
+            class='bg-linear-to-tr from-pink-100 to-pink-200 p-4 sm:p-6 rounded-lg shadow-md md:col-span-2 hover:scale-105 transition-transform'>
             <h4 class='text-gray-700 text-lg sm:text-xl font-medium'>
               Genero Kuttunak
             </h4>
