@@ -30,6 +30,8 @@ const books = [
   { title: 'Gizona bere bakardadean', author: 'Bernardo Atxaga' },
   { title: 'Soinujolearen semea', author: 'Bernardo Atxaga' },
   { title: 'Kutsidazu bidea, Ixabel', author: 'Joxean Sagastizabal' },
+  { title: 'Aiturri', author: 'Txomin Urkiola' },
+  { title: 'Lurrean Zubia', author: 'Unai Etxeberria' },
 ];
 
 // Select a book at build time (using the day of the month)
