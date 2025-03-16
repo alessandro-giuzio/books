@@ -21,7 +21,9 @@ const { concorrente } = Astro.props;
     class='flex-1 flex flex-col items-center md:items-start text-center md:text-left'>
     <h3 class='font-bold text-basque-50 text-xl'>{concorrente.data.nome}</h3>
     <p class='text-basque-50 text-sm'>
-      Puntuak: <span class='font-semibold'>{concorrente.data.punti}</span>
+      Puntuak: <span class='font-semibold text-lg text-basque-20'
+        >{concorrente.data.punti}</span
+      >
     </p>
     <!-- Progress Bar -->
     <div class='h-4 w-full bg-gray-200 mt-3 rounded-lg overflow-hidden'>
