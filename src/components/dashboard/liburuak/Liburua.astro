@@ -12,8 +12,20 @@ export interface Props {
     slug: string;
   };
 }
+export interface Props {
+  relatedBooks: {
+    cover?: string;
+    title: string;
+    author: string;
+    concorrente: string;
+    punti: number;
+    yearRead: number | string;
+    body: string;
+    slug: string;
+  }[];
+}
 
-const { libro } = Astro.props;
+const { libro, relatedBooks } = Astro.props;
 ---
 
 <article>
@@ -37,11 +49,11 @@ const { libro } = Astro.props;
     />
   </section>
   <!-- Book Details -->
-  <section class='max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6'>
-    <h2 class='text-2xl md:text-3xl font-semibold text-gray-900'>
+  <section class='max-w-3xl mx-auto p-6 bg-basque-40 shadow-lg rounded-lg mt-6'>
+    <h2 class='text-2xl md:text-4xl font-semibold text-gray-900'>
       {libro.title}
     </h2>
-    <p class='text-lg text-gray-700 mt-1'>by {libro.author}</p>
+    <span class='text-lg text-gray-700 mt-1'>by {libro.author}</span>
 
     <!-- Book Metadata -->
     <div class='flex flex-wrap gap-6 mt-4 text-gray-600 text-sm md:text-base'>
@@ -53,10 +65,46 @@ const { libro } = Astro.props;
       <span class='font-semibold flex items-center gap-1'>
         ⭐ Puntuak: <span class='text-basque-20 font-bold'>{libro.punti}</span>
       </span>
-      <span class='font-semibold'>📅 Year Read: {libro.yearRead}</span>
+      <span class='font-semibold'
+        >📅 Year Read: <span class='text-basque-20'>{libro.yearRead}</span
+        ></span
+      >
     </div>
 
     <!-- Book Description -->
     <p class='mt-6 text-gray-800 leading-relaxed'>{libro.body}</p>
+  </section>
+  <!-- Related books -->
+  <section class='max-w-3xl mx-auto p-6 bg-basque-40 shadow-lg rounded-lg mt-6'>
+    <!-- need to show a grid with 2/3 books with related tags -->
+
+    <h3 class='text-2xl md:text-4xl font-semibold text-gray-900'>
+      Related Books
+    </h3>
+    <span>
+      {
+        relatedBooks.map(book => (
+
+            <Image
+              src={book.cover || '/no-cover.webp'}
+              alt={`Cover of ${book.title}`}
+              width={200}
+              height={300}
+              format='webp'
+              class:list={[
+                'w-auto',
+                'max-h-[45vh]',
+                'object-contain',
+                'mx-auto',
+                'rounded-lg',
+                'shadow-2xl',
+              ]}
+            />
+            <h4 class='text-xl font-semibold text-gray-900'>{book.title}</h4>
+            <span class='text-lg text-gray-700 mt-1'>by {book.author}</span>
+
+        ))
+      }
+    </span>
   </section>
 </article>

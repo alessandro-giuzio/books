@@ -11,13 +11,35 @@ export async function getStaticPaths() {
     props: { libro: { ...book.data, slug: book.slug } }, // ✅ Fix libro structure
   }));
 }
+// fetch all the tags
+const books = await getCollection('libros25');
+const tags = books.map(book => book.data.tags).flat();
 
 // Access the book data from props
 const { libro } = Astro.props;
+const relatedTags = tags.filter(tag => libro.tags.includes(tag));
+
+// Exclude the current book by checking book.slug !== libro.slug
+const relatedBooks = books
+  .filter(
+    book =>
+      book.slug !== libro.slug &&
+      book.data.tags.some(tag => relatedTags.includes(tag))
+  )
+  .map(book => ({
+    cover: book.data.cover,
+    title: book.data.title,
+    author: book.data.author,
+    concorrente: book.data.concorrente,
+    punti: book.data.punti,
+    yearRead: book.data.yearRead,
+    body: book.body,
+    slug: book.slug,
+  }));
 ---
 
 <Layout2025 title={libro.title} description={libro.body}>
   <main class='max-w-3xl mx-auto p-6'>
-    <Liburua libro={libro} />
+    <Liburua libro={libro} relatedBooks={relatedBooks} />
   </main>
 </Layout2025>
