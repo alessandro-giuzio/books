@@ -1,147 +1,187 @@
-<form
-  id='addBookForm'
-  name='books-form'
-  method='POST'
-  action='/success'
-  data-netlify='true'
-  netlify-honeypot='bot-field'
-  class='w-full max-w-lg px-4 py-6 mx-auto border-2 border-white rounded-md'>
-  <!-- Netlify Hidden Fields -->
-  <input type='hidden' name='form-name' value='books-form' />
-  <p class='hidden'>
-    <label>
-      Don’t fill this out if you're human:
-      <input name='bot-field' />
-    </label>
-  </p>
-
-  <!-- Heading -->
-  <h2 class='text-xl font-semibold text-[var(--text)] mb-4'>
-    Gehitu liburu berria
-  </h2>
-
-  <!-- Title -->
-  <div class='mb-4'>
-    <label for='title' class='block text-sm font-medium text-[var(--text)]'
-      >Liburuaren Izenburua:</label
-    >
-    <input
-      type='text'
-      id='title'
-      name='title'
-      required
-      placeholder='Sartu liburuaren izenburua'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
-    />
-  </div>
-
-  <!-- Author -->
-  <div class='mb-4'>
-    <label for='author' class='block text-sm font-medium text-[var(--text)]'
-      >Idazlea:</label
-    >
-    <input
-      type='text'
-      id='author'
-      name='author'
-      required
-      placeholder='Sartu egilearen izena'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
-    />
-  </div>
-
-  <!-- Concorrente Selection -->
-  <div class='mb-4'>
-    <label
-      for='concorrente'
-      class='block text-sm font-medium text-[var(--text)]'
-      >Aukeratu lehiakidea:</label
-    >
-    <select
-      name='concorrente'
-      id='concorrente'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm text-black'>
-      <option value='alessandro'>Alessandro</option>
-      <option value='amaia'>Amaia</option>
-      <option value='asier'>Asier</option>
-      <option value='irene'>Irene</option>
-      <option value='luca'>Luca</option>
-      <option value='oihana'>Oihana</option>
-      <option value='malen'>Malen</option>
-      <option value='unai'>Unai</option>
-    </select>
-  </div>
-  <!-- Mese Selection in Basque -->
-  <div class='mb-4'>
-    <label for='mese' class='block text-sm font-medium text-[var(--text)]'
-      >Aukeratu hilabetea:</label
-    >
-    <select
-      name='mese'
-      id='mese'
-      required
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm text-black'>
-      <option value='urtarrila'>Urtarrila</option>
-      <option value='otsaila'>Otsaila</option>
-      <option value='martxoa'>Martxoa</option>
-      <option value='apirila'>Apirila</option>
-      <option value='maiatza'>Maiatza</option>
-      <option value='ekaina'>Ekaina</option>
-      <option value='uztaila'>Uztaila</option>
-      <option value='abuztua'>Abuztua</option>
-      <option value='iraila'>Iraila</option>
-      <option value='urria'>Urria</option>
-      <option value='azaroa'>Azaroa</option>
-      <option value='abendua'>Abendua</option>
-    </select>
-  </div>
-
-  <!-- Book Type -->
-  <div class='mb-4'>
-    <span class='block text-sm font-medium text-[var(--text)] mb-1'>Mota:</span>
-    <label class='inline-flex items-center mr-4'>
-      <input type='radio' name='type' value='book' checked class='form-radio' />
-      <span class='ml-1'>Liburua</span>
-    </label>
-    <label class='inline-flex items-center'>
-      <input type='radio' name='type' value='comic' class='form-radio' />
-      <span class='ml-1'>Komikia</span>
-    </label>
-  </div>
-
-  <!-- Number of Pages -->
-  <div class='mb-4'>
-    <label for='pages' class='block text-sm font-medium text-[var(--text)]'
-      >Orrialde kopurua:</label
-    >
-    <input
-      type='number'
-      id='pages'
-      name='pages'
-      min='1'
-      placeholder='e.g., 350'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
-    />
-  </div>
-
-  <!-- Link Input -->
-  <div class='mb-4'>
-    <label for='link' class='block text-sm font-medium text-[var(--text)]'
-      >Linka:</label
-    >
-    <input
-      type='url'
-      id='link'
-      name='link'
-      placeholder='Sartu liburuaren linka'
-      class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
-    />
-  </div>
-
-  <!-- Submit Button -->
+<div x-data='{ open: false }'>
+  <!-- Button to open modal -->
   <button
-    type='submit'
-    class='w-full bg-yellow-500 hover:bg-yellow-600 text-black py-2 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-yellow-500'>
-    Bidali!
+    @click='open = true'
+    class='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition'>
+    Gehitu zure liburua orain! 📚
   </button>
-</form>
+
+  <!-- Modal Background -->
+  <div
+    x-show='open'
+    x-transition
+    class='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'
+    @click='open = false'>
+    <!-- Modal Content -->
+    <div
+      @click.stop
+      class='bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative'>
+      <!-- Close Button -->
+      <button
+        @click='open = false'
+        class='absolute top-2 right-2 text-gray-400 hover:text-gray-600'>
+        &times;
+      </button>
+      <form
+        id='addBookForm'
+        name='books-form'
+        method='POST'
+        action='/success'
+        data-netlify='true'
+        netlify-honeypot='bot-field'
+        class='w-full max-w-lg px-4 py-6 mx-auto border-2 border-white rounded-md'>
+        <!-- Netlify Hidden Fields -->
+        <input type='hidden' name='form-name' value='books-form' />
+        <p class='hidden'>
+          <label>
+            Don’t fill this out if you're human:
+            <input name='bot-field' />
+          </label>
+        </p>
+
+        <!-- Heading -->
+        <h2 class='text-xl font-semibold text-[var(--text)] mb-4'>
+          Gehitu liburu berria
+        </h2>
+
+        <!-- Title -->
+        <div class='mb-4'>
+          <label
+            for='title'
+            class='block text-sm font-medium text-[var(--text)]'
+            >Liburuaren Izenburua:</label
+          >
+          <input
+            type='text'
+            id='title'
+            name='title'
+            required
+            placeholder='Sartu liburuaren izenburua'
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
+          />
+        </div>
+
+        <!-- Author -->
+        <div class='mb-4'>
+          <label
+            for='author'
+            class='block text-sm font-medium text-[var(--text)]'>Idazlea:</label
+          >
+          <input
+            type='text'
+            id='author'
+            name='author'
+            required
+            placeholder='Sartu egilearen izena'
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
+          />
+        </div>
+
+        <!-- Concorrente Selection -->
+        <div class='mb-4'>
+          <label
+            for='concorrente'
+            class='block text-sm font-medium text-[var(--text)]'
+            >Aukeratu lehiakidea:</label
+          >
+          <select
+            name='concorrente'
+            id='concorrente'
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm text-black'>
+            <option value='alessandro'>Alessandro</option>
+            <option value='amaia'>Amaia</option>
+            <option value='asier'>Asier</option>
+            <option value='irene'>Irene</option>
+            <option value='luca'>Luca</option>
+            <option value='oihana'>Oihana</option>
+            <option value='malen'>Malen</option>
+            <option value='unai'>Unai</option>
+          </select>
+        </div>
+        <!-- Mese Selection in Basque -->
+        <div class='mb-4'>
+          <label for='mese' class='block text-sm font-medium text-[var(--text)]'
+            >Aukeratu hilabetea:</label
+          >
+          <select
+            name='mese'
+            id='mese'
+            required
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm text-black'>
+            <option value='urtarrila'>Urtarrila</option>
+            <option value='otsaila'>Otsaila</option>
+            <option value='martxoa'>Martxoa</option>
+            <option value='apirila'>Apirila</option>
+            <option value='maiatza'>Maiatza</option>
+            <option value='ekaina'>Ekaina</option>
+            <option value='uztaila'>Uztaila</option>
+            <option value='abuztua'>Abuztua</option>
+            <option value='iraila'>Iraila</option>
+            <option value='urria'>Urria</option>
+            <option value='azaroa'>Azaroa</option>
+            <option value='abendua'>Abendua</option>
+          </select>
+        </div>
+
+        <!-- Book Type -->
+        <div class='mb-4'>
+          <span class='block text-sm font-medium text-[var(--text)] mb-1'
+            >Mota:</span
+          >
+          <label class='inline-flex items-center mr-4'>
+            <input
+              type='radio'
+              name='type'
+              value='book'
+              checked
+              class='form-radio'
+            />
+            <span class='ml-1'>Liburua</span>
+          </label>
+          <label class='inline-flex items-center'>
+            <input type='radio' name='type' value='comic' class='form-radio' />
+            <span class='ml-1'>Komikia</span>
+          </label>
+        </div>
+
+        <!-- Number of Pages -->
+        <div class='mb-4'>
+          <label
+            for='pages'
+            class='block text-sm font-medium text-[var(--text)]'
+            >Orrialde kopurua:</label
+          >
+          <input
+            type='number'
+            id='pages'
+            name='pages'
+            min='1'
+            placeholder='e.g., 350'
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
+          />
+        </div>
+
+        <!-- Link Input -->
+        <div class='mb-4'>
+          <label for='link' class='block text-sm font-medium text-[var(--text)]'
+            >Linka:</label
+          >
+          <input
+            type='url'
+            id='link'
+            name='link'
+            placeholder='Sartu liburuaren linka'
+            class='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm'
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type='submit'
+          class='w-full bg-yellow-500 hover:bg-yellow-600 text-black py-2 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-yellow-500'>
+          Bidali!
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

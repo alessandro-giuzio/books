@@ -5,7 +5,7 @@ body: 'Después de la de Derrick, es el turno de la historia de Maurice. Sin ami
 cover: 'https://m.media-amazon.com/images/I/71tQyoURmRL._SY522_.jpg'
 alt: 'Rip T2'
 monthRead: urtarrila
-tags: ['Thriller', 'Misterio']
+tags: ['Thriller', 'Misterio', 'Novela Gráfica']
 concorrente: 'ale'
 slug: 'rip-2'
 punti: 5

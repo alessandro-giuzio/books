@@ -36,7 +36,7 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
     <div
       class='hidden md:block lg:block w-64 bg-black text-gray-100 flex-col justify-between'>
       <div class='p-0'>
-        <div class='hidden md:block'>
+        <div class='hidden md:block md:mt-1'>
           <AddBookForm />
         </div>
         <nav class='mt-8 space-y-4'>
@@ -60,6 +60,7 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
             class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/2024')}`}>
             2024
           </a>
+          <AddBookForm />
         </nav>
       </div>
     </div>
