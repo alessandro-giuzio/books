@@ -1,0 +1,22 @@
+---
+type Props = {
+  tag: string;
+};
+
+const { tag } = Astro.props;
+---
+
+<a href={`/liburuak/${tag}`} class='filter'>
+  {tag}
+</a>
+
+<style>
+  .filter {
+    font-size: 0.875rem;
+    border: 1px solid #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    display: inline-block;
+    white-space: pre;
+  }
+</style>

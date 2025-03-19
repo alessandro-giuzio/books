@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout2025 from '../../layouts/Layout2025.astro';
+import { getCollection } from 'astro:content';
+import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
+import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
+import LibrosLista from 'astro/components/LibrosLista.astro';
+
+export const getStaticPaths = async () => {
+  const allBooks = await getCollection('libros25');
+  const allTheTags = allBooks.flatMap(book => book.data.tags);
+  const uniqueTags = Array.from(new Set(allTheTags));
+  const paths = uniqueTags.map(tag => {
+    const booksByTag = allBooks.filter(book => book.data.tags.includes(tag));
+    return {
+      params: {
+        tag: tag,
+      },
+      props: {
+        tag,
+        allBooks: booksByTag,
+      },
+    };
+  });
+  return paths;
+};
+---
+
+<Layout2025 title='liburuak'>
+  <h1>Book Tagged: {Astro.props.tag}</h1>
+  <LibrosLista2025 libros={Astro.props.allBooks} />
+</Layout2025>

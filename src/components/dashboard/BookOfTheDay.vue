@@ -34,10 +34,10 @@
       class="rounded-lg shadow-lg mx-auto w-full"
       loading="lazy" />
   </picture>
-  <h2
+  <h1
     class="text-5xl font-semibold uppercase text-center tracking-tight text-basque-40">
     Eguneko liburua
-  </h2>
+  </h1>
   <div class="mt-6 p-4 border border-gray-800 rounded bg-gray-800">
     <h3 class="text-2xl font-bold shadow-xl text-basque-40 mb-2">
       {{ title }}

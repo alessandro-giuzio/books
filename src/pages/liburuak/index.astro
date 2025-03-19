@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
+import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
 
 const todosLosLibros2025 = await getCollection('libros25');
 const countLibros = todosLosLibros2025.length;
@@ -20,23 +21,57 @@ const uniqueLibros25 = todosLosLibros2025.filter(
     <!-- Link to 2024 collection page -->
     <a
       href='/liburuak/2024'
-      class='fixed top-40 right-4 text-white bg-basque-50 px-4 py-2 rounded-lg shadow-md hover:bg-basque-60 transition z-50 animate-wiggle'>
+      class='fixed top-60 right-4 text-white bg-basque-50 px-4 py-2 rounded-lg shadow-md hover:bg-basque-60 transition z-50 animate-wiggle'>
       ← 2024ko Bilduma 🤪
     </a>
-
-    <h1 class='text-3xl font-bold text-white mt-4 mb-16'>
+    <h1>Liburu-apalategia</h1>
+    <h2 class='text-3xl font-bold text-white mt-4 mb-16'>
       📚 2025ko Liburutegia Arakatzen:
       <span
         class='text-cyan-300 font-extrabold animate-pulse drop-shadow-lg scale-110 text-4xl'>
         {countLibros}
       </span> titulu bakarrak
-    </h1>
+    </h2>
+    <div class='grid'>
+      <span>Kategoriak:</span>
+      <CategoryList tags={uniqueLibros25} />
+    </div>
     <div class='books'>
       <LibrosLista2025 libros={uniqueLibros25} />
     </div>
   </div>
 </Layout2025>
 <style>
+  .grid {
+    grid-template-columns: auto 1fr;
+    gap: 2em;
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  h1 {
+    --accent: oklch(75% 0.18 calc(calc(196 + 76) + 240) / 1);
+    --hue: 196;
+    --rotated-hue: calc(var(--hue) + var(--hue-rotate));
+    --hue-rotate-deg: calc(var(--hue-rotate) * 1deg);
+    font-size: clamp(2.75rem, 10vw, 5.5rem);
+    line-height: 0.9;
+    -webkit-text-stroke: 3px var(--accent);
+    paint-order: stroke fill;
+    color: #fff;
+    text-shadow:
+      1px 1px 0 var(--accent),
+      2px 2px 0 var(--accent),
+      3px 3px 0 var(--accent),
+      4px 4px 0 var(--accent);
+    font-family: 'Londrina Solid', system-ui, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
   @keyframes wiggle {
     0%,
     100% {
