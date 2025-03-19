@@ -5,7 +5,7 @@ body: 'El guardian de espadas es una novela de fantasía escrita por Cassandra C
 cover: 'https://m.media-amazon.com/images/I/81xgVCqs62L._SY342_.jpg'
 alt: 'El guardian de espadas'
 monthRead: martxoa
-tags: ['Fantasía', 'Cazadores de sombras']
+tags: ['Fantasía']
 concorrente: 'luca'
 slug: 'el-guardian-de-espadas'
 punti: 9

@@ -5,7 +5,7 @@ body: 'Roma, año 77 a.C. El cruel senador Dolabela va a ser juzgado por corrupc
 cover: 'https://m.media-amazon.com/images/I/719yqLXOmyL._SY342_.jpg'
 alt: 'Roma soy yo'
 monthRead: enero
-tag: ['novela', 'historica']
+tag: ['novela', 'Historia']
 concorrente: 'asier'
 slug: 'roma-soy-yo'
 punti: 9

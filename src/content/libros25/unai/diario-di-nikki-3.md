@@ -5,7 +5,7 @@ body: 'Justo cuando Nikki estaba empezando a acostumbrarse a la vida en su nuevo
 cover: 'https://m.media-amazon.com/images/I/91+NTn4tgNL._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki-3'
 punti: 2

@@ -5,7 +5,7 @@ body: 'Tu amiga, SEÑORITA SABELOTODO (También conocida como Nikki Maxwell, exp
 cover: 'https://m.media-amazon.com/images/I/81lGj1x1kpL._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki-5'
 punti: 2

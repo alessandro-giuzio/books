@@ -5,7 +5,7 @@ body: 'Cuando el padre de Nikki es contratado para encargarse de la desinfecció
 cover: 'https://m.media-amazon.com/images/I/81VhLThyWHL._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki'
 punti: 2

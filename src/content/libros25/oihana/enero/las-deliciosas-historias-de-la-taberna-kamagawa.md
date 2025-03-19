@@ -5,7 +5,7 @@ body: 'Un misterioso anuncio de una sola l√≠nea en una revista culinaria, sin n√
 cover: 'https://m.media-amazon.com/images/I/71ysAz5ygtL._SY522_.jpg'
 alt: 'Las deliciosas historias de la taberna Kamagawa'
 monthRead: urtarrila
-tags: ['Japon', 'Cocina']
+tags: ['Japon']
 concorrente: 'oihana'
 slug: 'las-deliciosas-historias-de-la-taberna-kamagawa'
 punti: 5

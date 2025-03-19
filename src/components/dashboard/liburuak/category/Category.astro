@@ -1,12 +1,18 @@
 ---
 type Props = {
   tag: string;
+  active?: boolean;
 };
 
-const { tag } = Astro.props;
+const { tag, active } = Astro.props;
+
+const route =
+  tag.toLowerCase() === 'all'
+    ? '/liburuak'
+    : `/liburuak/${encodeURIComponent(tag.toLowerCase())}`;
 ---
 
-<a href={`/liburuak/${tag}`} class='filter'>
+<a href={route} class={active ? 'filter active' : 'filter'}>
   {tag}
 </a>
 
@@ -18,5 +24,13 @@ const { tag } = Astro.props;
     border-radius: 1rem;
     display: inline-block;
     white-space: pre;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Active state styling */
+  :global(a.filter.active) {
+    background-color: #ccc;
+    border-color: #555;
   }
 </style>

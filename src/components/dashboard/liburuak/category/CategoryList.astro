@@ -4,18 +4,31 @@ import Category from './Category.astro';
 
 type Props = {
   tags: CollectionEntry<'libros25'>[];
+  activeTag?: string;
 };
 
-const { tags } = Astro.props;
+const { tags, activeTag }: Props = Astro.props;
+
+const uniqueTags = Array.from(new Set(tags.flatMap(tag => tag.data.tags)));
 ---
 
 <div class='flex'>
+  <!-- ✅ Fix: Pass active state for 'All' -->
+  <Category tag='All' active={Astro.url.pathname === '/liburuak'} />
+
   {
-    Array.from(new Set(tags.flatMap(tag => tag.data.tags))).map(uniqueTag => (
-      <Category tag={uniqueTag} />
+    uniqueTags.map(uniqueTag => (
+      <Category
+        tag={uniqueTag}
+        active={
+          Astro.url.pathname ===
+          `/liburuak/${encodeURIComponent(uniqueTag.toLowerCase())}`
+        }
+      />
     ))
   }
 </div>
+
 <style>
   .flex {
     gap: 16px;
@@ -23,6 +36,7 @@ const { tags } = Astro.props;
     justify-items: center;
     align-items: center;
   }
+
   p {
     color: black;
   }

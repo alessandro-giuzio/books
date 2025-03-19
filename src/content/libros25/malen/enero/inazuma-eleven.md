@@ -5,7 +5,7 @@ body: 'Inazuma Eleven es una serie de manga basada en el videojuego de fútbol d
 cover: 'https://m.media-amazon.com/images/I/81nWtdYBq6L._SY522_.jpg'
 alt: 'Inazuma Eleven'
 monthRead: urtarrila
-tags: ['Manga', 'Sports']
+tags: ['Manga']
 concorrente: 'malen'
 slug: 'inazuma-eleven'
 punti: 4

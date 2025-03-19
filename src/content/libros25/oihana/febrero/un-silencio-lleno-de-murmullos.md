@@ -5,7 +5,7 @@ body: 'Valeria hizo grandes sacrificios como protagonista activa de los cambios 
 cover: 'https://m.media-amazon.com/images/I/81B7-v52nyL._SY522_.jpg'
 alt: 'Un silencio lleno de murmullos'
 monthRead: otsaila
-tags: ['Nicaragua', 'Familia']
+tags: ['Nicaragua']
 concorrente: 'oihana'
 slug: 'un-silencio-lleno-de-murmullos'
 punti: 5

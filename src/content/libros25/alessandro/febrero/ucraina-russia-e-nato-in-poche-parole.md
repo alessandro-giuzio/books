@@ -5,7 +5,7 @@ body: 'La storia dell’Ucraina una e trina, sempre a metà del guado fra Europa
 cover: 'https://m.media-amazon.com/images/I/61hoBOQ2u+L._SY342_.jpg'
 alt: 'Ucraina, Russia e Nato in poche parole'
 monthRead: otsaila
-tags: ['Historia', 'Política']
+tags: ['Política']
 concorrente: 'ale'
 slug: 'ucraina-russia-e-nato-in-poche-parole'
 punti: 5

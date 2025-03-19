@@ -5,7 +5,7 @@ body: 'En 1944, Mathilde, una joven alsaciana, se enamora de Amín Belhach, comb
 cover: 'https://m.media-amazon.com/images/I/61e2-1B4gEL._SY466_.jpg'
 alt: 'El pais de los otros'
 monthRead: enero
-tag: ['novela', 'historica', 'feminismo']
+tag: ['novela', 'Historia', 'feminismo']
 concorrente: 'amaia'
 slug: 'el-pais-de-los-otros'
 punti: 7

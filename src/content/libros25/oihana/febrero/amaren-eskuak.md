@@ -5,7 +5,7 @@ body: 'Amaren eskuak, Karmele Jaio idazlearen azken eleberria, amaren eta alabar
 cover: 'https://m.media-amazon.com/images/I/71okZtCURwL._SY522_.jpg'
 alt: 'Amaren eskuak'
 monthRead: otsaila
-tags: ['Euskal Herria', 'Familia']
+tags: ['Familia']
 concorrente: 'oihana'
 slug: 'amaren-eskuak'
 punti: 7

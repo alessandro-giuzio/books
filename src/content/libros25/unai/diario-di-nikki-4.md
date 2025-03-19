@@ -5,7 +5,7 @@ body: 'Nikki Maxwell no se sorprende cuando descubre que el chico de sus sueños
 cover: 'https://m.media-amazon.com/images/I/81L30t9OmWL._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki-4'
 punti: 2

@@ -5,7 +5,7 @@ body: 'My Hero Academia es un manga escrito e ilustrado por Kōhei Horikoshi. La
 cover: 'https://m.media-amazon.com/images/I/91kJ8oF7UeL._SY522_.jpg'
 alt: 'My hero academia'
 monthRead: otsaila
-tags: ['Manga', 'Superhéroes']
+tags: ['Manga']
 concorrente: 'luca'
 slug: 'my-hero-academia'
 punti: 10

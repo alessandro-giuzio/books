@@ -5,7 +5,7 @@ body: 'El país de los otros es una novela que narra la historia de Mathilde, un
 cover: 'https://m.media-amazon.com/images/I/61e2-1B4gEL._SY385_.jpg'
 alt: 'El país de los otros'
 monthRead: julio
-tag: ['narrativa', 'historica']
+tag: ['narrativa', 'Historia']
 concorrente: 'oihana'
 slug: 'el-pais-de-los-otros-oihana'
 punti: 5

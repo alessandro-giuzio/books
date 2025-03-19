@@ -5,7 +5,7 @@ body: 'La Tavoletta della Vita e del Destino ha tormentato la vita di Spider-Man
 cover: 'https://m.media-amazon.com/images/I/91SYt0j8Q5L._SY522_.jpg'
 alt: 'Rioscato da re'
 monthRead: urtarrila
-tags: ['Comic', 'Superhero']
+tags: ['Comic']
 concorrente: 'luca'
 slug: 'rioscatto-da-re'
 punti: 4

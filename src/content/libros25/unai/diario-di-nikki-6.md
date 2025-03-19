@@ -5,7 +5,7 @@ body: 'En este sexto libro de la internacional serie superventas «Diario de Nik
 cover: 'https://m.media-amazon.com/images/I/91E+9ul+WUL._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki-6'
 punti: 2

@@ -5,7 +5,7 @@ body: 'Primero son inseparables: Pietro el hijo de los sirvientes, Paolo el de l
 cover: 'https://m.media-amazon.com/images/I/61itVR0s23L._SY522_.jpg'
 alt: 'Pierto e Paolo'
 monthRead: martxoa
-tags: ['Histórica', 'Ficción']
+tags: ['Ficción']
 concorrente: 'amaia'
 slug: 'pietro-e-paolo'
 punti: 5

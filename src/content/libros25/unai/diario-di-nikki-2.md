@@ -5,7 +5,7 @@ body: 'Ya instalada en su nueva escuela, la vida parece sonreírle a Nikki Maxwe
 cover: 'https://m.media-amazon.com/images/I/91n8g3UZo5L._SY522_.jpg'
 alt: 'Diario de Nikki'
 monthRead: urtarrila
-tags: ['Humor', 'Juvenil']
+tags: ['Humor']
 concorrente: 'unai'
 slug: 'diario-de-nikki-2'
 punti: 2

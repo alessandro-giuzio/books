@@ -5,7 +5,7 @@ body: 'La biografía de María Antonieta, la reina de Francia, escrita por Stefa
 cover: 'https://m.media-amazon.com/images/I/81wk1tDzRhL._SY522_.jpg'
 alt: 'Maria Antonieta'
 monthRead: urtarrila
-tags: ['Biografía', 'Historia']
+tags: ['Historia']
 concorrente: 'amaia'
 slug: 'maria-antonieta'
 punti: 5

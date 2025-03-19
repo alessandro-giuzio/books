@@ -6,7 +6,7 @@ cover: 'https://m.media-amazon.com/images/I/81fh0koiVTL._SY342_.jpg
 '
 alt: 'Maldita Roma'
 monthRead: enero
-tag: ['novela', 'historica']
+tag: ['novela', 'Historia']
 concorrente: 'asier'
 slug: 'maldita-roma'
 punti: 11

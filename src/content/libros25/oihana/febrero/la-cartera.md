@@ -5,7 +5,7 @@ body: 'En Lizzanello, un pueblecito de unos pocos miles de almas, un autobús de
 cover: 'https://m.media-amazon.com/images/I/71XR1WTynaL._SY522_.jpg'
 alt: 'La Cartera'
 monthRead: otsaila
-tags: ['Italia', 'Familia']
+tags: ['Italia']
 concorrente: 'oihana'
 slug: 'la-cartera'
 punti: 7

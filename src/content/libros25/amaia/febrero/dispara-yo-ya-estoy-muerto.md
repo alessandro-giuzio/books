@@ -5,7 +5,7 @@ body: 'A finales del siglo XIX, durante la última etapa zarista, los Zucker, pe
 cover: 'https://m.media-amazon.com/images/I/81tPrmaPJuL._SY342_.jpg'
 alt: 'Dispara yo ya estoy muerto'
 monthRead: otsaila
-tags: ['Histórica', 'Ficción']
+tags: ['Ficción']
 concorrente: 'amaia'
 slug: 'dispara-yo-ya-estoy-muerto'
 punti: 9

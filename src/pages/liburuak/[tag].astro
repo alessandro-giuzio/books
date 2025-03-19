@@ -4,29 +4,43 @@ import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
-import LibrosLista from 'astro/components/LibrosLista.astro';
+import type { CollectionEntry } from 'astro:content';
 
-export const getStaticPaths = async () => {
-  const allBooks = await getCollection('libros25');
-  const allTheTags = allBooks.flatMap(book => book.data.tags);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allBooks: CollectionEntry<'libros25'>[] =
+    await getCollection('libros25');
+
+  const allTheTags = allBooks.flatMap(book =>
+    book.data.tags.map(tag => tag.toLowerCase())
+  );
   const uniqueTags = Array.from(new Set(allTheTags));
-  const paths = uniqueTags.map(tag => {
-    const booksByTag = allBooks.filter(book => book.data.tags.includes(tag));
+
+  const paths = uniqueTags.map(lowerTag => {
+    const booksByTag = allBooks.filter(book =>
+      book.data.tags.some(tag => tag.toLowerCase() === lowerTag)
+    );
     return {
       params: {
-        tag: tag,
+        tag: lowerTag,
       },
       props: {
-        tag,
+        tag: lowerTag,
         allBooks: booksByTag,
+        fullBooks: allBooks,
       },
     };
   });
+
   return paths;
 };
 ---
 
 <Layout2025 title='liburuak'>
   <h1>Book Tagged: {Astro.props.tag}</h1>
+
+  {/* @ts-ignore */}
+  <CategoryList tags={Astro.props.fullBooks} activeTag={Astro.props.tag} />
+
+  {/* @ts-ignore */}
   <LibrosLista2025 libros={Astro.props.allBooks} />
 </Layout2025>

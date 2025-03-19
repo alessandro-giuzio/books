@@ -5,7 +5,7 @@ body: 'What really happened in the summer of 1969? The first book to take a crit
 cover: 'https://m.media-amazon.com/images/I/81Z7g8tmPKL._SY342_.jpg'
 alt: 'Chaos'
 monthRead: otsaila
-tags: ['Manson', 'Hollywood']
+tags: ['Manson']
 concorrente: 'ale'
 slug: 'chaos'
 punti: 9
