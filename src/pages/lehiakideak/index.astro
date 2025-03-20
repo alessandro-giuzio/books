@@ -66,8 +66,24 @@ import ArticleLehiakideak from '../../components/dashboard/ArticleLehiakideak.vu
     max-width: 62%;
   }
   h1 {
-    font-size: 2rem;
+    --accent: oklch(75% 0.18 calc(calc(196 + 76) + 240) / 1);
+    --hue: 196;
+    --rotated-hue: calc(var(--hue) + var(--hue-rotate));
+    --hue-rotate-deg: calc(var(--hue-rotate) * 1deg);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     margin-bottom: 1rem;
+    line-height: 1.2;
+    -webkit-text-stroke: 3px var(--accent);
+    paint-order: stroke fill;
+    color: #fff;
+    text-shadow:
+      1px 1px 0 var(--accent),
+      2px 2px 0 var(--accent),
+      3px 3px 0 var(--accent),
+      4px 4px 0 var(--accent);
+    font-family: 'Londrina Solid', system-ui, sans-serif;
+    font-weight: 900;
+    font-style: normal;
   }
   .hero-image {
     shape-outside: circle(50%);

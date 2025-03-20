@@ -5,7 +5,7 @@ body: 'All of the short fiction set in James S. A. Corey multi-million-bestselli
 cover: 'https://m.media-amazon.com/images/I/91fNL1UFAGL._SY522_.jpg'
 alt: 'Memorys Legion'
 monthRead: martxoa
-tags: ['Sci-fi', 'Space Opera']
+tags: ['Sci-fi']
 concorrente: 'ale'
 slug: 'memorys-legion'
 punti: 9

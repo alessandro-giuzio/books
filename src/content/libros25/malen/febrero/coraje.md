@@ -5,7 +5,7 @@ body: 'Raina se despierta una noche con dolores de estómago y ganas de vomitar.
 cover: 'https://m.media-amazon.com/images/I/71lLsWDhGYL._SY522_.jpg'
 alt: 'Coraje'
 monthRead: otsaila
-tags: ['Novela grafica']
+tags: ['Novela Gráfica']
 concorrente: 'malen'
 slug: 'coraje'
 punti: 4

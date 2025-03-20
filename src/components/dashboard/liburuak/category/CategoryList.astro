@@ -12,7 +12,7 @@ const { tags, activeTag }: Props = Astro.props;
 const uniqueTags = Array.from(new Set(tags.flatMap(tag => tag.data.tags)));
 ---
 
-<div class='flex'>
+<div class='flex flex-wrap gap-2 overflow-x-auto scrollbar-hide mb-10'>
   <!-- ✅ Fix: Pass active state for 'All' -->
   <Category tag='All' active={Astro.url.pathname === '/liburuak'} />
 

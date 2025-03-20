@@ -17,14 +17,17 @@ const tags = books.map(book => book.data.tags).flat();
 
 // Access the book data from props
 const { libro } = Astro.props;
-const relatedTags = tags.filter(tag => libro.tags.includes(tag));
+
+// ✅ Ensure libro.tags exists before filtering
+const relatedTags = libro.tags ? [...libro.tags] : [];
 
 // Exclude the current book by checking book.slug !== libro.slug
 const relatedBooks = books
   .filter(
     book =>
-      book.slug !== libro.slug &&
-      book.data.tags.some(tag => relatedTags.includes(tag))
+      book.slug !== libro.slug && // ✅ Exclude current book
+      book.data.tags && // ✅ Ensure tags are defined
+      book.data.tags.some(tag => relatedTags.includes(tag)) // ✅ Match related tags
   )
   .map(book => ({
     cover: book.data.cover,

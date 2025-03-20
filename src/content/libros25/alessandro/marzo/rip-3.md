@@ -5,7 +5,7 @@ body: 'Tras un primer volumen dedicado a Derrick y un segundo dedicado a Maurice
 cover: 'https://m.media-amazon.com/images/I/717yWxGInFL._SY522_.jpg'
 alt: 'Rip T3'
 monthRead: martxoa
-tags: ['Thriller', 'Misterio', 'Novela Gráfica']
+tags: ['Novela Gráfica']
 concorrente: 'ale'
 slug: 'rip-3'
 punti: 5

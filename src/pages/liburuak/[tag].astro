@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
+import H1 from 'astro/components/dashboard/liburuak/H1.astro';
 import { getCollection } from 'astro:content';
 import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
@@ -36,11 +37,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 ---
 
 <Layout2025 title='liburuak'>
-  <h1>Book Tagged: {Astro.props.tag}</h1>
+  <main
+    class='bg-basque-10 relative mx-auto p-6 overflow-x-hidden min-h-screen'>
+    <H1 body={`Book Tagged: ${Astro.props.tag}`} />
 
-  {/* @ts-ignore */}
-  <CategoryList tags={Astro.props.fullBooks} activeTag={Astro.props.tag} />
+    {/* @ts-ignore */}
 
-  {/* @ts-ignore */}
-  <LibrosLista2025 libros={Astro.props.allBooks} />
+    <CategoryList tags={Astro.props.fullBooks} activeTag={Astro.props.tag} />
+
+    {/* @ts-ignore */}
+    <LibrosLista2025 libros={Astro.props.allBooks} />
+  </main>
 </Layout2025>
