@@ -1,41 +1,38 @@
 ---
-import { move } from "astro-vtbot/animations/move";
-import { swing } from "astro-vtbot/animations/swing";
+// filepath: /Users/alessandro-giuzio/Documents/Ale/GitHub-Repo/books/src/components/dashboard/liburuak/Liburua.astro
+import { move } from 'astro-vtbot/animations/move';
 import { Image } from 'astro:assets';
-export interface Props {
-  libro: {
-    cover?: string;
-    title: string;
-    author: string;
-    concorrente: string;
-    punti: number;
-    yearRead: number | string;
-    body: string;
-    slug: string;
-  };
-}
-export interface Props {
-  relatedBooks: {
-    cover?: string;
-    title: string;
-    author: string;
-    concorrente: string;
-    punti: number;
-    yearRead: number | string;
-    body: string;
-    slug: string;
-  }[];
+
+export interface Book {
+  cover?: string;
+  title: string;
+  author: string;
+  concorrente: string;
+  punti: number;
+  yearRead: number | string;
+  body: string;
+  slug: string;
 }
 
-const { libro, relatedBooks } = Astro.props;
+export interface Props {
+  libro: Book;
+  relatedBooks: Book[];
+}
+
+const { libro, relatedBooks } = Astro.props as Props;
 ---
 
-<article>
-  <!-- Image -->
+<article class='pb-4'>
+  <!-- Book Cover -->
   <section
-    class='relative flex items-center justify-center w-full h-auto max-h-screen p-4 rounded-lg shadow-2xl bg-basque-10'>
+    class='relative flex items-center justify-center w-full h-auto max-h-screen p-4 rounded-lg'>
     <Image
-      transition:animate={move({ duration: '1.5s', easing: 'ease-in', delay: '1s', direction: 'normal' })}
+      transition:animate={move({
+        duration: '1.5s',
+        easing: 'ease-in',
+        delay: '1s',
+        direction: 'normal',
+      })}
       src={libro.cover || '/no-cover.webp'}
       alt={`Cover of ${libro.title}`}
       width={400}
@@ -51,64 +48,86 @@ const { libro, relatedBooks } = Astro.props;
       ]}
     />
   </section>
+
   <!-- Book Details -->
   <section class='max-w-3xl p-6 mx-auto mt-6 rounded-lg shadow-lg bg-basque-40'>
-    <h2 transition:animate={move({ duration: '1.6s', easing: 'ease-in', delay: '', direction: 'alternate' })} class='text-2xl font-semibold text-gray-900 md:text-4xl'>
+    <h2
+      transition:animate={move({
+        duration: '1.6s',
+        easing: 'ease-in',
+        delay: '',
+        direction: 'alternate',
+      })}
+      class='text-2xl font-semibold text-gray-900 md:text-4xl'>
       {libro.title}
     </h2>
-    <span transition:animate={move({duration:'1.7s', easing: 'cubic-bezier(.16,.73,.05,1.52)' })} class='mt-1 text-lg text-gray-700'>by {libro.author}</span>
+    <span
+      transition:animate={move({
+        duration: '1.7s',
+        easing: 'cubic-bezier(.16,.73,.05,1.52)',
+      })}
+      class='mt-1 text-lg text-gray-700'>
+      by {libro.author}
+    </span>
 
     <!-- Book Metadata -->
     <div class='flex flex-wrap gap-6 mt-4 text-sm text-gray-600 md:text-base'>
-      <span class='font-semibold'
-        >🏆 Concorrente: {
+      <span class='font-semibold'>
+        🏆 Concorrente: {
           libro.concorrente.charAt(0).toUpperCase() + libro.concorrente.slice(1)
-        }</span
-      >
+        }
+      </span>
       <span class='flex items-center gap-1 font-semibold'>
         ⭐ Puntuak: <span class='font-bold text-basque-20'>{libro.punti}</span>
       </span>
-      <span class='font-semibold'
-        >📅 Year Read: <span class='text-basque-20'>{libro.yearRead}</span
-        ></span
-      >
+      <span class='font-semibold'>
+        📅 Year Read: <span class='text-basque-20'>{libro.yearRead}</span>
+      </span>
     </div>
 
     <!-- Book Description -->
     <p class='mt-6 leading-relaxed text-gray-800'>{libro.body}</p>
   </section>
-  <!-- Related books -->
-  <section class='max-w-3xl p-6 mx-auto mt-6 rounded-lg shadow-lg bg-basque-40'>
-    <!-- need to show a grid with 2/3 books with related tags -->
 
-    <h3 class='text-2xl font-semibold text-gray-900 md:text-4xl'>
-      Related Books
-    </h3>
-    <span>
-      {
-        relatedBooks.map(book => (
-
-            <Image
-              src={book.cover || '/no-cover.webp'}
-              alt={`Cover of ${book.title}`}
-              width={200}
-              height={300}
-              format='webp'
-              class:list={[
-                'w-auto',
-                'max-h-[45vh]',
-                'object-contain',
-                'mx-auto',
-                'rounded-lg',
-                'shadow-2xl',
-              ]}
-            />
-            <h4 class='text-xl font-semibold text-gray-900'>{book.title}</h4>
-            <span class='mt-1 text-lg text-gray-700'>by {book.author}</span>
-
-        ))
-      }
-    </span>
-  </section>
+  <!-- Related Books Section -->
+  {
+    relatedBooks && relatedBooks.length > 0 ? (
+      <section class='max-w-3xl p-6 mx-auto mt-6 rounded-lg shadow-lg bg-basque-40'>
+        <h3 class='mb-4 text-2xl font-semibold text-gray-900 md:text-4xl'>
+          Related Books
+        </h3>
+        <div class='grid gap-6 grid-auto-flow md:grid-cols-2 lg:grid-cols-3'>
+          {relatedBooks.map(book => (
+            <div class='flex flex-col items-center'>
+              <Image
+                src={book.cover || '/no-cover.webp'}
+                alt={`Cover of ${book.title}`}
+                width={200}
+                height={300}
+                format='webp'
+                class:list={[
+                  'w-auto',
+                  'max-h-[45vh]',
+                  'object-contain',
+                  'mx-auto',
+                  'rounded-lg',
+                  'shadow-2xl',
+                ]}
+              />
+              <h4 class='mt-2 text-xl font-semibold text-gray-900'>
+                {book.title}
+              </h4>
+              <span class='mt-1 text-lg text-gray-700'>by {book.author}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : (
+      <section class='max-w-3xl p-6 mx-auto mt-6 rounded-lg shadow-lg bg-basque-40'>
+        <p class='text-lg text-center text-gray-700'>
+          No related books found. Check out our other collections!
+        </p>
+      </section>
+    )
+  }
 </article>
-
