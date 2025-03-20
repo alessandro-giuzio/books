@@ -2,6 +2,7 @@
 import '../styles/base.css';
 import '../styles/globals.css';
 import { ClientRouter } from 'astro:transitions';
+import ReplacementSwap from 'astro-vtbot/components/ReplacementSwap.astro';
 import Navbar from '../components/dashboard/NavBar.astro';
 import Footer from '../components/dashboard/Footer.astro';
 // Supports weights 100-900
@@ -16,13 +17,15 @@ const { title = 'Irakurketa 2025', socialImage = '/okBooks.webp' } =
 <html lang='eu'>
   <head>
     <ClientRouter />
+    <ReplacementSwap />
     <title>{title}</title>
     <!-- Sitemap -->
     <link rel='sitemap' href='/sitemap-index.xml' />
-    <meta charset='utf-8' /><meta
-      name='viewport'
-      content='width=device-width, initial-scale=1'
-    /><meta name='author' content='Alessandro Giuzio' /><meta
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' /><meta
+      name='author'
+      content='Alessandro Giuzio'
+    /><meta
       name='description'
       content='Diseño Web en Donostia | San Sebastian'
     /><meta property='og:title' content={title} /><meta
@@ -42,7 +45,7 @@ const { title = 'Irakurketa 2025', socialImage = '/okBooks.webp' } =
 
   <body>
     <Navbar />
-    <slot />
+    <main data-vtbot-replace='main'><slot /></main>
     <Footer />
   </body>
 </html>

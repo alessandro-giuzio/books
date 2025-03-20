@@ -26,7 +26,11 @@ export default defineConfig({
     },
   },
   integrations:
-  [tailwind({
-    applyBaseStyles: false, // Disable Tailwind's base styles
-  }), alpinejs(), vue(), vtbot(), sitemap()],
+  [
+    tailwind({applyBaseStyles: false,}),
+      alpinejs(),
+       vue(),
+        vtbot(),
+         sitemap()],
+
 });
