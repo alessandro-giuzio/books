@@ -5,6 +5,7 @@ import CardVue from '../../components/dashboard/CardVue.vue';
 type Props = {
   libros: CollectionEntry<'libros25'>[];
 };
+/* TODO exclude books that are in the list more than 1 time */
 
 const { libros } = Astro.props;
 // Shuffle the libros order
