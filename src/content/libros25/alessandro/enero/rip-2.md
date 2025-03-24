@@ -8,7 +8,7 @@ monthRead: urtarrila
 tags: ['Novela Gráfica']
 concorrente: 'ale'
 slug: 'rip-2'
-punti: 5
+punti: 3
 yearRead: 2025
 type: comic
 pages: 112

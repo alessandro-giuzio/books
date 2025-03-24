@@ -2,7 +2,7 @@
 nome: Amaia
 username: amaia
 alt: Amaia
-bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget'
+bio: 'Irakurtzea plazera eta hausnarketa une bat da niretzat. Narratiba, feminismoa eta historia bezalako gaietan sakontzea gustatzen zait, istorio bakoitzean pertsonaien emozioak eta ikasgaiak arakatuz. Liburuek errealitate berrietara garamatzate, eta hitzen bidez konektatzen naiz. Beti prest nago ikasteko eta kontakizun bakoitzetik ikasgai baliotsuak ateratzeko.'
 image: '../../content/concorrenti/img/amaia.jpg'
 punti: 29
 puntiEnero: 5

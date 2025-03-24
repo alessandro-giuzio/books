@@ -2,12 +2,14 @@
 nome: Malen
 username: malen
 alt: Malen
-bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget'
+bio: 'Irakurtzea abentura eta irudimen bidaia da niretzat. Manga, eleberri grafikoak eta haur literaturan interesa dut, umorea eta emozioak uztartzen dituzten istorioak aurkituz. Pertsonaia bakoitzaren bizipenetatik ikasten dut, eta istorio bakoitzak mundu berri bat zabaltzen dit. Irakurtzea entretenimendua eta ikaskuntza uztartzeko modu bat da niretzat.'
 image: '../../content/concorrenti/img/malen.jpeg'
-punti: 8
+punti: 11
 puntiEnero: 5
 urtarrilekoPuntuak: 5
 puntiFebrero: 5
 otsailakoPuntuak: 5
+puntiMarzo: 3
+martxoPuntuak: 3
 slug: 'malen-25'
 ---

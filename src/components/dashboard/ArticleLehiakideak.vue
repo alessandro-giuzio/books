@@ -21,9 +21,11 @@
         </p> -->
       </CardTitle>
       <CardDescription>
-        <p class="text-sm mt-2 text-gray-700 tracking-wide leading-snug">
+        <a
+          :href="`/lehiakideak/${concorrente.slug}`"
+          class="block text-base mt-2 text-gray-800 tracking-wide leading-relaxed line-clamp-4 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200 ease-in-out">
           {{ concorrente.bio }}
-        </p>
+        </a>
       </CardDescription>
     </CardHeader>
 

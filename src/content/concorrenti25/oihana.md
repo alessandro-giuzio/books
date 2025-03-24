@@ -2,7 +2,7 @@
 nome: Oihana
 username: oihana
 alt: Oihana
-bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget'
+bio: 'Irakurketak kulturaren eta emozioen arteko lotura eskaintzen dit. Japonia, Italia eta familia gaietan sakontzea gustatzen zait, narrazio bakoitzean emozioak eta istorio sakonak aurkituz. Eleberriak eta kontakizun errealistak arakatzen ditut, pertsonaien esperientzietatik ikasiz. Irakurtzea niretzat ikasteko eta mundu berriak ezagutzeko bidea da.'
 image: '../../content/concorrenti/img/oihana.jpg'
 punti: 24
 puntiEnero: 5

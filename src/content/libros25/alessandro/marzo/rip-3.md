@@ -8,7 +8,7 @@ monthRead: martxoa
 tags: ['Novela Gráfica']
 concorrente: 'ale'
 slug: 'rip-3'
-punti: 5
+punti: 3
 yearRead: 2025
 type: comic
 pages: 112
