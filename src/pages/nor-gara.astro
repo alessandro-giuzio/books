@@ -3,6 +3,7 @@ import Layout2025 from '../layouts/Layout2025.astro';
 import { Image } from 'astro:assets';
 import SunsetBook from '@assets/images/sunsetBook.jpg';
 import HeroImg from '@assets/images/heroNew.webp';
+import familia from '@assets/images/concorrenti/familia.png';
 ---
 
 <Layout2025 title='Nor gara'>
@@ -13,11 +14,11 @@ import HeroImg from '@assets/images/heroNew.webp';
     <!-- Background Image with Overlay -->
     <div class='relative isolate overflow-hidden pt-14'>
       <Image
-        src={HeroImg}
+        src={familia}
         alt='Background Image'
         class='absolute inset-0 -z-10 size-full object-cover'
       />
-      <div class='absolute inset-0 -z-10 bg-gray-950/50'></div>
+      <div class='absolute inset-0 -z-10 bg-gray-950/20'></div>
       <!-- Overlay for contrast -->
 
       <div class='mx-auto max-w-7xl px-6 lg:px-8'>
