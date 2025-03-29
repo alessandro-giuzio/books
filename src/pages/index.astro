@@ -47,21 +47,24 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
           </a>
           <a
             href='/liburuak'
-            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/liburuak')}`}>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/liburuak')}`}>
             Liburuak
           </a>
           <a
             href='/lehiakideak'
-            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/lehiakideak')}`}>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/lehiakideak')}`}>
             Lehiakideak
           </a>
           <a
             href='/2024'
-            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold ${activeLink('/2024')}`}>
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/2024')}`}>
             2024
           </a>
-          <AddBookForm />
         </nav>
+        <!-- AddBookForm always at bottom of sidebar -->
+        <div class='mt-auto p-4 hidden md:block'>
+          <AddBookForm />
+        </div>
       </div>
     </div>
     <!-- TODO AddbookForm position -->
