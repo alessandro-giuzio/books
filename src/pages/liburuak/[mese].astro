@@ -1,4 +1,5 @@
 ---
+import H1 from 'astro/components/dashboard/liburuak/H1.astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
 
@@ -22,10 +23,11 @@ const selectedMonth = books[0]?.monthRead || "Hilabete ezezaguna"; // Fallback i
 ---
 
 <Layout2025>
-  <!-- Header Section -->
-  <section class="text-center bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-14">
-    <h1 class="text-5xl font-bold tracking-wide">{selectedMonth}</h1>
-    <p class="text-lg mt-2">Hilabete honetako liburuak 📚</p>
+  <div class="bg-basque-10">
+  <!-- Hero Section -->
+  <section class="text-center text-white py-14">
+    <H1 body={selectedMonth}/>
+    <p class="text-xl mt-2">Hilabete honetako liburuak 📚</p>
   </section>
 
   <!-- Books Grid -->
@@ -56,4 +58,5 @@ const selectedMonth = books[0]?.monthRead || "Hilabete ezezaguna"; // Fallback i
       <p class="text-center text-gray-600 text-lg mt-6">Ez dago libururik hilabete honetan.</p>
     )}
   </section>
+  </div>
 </Layout2025>
