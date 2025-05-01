@@ -32,6 +32,23 @@ const books = [
   { title: 'Kutsidazu bidea, Ixabel', author: 'Joxean Sagastizabal' },
   { title: 'Aiturri', author: 'Txomin Urkiola' },
   { title: 'Lurrean Zubia', author: 'Unai Etxeberria' },
+  { title: 'One Hundred Years of Solitude', author: 'Gabriel García Márquez' },
+  { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
+  { title: 'Ulysses', author: 'James Joyce' },
+  { title: 'Don Quixote', author: 'Miguel de Cervantes' },
+  { title: 'The Catcher in the Rye', author: 'J.D. Salinger' },
+  { title: 'Kafka on the Shore', author: 'Haruki Murakami' },
+  { title: 'The Brothers Karamazov', author: 'Fyodor Dostoevsky' },
+  { title: 'War and Peace', author: 'Leo Tolstoy' },
+  { title: 'The Divine Comedy', author: 'Dante Alighieri' },
+  { title: 'Zorion perfektua', author: 'Anjel Lertxundi' },
+  { title: 'Lagun izoztua', author: 'Joseba Sarrionandia' },
+  { title: 'Itzalak ez du bihotza', author: 'Arantxa Urretabizkaia' },
+  { title: 'Mila ezker', author: 'Karlos Linazasoro' },
+  { title: 'Hamaika pauso', author: 'Ramon Saizarbitoria' },
+  { title: 'Kristalezko begi bat', author: 'Miren Agur Meabe' },
+  { title: 'Gauaren azterketa', author: 'Joseba Sarrionandia' },
+  { title: 'Zeru horiek', author: 'Bernardo Atxaga' },
 ];
 
 // Select a book at build time (using the day of the month)
