@@ -8,7 +8,7 @@ monthRead: apirila
 tags: ['Literatura']
 concorrente: 'oihana'
 slug: 'zeozer-gaizki-doa'
-punti: 2
+punti: 1
 yearRead: 2025
 type: book
 pages: 96
