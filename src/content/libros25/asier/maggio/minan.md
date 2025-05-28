@@ -7,7 +7,7 @@ alt: 'Miñan'
 monthRead: maiatza
 tags: ['Ficción histórica', 'Literatura vasca']
 concorrente: 'asier'
-slug: 'miñan'
+slug: 'minan'
 punti: 7
 yearRead: 2025
 type: book
