@@ -54,14 +54,6 @@ export async function getStaticPaths() {
     // Count the number of books read
     const count25 = liburuakForLehiakide.length;
     const count24 = liburuak24ForLehiakide.length;
-
-    console.log(`📊 Concorrente: ${nome} (${slug})`);
-    console.log(`📚 Books for 2025: ${count25}`);
-    console.log(
-      `📝 Book titles:`,
-      liburuakForLehiakide.map(b => b.data.title)
-    );
-
     // Extract all the tags from the liburuak24ForLehiakide
     const tags24 = liburuak24ForLehiakide
       .map(libro => libro.data.tag)
