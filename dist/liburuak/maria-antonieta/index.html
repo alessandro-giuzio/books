@@ -154,7 +154,7 @@ by Stefan Zweig </span> <!-- Book Metadata --> <div class="flex flex-wrap gap-6 
 ⭐ Puntuak: <span class="font-bold text-basque-20">5</span> </span> <span class="font-semibold">
 📅 Year Read: <span class="text-basque-20">2025</span> </span> </div> <!-- Book Description --> <p class="mt-6 leading-relaxed text-gray-800">La biografía de María Antonieta, la reina de Francia, escrita por Stefan Zweig, es un relato fascinante de la vida de una de las figuras más controvertidas de la historia. Zweig nos lleva a través de la vida de María Antonieta, desde su infancia en Austria hasta su ascenso al trono de Francia y su trágico final en la guillotina.</p> </section> <!-- Related Books Section --> <section class="max-w-3xl p-6 mx-auto mt-6 rounded-lg shadow-lg bg-basque-40"> <p class="text-lg text-center text-gray-700">
 No related books found. Check out our other collections!
-</p> </section> </article> </div> </main> <footer class="bg-gray-800" data-astro-cid-wwilytiv> <div class="flex flex-col mx-auto max-w-7xl px-6 py-8 lg:px-8" data-astro-cid-wwilytiv> <!-- Fun Basque message --> <div class="flex flex-col items-center gap-y-2 space-y-4 md:order-2" data-astro-cid-wwilytiv> <p class="text-sm text-center text-gray-400" data-astro-cid-wwilytiv>
+</p> </section> </article> </div> </main> <footer class="bg-gray-800" x-data="{ activeCategory: 'todos' }" data-astro-cid-wwilytiv> <div class="flex flex-col mx-auto max-w-7xl px-6 py-8 lg:px-8" data-astro-cid-wwilytiv> <!-- Fun Basque message --> <div class="flex flex-col items-center gap-y-2 space-y-4 md:order-2" data-astro-cid-wwilytiv> <p class="text-sm text-center text-gray-400" data-astro-cid-wwilytiv>
 Ez dago sare sozialik hemen — kanpora irten eta benetako mundua gozatu!
 </p> <nav data-astro-cid-wwilytiv> <ul class="flex space-x-4" data-astro-cid-wwilytiv> <li data-astro-cid-wwilytiv> <a href="/kontaktua" class="text-sm font-medium text-gray-400 hover:text-gray-200 transition-colors duration-200" data-astro-cid-wwilytiv>
 Kontaktua
@@ -164,30 +164,4 @@ Nor gara
 &copy; 2025
 <a href="https://www.agencyga.es" class="font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200" target="_blank" rel="noopener noreferrer" title="Agency GA - Estudio de diseño y desarrollo web" aria-label="Visita el estudio web de Alessandro Giuzio - Diseño y desarrollo web" data-astro-cid-wwilytiv>
 Web Artisan Alessandro Giuzio
-</a> </p> <div id="waveContainer" aria-hidden="true" data-astro-cid-wwilytiv> <div style="margin-top:0px" data-astro-cid-wwilytiv> <div class="wave-segment" style="margin-top:0px;height:1px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:1px;height:2px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:2px;height:3px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:3px;height:4px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:4px;height:5px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:5px;height:6px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:6px;height:7px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:7px;height:8px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:8px;height:9px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:9px;height:10px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:10px;height:11px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:11px;height:12px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:12px;height:13px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:13px;height:14px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:14px;height:15px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:15px;height:16px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:16px;height:17px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:17px;height:18px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:18px;height:19px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:19px;height:20px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:20px;height:21px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:21px;height:22px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:22px;height:23px" data-astro-cid-wwilytiv></div> </div> </div> </footer> <script type="module">
-  function startWaveAnimation() {
-    const waveSegments = document.querySelectorAll('.wave-segment');
-
-    if (!waveSegments.length) return; // Avoid errors if no segments found
-
-    let wavePhase = 0;
-
-    function animateWave() {
-      waveSegments.forEach((segment, index) => {
-        const offset = Math.sin((wavePhase + index) * 0.3) * 20;
-        segment.style.marginTop = `${Math.max(0, offset)}px`;
-      });
-
-      wavePhase += 0.1;
-      requestAnimationFrame(animateWave);
-    }
-
-    animateWave();
-  }
-
-  // Run wave animation on initial page load
-  document.addEventListener('DOMContentLoaded', startWaveAnimation);
-
-  // Re-run animation after client-side navigation (ClientRouter fix)
-  document.addEventListener('astro:after-swap', startWaveAnimation);
-</script> </body></html>
+</a> </p> <div id="waveContainer" aria-hidden="true" data-astro-cid-wwilytiv> <div style="margin-top:0px" data-astro-cid-wwilytiv> <div class="wave-segment" style="margin-top:0px;height:1px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:1px;height:2px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:2px;height:3px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:3px;height:4px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:4px;height:5px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:5px;height:6px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:6px;height:7px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:7px;height:8px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:8px;height:9px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:9px;height:10px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:10px;height:11px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:11px;height:12px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:12px;height:13px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:13px;height:14px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:14px;height:15px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:15px;height:16px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:16px;height:17px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:17px;height:18px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:18px;height:19px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:19px;height:20px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:20px;height:21px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:21px;height:22px" data-astro-cid-wwilytiv></div> <div class="wave-segment" style="margin-top:22px;height:23px" data-astro-cid-wwilytiv></div> </div> </div> </footer> </body></html>
