@@ -30,7 +30,7 @@ import Arrow from '../../assets/images/arrow-up.svg';
     transition: all 0.1s ease;
   }
 </style>
-<footer class='bg-gray-800' x-data="{ activeCategory: 'todos' }">
+<footer class='bg-gray-800'>
   <div class='flex flex-col mx-auto max-w-7xl px-6 py-8 lg:px-8'>
     <!-- Fun Basque message -->
     <div class='flex flex-col items-center gap-y-2 space-y-4 md:order-2'>
@@ -110,3 +110,30 @@ import Arrow from '../../assets/images/arrow-up.svg';
     </div>
   </div>
 </footer>
+<script type='module'>
+  function startWaveAnimation() {
+    const waveSegments = document.querySelectorAll('.wave-segment');
+
+    if (!waveSegments.length) return; // Avoid errors if no segments found
+
+    let wavePhase = 0;
+
+    function animateWave() {
+      waveSegments.forEach((segment, index) => {
+        const offset = Math.sin((wavePhase + index) * 0.3) * 20;
+        segment.style.marginTop = `${Math.max(0, offset)}px`;
+      });
+
+      wavePhase += 0.1;
+      requestAnimationFrame(animateWave);
+    }
+
+    animateWave();
+  }
+
+  // Run wave animation on initial page load
+  document.addEventListener('DOMContentLoaded', startWaveAnimation);
+
+  // Re-run animation after client-side navigation (ClientRouter fix)
+  document.addEventListener('astro:after-swap', startWaveAnimation);
+</script>
