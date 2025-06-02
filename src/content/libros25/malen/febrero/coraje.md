@@ -12,5 +12,5 @@ punti: 4
 yearRead: 2025
 type: comic
 pages: 224
-featured: true
+featured: false
 ---

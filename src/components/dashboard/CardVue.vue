@@ -4,7 +4,7 @@
     <!-- Adjusted Image -->
     <a :href="`/liburuak/${libro.slug}`">
       <img
-        :src="libro.cover || '/placeholder-image.jpg'"
+        :src="libro.cover || '/no-cover.webp'"
         :alt="`Cover of ${libro.title}`"
         class="object-cover object-top w-full h-52 md:h-72 rounded-t-md" />
     </a>
