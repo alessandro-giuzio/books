@@ -171,9 +171,7 @@ const {
                   </h2>
 
                   <Image
-                    src={
-                      libro.data.cover || '../../assets/images/no-cover.webp'
-                    }
+                    src={libro.data.cover || libro.data.noCover}
                     alt={`Cover of ${libro.data.title}`}
                     width={160}
                     height={240}
@@ -272,7 +270,7 @@ const {
               <div class='flex flex-col items-center text-center p-4 bg-le-bgHighlight rounded-lg shadow-md'>
                 {
                   <img
-                    src={libro.data.cover || '/public/assets/no-cover.png'}
+                    src={libro.data.cover || libro.data.noCover}
                     alt={`Cover of ${libro.data.title}`}
                     class='w-40 h-60 rounded-md shadow-lg'
                   />
@@ -306,7 +304,7 @@ const {
               <div class='flex flex-col items-center text-center p-4 bg-le-bgHighlight rounded-lg shadow-md'>
                 {
                   <img
-                    src={libro.data.cover || '/public/assets/no-cover.png'}
+                    src={libro.data.cover || '/assets/no-cover.png'}
                     alt={`Cover of ${libro.data.title}`}
                     class='w-40 h-60 rounded-md shadow-lg'
                   />
