@@ -8,8 +8,9 @@ type Props = {
 const { concorrente } = Astro.props;
 ---
 
-<div
-  class='border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row bg-white max-w-lg'>
+<a
+  href={`/lehiakideak/${concorrente.data.slug || concorrente.data.username}`}
+  class='block border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row bg-white max-w-lg hover:shadow-xl transition-shadow duration-300 hover:bg-gray-50'>
   <Image
     src={concorrente.data.image}
     alt={concorrente.data.alt}
@@ -33,7 +34,7 @@ const { concorrente } = Astro.props;
       </div>
     </div>
   </div>
-</div>
+</a>
 
 <style>
   @keyframes growWidth {
