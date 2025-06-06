@@ -6,10 +6,34 @@ type Props = {
   concorrente: CollectionEntry<'concorrenti25'>;
 };
 const { concorrente } = Astro.props;
+// Special case mapping for known problematic concorrentes
+const specialSlugs: Record<string, string> = {
+  alessandro: 'ale', // Map Alessandro to 'ale' slug
+  // Add other special cases as needed
+};
+
+// Determine the correct slug to use for the link
+let slugToUse = concorrente.data.slug;
+
+// If no slug defined, or if it's a special case:
+if (!slugToUse || specialSlugs[concorrente.data.username?.toLowerCase()]) {
+  // Try using the mapping first
+  slugToUse =
+    specialSlugs[concorrente.data.username?.toLowerCase()] ||
+    // Then fallback to username
+    concorrente.data.username?.toLowerCase() ||
+    // Final fallback to lowercase name with spaces converted to hyphens
+    concorrente.data.nome.toLowerCase().replace(/\s+/g, '-');
+}
+
+// Debug output (remove in production)
+console.log(
+  `Concorrente: ${concorrente.data.nome}, Username: ${concorrente.data.username}, Using slug: ${slugToUse}`
+);
 ---
 
 <a
-  href={`/lehiakideak/${concorrente.slug || concorrente.data.username}`}
+  href={`/lehiakideak/${slugToUse}`}
   class='block border border-basque-50 p-4 rounded-lg shadow-lg relative flex flex-col items-center space-y-4 md:items-start md:space-y-0 md:space-x-4 md:flex-row bg-white max-w-lg hover:shadow-xl transition-shadow duration-300 hover:bg-gray-50'>
   <Image
     src={concorrente.data.image}
