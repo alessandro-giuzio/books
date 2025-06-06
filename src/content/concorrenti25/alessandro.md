@@ -17,5 +17,5 @@ puntiMayo: 13
 maiatzaPuntuak: 13
 puntiJunio: 3
 ekainakoPuntuak: 3
-slug: 'alessandro-25'
+slug: 'ale'
 ---
