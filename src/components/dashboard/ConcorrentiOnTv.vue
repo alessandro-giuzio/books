@@ -11,6 +11,7 @@ const concorrenti = ref([
   { name: 'Unai' },
   { name: 'Malen' },
   { name: 'Oihana' },
+  { name: 'Maren' },
 ]);
 
 // ✅ Track the index instead of reassigning objects
@@ -24,7 +25,6 @@ onMounted(() => {
   // Automatically change concorrenti every 3 seconds
   intervalId = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % concorrenti.value.length;
-
   }, 3000);
 });
 
