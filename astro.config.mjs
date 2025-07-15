@@ -29,8 +29,8 @@ export default defineConfig({
   [
     tailwind({applyBaseStyles: false,}),
       alpinejs(),
-       vue(),
-        vtbot(),
-         sitemap()],
+      vue(),
+      vtbot(),
+sitemap()],
 
 });
