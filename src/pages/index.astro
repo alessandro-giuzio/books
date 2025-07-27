@@ -12,19 +12,18 @@ import '@styles/globals.css';
 
 
 
-const currentPath = Astro.url.pathname;
+const currentPath = typeof window !== 'undefined' ? window.location.pathname : Astro.url.pathname;
 
 
 function activeLink(path: string) {
   const normalize = (p: string) => p.replace(/\/+$/, '') || '/';
-
-  const current = normalize(currentPath);
+  // Make currentPath reactive to client-side navigation
+  let current = normalize(
+    typeof window !== 'undefined' ? window.location.pathname : Astro.url.pathname
+  );
   const target = normalize(path);
 
-  const isExactMatch = current === target;
-  const isSubPath = current.startsWith(target + '/');
-
-  return isExactMatch || isSubPath
+  return current === target || current.startsWith(target + '/')
     ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
     : 'text-gray-100';
 }
