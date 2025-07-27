@@ -9,24 +9,32 @@ import BookYearCount from '../components/dashboard/BookYearCount.astro';
 import IconsTags2025 from '../components/dashboard/IconsTags2025.astro';
 import '@styles/globals.css';
 
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+
+
+
+const currentPath = Astro.url.pathname;
 
 
 function activeLink(path: string) {
-  // Handle home page specifically
-  if (path === '/') {
-    return currentPath === '/' || currentPath === ''
-      ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
-      : 'text-gray-100';
-  }
+  const normalize = (p: string) => p.replace(/\/+$/, '') || '/';
 
-  // For other pages, check if current path starts with the given path
-  const isActive = currentPath.startsWith(path);
-  return isActive
+  const current = normalize(currentPath);
+  const target = normalize(path);
+
+  const isExactMatch = current === target;
+  const isSubPath = current.startsWith(target + '/');
+
+  return isExactMatch || isSubPath
     ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
     : 'text-gray-100';
 }
+
+  // For other pages, check if current path starts with the given path
+/*   const isActive = currentPath.startsWith(path);
+  return isActive
+    ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
+    : 'text-gray-100';
+} */
 
 const concorrenti = await getCollection('concorrenti25');
 
