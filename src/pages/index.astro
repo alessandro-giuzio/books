@@ -1,5 +1,4 @@
 ---
-// filepath: /Users/alessandro-giuzio/Documents/Ale/GitHub-Repo/books/src/pages/index.astro
 import Layout2025 from '../layouts/Layout2025.astro';
 import AddBookForm from '../components/dashboard/AddBookForm.astro';
 import { getCollection } from 'astro:content';
@@ -11,11 +10,22 @@ import IconsTags2025 from '../components/dashboard/IconsTags2025.astro';
 import '@styles/globals.css';
 
 const currentPath = Astro.url.pathname;
+
 function activeLink(path: string) {
-  return currentPath === path
+  // Handle home page specifically
+  if (path === '/') {
+    return currentPath === '/' || currentPath === ''
+      ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
+      : 'text-gray-100';
+  }
+
+  // For other pages, check if current path starts with the given path
+  const isActive = currentPath.startsWith(path);
+  return isActive
     ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
     : 'text-gray-100';
 }
+
 const concorrenti = await getCollection('concorrenti25');
 
 interface Concorrente {
@@ -28,10 +38,10 @@ export interface Props {
 }
 
 const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
+
+// Debug: log the current path
+console.log('Current path:', currentPath);
 ---
-
-
-
 
 <Layout2025>
   <div class='min-h-screen flex bg-basque-40 overflow-x-hidden'>
@@ -142,6 +152,7 @@ const shuffledConcorrenti = concorrenti.sort(() => Math.random() - 0.5);
   </div>
 </Layout2025>
 
+<!-- Rest of your script and styles remain the same -->
 <script>
   // Mobile form modal functionality
   document.addEventListener('DOMContentLoaded', () => {
