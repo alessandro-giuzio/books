@@ -9,7 +9,9 @@ import BookYearCount from '../components/dashboard/BookYearCount.astro';
 import IconsTags2025 from '../components/dashboard/IconsTags2025.astro';
 import '@styles/globals.css';
 
-const currentPath = Astro.url.pathname;
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+
 
 function activeLink(path: string) {
   // Handle home page specifically
