@@ -12,4 +12,5 @@ punti: 7
 yearRead: 2025
 type: book
 pages: 416
+featured: true
 ---
