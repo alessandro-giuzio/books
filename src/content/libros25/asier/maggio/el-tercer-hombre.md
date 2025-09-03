@@ -7,7 +7,7 @@ alt: 'El tercer hombre'
 monthRead: maiatza
 tags: ['Ficción clásica', 'Literatura británica']
 concorrente: 'asier'
-slug: 'miñan'
+slug: 'el-tercer-hombre'
 punti: 5
 yearRead: 2025
 type: book
