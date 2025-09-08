@@ -1,7 +1,7 @@
 import { z, defineCollection } from "astro:content"; // ✅ Removed incorrect import
 
 const concorrentiCollection = defineCollection({
-  schema: ({ image }) =>
+  schema: ({ image }: { image: () => z.ZodTypeAny }) =>
     z.object({
       nome: z.string(),
       username: z.string(),
@@ -13,7 +13,7 @@ const concorrentiCollection = defineCollection({
 });
 
 const concorrentiCollection25 = defineCollection({
-  schema: ({ image }) =>
+  schema: ({ image }: { image: () => z.ZodTypeAny }) =>
     z.object({
       nome: z.string(),
       username: z.string(),

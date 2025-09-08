@@ -12,13 +12,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     await getCollection('libros25');
 
   const allTheTags = allBooks.flatMap(book =>
-    book.data.tags.map(tag => tag.toLowerCase())
+    book.data.tags.map((tag: string) => tag.toLowerCase())
   );
   const uniqueTags = Array.from(new Set(allTheTags));
 
   const paths = uniqueTags.map(lowerTag => {
     const booksByTag = allBooks.filter(book =>
-      book.data.tags.some(tag => tag.toLowerCase() === lowerTag)
+      book.data.tags.some((tag: string) => tag.toLowerCase() === lowerTag)
     );
     return {
       params: {

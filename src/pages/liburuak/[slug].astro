@@ -27,7 +27,7 @@ const relatedBooks = books
     book =>
       book.slug !== libro.slug && // ✅ Exclude current book
       book.data.tags && // ✅ Ensure tags are defined
-      book.data.tags.some(tag => relatedTags.includes(tag)) // ✅ Match related tags
+      book.data.tags.some((tag: string) => relatedTags.includes(tag)) // ✅ Match related tags
   )
   .map(book => ({
     cover: book.data.cover,

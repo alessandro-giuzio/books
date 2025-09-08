@@ -11,7 +11,7 @@ const tagCounts = tags.reduce((acc: { [key: string]: number }, tag: string) => {
 }, {});
 
 // sort tags by count
-const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+const sortedTags = (Object.entries(tagCounts) as [string, number][]).sort((a, b) => b[1] - a[1]);
 
 // get top 6 tags
 const topTags = sortedTags.slice(0, 6);
