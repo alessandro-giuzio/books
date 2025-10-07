@@ -6,7 +6,7 @@ cover: 'https://imagessl4.casadellibro.com/a/l/s5/74/9788439744474.webp'
 alt: 'El ataque de las cabras'
 monthRead: iraila
 tags: ['Ficción', 'Novela']
-concorrente: 'asier'
+concorrente: 'oihana'
 slug: 'el-ataque-de-las-cabras-oihana'
 punti: 5
 yearRead: 2025

@@ -4,7 +4,7 @@ username: oihana
 alt: Oihana
 bio: 'Irakurketak kulturaren eta emozioen arteko lotura eskaintzen dit. Japonia, Italia eta familia gaietan sakontzea gustatzen zait, narrazio bakoitzean emozioak eta istorio sakonak aurkituz. Eleberriak eta kontakizun errealistak arakatzen ditut, pertsonaien esperientzietatik ikasiz. Irakurtzea niretzat ikasteko eta mundu berriak ezagutzeko bidea da.'
 image: '../../content/concorrenti/img/oihana.jpg'
-punti: 111
+punti: 116
 puntiEnero: 5
 urtarrilekoPuntuak: 5
 puntiFebrero: 19
@@ -23,7 +23,7 @@ puntiAgosto: 10
 abuztukoPuntuak: 10
 puntiSettembre: 10
 irailakoPuntuak: 10
-puntiOttobre: 10
-urrikoPuntuak: 10
+puntiOttobre: 15
+urrikoPuntuak: 15
 slug: 'oihana-25'
 ---
