@@ -4,19 +4,28 @@
       class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase tracking-tight text-basque-40 mb-6">
       Eguneko liburua
     </h1>
-
-    <picture>
-      <source :srcset="bookImage320.src" media="(max-width: 480px)" />
-      <source :srcset="bookImage640.src" media="(max-width: 768px)" />
-      <source :srcset="bookImage1200.src" media="(max-width: 1440px)" />
-      <source :srcset="bookImage1920.src" media="(min-width: 1441px)" />
-      <img
-        :src="books"
-        alt="Books floating in space"
-        class="rounded-lg shadow-lg mx-auto w-full max-w-4xl"
-        loading="lazy" />
-    </picture>
-
+    <div class="grid grid-cols-2 gap-4">
+      <picture>
+        <source :srcset="bookImage320.src" media="(max-width: 480px)" />
+        <source :srcset="bookImage640.src" media="(max-width: 768px)" />
+        <source :srcset="bookImage1200.src" media="(max-width: 1440px)" />
+        <source :srcset="bookImage1920.src" media="(min-width: 1441px)" />
+        <img
+          :src="books"
+          alt="Books floating in space"
+          class="rounded-lg shadow-lg mx-auto w-full max-w-4xl"
+          loading="lazy" />
+      </picture>
+      <div
+        class="text-white flex items-center justify-center p-4 bg-gray-900 bg-opacity-50 rounded-lg h-full">
+        <p class="text-base md:text-lg leading-relaxed">
+          Behin amak azokara eraman ninduen. Han txito bat erosi zidan. Txitoa
+          kartoizko kutxa batean zetorren. Amak nire eskuetan jarri zuen kutxa.
+          Senti nezakeen nire esku-ahurretan txitoaren hanka txikiak. Liburua
+          horixe da: kartoizko kutxa bat barruan zerbait bizia duena.
+        </p>
+      </div>
+    </div>
     <div class="mt-6 p-4 rounded bg-gray-800 border border-gray-700">
       <h3
         class="text-2xl font-bold text-basque-40 mb-2 transition-transform duration-800 hover:scale-105">
