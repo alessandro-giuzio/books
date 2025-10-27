@@ -1,39 +1,271 @@
 ---
+// filepath: /Users/alessandro-giuzio/Documents/Ale/GitHub-Repo/books/src/components/dashboard/IconsTags2025.astro
+
 import { getCollection } from 'astro:content';
+import {
+  Book,
+  Search,
+  Heart,
+  Map,
+  FlaskConical,
+  Sparkles,
+  Zap,
+  Ghost,
+  User,
+  Landmark,
+  PenLine,
+  Smile,
+  Drama,
+  BookOpen,
+  PenTool,
+  Shield,
+  Sword,
+  Plane,
+  ChefHat,
+  Palette,
+  Music,
+  Laptop,
+  Brain,
+  Church,
+} from '@lucide/astro';
+
 const libros = await getCollection('libros25');
 
-// fetch all the tags
-const tags = libros.map(libro => libro.data.tags).flat();
+// Debug: Log the books and their tags
+console.log('Total libros found:', libros.length);
+console.log('Sample libro with tags:', libros[0]?.data?.tags);
+
+// Fetch all the tags - make sure tags exist and are arrays
+const tags = libros
+  .filter(libro => libro.data.tags && Array.isArray(libro.data.tags))
+  .map(libro => libro.data.tags)
+  .flat()
+  .filter(tag => tag && typeof tag === 'string');
+
+console.log('All tags:', tags);
+console.log('Total tags found:', tags.length);
+
 // Create a frequency map for the tags
 const tagCounts = tags.reduce((acc: { [key: string]: number }, tag: string) => {
-  acc[tag] = (acc[tag] || 0) + 1; // Increment the count for each tag
+  acc[tag] = (acc[tag] || 0) + 1;
   return acc;
 }, {});
 
-// sort tags by count
-const sortedTags = (Object.entries(tagCounts) as [string, number][]).sort((a, b) => b[1] - a[1]);
+console.log('Tag counts:', tagCounts);
 
-// get top 6 tags
-const topTags = sortedTags.slice(0, 6);
+// Sort tags by count (most frequent first)
+const sortedTags = (Object.entries(tagCounts) as [string, number][]).sort(
+  (a, b) => b[1] - a[1]
+);
 
-// get unique tags
-const uniqueTags = [...new Set(tags)];
+// Get top 9 most frequent tags instead of random shuffle
+const topTags = sortedTags.slice(0, 9);
 
-// Shuffle and pick top 4 tags
-const shuffledTags = Object.entries(tagCounts)
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 6); // Randomly pick 6
-// Tag-to-icon mapping
-const tagIcons = {
-  fiction: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>`,
-  mystery: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 10l-7 7-7-7"/></svg>`,
-  adventure: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11m4 4H9"/></svg>`,
-  fantasy: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l-4 4m0 0l-4-4m4 4V4"/></svg>`,
-  sciFi: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>`,
+console.log('Top tags to display:', topTags);
+
+// Icon mapping for different genres using Lucide icons (Astro components) or emoji fallback
+const getIconForTag = (tag: string) => {
+  const lowerTag = tag.toLowerCase();
+  // Assign unique Lucide icons for specific genres first
+  if (
+    lowerTag.includes('novela gráfica') ||
+    lowerTag.includes('novela grafica')
+  ) {
+    return Palette; // or PenTool for graphic/illustrated novels
+  }
+  if (
+    lowerTag.includes('ficción histórica') ||
+    lowerTag.includes('ficcion historica') ||
+    lowerTag.includes('historical fiction')
+  ) {
+    return Landmark;
+  }
+  if (lowerTag.includes('novela')) {
+    return BookOpen;
+  }
+  if (lowerTag.includes('ficción') || lowerTag.includes('fiction')) {
+    return Book;
+  }
+  if (lowerTag.includes('fantasy') || lowerTag.includes('fantasía')) {
+    return Sparkles;
+  }
+  if (lowerTag.includes('mystery') || lowerTag.includes('misterio')) {
+    return Search;
+  }
+  if (lowerTag.includes('thriller')) {
+    return Zap;
+  }
+  if (lowerTag.includes('suspense')) {
+    return Shield;
+  }
+  if (lowerTag.includes('romance') || lowerTag.includes('amor')) {
+    return Heart;
+  }
+  if (lowerTag.includes('adventure') || lowerTag.includes('aventura')) {
+    return Map;
+  }
+  if (lowerTag.includes('science') || lowerTag.includes('ciencia')) {
+    return FlaskConical;
+  }
+  if (lowerTag.includes('horror') || lowerTag.includes('terror')) {
+    return Ghost;
+  }
+  if (lowerTag.includes('biography') || lowerTag.includes('biografía')) {
+    return User;
+  }
+  if (lowerTag.includes('history') || lowerTag.includes('historia')) {
+    return Landmark;
+  }
+  if (lowerTag.includes('poetry') || lowerTag.includes('poesía')) {
+    return PenLine;
+  }
+  if (lowerTag.includes('comedy') || lowerTag.includes('humor')) {
+    return Smile;
+  }
+  if (lowerTag.includes('drama')) {
+    return Drama;
+  }
+  if (lowerTag.includes('classic') || lowerTag.includes('clásic')) {
+    return PenTool;
+  }
+  if (lowerTag.includes('literatura') || lowerTag.includes('literature')) {
+    return PenTool;
+  }
+  if (lowerTag.includes('crime') || lowerTag.includes('crimen')) {
+    return Shield;
+  }
+  if (lowerTag.includes('war') || lowerTag.includes('guerra')) {
+    return Sword;
+  }
+  if (lowerTag.includes('travel') || lowerTag.includes('viaje')) {
+    return Plane;
+  }
+  if (lowerTag.includes('cooking') || lowerTag.includes('cocina')) {
+    return ChefHat;
+  }
+  if (lowerTag.includes('art') || lowerTag.includes('arte')) {
+    return Palette;
+  }
+  if (lowerTag.includes('music') || lowerTag.includes('música')) {
+    return Music;
+  }
+  if (lowerTag.includes('technology') || lowerTag.includes('tecnología')) {
+    return Laptop;
+  }
+  if (lowerTag.includes('philosophy') || lowerTag.includes('filosofía')) {
+    return Brain;
+  }
+  if (lowerTag.includes('religion') || lowerTag.includes('religión')) {
+    return Church;
+  }
+  // Fallback: return null to use emoji fallback
+  return null;
 };
 
-// Default icon for tags not in the mapping
-const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11m4 4H9"/></svg>`;
+// Color mapping for different categories
+const getColorForTag = (tag: string, index: number) => {
+  const lowerTag = tag.toLowerCase();
+  // Assign unique background colors for each genre group (order matches icon mapping)
+  if (
+    lowerTag.includes('novela gráfica') ||
+    lowerTag.includes('novela grafica')
+  ) {
+    return 'bg-fuchsia-700'; // graphic novel
+  }
+  if (
+    lowerTag.includes('ficción histórica') ||
+    lowerTag.includes('ficcion historica') ||
+    lowerTag.includes('historical fiction')
+  ) {
+    return 'bg-yellow-800'; // historical fiction
+  }
+  if (lowerTag.includes('novela')) {
+    return 'bg-blue-700'; // novela
+  }
+  if (lowerTag.includes('ficción') || lowerTag.includes('fiction')) {
+    return 'bg-blue-500'; // fiction
+  }
+  if (lowerTag.includes('fantasy') || lowerTag.includes('fantasía')) {
+    return 'bg-purple-600';
+  }
+  if (lowerTag.includes('mystery') || lowerTag.includes('misterio')) {
+    return 'bg-gray-800';
+  }
+  if (lowerTag.includes('thriller')) {
+    return 'bg-red-800';
+  }
+  if (lowerTag.includes('suspense')) {
+    return 'bg-gray-600';
+  }
+  if (lowerTag.includes('romance') || lowerTag.includes('amor')) {
+    return 'bg-pink-600';
+  }
+  if (lowerTag.includes('adventure') || lowerTag.includes('aventura')) {
+    return 'bg-orange-600';
+  }
+  if (lowerTag.includes('science') || lowerTag.includes('ciencia')) {
+    return 'bg-green-600';
+  }
+  if (lowerTag.includes('horror') || lowerTag.includes('terror')) {
+    return 'bg-black';
+  }
+  if (lowerTag.includes('biography') || lowerTag.includes('biografía')) {
+    return 'bg-teal-600';
+  }
+  if (lowerTag.includes('history') || lowerTag.includes('historia')) {
+    return 'bg-stone-600';
+  }
+  if (lowerTag.includes('poetry') || lowerTag.includes('poesía')) {
+    return 'bg-amber-400';
+  }
+  if (lowerTag.includes('comedy') || lowerTag.includes('humor')) {
+    return 'bg-yellow-400';
+  }
+  if (lowerTag.includes('drama')) {
+    return 'bg-rose-800';
+  }
+  if (lowerTag.includes('classic') || lowerTag.includes('clásic')) {
+    return 'bg-amber-600';
+  }
+  if (lowerTag.includes('literatura') || lowerTag.includes('literature')) {
+    return 'bg-amber-700';
+  }
+  if (lowerTag.includes('crime') || lowerTag.includes('crimen')) {
+    return 'bg-gray-900';
+  }
+  if (lowerTag.includes('war') || lowerTag.includes('guerra')) {
+    return 'bg-red-900';
+  }
+  if (lowerTag.includes('travel') || lowerTag.includes('viaje')) {
+    return 'bg-cyan-700';
+  }
+  if (lowerTag.includes('cooking') || lowerTag.includes('cocina')) {
+    return 'bg-lime-700';
+  }
+  if (lowerTag.includes('art') || lowerTag.includes('arte')) {
+    return 'bg-pink-800';
+  }
+  if (lowerTag.includes('music') || lowerTag.includes('música')) {
+    return 'bg-indigo-700';
+  }
+  if (lowerTag.includes('technology') || lowerTag.includes('tecnología')) {
+    return 'bg-slate-700';
+  }
+  if (lowerTag.includes('philosophy') || lowerTag.includes('filosofía')) {
+    return 'bg-emerald-800';
+  }
+  if (lowerTag.includes('religion') || lowerTag.includes('religión')) {
+    return 'bg-violet-900';
+  }
+  // Fallback to cycling colors
+  const colors = [
+    'bg-indigo-600',
+    'bg-red-600',
+    'bg-orange-600',
+    'bg-cyan-600',
+  ];
+  return colors[index % colors.length];
+};
 ---
 
 <div
@@ -41,36 +273,180 @@ const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text
   <h4 class='text-gray-700 text-lg sm:text-xl font-medium text-center mb-4'>
     Genero Kuttunak 🎉 - Zure gogokoenak!
   </h4>
-  <div>
-    <ul
-      role='list'
-      class='mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4'>
-      {
-        shuffledTags.map(([tag, count], index) => (
-          <li class='col-span-1 flex rounded-md shadow-sm '>
-            <div
-              class={`flex w-16 shrink-0 items-center justify-center rounded-l-md ${
-                index % 4 === 0
-                  ? 'bg-pink-600'
-                  : index % 4 === 1
-                    ? 'bg-purple-600'
-                    : index % 4 === 2
-                      ? 'bg-yellow-500'
-                      : 'bg-green-500'
-              } text-sm font-medium text-white`}>
-              {tag.charAt(0).toUpperCase()}
-            </div>
-            <div class='flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white'>
-              <div class='flex-1 truncate px-4 py-2 text-sm'>
-                <span class='font-medium text-gray-900 hover:text-gray-600'>
-                  {tag}
+
+  {
+    tags.length === 0 ? (
+      <div class='text-center text-gray-500 py-8'>
+        <p>Ez da taginik aurkitu</p>
+        <p class='text-sm mt-2'>Ziurtatu liburuek tagak dituztela</p>
+      </div>
+    ) : (
+      <div>
+        <ul
+          role='list'
+          class='mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3'>
+          {topTags.map(([tag, count], index) => (
+            <li class='col-span-1 flex rounded-md shadow-sm hover:shadow-lg transition-shadow'>
+              <div
+                class={`flex w-16 min-w-16 max-w-16 items-center justify-center rounded-l-md ${getColorForTag(tag, index)} text-white`}>
+                <span
+                  class='text-lg flex items-center justify-center'
+                  title={tag}>
+                  {(() => {
+                    const Icon = getIconForTag(tag);
+                    if (Icon) {
+                      return <Icon size={22} color='white' />;
+                    } else {
+                      // fallback emoji
+                      // fallback logic matches previous emoji mapping
+                      const lowerTag = tag.toLowerCase();
+                      if (
+                        lowerTag.includes('ficción') ||
+                        lowerTag.includes('fiction') ||
+                        lowerTag.includes('novela')
+                      )
+                        return '📚';
+                      if (
+                        lowerTag.includes('mystery') ||
+                        lowerTag.includes('misterio')
+                      )
+                        return '🔍';
+                      if (
+                        lowerTag.includes('romance') ||
+                        lowerTag.includes('amor')
+                      )
+                        return '💖';
+                      if (
+                        lowerTag.includes('adventure') ||
+                        lowerTag.includes('aventura')
+                      )
+                        return '🗺️';
+                      if (
+                        lowerTag.includes('science') ||
+                        lowerTag.includes('ciencia')
+                      )
+                        return '🔬';
+                      if (
+                        lowerTag.includes('fantasy') ||
+                        lowerTag.includes('fantasía')
+                      )
+                        return '✨';
+                      if (
+                        lowerTag.includes('thriller') ||
+                        lowerTag.includes('suspense')
+                      )
+                        return '⚡';
+                      if (
+                        lowerTag.includes('horror') ||
+                        lowerTag.includes('terror')
+                      )
+                        return '👻';
+                      if (
+                        lowerTag.includes('biography') ||
+                        lowerTag.includes('biografía')
+                      )
+                        return '👤';
+                      if (
+                        lowerTag.includes('history') ||
+                        lowerTag.includes('historia')
+                      )
+                        return '🏛️';
+                      if (
+                        lowerTag.includes('poetry') ||
+                        lowerTag.includes('poesía')
+                      )
+                        return '✍️';
+                      if (
+                        lowerTag.includes('comedy') ||
+                        lowerTag.includes('humor')
+                      )
+                        return '😄';
+                      if (lowerTag.includes('drama')) return '🎭';
+                      if (
+                        lowerTag.includes('classic') ||
+                        lowerTag.includes('clásic')
+                      )
+                        return '📖';
+                      if (
+                        lowerTag.includes('literatura') ||
+                        lowerTag.includes('literature')
+                      )
+                        return '🖋️';
+                      if (
+                        lowerTag.includes('crime') ||
+                        lowerTag.includes('crimen')
+                      )
+                        return '🛡️';
+                      if (
+                        lowerTag.includes('war') ||
+                        lowerTag.includes('guerra')
+                      )
+                        return '⚔️';
+                      if (
+                        lowerTag.includes('travel') ||
+                        lowerTag.includes('viaje')
+                      )
+                        return '✈️';
+                      if (
+                        lowerTag.includes('cooking') ||
+                        lowerTag.includes('cocina')
+                      )
+                        return '👨‍🍳';
+                      if (lowerTag.includes('art') || lowerTag.includes('arte'))
+                        return '🎨';
+                      if (
+                        lowerTag.includes('music') ||
+                        lowerTag.includes('música')
+                      )
+                        return '🎵';
+                      if (
+                        lowerTag.includes('technology') ||
+                        lowerTag.includes('tecnología')
+                      )
+                        return '💻';
+                      if (
+                        lowerTag.includes('philosophy') ||
+                        lowerTag.includes('filosofía')
+                      )
+                        return '🧠';
+                      if (
+                        lowerTag.includes('religion') ||
+                        lowerTag.includes('religión')
+                      )
+                        return '⛪';
+                      return '📝';
+                    }
+                  })()}
                 </span>
-                <p class='text-gray-500'>{count} Liburua</p>
               </div>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+              <div class='flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white hover:bg-gray-50 transition-colors'>
+                <div class='flex-1 truncate px-4 py-2 text-sm'>
+                  <span class='block font-medium text-gray-900 mb-1'>
+                    {tag}
+                  </span>
+                  <p class='text-gray-500'>
+                    {count} {count === 1 ? 'Liburu' : 'Liburuak'}
+                  </p>
+                </div>
+                {/* <div class='pr-4'>
+                  <svg
+                    class='h-4 w-4 text-gray-400'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'>
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M9 5l7 7-7 7'
+                    />
+                  </svg>
+                </div> */}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 </div>
