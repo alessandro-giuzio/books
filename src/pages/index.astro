@@ -9,17 +9,16 @@ import BookYearCount from '../components/dashboard/BookYearCount.astro';
 import IconsTags2025 from '../components/dashboard/IconsTags2025.astro';
 import '@styles/globals.css';
 
-
-
-
-const currentPath = typeof window !== 'undefined' ? window.location.pathname : Astro.url.pathname;
-
+const currentPath =
+  typeof window !== 'undefined' ? window.location.pathname : Astro.url.pathname;
 
 function activeLink(path: string) {
   const normalize = (p: string) => p.replace(/\/+$/, '') || '/';
   // Make currentPath reactive to client-side navigation
   let current = normalize(
-    typeof window !== 'undefined' ? window.location.pathname : Astro.url.pathname
+    typeof window !== 'undefined'
+      ? window.location.pathname
+      : Astro.url.pathname
   );
   const target = normalize(path);
 
@@ -28,7 +27,7 @@ function activeLink(path: string) {
     : 'text-gray-100';
 }
 
-  // For other pages, check if current path starts with the given path
+// For other pages, check if current path starts with the given path
 /*   const isActive = currentPath.startsWith(path);
   return isActive
     ? 'bg-basque-10 text-white font-semibold uppercase mx-2'
@@ -55,7 +54,8 @@ console.log('Current path:', currentPath);
 <Layout2025>
   <div class='min-h-screen flex bg-basque-40 overflow-x-hidden'>
     <!-- Desktop Sidebar -->
-    <div class='hidden md:flex w-64 bg-black text-gray-100 flex-col justify-between'>
+    <!--  <div
+      class='hidden md:flex w-64 bg-black text-gray-100 flex-col justify-between'>
       <div class='p-4'>
         <nav class='mt-8 space-y-4'>
           <a
@@ -80,11 +80,11 @@ console.log('Current path:', currentPath);
           </a>
         </nav>
       </div>
-      <!-- Desktop AddBookForm at bottom of sidebar -->
+
       <div class='p-4 mt-auto'>
         <AddBookForm />
       </div>
-    </div>
+    </div> -->
 
     <!-- Main Content Area -->
     <div class='flex-1 px-0 overflow-y-auto bg-black'>
@@ -95,25 +95,32 @@ console.log('Current path:', currentPath);
       <main class='mt-6'>
         <div class='bg-black rounded-t-lg shadow-lg p-4 flex flex-col gap-8'>
           <!-- Page Header -->
-          <header class='bg-basque-10 shadow-xl rounded-lg px-4 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'>
+          <header
+            class='bg-basque-10 shadow-xl rounded-lg px-4 sm:p-6 flex items-center stripes stripes-white stripes-reverse py-6'>
             <h1 class='text-xl md:text-3xl font-semibold text-white shadow-xl'>
               🕵️‍♂️ Lehiakidearen Informazioa
-              <span class='text-lg text-red-500 shadow-xl'>(Konfidentziala!)</span>
+              <span class='text-lg text-red-500 shadow-xl'
+                >(Konfidentziala!)</span
+              >
             </h1>
           </header>
 
           <!-- Concorrente Cards Grid -->
           <section>
-            <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center'>
-              {shuffledConcorrenti.map(concorrente => (
-                <CardConcorrente concorrente={concorrente} />
-              ))}
+            <div
+              class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center'>
+              {
+                shuffledConcorrenti.map(concorrente => (
+                  <CardConcorrente concorrente={concorrente} />
+                ))
+              }
             </div>
           </section>
 
           <!-- Statistics Grid -->
           <section>
-            <div class='grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg rounded-lg'>
+            <div
+              class='grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg rounded-lg'>
               <BookCount />
               <BookYearCount />
             </div>
@@ -127,34 +134,58 @@ console.log('Current path:', currentPath);
   </div>
 
   <!-- Mobile Descriptive Add Book Button -->
-  <div class="fixed bottom-16 right-6 md:hidden z-50">
+  <div class='fixed bottom-16 right-6 md:hidden z-50'>
     <button
-      id="mobileFormToggle"
-      class="bg-basque-10 hover:bg-basque-20 text-white rounded-lg px-4 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-basque-20 focus:ring-offset-2 flex items-center gap-2 font-medium"
-      aria-label="Gehitu liburu berria"
-      title="Gehitu liburu berria">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      id='mobileFormToggle'
+      class='bg-basque-10 hover:bg-basque-20 text-white rounded-lg px-4 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-basque-20 focus:ring-offset-2 flex items-center gap-2 font-medium'
+      aria-label='Gehitu liburu berria'
+      title='Gehitu liburu berria'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        class='h-5 w-5'
+        fill='none'
+        viewBox='0 0 24 24'
+        stroke='currentColor'>
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
+        ></path>
       </svg>
-      <span class="text-sm">+ Liburu</span>
+      <span class='text-sm'>+ Liburu</span>
     </button>
   </div>
 
   <!-- Mobile Form Modal -->
-  <div id="mobileFormModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center p-4 border-b">
-        <h3 class="text-xl font-semibold text-gray-900">Gehitu Liburu Berria</h3>
+  <div
+    id='mobileFormModal'
+    class='fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4'>
+    <div
+      class='bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto'>
+      <div class='flex justify-between items-center p-4 border-b'>
+        <h3 class='text-xl font-semibold text-gray-900'>
+          Gehitu Liburu Berria
+        </h3>
         <button
-          id="closeMobileForm"
-          class="text-gray-500 hover:text-gray-800 p-1 rounded-full hover:bg-gray-100 transition-colors"
-          aria-label="Itxi formularioa">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          id='closeMobileForm'
+          class='text-gray-500 hover:text-gray-800 p-1 rounded-full hover:bg-gray-100 transition-colors'
+          aria-label='Itxi formularioa'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            class='h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M6 18L18 6M6 6l12 12'></path>
           </svg>
         </button>
       </div>
-      <div class="p-4">
+      <div class='p-4'>
         <AddBookForm />
       </div>
     </div>
@@ -170,7 +201,7 @@ console.log('Current path:', currentPath);
     const closeButton = document.getElementById('closeMobileForm');
 
     if (toggleButton && modal && closeButton) {
-      toggleButton.addEventListener('click', (e) => {
+      toggleButton.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
         modal.style.display = 'flex';
@@ -178,7 +209,7 @@ console.log('Current path:', currentPath);
         document.body.style.overflow = 'hidden';
       });
 
-      closeButton.addEventListener('click', (e) => {
+      closeButton.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
         modal.classList.add('hidden');
@@ -186,7 +217,7 @@ console.log('Current path:', currentPath);
         document.body.style.overflow = '';
       });
 
-      modal.addEventListener('click', (e) => {
+      modal.addEventListener('click', e => {
         if (e.target === modal) {
           modal.classList.add('hidden');
           modal.style.display = 'none';
