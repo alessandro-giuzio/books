@@ -4,7 +4,7 @@
       class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase tracking-tight text-basque-40 mb-6">
       Eguneko liburua
     </h1>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid-cols-1 grid md:grid-cols-2 gap-4">
       <picture>
         <source :srcset="bookImage320.src" media="(max-width: 480px)" />
         <source :srcset="bookImage640.src" media="(max-width: 768px)" />
