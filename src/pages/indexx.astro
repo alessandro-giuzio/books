@@ -1,62 +1,499 @@
 ---
-import Layout from '../layouts/Layout.astro';
-/* import Card from '../components/Card.astro'; */
-import Header from '../components/2024/Header.astro';
-import Leader from '../components/2024/Leader.astro';
-import Mesi from '../components/Mesi.astro';
-import NotLeader from '../components/2024/NotLeader.astro';
+import Layout2025 from '../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
-import Main from '../components/UI/Main.astro';
-const tuttiConcorrenti = await getCollection('concorrenti');
-/* const todosLosLibros = await getCollection('libros'); */
-// Sort by points in descending order
-const topThree = tuttiConcorrenti
-  .sort((a, b) => b.data.punti - a.data.punti)
-  .slice(0, 3);
-// Rearrange the order: [Second Place, First Place, Third Place]
-const reordered = [topThree[1], topThree[0], topThree[2]];
-const libro25 = await getCollection('libros25');
+
+// Get all collections to show stats
+const libros24 = await getCollection('libros');
+const libros25 = await getCollection('libros25');
+const concorrenti24 = await getCollection('concorrenti');
+const concorrenti25 = await getCollection('concorrenti25');
+
+// Calculate total stats
+const totalBooks = libros24.length + libros25.length;
+const totalParticipants = new Set([
+  ...concorrenti24.map(c => c.data.nome),
+  ...concorrenti25.map(c => c.data.nome),
+]).size;
+
+// Competition years data
+const competitions = [
+  {
+    year: 2026,
+    title: 'Irakurketa Lehiaketa 2026',
+    description: 'Gaurtik hasi gaitezen! Sartu oraingo lehiaketan!',
+    link: '/2026',
+    status: 'current',
+    books: 0, // Will be updated as books are added
+    participants: concorrenti25.length, // Assuming same participants
+    highlight: true,
+    color: 'from-basque-10 to-basque-20',
+  },
+  {
+    year: 2025,
+    title: 'Irakurketa Lehiaketa 2025',
+    description: 'Ikusi 2025eko lehiaketaren emaitzak',
+    link: '/2025',
+    status: 'active',
+    books: libros25.length,
+    participants: concorrenti25.length,
+    highlight: false,
+    color: 'from-blue-600 to-blue-700',
+  },
+  {
+    year: 2024,
+    title: 'Irakurketa Lehiaketa 2024',
+    description: 'Lehenengo lehiaketa! Ikusi nork irabazi zuen.',
+    link: '/2024',
+    status: 'completed',
+    books: libros24.length,
+    participants: concorrenti24.length,
+    highlight: false,
+    color: 'from-purple-600 to-purple-700',
+  },
+];
 ---
 
-<Layout title='Irakurketa 2024' description='Irakurketa 2024'>
-  <Header />
-  <Main>
-    <div class='mb-12 border border-collapse border-transparent'>
-      <div class='grid grid-cols-3 h-full gap-x-1 mt-4 md:mt-8 lg:mt-14'>
-        {
-          reordered.map((concorrente, index) => (
+<Layout2025>
+  <div
+    class='min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900'>
+    <!-- Hero Section -->
+    <header class='relative overflow-hidden'>
+      <div
+        class='absolute inset-0 bg-gradient-to-r from-basque-10/20 to-basque-20/20 backdrop-blur-3xl'>
+      </div>
+      <div
+        class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32'>
+        <div class='text-center'>
+          <!-- Animated Title with Gradient -->
+          <div class='inline-block mb-8 relative'>
             <div
-              class={`${
-                index === 1
-                  ? 'translate-y-[-40px] md:translate-y-[-50px] lg:translate-y-[-62px] transition  h-[calc(100%+20px)] md:h-[calc(100%+25px)] lg:h-[calc(100%+30px)]'
+              class='absolute inset-0 bg-gradient-to-r from-basque-10 to-basque-20 blur-3xl opacity-30'>
+            </div>
+            <h1
+              class='relative text-5xl md:text-7xl font-black text-white mb-4 tracking-tight'>
+              <span
+                class='bg-gradient-to-r from-basque-10 via-basque-20 to-basque-10 bg-clip-text text-transparent'>
+                Irakurketa Lehiaketa
+              </span>
+            </h1>
+          </div>
+
+          <!-- Subtitle: "A reading competition among friends" -->
+          <p
+            class='text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto font-light'>
+            Liburuak irakurtzeko lehiaketa lagunartean
+          </p>
+
+          <!-- Description: "Discover how many books we can read together each year" -->
+          <p class='text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto'>
+            Ikusi zenbat liburu irakur ditzakegun elkarrekin urte bakoitzean
+          </p>
+
+          <!-- Introduction & History -->
+          <div class='max-w-5xl mx-auto mb-12'>
+            <div
+              class='bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl hover:shadow-basque-10/20 transition-all duration-300'>
+              <!-- Main Introduction -->
+              <div class='mb-10'>
+                <!-- Welcome heading: "Welcome to our reading community" -->
+                <h2
+                  class='text-2xl md:text-3xl font-bold text-white mb-6 leading-tight'>
+                  Ongi etorri gure irakurketa komunitatera
+                </h2>
+                <!-- "We are a group of friends who, since 2024, challenge ourselves each year to read more. What started as a simple competition among us has become a fun way to share our readings and discover new books." -->
+                <p class='text-lg text-gray-300 leading-relaxed mb-4'>
+                  2024az geroztik, lagun talde bat gara eta urte bakoitzean
+                  gehiago irakurtzeko erronka jartzen diogu geure buruari. Gure
+                  artean lehiaketa sinple bat bezala hasi zena, gure irakurketak
+                  partekatzeko eta liburu berriak aurkitzeko modu dibertigarri
+                  bihurtu da.
+                </p>
+                <!-- "Each book we read adds points, and at the end of the year we celebrate together everything we have learned and enjoyed through the pages." -->
+                <p class='text-lg text-gray-300 leading-relaxed'>
+                  Irakurtzen dugun liburu bakoitzak puntuak gehitzen ditu, eta
+                  urte amaieran elkarrekin ospatzen dugu orrialdeen bidez ikasi
+                  eta gozatu dugun guztia.
+                </p>
+              </div>
+
+              <!-- Key Features -->
+              <div class='grid md:grid-cols-3 gap-6 mb-8'>
+                <!-- Feature 1: "Tracking - Register your books and see your progress during the year" -->
+                <div
+                  class='bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-basque-10/30 transition-all'>
+                  <div class='text-4xl mb-3'>📊</div>
+                  <h3 class='text-lg font-bold text-white mb-2'>Jarraipena</h3>
+                  <p class='text-sm text-gray-400'>
+                    Erregistratu zure liburuak eta ikusi zure aurrerapena urtean
+                    zehar
+                  </p>
+                </div>
+
+                <!-- Feature 2: "Competition - Compete in a friendly way and motivate yourself with other readers" -->
+                <div
+                  class='bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-basque-10/30 transition-all'>
+                  <div class='text-4xl mb-3'>🏆</div>
+                  <h3 class='text-lg font-bold text-white mb-2'>Lehiaketa</h3>
+                  <p class='text-sm text-gray-400'>
+                    Lehiatu modu adiskidetsuan eta motibatu beste irakurleekin
+                  </p>
+                </div>
+
+                <!-- Feature 3: "Community - Discover what your friends read and share recommendations" -->
+                <div
+                  class='bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-basque-10/30 transition-all'>
+                  <div class='text-4xl mb-3'>💬</div>
+                  <h3 class='text-lg font-bold text-white mb-2'>Komunitatea</h3>
+                  <p class='text-sm text-gray-400'>
+                    Aurkitu zer irakurtzen duten zure lagunek eta partekatu
+                    gomendioak
+                  </p>
+                </div>
+              </div>
+
+              <!-- Journey Timeline -->
+              <div class='border-t border-white/10 pt-8'>
+                <!-- "Our journey" -->
+                <h3 class='text-xl font-bold text-basque-10 mb-6 text-center'>
+                  Gure ibilbidea
+                </h3>
+                <div
+                  class='flex flex-wrap justify-center items-center gap-4 md:gap-8'>
+                  <div class='flex items-center gap-3'>
+                    <div
+                      class='w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold shadow-lg'>
+                      24
+                    </div>
+                    <div class='text-left'>
+                      <div class='text-sm text-gray-400'>2024</div>
+                      <!-- "books" -->
+                      <div class='text-base font-semibold text-white'>
+                        {libros24.length} liburu
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class='text-2xl text-gray-600'>→</div>
+
+                  <div class='flex items-center gap-3'>
+                    <div
+                      class='w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-lg'>
+                      25
+                    </div>
+                    <div class='text-left'>
+                      <div class='text-sm text-gray-400'>2025</div>
+                      <!-- "books" -->
+                      <div class='text-base font-semibold text-white'>
+                        {libros25.length} liburu
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class='text-2xl text-gray-600'>→</div>
+
+                  <div class='flex items-center gap-3'>
+                    <div
+                      class='w-12 h-12 bg-gradient-to-br from-basque-10 to-basque-20 rounded-xl flex items-center justify-center text-white font-bold shadow-lg animate-pulse'>
+                      26
+                    </div>
+                    <div class='text-left'>
+                      <!-- "2026 · Active" -->
+                      <div class='text-sm text-basque-10'>2026 · Aktiboa</div>
+                      <!-- "Join now!" -->
+                      <div class='text-base font-semibold text-white'>
+                        Elkartu orain!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overall Stats -->
+          <div
+            class='flex flex-wrap justify-center gap-8 md:gap-12 text-center'>
+            <div class='group cursor-pointer'>
+              <div class='relative'>
+                <div
+                  class='absolute inset-0 bg-basque-10 rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity'>
+                </div>
+                <div
+                  class='relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border-2 border-white/10 group-hover:border-basque-10/50 transition-all duration-300 group-hover:scale-110 shadow-xl'>
+                  <div class='text-5xl mb-3'>📚</div>
+                  <div
+                    class='text-4xl md:text-5xl font-black bg-gradient-to-br from-basque-10 to-basque-20 bg-clip-text text-transparent'>
+                    {totalBooks}
+                  </div>
+                  <!-- "Total books" -->
+                  <div
+                    class='text-sm md:text-base text-gray-400 mt-2 font-semibold'>
+                    Liburu guztira
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='group cursor-pointer'>
+              <div class='relative'>
+                <div
+                  class='absolute inset-0 bg-basque-20 rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity'>
+                </div>
+                <div
+                  class='relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border-2 border-white/10 group-hover:border-basque-20/50 transition-all duration-300 group-hover:scale-110 shadow-xl'>
+                  <div class='text-5xl mb-3'>👥</div>
+                  <div
+                    class='text-4xl md:text-5xl font-black bg-gradient-to-br from-basque-20 to-basque-10 bg-clip-text text-transparent'>
+                    {totalParticipants}
+                  </div>
+                  <!-- "Competitors" -->
+                  <div
+                    class='text-sm md:text-base text-gray-400 mt-2 font-semibold'>
+                    Lehiakideak
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='group cursor-pointer'>
+              <div class='relative'>
+                <div
+                  class='absolute inset-0 bg-purple-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity'>
+                </div>
+                <div
+                  class='relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border-2 border-white/10 group-hover:border-purple-500/50 transition-all duration-300 group-hover:scale-110 shadow-xl'>
+                  <div class='text-5xl mb-3'>🏆</div>
+                  <div
+                    class='text-4xl md:text-5xl font-black bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+                    {competitions.length}
+                  </div>
+                  <!-- "Years" -->
+                  <div
+                    class='text-sm md:text-base text-gray-400 mt-2 font-semibold'>
+                    Urteak
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Competitions Grid -->
+    <main class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
+      <h2 class='text-3xl md:text-4xl font-bold text-white mb-12 text-center'>
+        Aukeratu urte bat
+      </h2>
+
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {
+          competitions.map(comp => (
+            <a
+              href={comp.link}
+              class={`group relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-basque-10/50 ${
+                comp.highlight
+                  ? 'ring-4 ring-basque-10 ring-offset-4 ring-offset-gray-900'
                   : ''
               }`}>
-              <Leader concorrente={concorrente} position={index + 1} />
-            </div>
+              {/* Background Gradient */}
+              <div
+                class={`absolute inset-0 bg-gradient-to-br ${comp.color} opacity-90 group-hover:opacity-100 transition-opacity`}
+              />
+
+              {/* Content */}
+              <div class='relative p-8 h-full flex flex-col'>
+                {/* Year Badge */}
+                <div class='flex items-start justify-between mb-4'>
+                  <span class='text-6xl font-black text-white/20'>
+                    {comp.year}
+                  </span>
+                  {comp.highlight && (
+                    <span class='px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white uppercase tracking-wider'>
+                      Current
+                    </span>
+                  )}
+                  {comp.status === 'completed' && (
+                    <span class='px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white uppercase tracking-wider'>
+                      Completed
+                    </span>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3 class='text-2xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors'>
+                  {comp.title}
+                </h3>
+
+                {/* Description */}
+                <p class='text-gray-100 mb-6 flex-grow'>{comp.description}</p>
+
+                {/* Stats */}
+                <div class='grid grid-cols-2 gap-4 mb-6'>
+                  <div class='bg-white/10 backdrop-blur-sm rounded-lg p-3'>
+                    <div class='text-2xl font-bold text-white'>
+                      {comp.books}
+                    </div>
+                    <div class='text-xs text-gray-200'>Liburuak</div>
+                  </div>
+                  <div class='bg-white/10 backdrop-blur-sm rounded-lg p-3'>
+                    <div class='text-2xl font-bold text-white'>
+                      {comp.participants}
+                    </div>
+                    <div class='text-xs text-gray-200'>Lehiakideak</div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div class='flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform'>
+                  {comp.highlight ? 'Sartu orain' : 'Ikusi gehiago'}
+                  <svg
+                    class='w-5 h-5 ml-2'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'>
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M9 5l7 7-7 7'
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div class='absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl transform translate-x-16 -translate-y-16' />
+              <div class='absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl transform -translate-x-12 translate-y-12' />
+            </a>
           ))
         }
       </div>
 
-      <div class='sec'>
-        {
-          tuttiConcorrenti
-            .slice(3, 8)
-            .map((concorrente, index) => (
-              <NotLeader concorrente={concorrente} position={index + 4} />
-            ))
-        }
+      <!-- Call to Action -->
+      <div class='mt-20 text-center'>
+        <div
+          class='inline-block bg-gradient-to-r from-basque-10 to-basque-20 rounded-2xl p-8 md:p-12 shadow-2xl'>
+          <h3 class='text-2xl md:text-3xl font-bold text-white mb-4'>
+            Prest al zaude?
+          </h3>
+          <p class='text-gray-100 mb-6 max-w-2xl'>
+            Sartu 2026ko lehiaketan eta hasi liburuak irakurtzen!
+          </p>
+          <a
+            href='/2026'
+            class='inline-flex items-center px-8 py-4 bg-white text-basque-10 font-bold rounded-xl hover:bg-gray-100 transition-all hover:scale-105 shadow-lg'>
+            Hasi orain
+            <svg
+              class='w-5 h-5 ml-2'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
+    </main>
 
-    <Mesi />
-  </Main>
-</Layout>
+    <!-- Footer -->
+    <footer class='border-t border-gray-800 mt-20'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+        <p class='text-center text-gray-500 text-sm'>
+          © {new Date().getFullYear()} Irakurketa Lehiaketa. Eskubide guztiak erreserbatuak.
+        </p>
+      </div>
+    </footer>
+  </div>
+</Layout2025>
 
 <style>
-  .sec {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    padding: 0;
+  /* Add smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-slow-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .animate-spin-slow-reverse {
+    animation: spin-slow-reverse 20s linear infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .group:hover .animate-float {
+    animation: float 2s ease-in-out infinite;
   }
 </style>
