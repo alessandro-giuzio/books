@@ -4,7 +4,7 @@ username: alessandro
 alt: Alessandro
 image: '../../content/concorrenti/img/alessandro-1.jpg'
 bio: 'Sormenaren eta teknologiaren arteko oreka bilatzen dut, beti irtenbide berritzaile eta eraginkorrak sortzeko prest. Diseinua, kodea eta estrategia uztartuz, erabiltzaile-esperientzia optimizatzen dut, funtzionaltasuna eta estetika elkartuz. Xehetasunekiko arreta eta erronkei aurre egiteko gaitasuna dira nire lanaren oinarriak. Beti prestatzen, ikasten eta berritzen jarraitzen dut, nire proiektu bakoitzean benetako balioa sortzeko.'
-punti: 93
+punti: 100
 puntiEnero: 5
 urtarrilekoPuntuak: 5
 puntiFebrero: 14
@@ -23,5 +23,7 @@ puntiAgosto: 20
 abuztukoPuntuak: 20
 puntiOttobre: 5
 urrikoPuntuak: 5
+puntiNoviembre: 7
+azaroPuntuak: 7
 slug: 'ale'
 ---
