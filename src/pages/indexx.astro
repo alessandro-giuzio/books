@@ -399,101 +399,92 @@ const competitions = [
         </div>
       </div>
     </main>
-
-    <!-- Footer -->
-    <footer class='border-t border-gray-800 mt-20'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <p class='text-center text-gray-500 text-sm'>
-          © {new Date().getFullYear()} Irakurketa Lehiaketa. Eskubide guztiak erreserbatuak.
-        </p>
-      </div>
-    </footer>
   </div>
+
+  <style>
+    /* Add smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom animations */
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes bounce-slow {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin-slow-reverse {
+      from {
+        transform: rotate(360deg);
+      }
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 3s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+
+    .animate-spin-slow-reverse {
+      animation: spin-slow-reverse 20s linear infinite;
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 300ms;
+    }
+
+    .animation-delay-500 {
+      animation-delay: 500ms;
+    }
+
+    .group:hover .animate-float {
+      animation: float 2s ease-in-out infinite;
+    }
+  </style>
 </Layout2025>
-
-<style>
-  /* Add smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom animations */
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes bounce-slow {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes spin-slow {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes spin-slow-reverse {
-    from {
-      transform: rotate(360deg);
-    }
-    to {
-      transform: rotate(0deg);
-    }
-  }
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .animate-bounce-slow {
-    animation: bounce-slow 3s ease-in-out infinite;
-  }
-
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
-
-  .animate-spin-slow-reverse {
-    animation: spin-slow-reverse 20s linear infinite;
-  }
-
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 3s ease infinite;
-  }
-
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  .group:hover .animate-float {
-    animation: float 2s ease-in-out infinite;
-  }
-</style>
