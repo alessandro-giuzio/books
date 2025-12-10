@@ -4,7 +4,7 @@ username: amaia
 alt: Amaia
 bio: 'Irakurtzea plazera eta hausnarketa une bat da niretzat. Narratiba, feminismoa eta historia bezalako gaietan sakontzea gustatzen zait, istorio bakoitzean pertsonaien emozioak eta ikasgaiak arakatuz. Liburuek errealitate berrietara garamatzate, eta hitzen bidez konektatzen naiz. Beti prest nago ikasteko eta kontakizun bakoitzetik ikasgai baliotsuak ateratzeko.'
 image: '../../content/concorrenti/img/amaia.jpg'
-punti: 106
+punti: 116
 puntiEnero: 5
 urtarrilekoPuntuak: 5
 puntiFebrero: 14
@@ -21,5 +21,11 @@ puntiJulio: 20
 uztailaPuntuak: 20
 puntiAgosto: 14
 abuztukoPuntuak: 14
+puntiSettembre: 0
+irailakoPuntuak: 0
+puntiOttobre: 0
+urrikoPuntuak: 0
+puntiNoviembre: 10
+azaroPuntuak: 10
 slug: 'amaia-25'
 ---
