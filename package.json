@@ -25,6 +25,7 @@
     "@types/alpinejs": "^3.13.11",
     "@vueuse/core": "^12.3.0",
     "alpinejs": "^3.14.8",
+    "animejs": "^4.2.2",
     "astro": "^5.16.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
