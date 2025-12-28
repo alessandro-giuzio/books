@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
 import H1 from 'astro/components/dashboard/liburuak/H1.astro';
 import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
@@ -43,7 +42,7 @@ const uniqueLibros26 = todosLosLibros2026.filter(
     </h2>
     <div class='grid'>
       <span class='text-xl text-le-textPrimary'>Kategoriak:</span>
-      <CategoryList tags={uniqueLibros26} />
+      <!-- <CategoryList tags={uniqueLibros26} /> -->
     </div>
     <div class='books'>
       <LibrosLista2026 libros={uniqueLibros26} />
