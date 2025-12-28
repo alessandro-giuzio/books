@@ -37,6 +37,10 @@ const librosSchema = z.object({
 const concorrenti = defineCollection({ schema: concorrentiSchema });
 const libros = defineCollection({ schema: librosSchema });
 
+// Collection for all the books
+
+const libros_all = defineCollection({schema: librosSchema});
+
 // ✅ Export all collections (DRY principle)
 export const collections = {
   // 2024
@@ -50,4 +54,7 @@ export const collections = {
   // 2026
   concorrenti26: concorrenti,
   libros26: libros,
+
+  // All years
+  libros_all,
 };

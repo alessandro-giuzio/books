@@ -4,11 +4,10 @@ import LibrosLista2025 from 'astro/components/dashboard/LibrosLista2025.astro';
 import Layout2025 from '../../layouts/Layout2025.astro';
 import H1 from 'astro/components/dashboard/liburuak/H1.astro';
 import CategoryList from 'astro/components/dashboard/liburuak/category/CategoryList.astro';
-import LibrosLista2026 from 'astro/components/dashboard/LibrosLista2026.astro';
 
-const todosLosLibros2026 = await getCollection('libros_all');
-const countLibros = todosLosLibros2026.length;
-const uniqueLibros26 = todosLosLibros2026.filter(
+const todosLosLibros2025 = await getCollection('libros25');
+const countLibros = todosLosLibros2025.length;
+const uniqueLibros25 = todosLosLibros2025.filter(
   (libro, index, self) =>
     index ===
     self.findIndex(
@@ -27,15 +26,9 @@ const uniqueLibros26 = todosLosLibros2026.filter(
       class='fixed z-50 px-4 py-2 transition rounded-lg shadow-md top-60 right-4 text-le-textPrimary bg-basque-50 hover:bg-basque-60 animate-wiggle'>
       ← 2024ko Bilduma 🤪
     </a>
-    <!-- Link to 2025 collection page -->
-    <a
-      href='/liburuak/2025'
-      class='fixed z-50 px-4 py-2 transition rounded-lg shadow-md top-20 right-4 text-le-textPrimary bg-basque-50 hover:bg-basque-60 animate-wiggle'>
-      ← 2025eko Bilduma 🥳
-    </a>
     <H1 body='Liburu-apalategia' />
     <h2 class='mt-4 mb-16 text-3xl font-bold text-white'>
-      📚 2026ko Liburutegia Arakatzen:
+      📚 2025ko Liburutegia Arakatzen:
       <span
         class='text-4xl font-extrabold scale-110 text-cyan-300 animate-pulse drop-shadow-lg'>
         {countLibros}
@@ -43,10 +36,10 @@ const uniqueLibros26 = todosLosLibros2026.filter(
     </h2>
     <div class='grid'>
       <span class='text-xl text-le-textPrimary'>Kategoriak:</span>
-      <CategoryList tags={uniqueLibros26} />
+      <CategoryList tags={uniqueLibros25} />
     </div>
     <div class='books'>
-      <LibrosLista2026 libros={uniqueLibros26} />
+      <LibrosLista2025 libros={uniqueLibros25} />
     </div>
   </div>
 </Layout2025>

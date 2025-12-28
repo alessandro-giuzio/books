@@ -3,16 +3,25 @@ import Layout2025 from '../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
 
 // Get all collections to show stats
+/* const libros24 = await getCollection('libros');
+const libros25 = await getCollection('libros25'); */
+
 const libros24 = await getCollection('libros');
 const libros25 = await getCollection('libros25');
+const libros26 = (await getCollection('libros_all')).filter(
+  l => l.data.yearRead === 2026
+);
 const concorrenti24 = await getCollection('concorrenti');
 const concorrenti25 = await getCollection('concorrenti25');
+const concorrenti26 = await getCollection('concorrenti26');
+console.log('Libros 2026:', libros26.length);
 
 // Calculate total stats
-const totalBooks = libros24.length + libros25.length;
+const totalBooks = libros24.length + libros25.length + libros26.length;
 const totalParticipants = new Set([
   ...concorrenti24.map(c => c.data.nome),
   ...concorrenti25.map(c => c.data.nome),
+  ...concorrenti26.map(c => c.data.nome),
 ]).size;
 
 // Competition years data
@@ -23,7 +32,7 @@ const competitions = [
     description: 'Gaurtik hasi gaitezen! Sartu oraingo lehiaketan!',
     link: '/2026',
     status: 'current',
-    books: 0, // Will be updated as books are added
+    books: libros26.length, // Will be updated as books are added
     participants: concorrenti25.length, // Assuming same participants
     highlight: true,
     color: 'from-basque-10 to-basque-20',
@@ -33,7 +42,7 @@ const competitions = [
     title: 'Irakurketa Lehiaketa 2025',
     description: 'Ikusi 2025eko lehiaketaren emaitzak',
     link: '/2025',
-    status: 'active',
+    status: 'completed',
     books: libros25.length,
     participants: concorrenti25.length,
     highlight: false,
