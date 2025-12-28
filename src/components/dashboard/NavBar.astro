@@ -1,16 +1,21 @@
 ---
-// filepath: /Users/alessandro-giuzio/Documents/Ale/GitHub-Repo/books/src/components/dashboard/NavBar.astro
 import AddBookForm from './AddBookForm.astro';
 const currentPath = Astro.url.pathname;
 
 function activeLink(path: string) {
+  if (path === '/') {
+    return currentPath === '/'
+      ? 'bg-basque-10 text-white font-semibold uppercase'
+      : 'text-gray-100';
+  }
+  // For year links and others, match exact or subroutes
   return currentPath === path || currentPath.startsWith(`${path}/`)
     ? 'bg-basque-10 text-white font-semibold uppercase'
     : 'text-gray-100';
 }
 ---
 
-<nav class='bg-gray-800 overflow-x-hidden'>
+<nav class='bg-gray-800'>
   <div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
     <div class='flex h-16 items-center justify-between'>
       <!-- Navigation Links (Hidden on mobile, visible on md+) -->
@@ -24,24 +29,78 @@ function activeLink(path: string) {
         </li>
         <li>
           <a
-            href='/liburuak'
-            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/liburuak')}`}>
-            Liburuak
-          </a>
-        </li>
-        <li>
-          <a
             href='/lehiakideak'
             class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/lehiakideak')}`}>
             Lehiakideak
           </a>
         </li>
+
+        <!-- Lehiaketa Dropdown -->
+        <li class='relative group'>
+          <button
+            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${
+              ['/2026', '/2025', '/2024'].includes(currentPath)
+                ? 'bg-basque-10 text-white font-semibold uppercase'
+                : 'text-gray-100'
+            }`}>
+            Lehiaketa
+          </button>
+          <div
+            class='absolute left-0 top-full hidden group-hover:block bg-gray-700 rounded-lg shadow-lg mt-0 z-50'>
+            <a
+              href='/2026'
+              class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 rounded-t-lg whitespace-nowrap ${activeLink('/2026')}`}>
+              2026
+            </a>
+            <a
+              href='/2025'
+              class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 ${activeLink('/2025')}`}>
+              2025
+            </a>
+            <a
+              href='/2024'
+              class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 rounded-b-lg ${activeLink('/2024')}`}>
+              2024
+            </a>
+          </div>
+        </li>
+
         <li>
-          <a
-            href='/2024'
-            class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${activeLink('/2024')}`}>
-            2024
-          </a>
+          <!-- Liburuak Dropdown -->
+          <div class='relative group'>
+            <button
+              class={`block py-2 px-4 rounded-lg transition-all text-sm font-semibold hover:bg-basque-20 ${
+                [
+                  '/liburuak',
+                  '/liburuak/2026',
+                  '/liburuak/2025',
+                  '/liburuak/2024',
+                ].includes(currentPath)
+                  ? 'bg-basque-10 text-white font-semibold uppercase'
+                  : 'text-gray-100'
+              }`}>
+              Liburuak
+            </button>
+            <div
+              class='absolute left-0 top-full hidden group-hover:block bg-gray-700 rounded-lg shadow-lg mt-0 z-50 min-w-[180px]'>
+              <!--  <a
+                href='/liburuak'
+                class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 rounded-t-lg whitespace-nowrap ${activeLink('/liburuak')}`}>
+                Guztiak
+              </a> -->
+
+              <a
+                href='/liburuak/2025'
+                class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 whitespace-nowrap ${activeLink('/liburuak/2025')}`}>
+                2025
+              </a>
+              <a
+                href='/liburuak/2024'
+                class={`block py-2 px-4 text-sm font-semibold hover:bg-basque-20 rounded-b-lg whitespace-nowrap ${activeLink('/liburuak/2024')}`}>
+                2024
+              </a>
+            </div>
+          </div>
         </li>
       </ul>
 
@@ -71,7 +130,9 @@ function activeLink(path: string) {
     </div>
 
     <!-- Mobile Navigation Menu (Hidden by default) -->
-    <div id='mobile-menu' class='md:hidden hidden border-t border-gray-700'>
+    <div
+      id='mobile-menu'
+      class='md:hidden hidden border-t border-gray-700 overflow-y-auto'>
       <ul class='px-2 pt-2 pb-3 space-y-1'>
         <li>
           <a
@@ -94,12 +155,49 @@ function activeLink(path: string) {
             Lehiakideak
           </a>
         </li>
+
+        <!-- Mobile Lehiaketa Submenu -->
         <li>
-          <a
-            href='/2024'
-            class={`block py-2 px-3 rounded-md text-sm font-medium hover:bg-basque-20 transition-colors ${activeLink('/2024')}`}>
-            2024
-          </a>
+          <button
+            id='mobile-lehiaketa-button'
+            class={`w-full text-left py-2 px-3 rounded-md text-sm font-medium hover:bg-basque-20 transition-colors flex items-center justify-between ${
+              ['/2026', '/2025', '/2024'].includes(currentPath)
+                ? 'bg-basque-10 text-white font-semibold uppercase'
+                : ''
+            }`}>
+            Lehiaketa
+            <svg
+              class='h-4 w-4 transition-transform'
+              id='mobile-lehiaketa-icon'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M19 14l-7 7m0 0l-7-7m7 7V3'></path>
+            </svg>
+          </button>
+          <div
+            id='mobile-lehiaketa-menu'
+            class='hidden bg-gray-700 rounded-md ml-4 mt-1'>
+            <a
+              href='/2026'
+              class={`block py-2 px-3 text-sm font-medium hover:bg-basque-20 rounded-t-md ${activeLink('/2026')}`}>
+              2026
+            </a>
+            <a
+              href='/2025'
+              class={`block py-2 px-3 text-sm font-medium hover:bg-basque-20 ${activeLink('/2025')}`}>
+              2025
+            </a>
+            <a
+              href='/2024'
+              class={`block py-2 px-3 text-sm font-medium hover:bg-basque-20 rounded-b-md ${activeLink('/2024')}`}>
+              2024
+            </a>
+          </div>
         </li>
       </ul>
     </div>
@@ -111,6 +209,9 @@ function activeLink(path: string) {
   document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
+    const lehiaketaButton = document.getElementById('mobile-lehiaketa-button');
+    const lehiaketaMenu = document.getElementById('mobile-lehiaketa-menu');
+    const lehiaketaIcon = document.getElementById('mobile-lehiaketa-icon');
 
     if (menuButton && menu) {
       menuButton.addEventListener('click', () => {
@@ -123,6 +224,14 @@ function activeLink(path: string) {
         } else {
           svg?.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X
         }
+      });
+    }
+
+    // Mobile Lehiaketa dropdown toggle
+    if (lehiaketaButton && lehiaketaMenu) {
+      lehiaketaButton.addEventListener('click', () => {
+        lehiaketaMenu.classList.toggle('hidden');
+        lehiaketaIcon?.classList.toggle('rotate-180');
       });
     }
   });
