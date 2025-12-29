@@ -8,7 +8,7 @@ monthRead: abendua
 tags: ['Narrativa', 'Sociedad']
 concorrente: 'oihana'
 slug: 'zahartzaroaren-maparen-bila'
-punti: 5
+punti: 2
 yearRead: 2025
 type: novel
 pages: 112
