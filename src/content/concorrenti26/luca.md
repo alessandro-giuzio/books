@@ -2,7 +2,7 @@
 nome: 'Luca'
 username: 'luca'
 alt: 'Luca avatar'
-punti: 18
+punti: 0
 slug: 'luca'
 bio: 'Leggo di tutto, soprattutto fumetti'
 ---
