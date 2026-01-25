@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import alpinejs from '@astrojs/alpinejs';
 import vue from '@astrojs/vue';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import vtbot from 'astro-vtbot';
 
 import sitemap from '@astrojs/sitemap';
@@ -12,9 +13,12 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@components': path.resolve('./src/components'),
-        '@styles': path.resolve('./src/styles'),
-        '@assets': path.resolve('./src/assets'),
+        '@': fileURLToPath(new URL('./@', import.meta.url)),
+        '@components': fileURLToPath(
+          new URL('./src/components', import.meta.url),
+        ),
+        '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
+        '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       },
     },
   },
