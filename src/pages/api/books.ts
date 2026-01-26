@@ -19,11 +19,9 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const limit = Number(url.searchParams.get('limit') ?? 20);
 
-  const { data, error } = await supabaseServer
-    .from('books_with_stats')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(Number.isFinite(limit) ? limit : 20);
+
+  // Get books and their average rating
+  const { data, error } = await supabaseServer.rpc('get_books_with_avg_rating', { limit_param: limit });
 
   if (error) {
     return jsonResponse(500, { error: error.message });
@@ -85,6 +83,20 @@ export const POST: APIRoute = async ({ request }) => {
   if (error) {
     return jsonResponse(500, { error: error.message });
   }
+
+    // Insert initial rating if provided and valid
+    const rating = Number(body.rating);
+    if (data && userData.user.id && rating >= 1 && rating <= 5) {
+      await supabaseServer
+        .from('book_ratings')
+        .upsert([
+          {
+            book_id: data.id,
+            user_id: userData.user.id,
+            rating,
+          },
+        ], { onConflict: ['book_id', 'user_id'] });
+    }
 
   return jsonResponse(201, { data });
 };
