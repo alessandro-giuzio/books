@@ -60,7 +60,7 @@ export const POST: APIRoute = async ({ request }) => {
     : typeof body.tags === 'string'
       ? body.tags
           .split(',')
-          .map(tag => tag.trim())
+          .map((tag: string) => tag.trim())
           .filter(Boolean)
       : [];
 
