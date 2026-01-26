@@ -2,7 +2,6 @@
 import { computed, reactive, ref } from 'vue';
 import { supabase } from '../../lib/supabaseClient.js';
 import { authFetch } from '../../lib/authFetch.js';
-import { triggerNetlifyBuild } from '../../lib/triggerNetlifyBuild.js';
 
 const form = reactive({
   title: '',
@@ -62,9 +61,6 @@ const handleSubmit = async () => {
       const payload = await response.json().catch(() => ({}));
       throw new Error(payload.error || 'Failed to submit book.');
     }
-
-    // Trigger Netlify build after successful book submission
-    await triggerNetlifyBuild();
 
     successMessage.value = 'Book submitted! It will appear in the feed.';
     form.title = '';
