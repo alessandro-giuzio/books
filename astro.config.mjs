@@ -4,12 +4,14 @@ import vue from '@astrojs/vue';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import vtbot from 'astro-vtbot';
+import netlify from '@astrojs/netlify';
 
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://irakurleak.eus',
+  output: 'server',
   vite: {
     resolve: {
       alias: {
@@ -23,4 +25,5 @@ export default defineConfig({
     },
   },
   integrations: [alpinejs(), vue(), vtbot(), sitemap()],
+  adapter: netlify(),
 });
