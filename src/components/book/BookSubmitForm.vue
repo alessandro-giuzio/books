@@ -2,6 +2,7 @@
 import { computed, reactive, ref } from 'vue';
 import { supabase } from '../../lib/supabaseClient.js';
 import { authFetch } from '../../lib/authFetch.js';
+import { triggerNetlifyBuild } from '../../lib/triggerNetlifyBuild.js';
 
 const form = reactive({
   title: '',
@@ -44,7 +45,10 @@ const handleSubmit = async () => {
       summary: form.summary.trim() || null,
       cover_url: form.cover_url.trim() || null,
       tags: form.tags
-        ? form.tags.split(',').map(tag => tag.trim()).filter(Boolean)
+        ? form.tags
+            .split(',')
+            .map(tag => tag.trim())
+            .filter(Boolean)
         : [],
     };
 
@@ -58,6 +62,9 @@ const handleSubmit = async () => {
       const payload = await response.json().catch(() => ({}));
       throw new Error(payload.error || 'Failed to submit book.');
     }
+
+    // Trigger Netlify build after successful book submission
+    await triggerNetlifyBuild();
 
     successMessage.value = 'Book submitted! It will appear in the feed.';
     form.title = '';
@@ -87,8 +94,7 @@ checkSession();
 
     <div
       v-if="!hasSession"
-      class="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
-    >
+      class="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
       You need to be signed in to submit a book.
       <a href="/login" class="ml-2 font-semibold underline">Sign in</a>
     </div>
@@ -96,18 +102,18 @@ checkSession();
     <form
       v-else
       class="space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-      @submit.prevent="handleSubmit"
-    >
+      @submit.prevent="handleSubmit">
       <div class="space-y-2">
-        <label class="text-sm font-medium text-gray-700" for="title">Title</label>
+        <label class="text-sm font-medium text-gray-700" for="title"
+          >Title</label
+        >
         <input
           id="title"
           v-model="form.title"
           type="text"
           class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
           placeholder="Book title"
-          required
-        />
+          required />
       </div>
 
       <div class="space-y-2">
@@ -120,8 +126,7 @@ checkSession();
           type="text"
           class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
           placeholder="Author name"
-          required
-        />
+          required />
       </div>
 
       <div class="space-y-2">
@@ -133,21 +138,17 @@ checkSession();
           v-model="form.summary"
           rows="4"
           class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          placeholder="Short notes or why you loved it"
-        ></textarea>
+          placeholder="Short notes or why you loved it"></textarea>
       </div>
 
       <div class="space-y-2">
-        <label class="text-sm font-medium text-gray-700" for="tags"
-          >Tags</label
-        >
+        <label class="text-sm font-medium text-gray-700" for="tags">Tags</label>
         <input
           id="tags"
           v-model="form.tags"
           type="text"
           class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          placeholder="fiction, mystery, sci-fi"
-        />
+          placeholder="fiction, mystery, sci-fi" />
       </div>
 
       <div class="space-y-2">
@@ -159,8 +160,7 @@ checkSession();
           v-model="form.cover_url"
           type="url"
           class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          placeholder="https://..."
-        />
+          placeholder="https://..." />
       </div>
 
       <div v-if="errorMessage" class="text-sm text-red-600">
@@ -173,8 +173,7 @@ checkSession();
       <button
         type="submit"
         class="w-full rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-60"
-        :disabled="isSubmitting"
-      >
+        :disabled="isSubmitting">
         {{ isSubmitting ? 'Submitting…' : 'Submit book' }}
       </button>
     </form>
