@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout2025 from '../../../layouts/Layout2025.astro';
+import H1 from '../../../components/dashboard/liburuak/H1.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import LibrosLista2025 from '../../../components/dashboard/LibrosLista2025.astro';
+import CategoryList from '../../../components/dashboard/liburuak/category/CategoryList.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allBooks: CollectionEntry<'libros25'>[] =
+    await getCollection('libros25');
+
+  const allTheTags = allBooks.flatMap(book =>
+    book.data.tags.map((tag: string) => tag.toLowerCase()),
+  );
+  const uniqueTags = Array.from(new Set(allTheTags));
+
+  const paths = uniqueTags.map(lowerTag => {
+    const booksByTag = allBooks.filter(book =>
+      book.data.tags.some((tag: string) => tag.toLowerCase() === lowerTag),
+    );
+    return {
+      params: {
+        tag: lowerTag,
+      },
+    };
+  });
+
+  return paths;
+};
+const currentTag = (Astro.params.tag ?? '').toLowerCase();
+const fullBooks = await getCollection('libros25');
+const allBooks = fullBooks.filter(book =>
+  book.data.tags?.some(tag => tag.toLowerCase() === currentTag),
+);
+
+const headingCopy = `Kategoria honetako liburuak: ${currentTag}`;
+---
+
+<Layout2025 title='liburuak'>
+  <main
+    class='relative mx-auto min-h-screen overflow-x-hidden bg-basque-10 p-6'>
+    <H1 body={headingCopy} />
+
+    <CategoryList tags={fullBooks} activeTag={currentTag} />
+
+    <LibrosLista2025 libros={allBooks} />
+  </main>
+</Layout2025>

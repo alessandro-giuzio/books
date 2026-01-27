@@ -9,7 +9,7 @@ const { tag, active } = Astro.props;
 const route =
   tag.toLowerCase() === 'all'
     ? '/liburuak'
-    : `/liburuak/${encodeURIComponent(tag.toLowerCase())}`;
+    : `/liburuak/tag/${encodeURIComponent(tag.toLowerCase())}`;
 ---
 
 <a href={route} class={active ? 'filter active' : 'filter'}>

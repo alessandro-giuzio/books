@@ -7,9 +7,10 @@ type Props = {
 };
 /* TODO exclude books that are in the list more than 1 time */
 
-const { libros } = Astro.props;
+const { libros } = Astro.props as { libros?: CollectionEntry<'libros25'>[] };
+const safeLibros = Array.isArray(libros) ? [...libros] : [];
 // Shuffle the libros order
-const shuffledLibros = libros.sort(() => Math.random() - 0.5);
+const shuffledLibros = safeLibros.sort(() => Math.random() - 0.5);
 ---
 
 <div class='libros'>

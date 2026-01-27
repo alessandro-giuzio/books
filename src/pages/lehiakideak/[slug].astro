@@ -1,9 +1,11 @@
 ---
 import Layout2025 from '../../layouts/Layout2025.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { move } from 'astro-vtbot/animations/move';
 import Wrapper from '../../components/containers/Wrapper.astro';
 import { Image } from 'astro:assets';
+export const prerender = true;
 
 export async function getStaticPaths() {
   const lehiakideak = await getCollection('concorrenti25');
@@ -27,7 +29,7 @@ export async function getStaticPaths() {
 
     // Adjusted filter to match books correctly
     const liburuakForLehiakide = liburuak.filter(
-      libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase()
+      libro => libro.data.concorrente.toLowerCase() === slug.toLowerCase(),
     );
     // Libros from the previous year
     // Define possible variants for each concorrente
@@ -45,7 +47,7 @@ export async function getStaticPaths() {
 
     // Filter using the name variants
     const liburuak24ForLehiakide = libros24.filter(libro =>
-      possibleNames.includes(libro.data.concorrente.toLowerCase())
+      possibleNames.includes(libro.data.concorrente.toLowerCase()),
     );
 
     /* console.log(`🔍 Checking Books for: ${slug}`);
@@ -85,7 +87,7 @@ export async function getStaticPaths() {
 
     // Filter the featured books
     const featuredLiburuak = liburuakForLehiakide.filter(
-      libro => libro.data.featured
+      libro => libro.data.featured,
     );
     // Debugging: Log found books
     //console.log(`📚 Books for ${nome} (${slug}):`, liburuakForLehiakide);
@@ -108,19 +110,39 @@ export async function getStaticPaths() {
   });
 }
 
-const { slug } = Astro.params;
+type PageProps = {
+  lehiakide?: CollectionEntry<'concorrenti25'>;
+  liburuakForLehiakide?: CollectionEntry<'libros25'>[];
+  liburuak24ForLehiakide?: CollectionEntry<'libros'>[];
+  featuredLiburuak?: CollectionEntry<'libros25'>[];
+  count25?: number;
+  count24?: number;
+  tags24?: Record<string, number>;
+  tags25?: Record<string, number>;
+  topThreeTags24?: string[];
+  topThreeTags25?: string[];
+};
+
+const props = (Astro.props as PageProps) ?? {};
+
+if (!props.lehiakide) {
+  return Astro.redirect('/lehiakideak');
+}
+
 const {
   lehiakide,
-  liburuakForLehiakide,
-  liburuak24ForLehiakide,
-  featuredLiburuak,
-  count25,
-  count24,
-  tags24,
-  tags25,
-  topThreeTags24,
-  topThreeTags25,
-} = Astro.props;
+  liburuakForLehiakide = [],
+  liburuak24ForLehiakide = [],
+  featuredLiburuak = [],
+  count25 = 0,
+  count24 = 0,
+  tags24 = {},
+  tags25 = {},
+  topThreeTags24 = [],
+  topThreeTags25 = [],
+} = props;
+
+const { slug } = Astro.params;
 ---
 
 <Layout2025 title={`🏴‍☠️ ${lehiakide.data.nome} 🏴‍☠️`}>
@@ -163,7 +185,7 @@ const {
           featuredLiburuak.length > 0 ? (
             (() => {
               const randomIndex = Math.floor(
-                Math.random() * featuredLiburuak.length
+                Math.random() * featuredLiburuak.length,
               );
               const libro = featuredLiburuak[randomIndex]; // Select a random book
               return (

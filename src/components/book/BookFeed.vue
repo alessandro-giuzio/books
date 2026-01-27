@@ -11,7 +11,7 @@ type Book = {
   tags?: string[] | null;
   created_at?: string | null;
   like_count?: number | null;
-  comment_count?: number | null;
+  comment_count?: number | null; // Now returned from API
   creator_name?: string | null;
   average_rating?: number | null; // Use average_rating from API
 };
@@ -128,7 +128,7 @@ onMounted(fetchBooks);
             </div>
             <div class="flex items-center gap-4 text-xs text-gray-500">
               <span>{{ book.like_count ?? 0 }} likes</span>
-              <span>{{ book.comment_count ?? 0 }} comments</span>
+              <span>{{ book.comment_count }} comments</span>
             </div>
           </div>
         </a>

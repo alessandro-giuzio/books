@@ -7,7 +7,7 @@ alt: 'Buenos días, tristeza'
 monthRead: abuztua
 tags: ['Ficción clásica', 'Literatura francesa']
 concorrente: 'asier'
-slug: 'buenos-dias-tristeza'
+slug: 'buenos-dias-tristeza-asier'
 punti: 5
 yearRead: 2025
 type: book

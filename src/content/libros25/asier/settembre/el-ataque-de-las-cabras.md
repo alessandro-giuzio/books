@@ -7,7 +7,7 @@ alt: 'El ataque de las cabras'
 monthRead: iraila
 tags: ['Ficción', 'Novela']
 concorrente: 'asier'
-slug: 'el-ataque-de-las-cabras'
+slug: 'el-ataque-de-las-cabras-asier'
 punti: 5
 yearRead: 2025
 type: book

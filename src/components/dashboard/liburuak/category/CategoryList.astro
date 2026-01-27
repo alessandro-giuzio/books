@@ -7,9 +7,12 @@ type Props = {
   activeTag?: string;
 };
 
-const { tags, activeTag }: Props = Astro.props;
+const { tags, activeTag }: Partial<Props> = Astro.props;
 
-const uniqueTags = Array.from(new Set(tags.flatMap(tag => tag.data.tags)));
+const normalizedTags = Array.isArray(tags) ? tags : [];
+const uniqueTags = Array.from(
+  new Set(normalizedTags.flatMap(tag => tag.data.tags ?? [])),
+);
 ---
 
 <div class='flex flex-wrap gap-2 overflow-x-auto scrollbar-hide mb-10'>
@@ -22,7 +25,7 @@ const uniqueTags = Array.from(new Set(tags.flatMap(tag => tag.data.tags)));
         tag={uniqueTag}
         active={
           Astro.url.pathname ===
-          `/liburuak/${encodeURIComponent(uniqueTag.toLowerCase())}`
+          `/liburuak/tag/${encodeURIComponent(uniqueTag.toLowerCase())}`
         }
       />
     ))

@@ -7,7 +7,7 @@ alt: 'Los Siete Minutos'
 monthRead: ekaina
 tags: ['Novela']
 concorrente: 'amaia'
-slug: 'los-siete-minutos'
+slug: 'los-siete-minutos-amaia'
 punti: 9
 yearRead: 2025
 type: book

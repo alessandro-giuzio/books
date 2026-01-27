@@ -2,12 +2,11 @@
   <Card
     :concorrente="{
       ...concorrente,
-      slug:
-        concorrente.slug || concorrente.nome.toLowerCase().replace(/\s+/g, '-'),
+      slug: normalizedSlug,
     }"
     class="max-w-md shadow-lg rounded-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow bg-white flex flex-col h-full">
     <!-- Adjusted Image -->
-    <a :href="`/lehiakideak/${concorrente.slug}`">
+    <a :href="competitorUrl">
       <img
         :src="concorrente.image?.src || '/placeholder-image.jpg'"
         :alt="`Cover of ${concorrente.nome}`"
@@ -22,7 +21,7 @@
       </CardTitle>
       <CardDescription>
         <a
-          :href="`/lehiakideak/${concorrente.slug}`"
+          :href="competitorUrl"
           class="block text-base mt-2 text-gray-800 tracking-wide leading-relaxed line-clamp-4 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200 ease-in-out">
           {{ concorrente.bio }}
         </a>
@@ -37,7 +36,7 @@
     <!-- Footer Always Sticks to Bottom -->
     <CardFooter
       class="p-2 bg-gray-300 text-sm text-gray-600 flex justify-between mt-auto">
-      <a a :href="`/lehiakideak/${concorrente.slug}`">
+      <a :href="competitorUrl">
         <!--  {{ libro.concorrente }} -->
         {{ concorrente.nome }}
       </a>
@@ -66,4 +65,10 @@ import {
 const props = defineProps<{
   concorrente: ConcorrenteData;
 }>();
+
+const normalizedSlug =
+  props.concorrente.slug?.trim() ||
+  props.concorrente.nome.trim().toLowerCase().replace(/\s+/g, '-');
+
+const competitorUrl = `/lehiakideak/${normalizedSlug}`;
 </script>
