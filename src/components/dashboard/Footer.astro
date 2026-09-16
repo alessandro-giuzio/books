@@ -1,139 +1,22 @@
 ---
-const currentPage = Astro.url.pathname;
-import { Image } from 'astro:assets';
-import Arrow from '../../assets/images/arrow-up.svg';
 ---
 
-<style>
-  #waveContainer {
-    /*
-    // Ensures that content
-    // outside the container is not visible
-    */
-    overflow: hidden;
-    /*
-    // Sets the height of the
-    // container for the wave effect
-    */
-    height: 200px;
-  }
-  .wave-segment {
-    /*
-    // Each wave segment
-    // is white in color
-    */
-    background-color: #ffffff;
-    /*
-    // Smooth transition when
-    // the margin or height changes
-    */
-    transition: all 0.1s ease;
-  }
-</style>
 <footer class='bg-gray-800'>
-  <div class='flex flex-col mx-auto max-w-7xl px-6 py-8 lg:px-8'>
-    <!-- Fun Basque message -->
-    <div class='flex flex-col items-center gap-y-2 space-y-4 md:order-2'>
-      <p class='text-sm text-center text-gray-400'>
-        Ez dago sare sozialik hemen — kanpora irten eta benetako mundua gozatu!
-      </p>
-      <nav>
-        <ul class='flex space-x-4'>
-          <li>
-            <a
-              href='/kontaktua'
-              class={`text-sm font-medium ${
-                currentPage === '/kontaktua'
-                  ? 'text-gray-200 underline'
-                  : 'text-gray-400'
-              } hover:text-gray-200 transition-colors duration-200`}>
-              Kontaktua
-            </a>
-          </li>
-          <li>
-            <a
-              href='/nor-gara'
-              class={`text-sm font-medium ${
-                currentPage === '/nor-gara'
-                  ? 'text-gray-200 underline'
-                  : 'text-gray-400'
-              } hover:text-gray-200 transition-colors duration-200`}>
-              Nor gara
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <a href='' onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-        <Image src={Arrow} alt='Arrow Up' class='w-16 h-24 inline-block' />
-        <span class='text-white'>Hasierara itzuli</span>
+  <div class='flex flex-col items-center gap-y-4 mx-auto max-w-7xl px-6 py-8 lg:px-8'>
+    <p class='text-sm text-center text-gray-400'>
+      A case study by a web developer, not a live product.
+    </p>
+    <p class='text-center text-sm text-gray-500'>
+      &copy; 2026
+      <a
+        href='https://www.agencyga.es'
+        class='font-medium text-gray-500 hover:text-gray-200 transition-colors duration-200'
+        target='_blank'
+        rel='noopener noreferrer'
+        title='Agency GA - Estudio de diseño y desarrollo web'
+        aria-label='Visita el estudio web de Alessandro Giuzio - Diseño y desarrollo web'>
+        Web Artisan Alessandro Giuzio
       </a>
-    </div>
-  </div>
-  <!-- Copyright -->
-  <p class='text-center text-sm text-gray-500 md:mt-0'>
-    &copy; 2025
-    <a
-      href='https://www.agencyga.es'
-      class='font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200'
-      target='_blank'
-      rel='noopener noreferrer'
-      title='Agency GA - Estudio de diseño y desarrollo web'
-      aria-label='Visita el estudio web de Alessandro Giuzio - Diseño y desarrollo web'>
-      Web Artisan Alessandro Giuzio
-    </a>
-  </p>
-  <div id='waveContainer' aria-hidden='true'>
-    <div style='margin-top:0px'>
-      <div class='wave-segment' style='margin-top:0px;height:1px'></div>
-      <div class='wave-segment' style='margin-top:1px;height:2px'></div>
-      <div class='wave-segment' style='margin-top:2px;height:3px'></div>
-      <div class='wave-segment' style='margin-top:3px;height:4px'></div>
-      <div class='wave-segment' style='margin-top:4px;height:5px'></div>
-      <div class='wave-segment' style='margin-top:5px;height:6px'></div>
-      <div class='wave-segment' style='margin-top:6px;height:7px'></div>
-      <div class='wave-segment' style='margin-top:7px;height:8px'></div>
-      <div class='wave-segment' style='margin-top:8px;height:9px'></div>
-      <div class='wave-segment' style='margin-top:9px;height:10px'></div>
-      <div class='wave-segment' style='margin-top:10px;height:11px'></div>
-      <div class='wave-segment' style='margin-top:11px;height:12px'></div>
-      <div class='wave-segment' style='margin-top:12px;height:13px'></div>
-      <div class='wave-segment' style='margin-top:13px;height:14px'></div>
-      <div class='wave-segment' style='margin-top:14px;height:15px'></div>
-      <div class='wave-segment' style='margin-top:15px;height:16px'></div>
-      <div class='wave-segment' style='margin-top:16px;height:17px'></div>
-      <div class='wave-segment' style='margin-top:17px;height:18px'></div>
-      <div class='wave-segment' style='margin-top:18px;height:19px'></div>
-      <div class='wave-segment' style='margin-top:19px;height:20px'></div>
-      <div class='wave-segment' style='margin-top:20px;height:21px'></div>
-      <div class='wave-segment' style='margin-top:21px;height:22px'></div>
-      <div class='wave-segment' style='margin-top:22px;height:23px'></div>
-    </div>
+    </p>
   </div>
 </footer>
-<script type='module'>
-  function startWaveAnimation() {
-    const waveSegments = document.querySelectorAll('.wave-segment');
-
-    if (!waveSegments.length) return; // Avoid errors if no segments found
-
-    let wavePhase = 0;
-
-    function animateWave() {
-      waveSegments.forEach((segment, index) => {
-        const offset = Math.sin((wavePhase + index) * 0.3) * 20;
-        segment.style.marginTop = `${Math.max(0, offset)}px`;
-      });
-
-      wavePhase += 0.1;
-      requestAnimationFrame(animateWave);
-    }
-
-    animateWave();
-  }
-
-  // Run wave animation on initial page load
-  document.addEventListener('DOMContentLoaded', startWaveAnimation);
-
-  // Re-run animation after client-side navigation (ClientRouter fix)
-  document.addEventListener('astro:after-swap', startWaveAnimation);
-</script>

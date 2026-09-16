@@ -1,16 +1,6 @@
-import animate from 'tailwindcss-animate';
-import defaultTheme from 'tailwindcss/defaultTheme';
-import daisyui from 'daisyui';
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['class'],
-  safelist: ['dark'],
-  prefix: '',
-
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
 
   theme: {
     container: {
@@ -24,146 +14,11 @@ export default {
       colors: {
         basque: {
           10: 'oklch(46.35% 0.082 160.17)',
-          15: 'oklch(63.04% 0.1013 183.03)',
           20: 'oklch(60.01% 0.212 27.56)',
-          25: 'oklch(67.83% 0.1559 35.18)',
-          30: 'oklch(83.42% 0.117 87.43)',
-          35: 'oklch(78.06% 0.1269 57.86)',
-          40: 'oklch(98.46% 0.002 247.84)',
-          50: 'oklch(38.83% 0.041 237.32)',
-          60: 'oklch(37.53% 0.0438 226.2)',
         },
-
-        le: {
-          // 🌑 **Dark Base Colors** (Backgrounds, Deep Elements)
-          100: '#000022', // "Midnight Abyss" - Deepest background color
-          200: '#040f16', // "Deep Twilight" - Slightly lighter dark background
-          300: '#001242', // "Royal Navy" - Darker blue accent
-          400: '#005e7c', // "Ocean Depths" - Muted teal accent
-          500: '#0094c6', // "Sky Surge" - Brightest pop of blue
-
-          // 🌫 **Text Colors**
-          textPrimary: '#F5F7FA', // "Mist White" - Best for text on dark backgrounds
-          textSecondary: '#C0C8D6', // "Cloud Gray" - Secondary text, less contrast
-          textAccent: '#0094c6', // "Sky Surge" - For highlights, links, interactive elements
-
-          // 🎨 **Borders & Dividers**
-          borderPrimary: '#005e7c', // "Ocean Depths" - Subtle dividers
-          borderSecondary: '#001242', // "Royal Navy" - Slightly stronger borders
-
-          // 🔥 **Accents & Highlights**
-          accent: '#0094c6', // "Sky Surge" - Standout elements like buttons, CTAs
-          hover: '#00789e', // "Teal Tide" - Slightly muted hover effect
-          danger: '#ff4c4c', // "Alert Red" - For warnings, errors
-
-          // 📄 **Component Backgrounds**
-          bgCard: '#001242', // "Royal Navy" - Background for card elements
-          bgSection: '#040f16', // "Deep Twilight" - Section backgrounds
-          bgHighlight: '#0094c6', // "Sky Surge" - Highlighted sections
-        },
-
-        midnightMystery: '#13004e',
-        royalIndigo: '#48007e',
-        electricAmethyst: '#7f00b1',
-        whisperingLilac: '#FBF0FF',
-        sunsetGold: '#F0A000',
-        forestDepths: '#4c6800',
-        neonLime: '#c0ff14',
-        buttercreamCream: '#f1ffcc',
-        softPear: '#f8ffe5',
-        tropicalSky: '#05bcff',
-        bubblegumBlast: '#ff05bc',
-        backgrounds: '#1E2237',
-        borderGolden: '#F0A000',
-        borderSilver: '#C0C0C0',
-        borderBronze: '#CD7F32',
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-      },
-      borderRadius: {
-        xl: 'calc(var(--radius) + 4px)',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
-      fontFamily: {
-        sans: ['Tourney Variable', ...defaultTheme.fontFamily.sans],
-        mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
-        marker: ['Permanent Marker', ...defaultTheme.fontFamily.sans],
-      },
-      daisyui: {
-        themes: [
-          'light',
-          'dark',
-          'cupcake',
-          'bumblebee',
-          'emerald',
-          'corporate',
-          'synthwave',
-          'retro',
-          'cyberpunk',
-        ],
-      },
-      height: {
-        base: '116rem',
-        base2: '120rem',
-      },
-      keyframes: {
-        'accordion-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 },
-        },
-        'collapsible-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-collapsible-content-height)' },
-        },
-        'collapsible-up': {
-          from: { height: 'var(--radix-collapsible-content-height)' },
-          to: { height: 0 },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        'collapsible-down': 'collapsible-down 0.2s ease-in-out',
-        'collapsible-up': 'collapsible-up 0.2s ease-in-out',
       },
     },
   },
-  plugins: [daisyui, forms, typography, animate],
+
+  plugins: [],
 };

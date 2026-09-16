@@ -1,21 +1,16 @@
 import { defineConfig } from 'astro/config';
-import alpinejs from '@astrojs/alpinejs';
-import vue from '@astrojs/vue';
-import path from 'path';
 import { fileURLToPath } from 'url';
-import vtbot from 'astro-vtbot';
-import netlify from '@astrojs/netlify';
-
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://irakurleak.eus',
-  output: 'server',
+  output: 'static',
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./@', import.meta.url)),
         '@components': fileURLToPath(
           new URL('./src/components', import.meta.url),
         ),
@@ -24,6 +19,5 @@ export default defineConfig({
       },
     },
   },
-  integrations: [alpinejs(), vue(), vtbot(), sitemap()],
-  adapter: netlify(),
+  integrations: [sitemap()],
 });
