@@ -1,6 +1,61 @@
 ---
 import Layout2025 from '../layouts/Layout2025.astro';
 
+const stats = [
+  { value: '129', label: 'books read', sub: 'in 2024' },
+  { value: '103', label: 'books read', sub: 'in 2025' },
+  { value: '8', label: 'friends', sub: 'competing' },
+  { value: '2', label: 'languages', sub: 'Spanish + Basque' },
+];
+
+const gallery = [
+  {
+    src: '/case-study/homepage.jpg',
+    alt: 'Original homepage with a hero, community intro, and a year-by-year timeline',
+    caption: 'The homepage',
+  },
+  {
+    src: '/case-study/year-2026.jpg',
+    alt: '2026 competition page showing a top-3 leaderboard of competitors',
+    caption: '2026 leaderboard',
+  },
+  {
+    src: '/case-study/competitors-2025.jpg',
+    alt: 'Competitors page listing each participant with a short bio, in Basque',
+    caption: 'Competitors, in Basque',
+  },
+  {
+    src: '/case-study/books-list-2024.jpg',
+    alt: '2024 books grid listing every book read that year with author, tags and points',
+    caption: 'Every book of 2024',
+  },
+  {
+    src: '/case-study/books-list-2026.jpg',
+    alt: 'The 2026 bookshelf page in Basque, holding a single logged title',
+    caption: 'The last shelf, one book in',
+  },
+  {
+    src: '/case-study/book-expanded-synopsis.jpg',
+    alt: 'A book card expanded to show its synopsis, tags and the reader who logged it',
+    caption: 'A book, expanded',
+  },
+  {
+    src: '/case-study/submit-form.jpg',
+    alt: 'Submit a book form gated behind sign-in',
+    caption: 'Adding a book',
+  },
+  {
+    src: '/case-study/login.jpg',
+    alt: 'Sign in form for the reading club',
+    caption: 'Signing in',
+  },
+  {
+    src: '/case-study/team-page.jpg',
+    alt: 'Team page with illustrated avatars for each competitor',
+    caption: 'The eight of us',
+  },
+];
+
 const stack = [
   { name: 'Astro', role: 'Static site generation, routing, content collections' },
   { name: 'Vue', role: 'Interactive islands: comments, book feed, submission form' },
@@ -9,42 +64,24 @@ const stack = [
   { name: 'Netlify', role: 'Hosting, SSR functions, scheduled rebuilds' },
 ];
 
-const features = [
+const highlights = [
   {
     title: 'Per-year content collections',
-    body: "Books and competitors were modeled as Astro content collections, one set per year (2024, 2025, 2026), all validated against two shared Zod schemas (concorrentiSchema, librosSchema). New reading years could be added by dropping in a new folder of markdown files.",
+    body: 'Books and competitors were modeled as Astro content collections — one set per year, all validated against two shared Zod schemas. Adding a new reading year meant dropping in a new folder of markdown files.',
     image: '/case-study/books-list-2024.jpg',
     alt: '2024 books grid listing every book read that year with author, tags and points',
   },
   {
     title: 'A friendly points & ranking system',
-    body: "Each book earned points depending on type (book vs. comic) and length, with bonus points for longer reads. The logic lived in a small calculatePoints() helper, aggregated per competitor to drive the yearly leaderboard.",
+    body: 'Each book earned points depending on type and length, with a bonus for longer reads. A small calculatePoints() helper did the work, aggregated per competitor to drive the yearly leaderboard.',
     image: '/case-study/year-2026.jpg',
     alt: '2026 competition page showing a top-3 leaderboard of competitors',
   },
   {
-    title: 'Supabase authentication',
-    body: 'A two-table system — Supabase-managed auth.users plus an app-owned profiles table, linked by a database trigger that auto-created a profile row on signup — backed sign up, sign in, and session-aware pages.',
-    image: '/case-study/login.jpg',
-    alt: 'Sign in form for the reading club',
-  },
-  {
-    title: 'Book submission & comments',
-    body: 'Signed-in members could submit new books through a Vue form and leave comments on any book, both talking to Astro API routes that used a server-side Supabase client so the service-role key never reached the browser.',
+    title: 'Auth, submissions & comments',
+    body: 'Supabase-managed auth.users plus an app-owned profiles table, linked by a trigger that created a profile on signup, gated the members-only parts. Signed-in readers submitted books and left comments through Vue forms talking to Astro API routes, so the service-role key never reached the browser.',
     image: '/case-study/submit-form.jpg',
     alt: 'Submit a book form gated behind sign-in',
-  },
-  {
-    title: 'Bilingual route trees',
-    body: 'Basque and Spanish readers got their own parallel route trees (lehiakideak/liburuak vs. concorrenti/libros) sharing the same underlying content and layouts — a real-world case of i18n via folder structure rather than a formal i18n library.',
-    image: '/case-study/competitors-2025.jpg',
-    alt: 'Competitors page listing each participant with a short bio, in Basque',
-  },
-  {
-    title: 'The team behind it',
-    body: "Eight friends, eight avatars, one shared spreadsheet-turned-web-app. What began as a way to track who was reading the most in 2024 grew into a small full-stack project with real users, real data, and real bugs.",
-    image: '/case-study/team-page.jpg',
-    alt: 'Team page with illustrated avatars for each competitor',
   },
 ];
 ---
@@ -52,16 +89,24 @@ const features = [
 <Layout2025 title='Irakurketa Lehiaketa — Case Study'>
   <div class='min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900'>
     <!-- Hero -->
-    <header class='relative overflow-hidden'>
+    <header class='relative overflow-hidden min-h-[85vh] flex items-center'>
       <div
         class='absolute inset-0 bg-gradient-to-r from-basque-10/20 to-basque-20/20 backdrop-blur-3xl'>
       </div>
-      <div class='relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center'>
-        <div class='inline-block mb-6 relative'>
-          <div class='absolute inset-0 bg-gradient-to-r from-basque-10 to-basque-20 blur-3xl opacity-30'>
+      <div
+        class='relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center'>
+        <p
+          class='text-xs md:text-sm uppercase tracking-[0.25em] text-gray-400 mb-6'>
+          Case study · 2024 – 2026 · Retired
+        </p>
+        <div class='inline-block mb-8 relative'>
+          <div
+            class='absolute inset-0 bg-gradient-to-r from-basque-10 to-basque-20 blur-3xl opacity-30'>
           </div>
-          <h1 class='relative text-4xl md:text-6xl font-black text-white mb-4 tracking-tight'>
-            <span class='bg-gradient-to-r from-basque-10 via-basque-20 to-basque-10 bg-clip-text text-transparent'>
+          <h1
+            class='relative text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight'>
+            <span
+              class='bg-gradient-to-r from-basque-10 via-basque-20 to-basque-10 bg-clip-text text-transparent'>
               Irakurketa Lehiaketa
             </span>
           </h1>
@@ -69,39 +114,122 @@ const features = [
         <p class='text-xl md:text-2xl text-gray-300 mb-4 font-light'>
           A reading competition, built as a full-stack side project
         </p>
-        <p class='text-base md:text-lg text-gray-400 max-w-2xl mx-auto'>
-          A case study of a bilingual (Spanish/Basque) app I built and ran for a
-          group of friends across three reading years — 2024 through 2026 — since
-          retired. Static site now, but here's what shipped while it was live.
+        <p class='text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-10'>
+          Three reading years, two languages, eight friends. The app is gone —
+          this is what it looked like, and what building it taught me.
         </p>
+        <div class='flex flex-wrap items-center justify-center gap-4'>
+          <a
+            href='#the-site'
+            class='inline-flex items-center px-8 py-4 bg-gradient-to-r from-basque-10 to-basque-20 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg'>
+            See the site that was
+          </a>
+          <a
+            href='#case-study'
+            class='inline-flex items-center px-8 py-4 border border-white/20 text-gray-200 font-semibold rounded-xl hover:bg-white/5 hover:border-white/40 transition-all'>
+            Read the case study
+          </a>
+        </div>
       </div>
+      <a
+        href='#the-site'
+        aria-label='Scroll to the screenshots'
+        class='absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-gray-300 transition-colors'>
+        <svg
+          class='w-6 h-6 animate-bounce'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+          viewBox='0 0 24 24'
+          aria-hidden='true'>
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            d='M19.5 8.25 12 15.75 4.5 8.25'></path>
+        </svg>
+      </a>
     </header>
 
     <main class='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24'>
-      <!-- Context -->
-      <section>
-        <div class='bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl'>
+      <!-- The site that was -->
+      <section id='the-site' class='scroll-mt-20'>
+        <p
+          class='text-xs md:text-sm uppercase tracking-[0.25em] text-basque-20 mb-4'>
+          In memoriam · 2024 — 2026
+        </p>
+        <h2 class='text-3xl md:text-5xl font-bold text-white mb-6'>
+          The site that was
+        </h2>
+        <p class='text-lg text-gray-300 leading-relaxed max-w-3xl mb-4'>
+          For three reading years, eight friends kept score of everything they
+          read on a small bilingual site — every page written twice, once in
+          Spanish and once in Basque. Books went in, points came out, and each
+          December there was a leaderboard to argue about.
+        </p>
+        <p class='text-lg text-gray-300 leading-relaxed max-w-3xl mb-12'>
+          It went offline in 2026. These screenshots, taken the week before it
+          was torn down, are all that's left of it.
+        </p>
+
+        <div class='grid grid-cols-2 md:grid-cols-4 gap-4 mb-16'>
+          {
+            stats.map(stat => (
+              <div class='bg-white/5 rounded-2xl p-6 border border-white/10 text-center'>
+                <div class='text-4xl md:text-5xl font-black bg-gradient-to-r from-basque-10 to-basque-20 bg-clip-text text-transparent'>
+                  {stat.value}
+                </div>
+                <div class='text-sm font-semibold text-gray-200 mt-2'>
+                  {stat.label}
+                </div>
+                <div class='text-xs text-gray-500'>{stat.sub}</div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+          {
+            gallery.map((shot, i) => (
+              <a
+                href={shot.src}
+                target='_blank'
+                rel='noopener noreferrer'
+                class={`group block ${i === 0 ? 'sm:col-span-2 lg:col-span-3' : ''}`}>
+                <div class='overflow-hidden rounded-2xl border border-white/10 shadow-xl bg-black/40'>
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading='lazy'
+                    class={`w-full object-contain object-top transition-transform duration-300 group-hover:scale-[1.02] ${
+                      i === 0 ? 'aspect-[16/9]' : 'aspect-[16/10]'
+                    }`}
+                  />
+                </div>
+                <p class='mt-2 text-sm text-gray-500 group-hover:text-gray-300 transition-colors'>
+                  {shot.caption}
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Case study -->
+      <section id='case-study' class='scroll-mt-20'>
+        <div
+          class='bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl'>
           <h2 class='text-2xl md:text-3xl font-bold text-white mb-6'>
-            The problem
+            How it worked
           </h2>
-          <p class='text-lg text-gray-300 leading-relaxed mb-4'>
-            A group of friends wanted a friendly way to compete on how much they
-            read each year — more than a shared spreadsheet, less than a
-            full-blown Goodreads clone. I built and maintained the site that ran
-            this competition from 2024 onward: tracking books, scoring points,
-            ranking competitors, and giving everyone a place to see what everyone
-            else was reading.
-          </p>
           <p class='text-lg text-gray-300 leading-relaxed'>
-            The homepage below is what greeted returning readers each year — a
-            live look at three competitions and running totals across them.
+            The brief was modest: more than a shared spreadsheet, less than a
+            Goodreads clone. I built it as an Astro site with Vue islands for
+            anything interactive, Supabase behind the members-only parts, and
+            Netlify running the builds. I maintained it for three seasons, which
+            meant living with my own architectural decisions long enough to see
+            which ones were wrong.
           </p>
         </div>
-        <img
-          src='/case-study/homepage.jpg'
-          alt='Original homepage with a hero, community intro, and a year-by-year timeline'
-          class='mt-8 rounded-2xl border border-white/10 shadow-2xl w-full'
-        />
       </section>
 
       <!-- Tech stack -->
@@ -121,14 +249,14 @@ const features = [
         </div>
       </section>
 
-      <!-- Features -->
+      <!-- Highlights -->
       <section>
         <h2 class='text-2xl md:text-3xl font-bold text-white mb-12 text-center'>
           What I built
         </h2>
         <div class='space-y-16'>
           {
-            features.map((feature, i) => (
+            highlights.map((feature, i) => (
               <div
                 class={`grid md:grid-cols-2 gap-8 items-center ${
                   i % 2 === 1 ? 'md:[direction:rtl]' : ''
@@ -153,36 +281,27 @@ const features = [
 
       <!-- Lessons learned -->
       <section>
-        <div class='bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl'>
+        <div
+          class='bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl'>
           <h2 class='text-2xl md:text-3xl font-bold text-white mb-6'>
             Lessons learned
           </h2>
-          <ul class='space-y-4 text-gray-300 leading-relaxed list-disc list-inside'>
+          <ul
+            class='space-y-4 text-gray-300 leading-relaxed list-disc list-inside'>
             <li>
-              Reusing one Zod schema across six content collections (one per
-              year, per language) was DRY on paper, but it let a real bug slip
-              through: two of those collections ended up aliasing the exact same
-              underlying schema objects instead of pointing at distinct content,
-              and a page kept querying a collection whose folder didn't actually
-              exist. It never crashed the build — Astro just silently returned an
-              empty set — which is precisely the kind of failure that's easy to
-              miss without type-level guarantees tying collection names to
-              folders.
+              Six near-identical collections (one per year, per language) let a
+              real bug hide: two of them aliased the same schema objects, and one
+              page queried a collection whose folder didn't exist. Astro just
+              returned an empty set — no crash, no warning.
             </li>
             <li>
-              I'd model this as a single collection with a <code>year</code> field
-              instead of duplicating collections per year — same validation,
-              fewer places for a foldername/collection-name mismatch to hide.
+              I'd model it as a single collection with a <code>year</code> field instead
+              — same validation, no room for a foldername/collection-name mismatch.
             </li>
             <li>
-              The point-scoring logic lived in a small client-side JS module. A
-              Postgres view or function would have kept scoring consistent
-              regardless of which part of the app read it.
-            </li>
-            <li>
-              Migrating this from a live SSR + Supabase app to a fully static
-              case study was itself a good exercise: stripping auth, API routes,
-              and dynamic content down to what's actually worth showing.
+              Point scoring lived in a client-side JS module. A Postgres view or
+              function would have kept it consistent no matter which part of the
+              app was asking.
             </li>
           </ul>
         </div>
@@ -190,7 +309,8 @@ const features = [
 
       <!-- Closing CTA -->
       <section class='text-center'>
-        <div class='inline-block bg-gradient-to-r from-basque-10 to-basque-20 rounded-2xl p-8 md:p-12 shadow-2xl'>
+        <div
+          class='inline-block bg-gradient-to-r from-basque-10 to-basque-20 rounded-2xl p-8 md:p-12 shadow-2xl'>
           <h3 class='text-2xl md:text-3xl font-bold text-white mb-4'>
             Want to see the code?
           </h3>
